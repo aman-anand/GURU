@@ -4,18 +4,25 @@ export const HeaderContainer = styled.header`
   ${globalStyle.flex};
   ${globalStyle.row};
   background-color: #ffffff;
+  padding: 20px;
   @media (min-width: ${globalStyle.small}) {
-    padding: 0px 30px;
+    padding: 0px 70px;
   }
   & > div {
     ${globalStyle.flex};
     ${globalStyle.row};
   }
   .logoBox {
-    margin-right: 75px;
+    @media (min-width: ${globalStyle.small}) {
+      margin-right: 75px;
+    }
+    align-items: center;
   }
   .navListBox {
     flex: 1;
+    @media (max-width: ${globalStyle.small}) {
+      justify-content: center;
+    }
     .navList {
       ${globalStyle.flex};
       ${globalStyle.column};
@@ -125,5 +132,19 @@ export const HeaderContainer = styled.header`
         border: solid 1px red;
       }
     }
+  }
+  .notifyIcon {
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .menu {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    width: 18px;
+    height: 13px;
   }
 `;
