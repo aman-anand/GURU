@@ -17,6 +17,10 @@ import makeSelectHome from './selectors';
 import reducer from './reducer';
 import Header from '../../components/Header/Loadable';
 import Footer from '../../components/Footer/Loadable';
+import Search from '../../components/Search/Loadable';
+import SessionCard from '../../components/SessionCard/Loadable';
+import UpcommingSession from '../../components/UpcommingSession/Loadable';
+import ListCard from '../../components/ListCard/Loadable';
 import { HomeContainer } from './style';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -31,7 +35,26 @@ export class Home extends React.PureComponent {
         </Helmet>
         <Header title="Home" />
         <div className="container">
-          <p>ddd</p>
+          {isMobile ? <Search /> : null}
+          <div className="leftBox">
+            {isMobile ? <UpcommingSession seeall /> : <UpcommingSession button />}
+            <div className="cardWrapper">
+              <SessionCard />
+              <SessionCard />
+            </div>
+            <div className="cardWrapper">
+              <ListCard />
+              <ListCard />
+            </div>
+          </div>
+          <div className="rightBox">
+            <div className="attendanceUpdates">
+              <p className="_sessionBox">
+                <span>ATTENDANCE UPDATES</span>
+                <span>Start day initiated</span>
+              </p>
+            </div>
+          </div>
         </div>
         {isMobile ? <Footer /> : null}
       </HomeContainer>

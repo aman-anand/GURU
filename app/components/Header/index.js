@@ -57,9 +57,9 @@ function Header(props) {
       <div className="navRight">
         {!isMobile ? (
           <Fragment>
-            <div className="chart">C</div>
+            <div className="chart" />
             <div className="myProfileNav">
-              <div className="proIcon">l</div>
+              <div className="proIcon" />
               <div className="proName">
                 <p>
                   <span>Rajiv Shukla</span>

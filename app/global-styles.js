@@ -46,9 +46,9 @@ section {
 .container {
   flex: 1;
   align-self: center;
-  width: 1143px;
-  @media (max-width: 1024px) {
-    width: 100%;
+  width: 100%;
+  @media (min-width: 1142px) {
+    width: 1143px;
   }
 }
 `;
