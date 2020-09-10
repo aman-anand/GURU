@@ -15,6 +15,7 @@ import GlobalStyle from '../../global-styles';
 
 import NotFoundPage from '../NotFoundPage/Loadable';
 import Signin from '../Signin/Loadable';
+import Home from '../Home/Loadable';
 import { AppContainer } from './style';
 
 // const GlobalStyle = lazy(() => import('../../global-styles'));
@@ -72,6 +73,7 @@ export default class App extends React.Component {
         <MuiThemeProvider theme={this.state.theme}>
           <AppContainer>
             <Switch>
+              <Route exact path="/Home" component={Home} />
               <Route exact path="/signin" component={Signin} />
               <Route exact path="/signup" component={Signin} />
               <Route exact path="*" component={NotFoundPage} />

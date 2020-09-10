@@ -26,6 +26,24 @@ function Registration(props) {
           </div>
         ) : null}
         <input type="text" placeholder="Referral Code" />
+        <div className="genderWrapper">
+          <span>Gender</span>
+          <div className="_genderBox">
+            <label htmlFor="male">
+              <input type="radio" name="gender" value="male" id="male" />
+              <span>Male</span>
+            </label>
+            <label htmlFor="female">
+              <input type="radio" name="gender" value="female" id="female" />
+              <span>Female</span>
+            </label>
+          </div>
+        </div>
+        <div className="_twoComumnWrapper">
+          <input type="text" placeholder="Date of Birth *" />
+          <input type="text" placeholder="Age *" />
+          <input type="text" placeholder="Martial Status * *" />
+        </div>
         <div className="_twoComumnWrapper">
           <input type="text" placeholder="Date of Birth *" />
           <input type="text" placeholder="Age *" />
