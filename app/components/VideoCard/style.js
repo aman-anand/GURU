@@ -11,20 +11,18 @@ export const VideoCardContainer = styled.div`
   max-height: 185px;
   position: relative;
   overflow: hidden;
+  flex: 1;
   @media (max-width: ${globalStyle.small}) {
     min-height: 200px;
     max-height: 200px;
   }
   @media (min-width: ${globalStyle.small}) {
-    width: 255px;
+    min-width: 255px;
     margin: 15px;
   }
   .imageBox {
     background-image: url(${props => (props.bg ? props.bg : '')});
     background-size: cover;
-    @media (min-width: ${globalStyle.small}) {
-      background-size: contain;
-    }
     ${globalStyle.flex};
     ${globalStyle.column};
     position: absolute;

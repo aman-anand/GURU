@@ -14,7 +14,7 @@ function SessionCard(props) {
   const { date, month } = sticyOneData || {};
   const { name, classname } = sticyTwoData || {};
   return (
-    <SessionCardContainer bg={MaskGroup}>
+    <SessionCardContainer className="sessionCardWrapper" bg={MaskGroup}>
       <a href="/" className="imageBox" role="button">
         <div className="topBox">
           {sticyOne ? (

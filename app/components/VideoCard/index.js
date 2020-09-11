@@ -11,7 +11,7 @@ import { VideoCardContainer } from './style';
 
 function VideoCard() {
   return (
-    <VideoCardContainer bg={videoimg}>
+    <VideoCardContainer className="VideoCardContainer" bg={videoimg}>
       <a href="/" className="imageBox" role="button">
         <div className="bottomBox">
           <div className="_lb">

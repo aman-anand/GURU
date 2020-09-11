@@ -10,8 +10,9 @@ export const SessionCardContainer = styled.div`
   min-height: 210px;
   max-height: 210px;
   position: relative;
+  flex: 1;
   @media (min-width: ${globalStyle.small}) {
-    width: 350px;
+    min-width: 350px;
     margin: 15px;
   }
   .imageBox {
@@ -34,6 +35,8 @@ export const SessionCardContainer = styled.div`
       margin: auto;
       height: 100%;
       width: 100%;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
     }
     .topBox,
     .bottomBox {
