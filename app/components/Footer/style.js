@@ -11,4 +11,5 @@ export const FooterContainer = styled.footer`
   right: 0;
   width: 100%;
   padding: 15px;
+  z-index: 9;
 `;

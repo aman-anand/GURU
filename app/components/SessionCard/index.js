@@ -5,19 +5,28 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import MaskGroup from '../../images/MaskGroup.jpg';
 import { SessionCardContainer } from './style';
 
-function SessionCard() {
+function SessionCard(props) {
+  const { sticyOne, sticyTwo } = props;
   return (
     <SessionCardContainer bg={MaskGroup}>
       <a href="/" className="imageBox" role="button">
         <div className="topBox">
-          <div className="cardSticker">
-            <div>09</div>
-            <div>September</div>
-          </div>
+          {sticyOne ? (
+            <div className="cardSticker">
+              <div>09</div>
+              <div>September</div>
+            </div>
+          ) : null}
+          {sticyTwo ? (
+            <div className="secoundCardSticker">
+              <div>09</div>
+              <div>September</div>
+            </div>
+          ) : null}
         </div>
         <div className="bottomBox">
           <div className="_lb">
@@ -33,6 +42,9 @@ function SessionCard() {
   );
 }
 
-SessionCard.propTypes = {};
+SessionCard.propTypes = {
+  sticyOne: PropTypes.bool,
+  sticyTwo: PropTypes.bool,
+};
 
 export default SessionCard;
