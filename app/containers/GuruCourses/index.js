@@ -41,16 +41,12 @@ export class GuruCourses extends React.PureComponent {
               <SessionCard sticyTwo sticyTwoData={{ name: '3 SECTIONS', classname: 'expert' }} />
               <SessionCard sticyTwo sticyTwoData={{ name: 'BEGINNER', classname: 'beginner' }} />
               <SessionCard sticyTwo sticyTwoData={{ name: 'INTERMEDIATE', classname: 'intermediate' }} />
-            </div>
-            <div className="cardWrapper">
-              <SessionCard sticyTwo />
-              <SessionCard sticyTwo />
-              <SessionCard sticyTwo />
-            </div>
-            <div className="cardWrapper">
-              <SessionCard sticyTwo />
-              <SessionCard sticyTwo />
-              <SessionCard sticyTwo />
+              <SessionCard sticyTwo sticyTwoData={{ name: '3 SECTIONS', classname: 'expert' }} />
+              <SessionCard sticyTwo sticyTwoData={{ name: 'BEGINNER', classname: 'beginner' }} />
+              <SessionCard sticyTwo sticyTwoData={{ name: 'INTERMEDIATE', classname: 'intermediate' }} />
+              <SessionCard sticyTwo sticyTwoData={{ name: '3 SECTIONS', classname: 'expert' }} />
+              <SessionCard sticyTwo sticyTwoData={{ name: 'BEGINNER', classname: 'beginner' }} />
+              <SessionCard sticyTwo sticyTwoData={{ name: 'INTERMEDIATE', classname: 'intermediate' }} />
             </div>
           </div>
         </div>
