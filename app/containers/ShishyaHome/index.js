@@ -44,9 +44,9 @@ export class ShishyaHome extends React.PureComponent {
               <UpcommingSession button title="Upcoming Sessions" subtitle="15 sessions aligned" />
             )}
             <div className="cardWrapper">
-              <SessionCard sticyOne />
-              <SessionCard sticyOne />
-              <SessionCard sticyOne />
+              <SessionCard sticyOne sticyOneData={{ date: '09', month: 'September' }} />
+              <SessionCard sticyOne sticyOneData={{ date: '09', month: 'August' }} />
+              <SessionCard sticyOne sticyOneData={{ date: '09', month: 'September' }} />
             </div>
             {isMobile ? (
               <UpcommingSession title="Articles" subtitle="22 article listed" seeall />

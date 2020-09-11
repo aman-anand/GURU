@@ -38,9 +38,9 @@ export class GuruCourses extends React.PureComponent {
           <div className="leftBox">
             <UpcommingSession title="COURSES" subtitle="10 courses listed" />
             <div className="cardWrapper">
-              <SessionCard sticyTwo />
-              <SessionCard sticyTwo />
-              <SessionCard sticyTwo />
+              <SessionCard sticyTwo sticyTwoData={{ name: '3 SECTIONS', classname: 'expert' }} />
+              <SessionCard sticyTwo sticyTwoData={{ name: 'BEGINNER', classname: 'beginner' }} />
+              <SessionCard sticyTwo sticyTwoData={{ name: 'INTERMEDIATE', classname: 'intermediate' }} />
             </div>
             <div className="cardWrapper">
               <SessionCard sticyTwo />

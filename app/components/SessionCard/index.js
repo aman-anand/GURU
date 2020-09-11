@@ -10,21 +10,22 @@ import MaskGroup from '../../images/MaskGroup.jpg';
 import { SessionCardContainer } from './style';
 
 function SessionCard(props) {
-  const { sticyOne, sticyTwo } = props;
+  const { sticyOne, sticyTwo, sticyOneData, sticyTwoData } = props;
+  const { date, month } = sticyOneData || {};
+  const { name, classname } = sticyTwoData || {};
   return (
     <SessionCardContainer bg={MaskGroup}>
       <a href="/" className="imageBox" role="button">
         <div className="topBox">
           {sticyOne ? (
             <div className="cardSticker">
-              <div>09</div>
-              <div>September</div>
+              <div>{date}</div>
+              <div>{month}</div>
             </div>
           ) : null}
           {sticyTwo ? (
             <div className="secoundCardSticker">
-              <div>09</div>
-              <div>September</div>
+              <div className={classname}>{name}</div>
             </div>
           ) : null}
         </div>
@@ -45,6 +46,8 @@ function SessionCard(props) {
 SessionCard.propTypes = {
   sticyOne: PropTypes.bool,
   sticyTwo: PropTypes.bool,
+  sticyOneData: PropTypes.object,
+  sticyTwoData: PropTypes.object,
 };
 
 export default SessionCard;

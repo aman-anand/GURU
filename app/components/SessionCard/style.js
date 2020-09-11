@@ -10,7 +10,6 @@ export const SessionCardContainer = styled.div`
   min-height: 210px;
   max-height: 210px;
   position: relative;
-  overflow: hidden;
   @media (min-width: ${globalStyle.small}) {
     width: 350px;
     margin: 15px;
@@ -21,7 +20,6 @@ export const SessionCardContainer = styled.div`
     ${globalStyle.flex};
     ${globalStyle.column};
     position: absolute;
-    overflow: hidden;
     border-radius: 5px;
     left: 0;
     top: 0;
@@ -110,28 +108,88 @@ export const SessionCardContainer = styled.div`
     ${globalStyle.flex};
     ${globalStyle.row};
     position: absolute;
-    right: 0;
-    top: 18px;
-    background: #da3a33;
+    right: -5px;
+    top: 16px;
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.05);
     & > div {
       ${globalStyle.flex};
       color: #ffffff;
-      padding: 10px;
+      padding: 8px 10px;
       align-items: center;
-      &:nth-child(1) {
-        background-color: rgba(64, 63, 63, 0.5);
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 17px;
-        text-align: center;
-        text-transform: uppercase;
+      background-color: #fd2703;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 12px;
+      text-transform: uppercase;
+      &.expert {
+        background-color: #fd2703;
+        &::before {
+          content: '';
+          width: 0;
+          height: 0;
+          border-top: 13.5px solid transparent;
+          border-right: 12px solid #fd2703;
+          border-bottom: 13px solid transparent;
+          position: absolute;
+          left: -12px;
+        }
+        &::after {
+          content: '';
+          width: 0;
+          height: 0;
+          border-top: 5px solid #fd2703;
+          border-right: 5px solid transparent;
+          position: absolute;
+          right: 0px;
+          bottom: -5px;
+        }
       }
-      &:nth-child(2) {
-        flex: 1;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 14px;
+      &.beginner {
+        background-color: #58b368;
+        &::before {
+          content: '';
+          width: 0;
+          height: 0;
+          border-top: 13.5px solid transparent;
+          border-right: 12px solid #58b368;
+          border-bottom: 13px solid transparent;
+          position: absolute;
+          left: -12px;
+        }
+        &::after {
+          content: '';
+          width: 0;
+          height: 0;
+          border-top: 5px solid #58b368;
+          border-right: 5px solid transparent;
+          position: absolute;
+          right: 0px;
+          bottom: -5px;
+        }
+      }
+      &.intermediate {
+        background-color: #0976be;
+        &::before {
+          content: '';
+          width: 0;
+          height: 0;
+          border-top: 13.5px solid transparent;
+          border-right: 12px solid #0976be;
+          border-bottom: 13px solid transparent;
+          position: absolute;
+          left: -12px;
+        }
+        &::after {
+          content: '';
+          width: 0;
+          height: 0;
+          border-top: 5px solid #0976be;
+          border-right: 5px solid transparent;
+          position: absolute;
+          right: 0px;
+          bottom: -5px;
+        }
       }
     }
   }
