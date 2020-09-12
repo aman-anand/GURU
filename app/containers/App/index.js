@@ -8,7 +8,6 @@ import { Switch, Route } from 'react-router-dom';
 import 'react-smartbanner/dist/main.css';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import green from '@material-ui/core/colors/green';
 import red from '@material-ui/core/colors/red';
 import 'react-dates/initialize';
 import GlobalStyle from '../../global-styles';
@@ -58,8 +57,7 @@ export default class App extends React.Component {
           A700: '#d50000',
         }, // Purple and green play nicely together.
         secondary: {
-          ...green,
-          A400: '#00a465',
+          main: '#212121',
         },
         error: red,
       },

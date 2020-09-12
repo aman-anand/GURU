@@ -59,4 +59,19 @@ export const GuruCoursesDetailsContainer = styled.section`
       width: 100%;
     }
   }
+  .brifSessionBox {
+    ${globalStyle.flex};
+    ${globalStyle.row};
+    flex-wrap: wrap;
+    & > div {
+      ${globalStyle.flex};
+      ${globalStyle.column};
+      background: #f7f7f7;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding: 10px;
+      margin: 12px;
+      flex: 1;
+    }
+  }
 `;

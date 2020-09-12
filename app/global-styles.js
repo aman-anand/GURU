@@ -51,6 +51,23 @@ section {
     width: 1143px;
   }
 }
+.tabsHeader {
+  box-shadow: inherit !important;
+}
+[role="tablist"] {
+  & > div {
+    border-bottom: solid 1px #CED4DB;
+    background-color: #ffffff;
+  }
+}
+.tabsWrapper {
+  background-color: #ffffff;
+  padding: 16px 20px;
+  @media (min-width: ${globalStyle.small}) {
+    padding: 16px 24px;
+  }
+}
+.tabDataBox {}
 `;
 
 export default GlobalStyle;
