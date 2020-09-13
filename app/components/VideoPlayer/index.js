@@ -12,6 +12,10 @@ function VideoPlayer() {
   return (
     <VideoPlayerContainer>
       <div>&nbsp;</div>
+      <div className="playerDesc">
+        <div>SAVINGS EDUCATION</div>
+        <div>&nbsp;</div>
+      </div>
     </VideoPlayerContainer>
   );
 }

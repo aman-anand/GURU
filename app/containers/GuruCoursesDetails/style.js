@@ -63,15 +63,52 @@ export const GuruCoursesDetailsContainer = styled.section`
     ${globalStyle.flex};
     ${globalStyle.row};
     flex-wrap: wrap;
+    @media (max-width: ${globalStyle.small}) {
+      margin-left: -12px;
+      margin-right: -12px;
+    }
     & > div {
-      ${globalStyle.flex};
-      ${globalStyle.column};
-      background: #f7f7f7;
-      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      padding: 10px;
-      margin: 12px;
-      flex: 1;
+      &.sectionItem,
+      &.certificateItem {
+        ${globalStyle.flex};
+        ${globalStyle.row};
+        background: #f7f7f7;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding: 10px;
+        margin: 12px;
+        justify-content: center;
+        align-items: center;
+        @media (min-width: ${globalStyle.small}) {
+          min-width: 190px;
+        }
+        @media (max-width: ${globalStyle.small}) {
+          flex: 1;
+        }
+        .icon,
+        ._content {
+          ${globalStyle.flex};
+        }
+        ._content {
+          ${globalStyle.column};
+          padding-left: 8px;
+          span {
+            line-height: 17px;
+            font-weight: 300;
+            font-size: 14px;
+            @media (max-width: ${globalStyle.small}) {
+              font-size: 12px;
+            }
+            color: #000000;
+            &:nth-child(1) {
+              font-weight: 500;
+            }
+            &:nth-child(2) {
+              color: #403f3f;
+            }
+          }
+        }
+      }
     }
   }
 `;
