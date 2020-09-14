@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import globalStyle from 'Global/styles/base';
-export const SignInContainer = styled.div`
+export const SigninFormContainer = styled.div`
   ${globalStyle.flex};
   ${globalStyle.column};
   width: 100%;
@@ -20,6 +20,9 @@ export const SignInContainer = styled.div`
     align-self: stretch;
     @media (max-width: ${globalStyle.small}) {
       background: #f7f7f7;
+    }
+    &.input_error {
+      border: solid 1px #da3a33;
     }
   }
   button {

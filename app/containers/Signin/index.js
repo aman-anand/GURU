@@ -12,19 +12,20 @@ import withSizes from 'react-sizes';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
 import injectReducer from 'utils/injectReducer';
+import history from '../../utils/history';
 import makeSelectSignin from './selectors';
 import reducer from './reducer';
-import SignIn from '../../components/SignIn/Loadable';
-import RegistorFrom from '../../components/RegistorFrom/Loadable';
+import SigninForm from '../../components/SigninForm/Loadable';
+// import RegistorFrom from '../../components/RegistorFrom/Loadable';
 import RegistorNav from '../../components/RegistorNav/Loadable';
-import Authentication from '../../components/Authentication/Loadable';
-import Registration from '../../components/Registration/Loadable';
-import Stapes from '../../components/Stapes/Loadable';
+// import Authentication from '../../components/Authentication/Loadable';
+// import Registration from '../../components/Registration/Loadable';
+// import Stapes from '../../components/Stapes/Loadable';
 import { SigninContainer } from './style';
 import splashIMG from '../../images/splash.png';
 import logoIMG from '../../images/logo.svg';
+import { loginAction } from './actions';
 
 /* eslint-disable react/prefer-stateless-function */
 export class Signin extends React.PureComponent {
@@ -32,6 +33,18 @@ export class Signin extends React.PureComponent {
     super(props);
     this.state = {};
   }
+
+  submitMobile = params => {
+    this.props.dispatch(loginAction(params)).then(res => {
+      const { payload } = res || {};
+      const { data } = payload || {};
+      const { auth, role } = data || {};
+      const { token } = auth || {};
+      if (token && role) {
+        history.push('/home');
+      }
+    });
+  };
 
   render() {
     const { isMobile } = this.props;
@@ -53,12 +66,12 @@ export class Signin extends React.PureComponent {
               )}
             </div>
             <div className="content">
-              {!isMobile ? <Stapes /> : null}
+              {/* {false && !isMobile ? <Stapes /> : null} */}
               <div className="blackBox">
-                {undefined ? <SignIn /> : null}
-                {undefined ? <Authentication /> : null}
+                <SigninForm submitFun={this.submitMobile} />
+                {/* {undefined ? <Authentication /> : null}
                 {undefined ? <RegistorFrom /> : null}
-                <Registration />
+                <Registration /> */}
               </div>
             </div>
           </div>

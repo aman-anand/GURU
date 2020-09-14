@@ -1,12 +1,17 @@
-// import history from 'utils/history';
-// import { getPermissions } from './containers/Signup/service';
+import history from 'utils/history';
+import { isUserAlreadyLogin } from './dataService/Login';
 
 export function redirectToLogin() {
-  window.console.log('redirectToLogin');
+  if (!isUserAlreadyLogin()) {
+    history.push('/signin');
+  }
+  window.console.log('redirectToLogin', isUserAlreadyLogin());
 }
 
 export function redirectToDashboard() {
-  window.console.log('redirectToDashboard');
+  if (isUserAlreadyLogin()) {
+    history.push('/home');
+  }
 }
 
 export function PageNotFoundHook() {

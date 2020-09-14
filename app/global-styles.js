@@ -88,5 +88,10 @@ const GlobalStyle = createGlobalStyle`
       color: #FFFFFF;
     }
   }
+  .error {
+    color: #da3a33;
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
 `;
 export default GlobalStyle;

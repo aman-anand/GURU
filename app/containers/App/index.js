@@ -11,7 +11,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
 import 'react-dates/initialize';
 import GlobalStyle from '../../global-styles';
-
+import Loader from '../../components/Loader';
 import NotFoundPage from '../NotFoundPage/Loadable';
 import Signin from '../Signin/Loadable';
 import Home from '../Home/Loadable';
@@ -19,6 +19,11 @@ import ShishyaHome from '../ShishyaHome/Loadable';
 import GuruCourses from '../GuruCourses/Loadable';
 import GuruCoursesDetails from '../GuruCoursesDetails/Loadable';
 import { AppContainer } from './style';
+
+// Routing hooks
+import CheckAuthenticationHook from '../../utils/CheckAuthenticationHook';
+import RedirectToDashboardHook from '../../utils/RedirectToDashboardHook';
+import PageNotFoundHook from '../../utils/PageNotFoundHook';
 
 // const GlobalStyle = lazy(() => import('../../global-styles'));
 
@@ -74,15 +79,17 @@ export default class App extends React.Component {
         <MuiThemeProvider theme={this.state.theme}>
           <AppContainer>
             <Switch>
-              <Route exact path="/GuruHome" component={Home} />
-              <Route exact path="/ShishyaHome" component={ShishyaHome} />
+              <Route exact path="/signin" component={RedirectToDashboardHook(Signin)} />
+              <Route exact path="/home" component={CheckAuthenticationHook(ShishyaHome, true)} />
+
+              <Route exact path="/GuruHome" component={CheckAuthenticationHook(Home, true)} />
+              <Route exact path="/ShishyaHome" component={CheckAuthenticationHook(ShishyaHome, true)} />
               <Route exact path="/GuruCourses" component={GuruCourses} />
               <Route exact path="/GuruCoursesDetails" component={GuruCoursesDetails} />
-              <Route exact path="/signin" component={Signin} />
-              <Route exact path="/signup" component={Signin} />
-              <Route exact path="*" component={NotFoundPage} />
+              <Route exact path="*" component={PageNotFoundHook(NotFoundPage)} />
             </Switch>
           </AppContainer>
+          <Loader />
           <GlobalStyle />
         </MuiThemeProvider>
       );
