@@ -26,6 +26,7 @@ export const SessionCardContainer = styled.div`
     top: 0;
     width: 100%;
     height: 100%;
+    text-decoration: none;
     &::after {
       content: '';
       background: linear-gradient(180deg, rgba(0, 0, 0, 0) 36.46%, rgba(0, 0, 0, 0.74) 82.29%, #000000 100%);

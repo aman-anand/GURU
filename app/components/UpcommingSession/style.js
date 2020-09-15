@@ -53,6 +53,10 @@ export const UpcommingSessionContainer = styled.div`
       line-height: 14px;
       text-transform: uppercase;
       color: #403f3f;
+      a {
+        text-decoration: none;
+        color: #403f3f;
+      }
     }
   }
 `;

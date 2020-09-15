@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import Slider from 'react-slick';
 
 import injectReducer from 'utils/injectReducer';
 import { makeSelectShishyaHome, makeSelectLoginDomain } from './selectors';
@@ -25,6 +26,8 @@ import VideoCard from '../../components/VideoCard/Loadable';
 import ArticleCard from '../../components/ArticleCard/Loadable';
 import UpcommingSession from '../../components/UpcommingSession/Loadable';
 import { HomeContainer } from '../Home/style';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 /* eslint-disable react/prefer-stateless-function */
 export class ShishyaHome extends React.PureComponent {
@@ -46,8 +49,51 @@ export class ShishyaHome extends React.PureComponent {
     const { data } = shishyaHome || {};
     const { course, article, video } = data || {};
     const courseList = course.length;
-    const videoList = video.length;
-    const articleList = article.length;
+    const videoList = video ? video.length : 0;
+    const articleList = article ? article.length : 0;
+    const settingsThree = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      arrows: !isMobile,
+      nextArrow: <span>NEXT</span>,
+      prevArrow: <span>PREVIOUS</span>,
+      responsive: [
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2,
+          },
+        },
+        {
+          breakpoint: 400,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 1,
+          },
+        },
+      ],
+    };
+    const settingsFour = {
+      ...settingsThree,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      responsive: [
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2,
+          },
+        },
+      ],
+    };
     return (
       <HomeContainer>
         <Helmet>
@@ -59,59 +105,53 @@ export class ShishyaHome extends React.PureComponent {
           {isMobile ? <Search /> : null}
           <div className="leftBox">
             {/* NOTE: COURSE */}
-            {isMobile ? (
-              <UpcommingSession title="COURSES" subtitle={`${courseList} courses listed`} seeall />
-            ) : (
-              <UpcommingSession button title="COURSES" subtitle={`${courseList} courses listed`} />
-            )}
-            <div className="cardWrapper">
-              {course &&
-                course.map(list => {
-                  const { name, totalSections, duration, totalVideos, coverImage } = list || {};
-                  const courseData = {
-                    courseName: name,
-                    totalSections,
-                    totalVideos,
-                    duration,
-                    coverImage,
-                  };
-                  const sticyTwoData = { name: `${totalSections} SECTIONS`, classname: 'expert' };
-                  return <SessionCard courseData={courseData} sticyTwo sticyTwoData={sticyTwoData} />;
-                })}
+            <UpcommingSession title="COURSES" subtitle={`${courseList} courses listed`} seeall={!!isMobile} seelLink="/course" />
+            <div className="carosuleWrapper">
+              <Slider {...settingsThree}>
+                {course &&
+                  course.map(list => {
+                    const { name, totalSections, duration, totalVideos, coverImage } = list || {};
+                    const courseData = {
+                      courseName: name,
+                      totalSections,
+                      totalVideos,
+                      duration,
+                      coverImage,
+                    };
+                    const sticyTwoData = { name: `${totalSections} SECTIONS`, classname: 'expert' };
+                    return <SessionCard courseData={courseData} sticyTwo sticyTwoData={sticyTwoData} />;
+                  })}
+              </Slider>
             </div>
             {/* NOTE: VIDEOS  */}
-            {isMobile ? (
-              <UpcommingSession title="VIDEOS" subtitle={`${videoList} videos listed`} seeall />
-            ) : (
-              <UpcommingSession button title="VIDEOS" subtitle={`${videoList} videos listed`} />
-            )}
-            <div className="cardWrapper">
-              {video &&
-                video.map(item => {
-                  const { title, thumb } = item || {};
-                  const dataOBJ = {
-                    title,
-                    thumb,
-                  };
-                  return <VideoCard dataOBJ={dataOBJ} />;
-                })}
+            <UpcommingSession title="VIDEOS" subtitle={`${videoList} videos listed`} seeall={!!isMobile} seelLink="/course" />
+            <div className="carosuleWrapper">
+              <Slider {...settingsFour}>
+                {video &&
+                  video.map(item => {
+                    const { title, thumb } = item || {};
+                    const dataOBJ = {
+                      title,
+                      thumb,
+                    };
+                    return <VideoCard dataOBJ={dataOBJ} />;
+                  })}
+              </Slider>
             </div>
             {/* NOTE: ARTICLE  */}
-            {isMobile ? (
-              <UpcommingSession title="ARTICLES" subtitle={`${articleList} articles listed`} seeall />
-            ) : (
-              <UpcommingSession button title="ARTICLES" subtitle={`${articleList} articles listed`} />
-            )}
-            <div className="cardWrapper">
-              {article &&
-                article.map(list => {
-                  const { img, title } = list || {};
-                  const dataOBJ = {
-                    title,
-                    img,
-                  };
-                  return <ArticleCard dataOBJ={dataOBJ} />;
-                })}
+            <UpcommingSession title="ARTICLES" subtitle={`${articleList} articles listed`} seeall={!!isMobile} seelLink="/course" />
+            <div className="carosuleWrapper">
+              <Slider {...settingsFour}>
+                {article &&
+                  article.map(list => {
+                    const { img, title } = list || {};
+                    const dataOBJ = {
+                      title,
+                      img,
+                    };
+                    return <ArticleCard dataOBJ={dataOBJ} />;
+                  })}
+              </Slider>
             </div>
           </div>
         </div>

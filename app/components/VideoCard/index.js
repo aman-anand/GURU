@@ -6,14 +6,14 @@
 
 import React from 'react';
 // import PropTypes from 'prop-types';
-// import videoimg from '../../images/videoimg.png';
+import videoimg from '../../images/videoimg.png';
 import { VideoCardContainer } from './style';
 
 function VideoCard(props) {
   const { dataOBJ } = props || {};
   const { title, thumb } = dataOBJ || {};
   return (
-    <VideoCardContainer className="VideoCardContainer" bg={thumb}>
+    <VideoCardContainer className="VideoCardContainer" bg={thumb || videoimg}>
       <a href="/" className="imageBox" role="button">
         <div className="bottomBox">
           <div className="_lb">

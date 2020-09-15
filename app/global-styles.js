@@ -99,5 +99,79 @@ const GlobalStyle = createGlobalStyle`
     font-size: 12px;
     margin-bottom: 12px;
   }
+  .addCarousel {
+  }
+
+  .carosuleWrapper {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    margin-bottom: 15px;
+    .slick-list {
+      margin-left: -7.5px;
+      margin-right: -7.5px;
+      @media (min-width: ${globalStyle.small}) {
+        margin-left: -15px;
+        margin-right: -15px;
+      }
+    }
+    .slick-track {
+      & > div {
+        padding: 7.5px;
+        @media (min-width: ${globalStyle.small}) {
+          padding: 15px;
+        }
+        .sessionCardWrapper {
+          margin: 0px;
+        }
+      }
+    }
+    .slick-prev, .slick-next {
+      display: flex !important;
+      ${globalStyle.row};
+      background-color: #58b368;
+      border-radius: 5px;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      align-items: center;
+      margin: 0px 7.5px;
+      right: 110px;
+      top: -17px;
+      height: 34px;
+      & > span {
+        border: solid 1px red;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+      }
+      &:hover {
+        color: #ffffff;
+        background: #58b368;
+      }
+    }
+    .slick-prev {
+      left: inherit;
+      width: 120px;
+      padding-left: 42px;
+      &:before {
+        position: absolute;
+        left: 15px;
+      }
+    }
+    .slick-next {
+      right: 0 !Important;
+      width: 90px;
+      &:before {
+        position: absolute;
+        right: 15px;
+      }
+    }
+    .VideoCardContainer, .arcticalCardWrapper {
+      margin: 0px;
+    }
+  }
 `;
 export default GlobalStyle;

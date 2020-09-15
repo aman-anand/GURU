@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import MaskGroup from '../../images/MaskGroup.jpg';
+import MaskGroup from '../../images/MaskGroup.jpg';
 import { SessionCardContainer } from './style';
 
 function SessionCard(props) {
@@ -15,7 +15,7 @@ function SessionCard(props) {
   const { name, classname } = sticyTwoData || {};
   const { courseName, totalSections, totalVideos, duration, coverImage } = courseData || {};
   return (
-    <SessionCardContainer className="sessionCardWrapper" bg={coverImage}>
+    <SessionCardContainer className="sessionCardWrapper" bg={coverImage || MaskGroup}>
       <a href="/" className="imageBox" role="button">
         <div className="topBox">
           {sticyOne ? (

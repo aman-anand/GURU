@@ -7,7 +7,7 @@ export const HomeContainer = styled.section`
     background-color: #f9fafc;
   }
   .container {
-    padding: 10px 20px;
+    padding: 10px;
     ${globalStyle.flex};
     ${globalStyle.column};
     box-sizing: border-box;
@@ -29,6 +29,7 @@ export const HomeContainer = styled.section`
   }
   .leftBox {
     flex: 1;
+    width: 100%;
   }
   .rightBox {
     @media (min-width: ${globalStyle.small}) {

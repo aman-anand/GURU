@@ -19,6 +19,8 @@ import Header from '../../components/Header/Loadable';
 import Footer from '../../components/Footer/Loadable';
 import Search from '../../components/Search/Loadable';
 import SessionCard from '../../components/SessionCard/Loadable';
+import VideoCard from '../../components/VideoCard/Loadable';
+import ArticleCard from '../../components/ArticleCard/Loadable';
 import UpcommingSession from '../../components/UpcommingSession/Loadable';
 import { HomeContainer } from '../Home/style';
 
@@ -47,6 +49,18 @@ export class GuruCourses extends React.PureComponent {
               <SessionCard sticyTwo sticyTwoData={{ name: '3 SECTIONS', classname: 'expert' }} />
               <SessionCard sticyTwo sticyTwoData={{ name: 'BEGINNER', classname: 'beginner' }} />
               <SessionCard sticyTwo sticyTwoData={{ name: 'INTERMEDIATE', classname: 'intermediate' }} />
+            </div>
+            <UpcommingSession title="COURSES" subtitle="10 courses listed" />
+            <div className="cardWrapper">
+              {[1, 2, 3, 4, 5, 6, 7].map(() => (
+                <VideoCard dataOBJ={{ title: 'TEST' }} />
+              ))}
+            </div>
+            <UpcommingSession title="COURSES" subtitle="10 courses listed" />
+            <div className="cardWrapper">
+              {[1, 2, 3, 4, 5, 6, 7].map(() => (
+                <ArticleCard dataOBJ={{ title: 'TEST' }} />
+              ))}
             </div>
           </div>
         </div>

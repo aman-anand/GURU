@@ -13,8 +13,8 @@ export const VideoCardContainer = styled.div`
   overflow: hidden;
   flex: 1;
   @media (max-width: ${globalStyle.small}) {
-    min-height: 200px;
-    max-height: 200px;
+    min-height: 160px;
+    max-height: 160px;
   }
   @media (min-width: ${globalStyle.small}) {
     min-width: 255px;

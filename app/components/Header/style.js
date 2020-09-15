@@ -4,7 +4,7 @@ export const HeaderContainer = styled.header`
   ${globalStyle.flex};
   ${globalStyle.row};
   background-color: #ffffff;
-  padding: 20px;
+  padding: 15px 10px;
   @media (min-width: ${globalStyle.small}) {
     padding: 0px 70px;
   }

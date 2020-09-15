@@ -10,7 +10,7 @@ import withSizes from 'react-sizes';
 import { UpcommingSessionContainer } from './style';
 
 function UpcommingSession(props) {
-  const { seeall, button, title, subtitle } = props || {};
+  const { seeall, button, title, subtitle, seelLink } = props || {};
   return (
     <UpcommingSessionContainer>
       <div className="_leftUpcomming">
@@ -41,7 +41,11 @@ function UpcommingSession(props) {
               </span>
             </div>
           ) : null}
-          {seeall ? <span className="seeAll">SEE ALL</span> : null}
+          {seeall ? (
+            <span className="seeAll">
+              <a href={seelLink}>SEE ALL</a>
+            </span>
+          ) : null}
         </div>
       ) : null}
     </UpcommingSessionContainer>

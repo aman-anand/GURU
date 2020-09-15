@@ -6,7 +6,7 @@
 
 import React from 'react';
 // import PropTypes from 'prop-types';
-// import articleimg from '../../images/articleimg.png';
+import articleimg from '../../images/articleimg.png';
 import { ArticleCardContainer } from './style';
 
 function ArticleCard(props) {
@@ -15,10 +15,10 @@ function ArticleCard(props) {
   const { img, title } = dataOBJ || {};
   const [first] = title.split('');
   return (
-    <ArticleCardContainer color={randomColor}>
+    <ArticleCardContainer color={randomColor} className="arcticalCardWrapper">
       <a href="/" className="imageBox" role="button">
         <div className="imgBox">
-          <img src={img} alt="" title="" />
+          <img src={img || articleimg} alt="" title="" />
         </div>
         <div className="bottomBox">
           <div className="icon">{first}</div>
