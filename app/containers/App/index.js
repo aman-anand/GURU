@@ -14,6 +14,7 @@ import GlobalStyle from '../../global-styles';
 import Loader from '../../components/Loader';
 import NotFoundPage from '../NotFoundPage/Loadable';
 import Signin from '../Signin/Loadable';
+import SignUp from '../SignUp/Loadable';
 import Home from '../Home/Loadable';
 import ShishyaHome from '../ShishyaHome/Loadable';
 import GuruCourses from '../GuruCourses/Loadable';
@@ -80,10 +81,11 @@ export default class App extends React.Component {
           <AppContainer>
             <Switch>
               <Route exact path="/signin" component={RedirectToDashboardHook(Signin)} />
+              <Route exact path="/signup" component={RedirectToDashboardHook(SignUp)} />
+
               <Route exact path="/home" component={CheckAuthenticationHook(ShishyaHome, true)} />
 
               <Route exact path="/GuruHome" component={CheckAuthenticationHook(Home, true)} />
-              <Route exact path="/ShishyaHome" component={CheckAuthenticationHook(ShishyaHome, true)} />
               <Route exact path="/GuruCourses" component={GuruCourses} />
               <Route exact path="/GuruCoursesDetails" component={GuruCoursesDetails} />
               <Route exact path="*" component={PageNotFoundHook(NotFoundPage)} />

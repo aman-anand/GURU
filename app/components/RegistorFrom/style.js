@@ -30,6 +30,13 @@ export const RegistorFromContainer = styled.div`
     @media (min-width: ${globalStyle.small}) {
       color: #ffffff;
     }
+    a {
+      text-decoration: none;
+      color: #000000;
+      @media (min-width: ${globalStyle.small}) {
+        color: #ffffff;
+      }
+    }
   }
   ._hText,
   ._decText {

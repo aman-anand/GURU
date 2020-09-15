@@ -1,6 +1,6 @@
 /*
  *
- * ShishyaHome actions
+ * SignUp actions
  *
  */
 

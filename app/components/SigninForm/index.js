@@ -7,6 +7,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { SigninFormContainer } from './style';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -59,7 +60,7 @@ class SigninForm extends React.Component {
     const { submitFun } = this.props;
     const { mobileNo, error, mobileValidState } = this.state;
     if (!error && mobileValidState) {
-      submitFun({ phone: mobileNo });
+      submitFun({ number: mobileNo });
     } else {
       this.setState({
         error: true,
@@ -90,7 +91,9 @@ class SigninForm extends React.Component {
           <Button variant="contained" color="primary" type="button" onClick={this.submitAction}>
             SUBMIT
           </Button>
-          <span className="donthavetext">Don’t have your account?</span>
+          <span className="donthavetext">
+            <Link to="signup">Don’t have your account?</Link>
+          </span>
         </div>
       </SigninFormContainer>
     );

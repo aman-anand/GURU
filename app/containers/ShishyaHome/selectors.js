@@ -1,11 +1,12 @@
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
+import { initialState } from '../Home/reducer';
 
 /**
  * Direct selector to the shishyaHome state domain
  */
 
 const selectShishyaHomeDomain = state => state.get('shishyaHome', initialState);
+const selectLoginDomain = state => state.get('login', initialState);
 
 /**
  * Other specific selectors
@@ -16,6 +17,7 @@ const selectShishyaHomeDomain = state => state.get('shishyaHome', initialState);
  */
 
 const makeSelectShishyaHome = () => createSelector(selectShishyaHomeDomain, substate => substate.toJS());
+const makeSelectLoginDomain = () => createSelector(selectLoginDomain, substate => substate.toJS());
 
 export default makeSelectShishyaHome;
-export { selectShishyaHomeDomain };
+export { makeSelectShishyaHome, makeSelectLoginDomain };

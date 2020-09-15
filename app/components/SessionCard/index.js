@@ -6,15 +6,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import MaskGroup from '../../images/MaskGroup.jpg';
+// import MaskGroup from '../../images/MaskGroup.jpg';
 import { SessionCardContainer } from './style';
 
 function SessionCard(props) {
-  const { sticyOne, sticyTwo, sticyOneData, sticyTwoData } = props;
+  const { sticyOne, sticyTwo, sticyOneData, sticyTwoData, courseData } = props;
   const { date, month } = sticyOneData || {};
   const { name, classname } = sticyTwoData || {};
+  const { courseName, totalSections, totalVideos, duration, coverImage } = courseData || {};
   return (
-    <SessionCardContainer className="sessionCardWrapper" bg={MaskGroup}>
+    <SessionCardContainer className="sessionCardWrapper" bg={coverImage}>
       <a href="/" className="imageBox" role="button">
         <div className="topBox">
           {sticyOne ? (
@@ -32,8 +33,10 @@ function SessionCard(props) {
         <div className="bottomBox">
           <div className="_lb">
             <p>
-              <span>SAVINGS EDUCATION</span>
-              <span>3 Sesssions | 10 Videos | 3 hrs 30 mins</span>
+              <span>{courseName}</span>
+              <span>
+                {totalSections} Sesssions | {totalVideos} Videos | {duration}
+              </span>
             </p>
           </div>
           <div className="_rb" />
@@ -48,6 +51,7 @@ SessionCard.propTypes = {
   sticyTwo: PropTypes.bool,
   sticyOneData: PropTypes.object,
   sticyTwoData: PropTypes.object,
+  courseData: PropTypes.object,
 };
 
 export default SessionCard;

@@ -19,6 +19,12 @@ const GlobalStyle = createGlobalStyle`
     &:focus {
       outline: none;
     }
+    &.input_error {
+      border: solid 1px #da3a33;
+      &::placeholder {
+        color: #da3a33;
+      }
+    }
   }
   ::placeholder {
     color: #727B87;

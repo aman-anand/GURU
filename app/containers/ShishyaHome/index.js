@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import withSizes from 'react-sizes';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -13,8 +13,10 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import injectReducer from 'utils/injectReducer';
-import makeSelectShishyaHome from './selectors';
-import reducer from './reducer';
+import { makeSelectShishyaHome, makeSelectLoginDomain } from './selectors';
+import reducer from '../Home/reducer';
+import { homeAction } from '../Home/actions';
+import { getFromLocalStore } from '../../services/CommonSetterGetter';
 import Header from '../../components/Header/Loadable';
 import Footer from '../../components/Footer/Loadable';
 import Search from '../../components/Search/Loadable';
@@ -26,49 +28,90 @@ import { HomeContainer } from '../Home/style';
 
 /* eslint-disable react/prefer-stateless-function */
 export class ShishyaHome extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.store = getFromLocalStore(['token', 'id', 'role', 'expires', 'phone']);
+  }
+
+  componentDidMount() {
+    const { role } = this.store;
+    if (role) {
+      this.props.dispatch(homeAction({ type: role }));
+    }
+  }
+
   render() {
-    const { isMobile } = this.props || {};
+    const { isMobile, shishyaHome } = this.props || {};
+    const { data } = shishyaHome || {};
+    const { course, article, video } = data || {};
+    const courseList = course.length;
+    const videoList = video.length;
+    const articleList = article.length;
     return (
       <HomeContainer>
         <Helmet>
-          <title>Home</title>
+          <title>Shishya Home</title>
           <meta name="description" content="Description of Home" />
         </Helmet>
         <Header title="Home" />
         <div className="container">
           {isMobile ? <Search /> : null}
           <div className="leftBox">
+            {/* NOTE: COURSE */}
             {isMobile ? (
-              <UpcommingSession title="Upcoming Sessions" subtitle="15 sessions aligned" seeall />
+              <UpcommingSession title="COURSES" subtitle={`${courseList} courses listed`} seeall />
             ) : (
-              <UpcommingSession button title="Upcoming Sessions" subtitle="15 sessions aligned" />
+              <UpcommingSession button title="COURSES" subtitle={`${courseList} courses listed`} />
             )}
             <div className="cardWrapper">
-              <SessionCard sticyOne sticyOneData={{ date: '09', month: 'September' }} />
-              <SessionCard sticyOne sticyOneData={{ date: '09', month: 'August' }} />
-              <SessionCard sticyOne sticyOneData={{ date: '09', month: 'September' }} />
+              {course &&
+                course.map(list => {
+                  const { name, totalSections, duration, totalVideos, coverImage } = list || {};
+                  const courseData = {
+                    courseName: name,
+                    totalSections,
+                    totalVideos,
+                    duration,
+                    coverImage,
+                  };
+                  const sticyTwoData = { name: `${totalSections} SECTIONS`, classname: 'expert' };
+                  return <SessionCard courseData={courseData} sticyTwo sticyTwoData={sticyTwoData} />;
+                })}
             </div>
+            {/* NOTE: VIDEOS  */}
             {isMobile ? (
-              <UpcommingSession title="Articles" subtitle="22 article listed" seeall />
+              <UpcommingSession title="VIDEOS" subtitle={`${videoList} videos listed`} seeall />
             ) : (
-              <UpcommingSession button title="Articles" subtitle="22 article listed" />
+              <UpcommingSession button title="VIDEOS" subtitle={`${videoList} videos listed`} />
             )}
             <div className="cardWrapper">
-              <VideoCard />
-              <VideoCard />
-              <VideoCard />
-              <VideoCard />
+              {video &&
+                video.map(item => {
+                  const { title, thumb } = item || {};
+                  const dataOBJ = {
+                    title,
+                    thumb,
+                  };
+                  return <VideoCard dataOBJ={dataOBJ} />;
+                })}
             </div>
+            {/* NOTE: ARTICLE  */}
             {isMobile ? (
-              <UpcommingSession title="Videos" subtitle="21 Videos listed" seeall />
+              <UpcommingSession title="ARTICLES" subtitle={`${articleList} articles listed`} seeall />
             ) : (
-              <UpcommingSession button title="Videos" subtitle="21 Videos listed" />
+              <UpcommingSession button title="ARTICLES" subtitle={`${articleList} articles listed`} />
             )}
             <div className="cardWrapper">
-              <ArticleCard />
-              <ArticleCard />
-              <ArticleCard />
-              <ArticleCard />
+              {article &&
+                article.map(list => {
+                  const { img, title } = list || {};
+                  const dataOBJ = {
+                    title,
+                    img,
+                  };
+                  return <ArticleCard dataOBJ={dataOBJ} />;
+                })}
             </div>
           </div>
         </div>
@@ -79,7 +122,7 @@ export class ShishyaHome extends React.PureComponent {
 }
 
 ShishyaHome.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 const mapSizesToProps = ({ width }) => ({
@@ -88,6 +131,7 @@ const mapSizesToProps = ({ width }) => ({
 
 const mapStateToProps = createStructuredSelector({
   shishyaHome: makeSelectShishyaHome(),
+  login: makeSelectLoginDomain(),
 });
 
 function mapDispatchToProps(dispatch) {

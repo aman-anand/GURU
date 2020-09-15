@@ -21,9 +21,6 @@ export const SigninFormContainer = styled.div`
     @media (max-width: ${globalStyle.small}) {
       background: #f7f7f7;
     }
-    &.input_error {
-      border: solid 1px #da3a33;
-    }
   }
   button {
     margin-bottom: 12px;
@@ -35,6 +32,13 @@ export const SigninFormContainer = styled.div`
     text-align: center;
     @media (min-width: ${globalStyle.small}) {
       color: #ffffff;
+    }
+    a {
+      text-decoration: none;
+      color: #000000;
+      @media (min-width: ${globalStyle.small}) {
+        color: #ffffff;
+      }
     }
   }
   ._hText,

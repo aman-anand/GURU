@@ -6,22 +6,25 @@
 
 import React from 'react';
 // import PropTypes from 'prop-types';
-import articleimg from '../../images/articleimg.png';
+// import articleimg from '../../images/articleimg.png';
 import { ArticleCardContainer } from './style';
 
-function ArticleCard() {
+function ArticleCard(props) {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  const { dataOBJ } = props || {};
+  const { img, title } = dataOBJ || {};
+  const [first] = title.split('');
   return (
     <ArticleCardContainer color={randomColor}>
       <a href="/" className="imageBox" role="button">
         <div className="imgBox">
-          <img src={articleimg} alt="" title="" />
+          <img src={img} alt="" title="" />
         </div>
         <div className="bottomBox">
-          <div className="icon">A</div>
+          <div className="icon">{first}</div>
           <div className="content">
             <p>
-              <span>Arctile title</span>
+              <span>{title}</span>
               <span>Click to read</span>
             </p>
           </div>

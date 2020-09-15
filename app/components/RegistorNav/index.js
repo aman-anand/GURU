@@ -5,14 +5,19 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { RegistorNavContainer } from './style';
 
 function RegistorNav() {
-  console.log('WINDOW', window.location.pathname);
+  const { pathname } = window.location;
   return (
     <RegistorNavContainer>
-      <div className="active">LOGIN</div>
-      <div>REGISTER</div>
+      <div className={`${['/signin'].includes(pathname) ? 'active' : null}`}>
+        <Link to="/signin">LOGIN</Link>
+      </div>
+      <div className={`${['/signup'].includes(pathname) ? 'active' : null}`}>
+        <Link to="/signup">REGISTER</Link>
+      </div>
     </RegistorNavContainer>
   );
 }

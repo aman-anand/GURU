@@ -17,8 +17,9 @@ export const hideLoader = () => {
 
 axios.interceptors.request.use(config => {
   const c = config;
-  const { Authorization } = c.headers;
-  c.headers.Authorization = Authorization || window.localStorage.getItem('AUTH_KEY');
+  // const { Authorization } = c.headers;
+  const token = window.localStorage.getItem('token');
+  c.headers.Authorization = `Bearer ${token}`;
   return c;
 });
 axios.interceptors.response.use(response => response, error => Promise.reject(error));

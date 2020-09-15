@@ -1,5 +1,4 @@
 const validate = values => {
-  console.log('Validate', values.toJS());
   // IMPORTANT: values is an Immutable.Map here!
   const errors = {};
   const mobile = /^[7-9][0-9]{9}$/;

@@ -19,7 +19,7 @@ export const AuthenticationContainer = styled.div`
     ${globalStyle.row};
     margin: 0px -7px;
     input {
-      width: 20%;
+      /*width: 20%*/
       margin-left: 7px;
       margin-right: 7px;
       text-align: center;
@@ -42,6 +42,13 @@ export const AuthenticationContainer = styled.div`
     text-align: center;
     @media (min-width: ${globalStyle.small}) {
       color: #ffffff;
+    }
+    a {
+      text-decoration: none;
+      color: #000000;
+      @media (min-width: ${globalStyle.small}) {
+        color: #ffffff;
+      }
     }
   }
   ._hText,

@@ -18,5 +18,9 @@ export const RegistorNavContainer = styled.div`
       background: rgba(250, 250, 250, 0.1);
       opacity: 1;
     }
+    a {
+      text-decoration: none;
+      color: #ffffff;
+    }
   }
 `;
