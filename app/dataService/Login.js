@@ -1,4 +1,4 @@
-import { SEND_OTP, VERIFY_OTP, RETRY_OTP, SIGN_IN, REGISTER } from '../constants/endpoints';
+import { SEND_OTP, VERIFY_OTP, RETRY_OTP, SIGN_IN, REGISTER, UPDATE } from '../constants/endpoints';
 import { makeHttpRequest as makeHttpCall } from './common/HttpProvider';
 import { getFromLocalStore } from '../services/CommonSetterGetter';
 
@@ -22,6 +22,11 @@ export const SIGN_IN_API = (params, hideLoader) => {
 
 export const SIGN_UP_API = (params, hideLoader) => {
   const config = { url: REGISTER(), data: params, method: 'POST', hideLoader };
+  return makeHttpCall(config);
+};
+
+export const UPDATE_DETAILS = (params, hideLoader) => {
+  const config = { url: UPDATE(), data: params, method: 'PUT', hideLoader };
   return makeHttpCall(config);
 };
 

@@ -14,7 +14,8 @@ export const RegistrationContainer = styled.div`
     ${globalStyle.column};
     align-self: stretch;
   }
-  input {
+  input,
+  select {
     ${globalStyle.flex};
     margin-bottom: 12px;
     align-self: stretch;
@@ -27,6 +28,11 @@ export const RegistrationContainer = styled.div`
     font-size: 14px;
     font-weight: 600;
     text-align: center;
+    @media (min-width: ${globalStyle.small}) {
+      color: #ffffff;
+    }
+  }
+  ._secText {
     @media (min-width: ${globalStyle.small}) {
       color: #ffffff;
     }
@@ -59,7 +65,8 @@ export const RegistrationContainer = styled.div`
     ${globalStyle.flex};
     ${globalStyle.row};
     margin: 0px -6px 12px -6px;
-    input {
+    input,
+    select {
       margin: 0px 6px;
       width: 50%;
     }

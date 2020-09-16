@@ -114,7 +114,7 @@ class RegistorFrom extends React.Component {
           </div>
           <input
             name="password"
-            type="text"
+            type="password"
             placeholder="Password *"
             className={`${error ? 'input_error' : null}`}
             onChange={e => this.onChangeAction(e)}

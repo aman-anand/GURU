@@ -11,15 +11,17 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 100%;
   }
-  input {
+  input, select {
     background-color: #F7F7F7;
     color: #727B87;
     border-radius: 4px;
     padding: 16px 17px;
+    font-size: 14px;
+    border: solid 1px #ffffff;
     &:focus {
       outline: none;
     }
-    &.input_error {
+    &.input_error, &.select_error {
       border: solid 1px #da3a33;
       &::placeholder {
         color: #da3a33;

@@ -8,6 +8,7 @@ export const RETRY_OTP = () => `${API}/user/retryOtp`;
 
 export const SIGN_IN = () => `${API}/user/login`;
 export const REGISTER = () => `${API}/user/register`;
+export const UPDATE = () => `${API}/user`;
 
 // Home API
 export const HOME = () => `${API}/main/home`;

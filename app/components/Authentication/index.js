@@ -13,40 +13,54 @@ class Authentication extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      otp: '',
       error: false,
+      errorMsg: '',
     };
   }
 
-  mobileInputChange = mobile => {
-    this.setState(prevState => ({
-      otp: prevState.otp + mobile,
-      error: prevState.length !== 4,
-    }));
+  static getDerivedStateFromProps(props, state) {
+    const { error } = props || {};
+    const { message, statusCode } = error || {};
+    const { otp_1, otp_2, otp_3, otp_4 } = state;
+    if (error && (otp_1 && otp_2 && otp_3 && otp_4)) {
+      state.error = [400].includes(statusCode);
+      state.errorMsg = message;
+    }
+  }
+
+  mobileInputChange = target => {
+    const { value, name } = target;
+    this.setState({
+      [name]: value,
+    });
   };
 
   onEnterClickMobile = evt => {
+    const { value, name } = evt.target;
     if (evt.key === 'Enter' || evt.charCode === 13 || evt.keyCode === 13) {
       this.setState({
-        otp: evt.target.value,
+        [name]: value,
       });
     }
   };
 
   submitOTP = () => {
-    const { otp } = this.state;
+    const { otp_1, otp_2, otp_3, otp_4 } = this.state;
     const { submitFun } = this.props;
-    if (otp && otp.length === 4) {
-      submitFun({ otp });
+    if (otp_1 && otp_2 && otp_3 && otp_4) {
+      const OTP = otp_1 + otp_2 + otp_3 + otp_4;
+      submitFun({ OTP });
     } else {
       this.setState({
         error: true,
+        errorMsg: 'Please enter OTP',
       });
     }
   };
 
   render() {
-    const { error } = this.state;
+    const { error, errorMsg } = this.state;
+    // console.log('STATE', this.state);
     return (
       <AuthenticationContainer>
         <h4 className="_hText">Authentication Code</h4>
@@ -55,10 +69,11 @@ class Authentication extends React.Component {
           <div className="otpWrapper">
             {[1, 2, 3, 4].map(ele => (
               <input
+                key={ele}
                 type="tel"
                 name={`otp_${ele}`}
                 onChange={e => {
-                  this.mobileInputChange(e.target.value);
+                  this.mobileInputChange(e.target);
                 }}
                 onKeyPress={this.onEnterClickMobile}
                 // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -69,7 +84,7 @@ class Authentication extends React.Component {
               />
             ))}
           </div>
-          {error ? <span className="error">Please enter OTP</span> : null}
+          {error ? <span className="error">{errorMsg}</span> : null}
           <Button variant="contained" color="primary" type="button" onClick={this.submitOTP}>
             PROCEED
           </Button>

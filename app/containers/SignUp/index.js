@@ -13,9 +13,10 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import injectReducer from 'utils/injectReducer';
+import history from '../../utils/history';
 import makeSelectSignUp from './selectors';
 import reducer from './reducer';
-import { signupAction, sendOtpAction, verifyOtpAction } from '../Signin/actions';
+import { signupAction, sendOtpAction, verifyOtpAction, uipdateAction } from '../Signin/actions';
 
 import RegistorNav from '../../components/RegistorNav/Loadable';
 import RegistorFrom from '../../components/RegistorFrom/Loadable';
@@ -52,16 +53,16 @@ export class SignUp extends React.PureComponent {
     }
   };
 
-  submitOtp = values => {
+  submitOtp = paramsValues => {
     const { formData } = this.state;
     const { phone } = formData || {};
     const params = {
       number: `91${phone}`,
-      ...values,
+      ...paramsValues,
     };
     this.props.dispatch(verifyOtpAction(params)).then(res => {
       const { payload } = res;
-      const { success: otpSuccess } = payload;
+      const { success: otpSuccess, error } = payload;
       if (otpSuccess) {
         this.props.dispatch(signupAction(formData)).then(resOBJ => {
           const { payload: resPayload } = resOBJ;
@@ -72,15 +73,35 @@ export class SignUp extends React.PureComponent {
             });
           }
         });
+      } else {
+        this.setState({
+          error,
+        });
       }
     });
   };
 
-  updateDetails = () => {};
+  updateDetails = params => {
+    const { formData } = this.state;
+    const { phone } = formData || {};
+    const paramsOBJ = {
+      phone,
+      ...params,
+    };
+    this.props.dispatch(uipdateAction(paramsOBJ)).then(res => {
+      const { payload } = res || {};
+      const { success, message } = payload || {};
+      if (success) {
+        history.push('/home');
+      } else {
+        window.console.log(message);
+      }
+    });
+  };
 
   render() {
     const { isMobile } = this.props;
-    const { stage, formData } = this.state;
+    const { stage, error } = this.state;
     return (
       <SigninContainer>
         <Helmet>
@@ -104,9 +125,9 @@ export class SignUp extends React.PureComponent {
                 {['SIGNUP'].includes(stage) ? (
                   <RegistorFrom submitRegistration={this.submitRegistration} />
                 ) : ['OTP'].includes(stage) ? (
-                  <Authentication submitFun={this.submitOtp} />
+                  <Authentication submitFun={this.submitOtp} error={error} />
                 ) : ['UPDATE'].includes(stage) ? (
-                  <Registration updateDetails={this.updateDetails} formData={formData} />
+                  <Registration updateDetails={this.updateDetails} />
                 ) : null}
               </div>
             </div>
