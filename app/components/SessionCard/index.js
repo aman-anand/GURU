@@ -13,10 +13,10 @@ function SessionCard(props) {
   const { sticyOne, sticyTwo, sticyOneData, sticyTwoData, courseData } = props;
   const { date, month } = sticyOneData || {};
   const { name, classname } = sticyTwoData || {};
-  const { courseName, totalSections, totalVideos, duration, coverImage } = courseData || {};
+  const { courseName, totalSections, totalVideos, duration, coverImage, _id } = courseData || {};
   return (
     <SessionCardContainer className="sessionCardWrapper" bg={coverImage || MaskGroup}>
-      <a href="/" className="imageBox" role="button">
+      <a href={`/courses/${_id}`} className="imageBox" role="button">
         <div className="topBox">
           {sticyOne ? (
             <div className="cardSticker">

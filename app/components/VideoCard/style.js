@@ -18,6 +18,7 @@ export const VideoCardContainer = styled.div`
   }
   @media (min-width: ${globalStyle.small}) {
     min-width: 255px;
+    max-width: 255px;
     margin: 15px;
   }
   .imageBox {

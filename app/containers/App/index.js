@@ -17,8 +17,10 @@ import Signin from '../Signin/Loadable';
 import SignUp from '../SignUp/Loadable';
 import Home from '../Home/Loadable';
 import ShishyaHome from '../ShishyaHome/Loadable';
+import Courses from '../Courses/Loadable';
+import Sessions from '../Sessions/Loadable';
 import GuruCourses from '../GuruCourses/Loadable';
-import GuruCoursesDetails from '../GuruCoursesDetails/Loadable';
+import CoursesDetails from '../CoursesDetails/Loadable';
 import { AppContainer } from './style';
 
 // Routing hooks
@@ -85,9 +87,14 @@ export default class App extends React.Component {
 
               <Route exact path="/home" component={CheckAuthenticationHook(ShishyaHome, true)} />
 
+              <Route exact path="/courses" component={CheckAuthenticationHook(Courses, true)} />
+              <Route exact path="/courses/:id" component={CheckAuthenticationHook(CoursesDetails, true)} />
+
+              <Route exact path="/sessions" component={CheckAuthenticationHook(Sessions, true)} />
+
               <Route exact path="/GuruHome" component={CheckAuthenticationHook(Home, true)} />
               <Route exact path="/GuruCourses" component={GuruCourses} />
-              <Route exact path="/GuruCoursesDetails" component={GuruCoursesDetails} />
+              <Route exact path="/CoursesDetails" component={CoursesDetails} />
               <Route exact path="*" component={PageNotFoundHook(NotFoundPage)} />
             </Switch>
           </AppContainer>

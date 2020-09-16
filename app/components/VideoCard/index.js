@@ -11,7 +11,8 @@ import { VideoCardContainer } from './style';
 
 function VideoCard(props) {
   const { dataOBJ } = props || {};
-  const { title, thumb } = dataOBJ || {};
+  // eslint-disable-next-line no-unused-vars
+  const { title, thumb, _id } = dataOBJ || {};
   return (
     <VideoCardContainer className="VideoCardContainer" bg={thumb || videoimg}>
       <a href="/" className="imageBox" role="button">

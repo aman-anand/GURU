@@ -13,6 +13,7 @@ export const SessionCardContainer = styled.div`
   flex: 1;
   @media (min-width: ${globalStyle.small}) {
     min-width: 350px;
+    max-width: 350px;
     margin: 15px;
   }
   .imageBox {

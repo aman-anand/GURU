@@ -64,6 +64,18 @@ export class GuruCoursesDetails extends React.PureComponent {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {
+    const { match } = props || {};
+    const { params } = match || {};
+    const { id: COURSE_ID } = params || {};
+    state.COURSE_ID = COURSE_ID || null; // Set LeadId
+  }
+
+  componentDidMount() {
+    const { COURSE_ID } = this.state;
+    window.console.log('STATE', COURSE_ID);
+  }
+
   handleChange = (event, newValue) => {
     this.setState({
       value: newValue,

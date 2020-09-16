@@ -2,9 +2,9 @@
 // import { mount } from 'enzyme';
 // import { enzymeFind } from 'styled-components/test-utils';
 
-// import { GuruCoursesDetails } from '../index';
+// import { Sessions } from '../index';
 
-describe('<GuruCoursesDetails />', () => {
+describe('<Sessions />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });

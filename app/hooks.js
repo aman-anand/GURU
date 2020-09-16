@@ -5,7 +5,6 @@ export function redirectToLogin() {
   if (!isUserAlreadyLogin()) {
     history.push('/signin');
   }
-  window.console.log('redirectToLogin', isUserAlreadyLogin());
 }
 
 export function redirectToDashboard() {
@@ -15,7 +14,11 @@ export function redirectToDashboard() {
 }
 
 export function PageNotFoundHook() {
-  window.console.log('PageNotFoundHook');
+  if (!isUserAlreadyLogin()) {
+    history.push('/signin');
+  } else if (isUserAlreadyLogin()) {
+    history.push('/home');
+  }
 }
 
 /**

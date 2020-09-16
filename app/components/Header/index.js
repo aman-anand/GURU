@@ -11,35 +11,41 @@ import { Link } from 'react-router-dom';
 import logoIMG from '../../images/logo.svg';
 import hemburger from '../../images/hemburger.png';
 import { HeaderContainer } from './style';
+import { isUserAlreadyLogin } from '../../dataService/Login';
 
-export const listCompo = () => (
-  <ul className="navList">
-    <li>
-      <Link to="/home" className="active" role="presentation">
-        <i className="icon" />
-        <span>Home</span>
-      </Link>
-    </li>
-    <li>
-      <Link to="/sessions" role="presentation">
-        <i className="icon" />
-        <span>Sessions</span>
-      </Link>
-    </li>
-    <li>
-      <Link to="/expenses" role="presentation">
-        <i className="icon" />
-        <span>Expenses</span>
-      </Link>
-    </li>
-    <li>
-      <Link to="/attendance" role="presentation">
-        <i className="icon" />
-        <span>Attendance Log</span>
-      </Link>
-    </li>
-  </ul>
-);
+export const listCompo = () => {
+  const { pathname } = window.location;
+  const pathMatch = pathname.indexOf('courses/') > -1;
+  console.log('pathname', pathname);
+  return (
+    <ul className="navList">
+      <li>
+        <Link to="/home" className={`${['/home'].includes(pathname) ? 'active' : null}`} role="presentation">
+          <i className="icon" />
+          <span>Home</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/courses" className={`${['/courses'].includes(pathname) || pathMatch ? 'active' : null}`} role="presentation">
+          <i className="icon" />
+          <span>Courses</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/sessions" className={`${['/sessions'].includes(pathname) ? 'active' : null}`} role="presentation">
+          <i className="icon" />
+          <span>Sessions</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/attendance" className={`${['/attendance'].includes(pathname) ? 'active' : null}`} role="presentation">
+          <i className="icon" />
+          <span>Attendance Log</span>
+        </Link>
+      </li>
+    </ul>
+  );
+};
 function Header(props) {
   const { isMobile, title } = props;
   return (
@@ -55,7 +61,7 @@ function Header(props) {
       </div>
       <div className="navListBox">{!isMobile ? listCompo() : title}</div>
       <div className="navRight">
-        {!isMobile ? (
+        {isUserAlreadyLogin() && !isMobile ? (
           <Fragment>
             <div className="chart" />
             <div className="myProfileNav">

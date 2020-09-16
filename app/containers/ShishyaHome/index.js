@@ -110,13 +110,14 @@ export class ShishyaHome extends React.PureComponent {
               <Slider {...settingsThree}>
                 {course &&
                   course.map(list => {
-                    const { name, totalSections, duration, totalVideos, coverImage } = list || {};
+                    const { name, totalSections, duration, totalVideos, coverImage, _id } = list || {};
                     const courseData = {
                       courseName: name,
                       totalSections,
                       totalVideos,
                       duration,
                       coverImage,
+                      _id,
                     };
                     const sticyTwoData = { name: `${totalSections} SECTIONS`, classname: 'expert' };
                     return <SessionCard courseData={courseData} sticyTwo sticyTwoData={sticyTwoData} />;
@@ -125,29 +126,46 @@ export class ShishyaHome extends React.PureComponent {
             </div>
             {/* NOTE: VIDEOS  */}
             <UpcommingSession title="VIDEOS" subtitle={`${videoList} videos listed`} seeall={!!isMobile} seelLink="/course" />
-            <div className="carosuleWrapper">
-              <Slider {...settingsFour}>
+            {video && video.length > 4 ? (
+              <div className="carosuleWrapper">
+                <Slider {...settingsFour}>
+                  {video &&
+                    video.map(item => {
+                      const { title, thumb, _id } = item || {};
+                      const dataOBJ = {
+                        title,
+                        thumb,
+                        _id,
+                      };
+                      return <VideoCard dataOBJ={dataOBJ} />;
+                    })}
+                </Slider>
+              </div>
+            ) : (
+              <div className="cardWrapper">
                 {video &&
                   video.map(item => {
-                    const { title, thumb } = item || {};
+                    const { title, thumb, _id } = item || {};
                     const dataOBJ = {
                       title,
                       thumb,
+                      _id,
                     };
                     return <VideoCard dataOBJ={dataOBJ} />;
                   })}
-              </Slider>
-            </div>
+              </div>
+            )}
             {/* NOTE: ARTICLE  */}
             <UpcommingSession title="ARTICLES" subtitle={`${articleList} articles listed`} seeall={!!isMobile} seelLink="/course" />
             <div className="carosuleWrapper">
               <Slider {...settingsFour}>
                 {article &&
                   article.map(list => {
-                    const { img, title } = list || {};
+                    const { img, title, _id } = list || {};
                     const dataOBJ = {
                       title,
                       img,
+                      _id,
                     };
                     return <ArticleCard dataOBJ={dataOBJ} />;
                   })}

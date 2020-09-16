@@ -10,5 +10,7 @@ export const SIGN_IN = () => `${API}/user/login`;
 export const REGISTER = () => `${API}/user/register`;
 
 // Home API
-
 export const HOME = () => `${API}/main/home`;
+
+// Course API
+export const ALL_COURSE = () => `${API}/course/all`;

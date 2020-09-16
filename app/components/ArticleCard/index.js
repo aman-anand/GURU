@@ -12,7 +12,8 @@ import { ArticleCardContainer } from './style';
 function ArticleCard(props) {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   const { dataOBJ } = props || {};
-  const { img, title } = dataOBJ || {};
+  // eslint-disable-next-line no-unused-vars
+  const { img, title, _id } = dataOBJ || {};
   const [first] = title.split('');
   return (
     <ArticleCardContainer color={randomColor} className="arcticalCardWrapper">
