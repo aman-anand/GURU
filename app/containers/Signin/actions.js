@@ -3,7 +3,7 @@
  * Signin actions
  *
  */
-import { SEND_OTP_API, VERIFY_OTP_API, RETRY_OTP_API, SIGN_IN_API } from '../../dataService/Login';
+import { SEND_OTP_API, VERIFY_OTP_API, RETRY_OTP_API, SIGN_IN_API, SIGN_UP_API } from '../../dataService/Login';
 import {
   OTP_PENDING,
   OTP_FULFILLED,
@@ -14,6 +14,9 @@ import {
   SIGN_IN_PENDING,
   SIGN_IN_FULFILLED,
   SIGN_IN_REJECTED,
+  REGISTER_PENDING,
+  REGISTER_FULFILLED,
+  REGISTER_REJECTED,
 } from './constants';
 
 export function sendOtpAction(params) {
@@ -65,12 +68,12 @@ export function loginAction(params) {
 
 export function signupAction(params) {
   return async dispatch => {
-    dispatch(fetchData({ types: SIGN_IN_PENDING }));
+    dispatch(fetchData({ types: REGISTER_PENDING }));
     try {
-      const { data } = await SIGN_IN_API(params);
-      return dispatch(fetchData({ types: SIGN_IN_FULFILLED, data }));
+      const { data } = await SIGN_UP_API(params);
+      return dispatch(fetchData({ types: REGISTER_FULFILLED, data }));
     } catch (err) {
-      return dispatch(fetchData({ types: SIGN_IN_REJECTED, err }));
+      return dispatch(fetchData({ types: REGISTER_REJECTED, err }));
     }
   };
 }

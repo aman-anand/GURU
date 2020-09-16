@@ -94,7 +94,6 @@ export default class App extends React.Component {
 
               <Route exact path="/GuruHome" component={CheckAuthenticationHook(Home, true)} />
               <Route exact path="/GuruCourses" component={GuruCourses} />
-              <Route exact path="/CoursesDetails" component={CoursesDetails} />
               <Route exact path="*" component={PageNotFoundHook(NotFoundPage)} />
             </Switch>
           </AppContainer>

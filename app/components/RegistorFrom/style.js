@@ -129,6 +129,9 @@ export const RegistorFromContainer = styled.div`
         }
       }
     }
+    &.upload_error {
+      border: 1px dashed #da3a33;
+    }
   }
   .profilePic {
     @media (max-width: ${globalStyle.small}) {

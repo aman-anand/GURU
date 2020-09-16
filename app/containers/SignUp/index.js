@@ -14,14 +14,14 @@ import { compose } from 'redux';
 
 import injectReducer from 'utils/injectReducer';
 import makeSelectSignUp from './selectors';
-import reducer from '../Signin/reducer';
-import { signupAction } from '../Signin/actions';
+import reducer from './reducer';
+import { signupAction, sendOtpAction, verifyOtpAction } from '../Signin/actions';
 
 import RegistorNav from '../../components/RegistorNav/Loadable';
 import RegistorFrom from '../../components/RegistorFrom/Loadable';
 import Stapes from '../../components/Stapes/Loadable';
-// import Authentication from '../../components/Authentication/Loadable';
-// import Registration from '../../components/Registration/Loadable';
+import Authentication from '../../components/Authentication/Loadable';
+import Registration from '../../components/Registration/Loadable';
 
 import { SigninContainer } from '../Signin/style';
 import splashIMG from '../../images/splash.png';
@@ -29,13 +29,58 @@ import logoIMG from '../../images/logo.svg';
 
 /* eslint-disable react/prefer-stateless-function */
 export class SignUp extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      formData: null,
+      stage: 'SIGNUP',
+    };
+  }
+
   submitRegistration = values => {
+    const { phone } = values || {};
     window.console.log('values', values);
-    this.props.dispatch(signupAction());
+    this.setState({
+      formData: values,
+    });
+    if (phone) {
+      this.props.dispatch(sendOtpAction({ number: `91${phone}` })).then(() => {
+        this.setState({
+          stage: 'OTP',
+        });
+      });
+    }
   };
+
+  submitOtp = values => {
+    const { formData } = this.state;
+    const { phone } = formData || {};
+    const params = {
+      number: `91${phone}`,
+      ...values,
+    };
+    this.props.dispatch(verifyOtpAction(params)).then(res => {
+      const { payload } = res;
+      const { success: otpSuccess } = payload;
+      if (otpSuccess) {
+        this.props.dispatch(signupAction(formData)).then(resOBJ => {
+          const { payload: resPayload } = resOBJ;
+          const { success: registarSuccess } = resPayload;
+          if (registarSuccess) {
+            this.setState({
+              stage: 'UPDATE',
+            });
+          }
+        });
+      }
+    });
+  };
+
+  updateDetails = () => {};
 
   render() {
     const { isMobile } = this.props;
+    const { stage, formData } = this.state;
     return (
       <SigninContainer>
         <Helmet>
@@ -56,10 +101,13 @@ export class SignUp extends React.PureComponent {
             <div className="content">
               {!isMobile ? <Stapes /> : null}
               <div className="blackBox">
-                <RegistorFrom submitRegistration={this.submitRegistration} />
-                {/* <RegistorFrom />
-                <Authentication />
-                <Registration /> */}
+                {['SIGNUP'].includes(stage) ? (
+                  <RegistorFrom submitRegistration={this.submitRegistration} />
+                ) : ['OTP'].includes(stage) ? (
+                  <Authentication submitFun={this.submitOtp} />
+                ) : ['UPDATE'].includes(stage) ? (
+                  <Registration updateDetails={this.updateDetails} formData={formData} />
+                ) : null}
               </div>
             </div>
           </div>

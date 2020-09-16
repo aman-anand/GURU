@@ -19,10 +19,13 @@ export const AuthenticationContainer = styled.div`
     ${globalStyle.row};
     margin: 0px -7px;
     input {
-      /*width: 20%*/
+      width: 25%;
       margin-left: 7px;
       margin-right: 7px;
       text-align: center;
+      color: #000000;
+      font-weight: 600;
+      font-size: 18px;
     }
   }
   input {

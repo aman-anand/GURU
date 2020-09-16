@@ -48,7 +48,7 @@ export class ShishyaHome extends React.PureComponent {
     const { isMobile, shishyaHome } = this.props || {};
     const { data } = shishyaHome || {};
     const { course, article, video } = data || {};
-    const courseList = course.length;
+    const courseList = course ? course.length : 0;
     const videoList = video ? video.length : 0;
     const articleList = article ? article.length : 0;
     const settingsThree = {

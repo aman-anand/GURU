@@ -12,21 +12,17 @@ import { AuthenticationContainer } from './style';
 class Authentication extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      otp: '',
+      error: false,
+    };
   }
 
   mobileInputChange = mobile => {
-    let otp = mobile.replace(/[^\d]/g, '');
-    const len = otp.length;
-    if (len < 5) {
-      this.setState({
-        otp,
-      });
-      return;
-    }
-    if (len > 5) {
-      otp = otp.slice(0, 4);
-    }
+    this.setState(prevState => ({
+      otp: prevState.otp + mobile,
+      error: prevState.length !== 4,
+    }));
   };
 
   onEnterClickMobile = evt => {
@@ -42,30 +38,42 @@ class Authentication extends React.Component {
     const { submitFun } = this.props;
     if (otp && otp.length === 4) {
       submitFun({ otp });
+    } else {
+      this.setState({
+        error: true,
+      });
     }
   };
 
   render() {
+    const { error } = this.state;
     return (
       <AuthenticationContainer>
         <h4 className="_hText">Authentication Code</h4>
         <span className="_decText">Verifying your mobile number</span>
         <div className="_wrapper">
           <div className="otpWrapper">
-            <input
-              type="tel"
-              value={this.state.otp}
-              name="otp"
-              onChange={e => {
-                this.mobileInputChange(e.target.value);
-              }}
-              onKeyPress={this.onEnterClickMobile}
-            />
+            {[1, 2, 3, 4].map(ele => (
+              <input
+                type="tel"
+                name={`otp_${ele}`}
+                onChange={e => {
+                  this.mobileInputChange(e.target.value);
+                }}
+                onKeyPress={this.onEnterClickMobile}
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus={ele === 1 ? 'autofocus' : false}
+                minLength="1"
+                maxLength="1"
+                tabIndex={ele}
+              />
+            ))}
           </div>
+          {error ? <span className="error">Please enter OTP</span> : null}
           <Button variant="contained" color="primary" type="button" onClick={this.submitOTP}>
             PROCEED
           </Button>
-          <span className="donthavetext">Resend Code 00:30</span>
+          {/* <span className="donthavetext">Resend Code 00:30</span> */}
         </div>
       </AuthenticationContainer>
     );

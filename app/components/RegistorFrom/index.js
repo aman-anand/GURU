@@ -17,28 +17,22 @@ import { RegistorFromContainer } from './style';
 class RegistorFrom extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      formObj: {},
-    };
+    this.state = {};
   }
 
   onChangeAction = eve => {
     const { name, value } = eve.target;
     this.setState({
-      formObj: {
-        [name]: {
-          value,
-        },
-      },
+      [name]: value,
       error: false,
     });
   };
 
   submitForm = () => {
-    const { formObj } = this.state;
     const { submitRegistration } = this.props;
-    const { fName, lName, email, phone, aadharNumber, password } = formObj || {};
-    if (!(fName && lName && email && phone && aadharNumber && password)) {
+    const { fName, lName, email, phone, aadharNumber, password } = this.state || {};
+    // if (!(fName && lName && email && phone && aadharNumber && password)) {
+    if (!phone) {
       this.setState({
         error: true,
       });
@@ -79,10 +73,28 @@ class RegistorFrom extends React.Component {
             />
           </div>
           <div className={`${isMobile ? '_twoRowWrapper' : '_twoComumnWrapper'}`}>
-            <input name="email" type="text" placeholder="Email Address *" />
-            <input name="phone" type="tel" placeholder="Phone Number *" />
+            <input
+              name="email"
+              type="text"
+              placeholder="Email Address *"
+              className={`${error ? 'input_error' : null}`}
+              onChange={e => this.onChangeAction(e)}
+            />
+            <input
+              name="phone"
+              type="tel"
+              placeholder="Phone Number *"
+              className={`${error ? 'input_error' : null}`}
+              onChange={e => this.onChangeAction(e)}
+            />
           </div>
-          <input name="aadharNumber" type="tel" placeholder="Aadhar Card Number *" />
+          <input
+            name="aadharNumber"
+            type="tel"
+            placeholder="Aadhar Card Number *"
+            className={`${error ? 'input_error' : null}`}
+            onChange={e => this.onChangeAction(e)}
+          />
           <div className="uploadField">
             <label htmlFor="fileupload">
               <input name="aadharImageUrl" type="file" id="fileupload" />
@@ -100,7 +112,13 @@ class RegistorFrom extends React.Component {
               </div>
             </label>
           </div>
-          <input name="password" type="text" placeholder="Password *" />
+          <input
+            name="password"
+            type="text"
+            placeholder="Password *"
+            className={`${error ? 'input_error' : null}`}
+            onChange={e => this.onChangeAction(e)}
+          />
           <Button variant="contained" color="primary" type="button" onClick={this.submitForm}>
             PROCEED
           </Button>
