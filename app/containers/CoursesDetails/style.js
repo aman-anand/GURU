@@ -35,17 +35,6 @@ export const GuruCoursesDetailsContainer = styled.section`
       width: 33%;
     }
   }
-
-  .cardWrapper {
-    ${globalStyle.flex};
-    ${globalStyle.column};
-    flex-wrap: wrap;
-    @media (min-width: ${globalStyle.small}) {
-      ${globalStyle.row};
-      margin-left: -15px;
-      margin-right: -15px;
-    }
-  }
   .sessionCardWrapper,
   .VideoCardContainer {
     min-height: 195px;

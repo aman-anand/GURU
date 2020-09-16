@@ -64,16 +64,4 @@ export const HomeContainer = styled.section`
       }
     }
   }
-
-  .cardWrapper {
-    ${globalStyle.flex};
-    ${globalStyle.column};
-    flex-wrap: wrap;
-    @media (min-width: ${globalStyle.small}) {
-      ${globalStyle.row};
-      margin-left: -15px;
-      margin-right: -15px;
-      margin-bottom: 15px;
-    }
-  }
 `;

@@ -102,6 +102,19 @@ const GlobalStyle = createGlobalStyle`
   .addCarousel {
   }
 
+  .cardWrapper {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    flex-wrap: wrap;
+    @media (min-width: ${globalStyle.small}) {
+      ${globalStyle.row};
+      margin-left: -15px;
+      margin-right: -15px;
+      align-self: flex-start;
+      margin-bottom: 15px;
+    }
+  }
+
   .carosuleWrapper {
     ${globalStyle.flex};
     ${globalStyle.column};
@@ -167,6 +180,11 @@ const GlobalStyle = createGlobalStyle`
       &:before {
         position: absolute;
         right: 15px;
+      }
+    }
+    .VideoCardContainer {
+      @media (min-width: ${globalStyle.small}) {
+        max-width: 255px;
       }
     }
     .VideoCardContainer, .arcticalCardWrapper {

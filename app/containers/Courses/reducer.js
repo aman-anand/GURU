@@ -5,10 +5,11 @@
  */
 
 import { fromJS } from 'immutable';
-import { COURSE_FULFILLED } from './constants';
+import { COURSE_FULFILLED, COURSE_DETAILS_FULFILLED } from './constants';
 
 export const initialState = fromJS({
   courseObj: {},
+  courseDetailsObj: {},
 });
 
 function coursesReducer(state = initialState, action) {
@@ -17,6 +18,12 @@ function coursesReducer(state = initialState, action) {
       const { payload } = action;
       return state.merge({
         courseObj: payload,
+      });
+    }
+    case COURSE_DETAILS_FULFILLED: {
+      const { payload } = action;
+      return state.merge({
+        courseDetailsObj: payload,
       });
     }
     default:

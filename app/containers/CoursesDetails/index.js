@@ -25,8 +25,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import injectReducer from 'utils/injectReducer';
 import { GuruCoursesDetailsContainer } from './style';
-import makeSelectGuruCoursesDetails from './selectors';
-import reducer from './reducer';
+import makeSelectCourses from '../Courses/selectors';
+import reducer from '../Courses/reducer';
+import { courseDetailsAction } from '../Courses/actions';
+import { getFromLocalStore } from '../../services/CommonSetterGetter';
 import Header from '../../components/Header/Loadable';
 import Footer from '../../components/Footer/Loadable';
 import Search from '../../components/Search/Loadable';
@@ -56,12 +58,13 @@ const styles = theme => ({
   },
 });
 
-export class GuruCoursesDetails extends React.PureComponent {
+export class CoursesDetails extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       value: 0,
     };
+    this.store = getFromLocalStore(['token', 'id', 'role', 'expires', 'phone']);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -73,7 +76,13 @@ export class GuruCoursesDetails extends React.PureComponent {
 
   componentDidMount() {
     const { COURSE_ID } = this.state;
+    const { phone: number } = this.store;
     window.console.log('STATE', COURSE_ID);
+    const paramOBJ = {
+      COURSE_ID,
+      number,
+    };
+    this.props.dispatch(courseDetailsAction(paramOBJ));
   }
 
   handleChange = (event, newValue) => {
@@ -95,9 +104,12 @@ export class GuruCoursesDetails extends React.PureComponent {
   };
 
   render() {
-    const { isMobile, theme } = this.props || {};
+    const { isMobile, theme, courses } = this.props || {};
     const { expanded } = this.state;
-    // const theme = withTheme();
+    const { courseDetailsObj } = courses || {};
+    const { data } = courseDetailsObj || {};
+    const { course } = data || {};
+    window.console.log('COURSE', course);
     return (
       <GuruCoursesDetailsContainer>
         <Helmet>
@@ -111,15 +123,15 @@ export class GuruCoursesDetails extends React.PureComponent {
             <Bredcrumb>
               <div className="_bWrapper">
                 <span>
-                  <a href="#">COURSES</a>
+                  <a href="/course">COURSES</a>
                 </span>
                 <span>&gt;</span>
                 <span>
-                  <a href="#">SAVINGS EDUCATION</a>
+                  <a>SAVINGS EDUCATION</a>
                 </span>
                 <span>&gt;</span>
                 <span>
-                  <a href="#">BRIEF</a>
+                  <a>BRIEF</a>
                 </span>
               </div>
             </Bredcrumb>
@@ -227,12 +239,12 @@ export class GuruCoursesDetails extends React.PureComponent {
   }
 }
 
-GuruCoursesDetails.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+CoursesDetails.propTypes = {
+  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  guruCoursesDetails: makeSelectGuruCoursesDetails(),
+  courses: makeSelectCourses(),
 });
 
 const mapSizesToProps = ({ width }) => ({
@@ -250,9 +262,9 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({ key: 'guruCoursesDetails', reducer });
+const withReducer = injectReducer({ key: 'courses', reducer });
 
 export default compose(
   withReducer,
   withConnect,
-)(withStyles(styles, { withTheme: true })(withSizes(mapSizesToProps)(GuruCoursesDetails)));
+)(withStyles(styles, { withTheme: true })(withSizes(mapSizesToProps)(CoursesDetails)));

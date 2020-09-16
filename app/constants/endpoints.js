@@ -14,3 +14,4 @@ export const HOME = () => `${API}/main/home`;
 
 // Course API
 export const ALL_COURSE = () => `${API}/course/all`;
+export const COURSE_DETAILS = () => `${API}/course/details`;
