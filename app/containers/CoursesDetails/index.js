@@ -69,6 +69,7 @@ export class CoursesDetails extends React.PureComponent {
   }
 
   static getDerivedStateFromProps(props, state) {
+    window.console.log('DERIVE PROPS', props, state);
     const { match } = props || {};
     const { params } = match || {};
     const { id: COURSE_ID } = params || {};
@@ -105,6 +106,7 @@ export class CoursesDetails extends React.PureComponent {
   };
 
   render() {
+    window.console.log('RENDER');
     const { isMobile, theme, courses } = this.props || {};
     const { expanded } = this.state;
     const { courseDetailsObj } = courses || {};
@@ -126,10 +128,10 @@ export class CoursesDetails extends React.PureComponent {
     return (
       <GuruCoursesDetailsContainer>
         <Helmet>
-          <title>Home</title>
+          <title>COURSE DETAILS</title>
           <meta name="description" content="Description of Home" />
         </Helmet>
-        {!isMobile ? <Header title="Home" /> : <OptionalHeader title="COURSE DETAILS" goTo="/courses" />}
+        {!isMobile ? <Header title="COURSE DETAILS" /> : <OptionalHeader title="COURSE DETAILS" goTo="/courses" />}
         <div className="container">
           <div className="leftBox">
             <VideoPlayer data={{ coverImage, coverVideo, courseName, duration }} />
