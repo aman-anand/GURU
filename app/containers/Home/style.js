@@ -5,6 +5,7 @@ export const HomeContainer = styled.section`
   ${globalStyle.column};
   @media (max-width: ${globalStyle.small}) {
     background-color: #f9fafc;
+    height: 100vh;
   }
   .container {
     padding: 10px;
@@ -15,6 +16,9 @@ export const HomeContainer = styled.section`
       ${globalStyle.row};
       padding: 10px 0px;
       margin-top: 24px;
+    }
+    @media (max-width: ${globalStyle.small}) {
+      flex: 1;
     }
   }
   .leftBox,

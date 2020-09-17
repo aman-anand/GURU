@@ -4,4 +4,7 @@ export const AppContainer = styled.section`
   ${globalStyle.flex};
   ${globalStyle.column};
   height: 100%;
+  @media (max-width: ${globalStyle.small}) {
+    height: 100vh;
+  }
 `;

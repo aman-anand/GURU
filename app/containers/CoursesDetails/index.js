@@ -21,6 +21,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import OptionalHeader from 'Component/OptionalHeader';
 // import Box from '@material-ui/core/Box';
 
 import injectReducer from 'utils/injectReducer';
@@ -31,10 +32,10 @@ import { courseDetailsAction } from '../Courses/actions';
 import { getFromLocalStore } from '../../services/CommonSetterGetter';
 import Header from '../../components/Header/Loadable';
 import Footer from '../../components/Footer/Loadable';
-import Search from '../../components/Search/Loadable';
+// import Search from '../../components/Search/Loadable';
 import SessionCard from '../../components/SessionCard/Loadable';
 import VideoCard from '../../components/VideoCard/Loadable';
-import Bredcrumb from '../../components/Bredcrumb/Loadable';
+// import Bredcrumb from '../../components/Bredcrumb/Loadable';
 import VideoPlayer from '../../components/VideoPlayer/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
 
@@ -108,34 +109,30 @@ export class CoursesDetails extends React.PureComponent {
     const { expanded } = this.state;
     const { courseDetailsObj } = courses || {};
     const { data } = courseDetailsObj || {};
-    const { course } = data || {};
-    window.console.log('COURSE', course);
+    const { course, review } = data || {};
+    const {
+      coverImage,
+      coverVideo,
+      name: courseName,
+      duration,
+      totalSections,
+      totalVideos,
+      totalAssessments,
+      description,
+      totalStudents,
+      rating,
+      sections,
+    } = course || {};
     return (
       <GuruCoursesDetailsContainer>
         <Helmet>
           <title>Home</title>
           <meta name="description" content="Description of Home" />
         </Helmet>
-        <Header title="Home" />
+        {!isMobile ? <Header title="Home" /> : <OptionalHeader title="COURSE DETAILS" goTo="/courses" changeAnimate={this.animateClass} />}
         <div className="container">
-          {isMobile ? <Search /> : null}
           <div className="leftBox">
-            <Bredcrumb>
-              <div className="_bWrapper">
-                <span>
-                  <a href="/course">COURSES</a>
-                </span>
-                <span>&gt;</span>
-                <span>
-                  <a>SAVINGS EDUCATION</a>
-                </span>
-                <span>&gt;</span>
-                <span>
-                  <a>BRIEF</a>
-                </span>
-              </div>
-            </Bredcrumb>
-            <VideoPlayer />
+            <VideoPlayer data={{ coverImage, coverVideo, courseName, duration }} />
             <div className="tabsContainer">
               <AppBar position="static" color="default" className="tabsHeader">
                 <Tabs
@@ -146,25 +143,16 @@ export class CoursesDetails extends React.PureComponent {
                   variant="fullWidth"
                   className="tabBlock"
                 >
-                  <Tab label="BRIEF" />
-                  <Tab label="CURRICULUM" />
-                  <Tab label="QUIZ" />
+                  <Tab className="tabButton" label="BRIEF" />
+                  <Tab className="tabButton" label="CURRICULUM" />
+                  <Tab className="tabButton" label="QUIZ" />
                 </Tabs>
               </AppBar>
               <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={this.state.value} onChangeIndex={this.handleChangeIndex}>
                 <TabContainer dir={theme.direction}>
                   <div className="tabDataBox">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                      enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
+                    <p>{description}</p>
                     <div className="brifSessionBox">
-                      {!isMobile ? (
-                        <div className="payItem">
-                          <span>PAY AND SUBSCRIBE</span>
-                          <span>&#8377; 500</span>
-                        </div>
-                      ) : null}
                       <div className="sectionItem">
                         <i className="icon">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -175,8 +163,8 @@ export class CoursesDetails extends React.PureComponent {
                           </svg>
                         </i>
                         <div className="_content">
-                          <span>3 Sections</span>
-                          <span>10 Videos</span>
+                          <span>{totalSections} Sections</span>
+                          <span>{totalVideos} Videos</span>
                         </div>
                       </div>
                       <div className="certificateItem">
@@ -190,48 +178,81 @@ export class CoursesDetails extends React.PureComponent {
                         </i>
                         <div className="_content">
                           <span>CERTIFICATE</span>
-                          <span>3 ASSESSMENTS</span>
+                          <span>{totalAssessments} ASSESSMENTS</span>
                         </div>
                       </div>
                     </div>
+                    {/* NOTE: start */}
+                    <p>{totalStudents} shishya have watched this course</p>
+                    <div className="review_box">
+                      <span>REVIEWS</span>
+                      <span>{rating}</span>
+                      <span>Based on {review ? review.length : 0} reviews</span>
+                    </div>
+                    <div className="commentsWrapper">
+                      <p>COMMENTS</p>
+                      <div className="cz_list">
+                        <div />
+                        <div>
+                          <input placeholder="write your feedback here" type="text" />
+                        </div>
+                      </div>
+                      {review &&
+                        review.map(item => {
+                          const { addedBy, addedOn, review: reviewText } = item || {};
+                          const { fName, lName } = addedBy || {};
+                          return (
+                            <div className="cz_list">
+                              <div />
+                              <div>
+                                <span>{`${fName} ${lName}`}</span>
+                                <span>{addedOn || 'NULL'}</span>
+                                <span>{reviewText || null}</span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                    </div>
+                    {/* NOTE: end */}
                   </div>
                 </TabContainer>
                 <TabContainer dir={theme.direction}>
                   <div className="cariculamBox">
-                    <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChangeAccor('panel1')}>
-                      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography>BEGINNER FINANCE</Typography>
-                      </ExpansionPanelSummary>
-                      <ExpansionPanelDetails>
-                        <Typography>Data</Typography>
-                      </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                    <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChangeAccor('panel2')}>
-                      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography>INTERMEDIATE FINANCE</Typography>
-                      </ExpansionPanelSummary>
-                      <ExpansionPanelDetails>
-                        <Typography>Data</Typography>
-                      </ExpansionPanelDetails>
-                    </ExpansionPanel>
+                    {sections &&
+                      sections.map((object, idx) => {
+                        const { name, _id } = object || {};
+                        const panel = `panel${idx}`;
+                        return (
+                          <ExpansionPanel key={_id} expanded={expanded === panel} onChange={this.handleChangeAccor(panel)}>
+                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                              <Typography>{name.toUpperCase()}</Typography>
+                            </ExpansionPanelSummary>
+                            <ExpansionPanelDetails>
+                              <Typography>Data</Typography>
+                            </ExpansionPanelDetails>
+                          </ExpansionPanel>
+                        );
+                      })}
                   </div>
                 </TabContainer>
                 <TabContainer dir={theme.direction}>Quiz Data</TabContainer>
               </SwipeableViews>
             </div>
           </div>
-          <div className="rightBox">
-            <SectionHeading title="Other INTERESTING COURSES" />
-            <div className="cardWrapper">
-              <SessionCard sticyTwo sticyTwoData={{ name: '3 SECTIONS', classname: 'expert' }} />
-              <SessionCard sticyTwo sticyTwoData={{ name: 'BEGINNER', classname: 'beginner' }} />
+          {!isMobile ? (
+            <div className="rightBox">
+              <SectionHeading title="Other INTERESTING COURSES" />
+              <div className="cardWrapper">
+                <SessionCard sticyTwo sticyTwoData={{ name: '3 SECTIONS', classname: 'expert' }} />
+                <SessionCard sticyTwo sticyTwoData={{ name: 'BEGINNER', classname: 'beginner' }} />
+              </div>
+              <SectionHeading class_name="marginTop" title="Other INTERESTING VIDEOS" />
+              <div className="cardWrapper">
+                <VideoCard />
+                <VideoCard />
+              </div>
             </div>
-            <SectionHeading class_name="marginTop" title="Other INTERESTING VIDEOS" />
-            <div className="cardWrapper">
-              <VideoCard />
-              <VideoCard />
-            </div>
-          </div>
+          ) : null}
         </div>
         {isMobile ? <Footer /> : null}
       </GuruCoursesDetailsContainer>

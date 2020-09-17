@@ -105,7 +105,7 @@ export class ShishyaHome extends React.PureComponent {
           {isMobile ? <Search /> : null}
           <div className="leftBox">
             {/* NOTE: COURSE */}
-            <UpcommingSession title="COURSES" subtitle={`${courseList} courses listed`} seeall={!!isMobile} seelLink="/course" />
+            <UpcommingSession title="COURSES" subtitle={`${courseList} courses listed`} seeall={!!isMobile} seelLink="/courses" />
             <div className="carosuleWrapper">
               <Slider {...settingsThree}>
                 {course &&
@@ -125,7 +125,7 @@ export class ShishyaHome extends React.PureComponent {
               </Slider>
             </div>
             {/* NOTE: VIDEOS  */}
-            <UpcommingSession title="VIDEOS" subtitle={`${videoList} videos listed`} seeall={!!isMobile} seelLink="/course" />
+            {videoList ? <UpcommingSession title="VIDEOS" subtitle={`${videoList} videos listed`} seeall={!!isMobile} seelLink="/courses" /> : null}
             {video && video.length > 4 ? (
               <div className="carosuleWrapper">
                 <Slider {...settingsFour}>
@@ -156,21 +156,38 @@ export class ShishyaHome extends React.PureComponent {
               </div>
             )}
             {/* NOTE: ARTICLE  */}
-            <UpcommingSession title="ARTICLES" subtitle={`${articleList} articles listed`} seeall={!!isMobile} seelLink="/course" />
-            <div className="carosuleWrapper">
-              <Slider {...settingsFour}>
+            {articleList ? (
+              <UpcommingSession title="ARTICLES" subtitle={`${articleList} articles listed`} seeall={!!isMobile} seelLink="/courses" />
+            ) : null}
+            {articleList > 4 ? (
+              <div className="carosuleWrapper">
+                <Slider {...settingsFour}>
+                  {article &&
+                    article.map(list => {
+                      const { img, title, _id } = list || {};
+                      const dataOBJ = {
+                        title,
+                        img,
+                        _id,
+                      };
+                      return <ArticleCard dataOBJ={dataOBJ} />;
+                    })}
+                </Slider>
+              </div>
+            ) : (
+              <div className="cardWrapper">
                 {article &&
-                  article.map(list => {
-                    const { img, title, _id } = list || {};
+                  article.map(item => {
+                    const { title, thumb, _id } = item || {};
                     const dataOBJ = {
                       title,
-                      img,
+                      thumb,
                       _id,
                     };
                     return <ArticleCard dataOBJ={dataOBJ} />;
                   })}
-              </Slider>
-            </div>
+              </div>
+            )}
           </div>
         </div>
         {isMobile ? <Footer /> : null}

@@ -18,7 +18,7 @@ export const SessionCardContainer = styled.div`
   }
   .imageBox {
     background-image: url(${props => (props.bg ? props.bg : '')});
-    background-size: contain;
+    background-size: cover;
     ${globalStyle.flex};
     ${globalStyle.column};
     position: absolute;

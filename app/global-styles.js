@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: #F7F7F7;
     color: #727B87;
     border-radius: 4px;
-    padding: 16px 17px;
+    padding: 12px 17px;
     font-size: 14px;
     border: solid 1px #ffffff;
     &:focus {
@@ -58,6 +58,9 @@ const GlobalStyle = createGlobalStyle`
     @media (min-width: 1142px) {
       width: 1143px;
     }
+    @media (max-width: ${globalStyle.small}) {
+      overflow: auto;
+    }
   }
   .tabsHeader {
     box-shadow: inherit !important;
@@ -70,12 +73,21 @@ const GlobalStyle = createGlobalStyle`
   }
   .tabsWrapper {
     background-color: #ffffff;
-    padding: 16px 0px;
+    padding: 0px;
     @media (min-width: ${globalStyle.small}) {
       padding: 16px 24px;
     }
   }
   .tabDataBox {}
+  .tabButton {
+    min-height: inherit !important;
+    padding: 5px 6px !important;
+    & > span {
+      & > span {
+        padding: 6px;
+      }
+    }
+  }
   .payItem {
     background: #0976BE;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);

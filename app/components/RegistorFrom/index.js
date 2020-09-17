@@ -9,8 +9,6 @@ import PropTypes from 'prop-types';
 import withSizes from 'react-sizes';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import uploadIcon from '../../images/uploadIcon.svg';
-import cameraIcon from '../../images/cameraIcon.svg';
 import { RegistorFromContainer } from './style';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -30,14 +28,14 @@ class RegistorFrom extends React.Component {
 
   submitForm = () => {
     const { submitRegistration } = this.props;
-    const { fName, lName, email, phone, aadharNumber, password } = this.state || {};
+    const { fName, lName, email, phone, aadharNumber } = this.state || {};
     // if (!(fName && lName && email && phone && aadharNumber && password)) {
     if (!phone) {
       this.setState({
         error: true,
       });
     } else {
-      submitRegistration({ fName, lName, email, phone, aadharNumber, password });
+      submitRegistration({ fName, lName, email, phone, aadharNumber });
     }
   };
 
@@ -92,30 +90,6 @@ class RegistorFrom extends React.Component {
             name="aadharNumber"
             type="tel"
             placeholder="Aadhar Card Number *"
-            className={`${error ? 'input_error' : null}`}
-            onChange={e => this.onChangeAction(e)}
-          />
-          <div className="uploadField">
-            <label htmlFor="fileupload">
-              <input name="aadharImageUrl" type="file" id="fileupload" />
-              <div className="_leftUpload">
-                <img src={uploadIcon} alt="" title="" />
-              </div>
-              <div className="_rightUpload">
-                <span className="uploadText">
-                  <i>
-                    <img src={cameraIcon} alt="" title="" />
-                  </i>
-                  Upload
-                </span>
-                <span> Aadhar Card</span>
-              </div>
-            </label>
-          </div>
-          <input
-            name="password"
-            type="password"
-            placeholder="Password *"
             className={`${error ? 'input_error' : null}`}
             onChange={e => this.onChangeAction(e)}
           />

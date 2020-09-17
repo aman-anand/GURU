@@ -26,6 +26,9 @@ export const AuthenticationContainer = styled.div`
       color: #000000;
       font-weight: 600;
       font-size: 18px;
+      @media (max-width: ${globalStyle.small}) {
+        padding: 5px;
+      }
     }
   }
   input {

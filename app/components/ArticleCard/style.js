@@ -35,7 +35,7 @@ export const ArticleCardContainer = styled.div`
     ${globalStyle.flex};
     ${globalStyle.row};
     padding: 13px 12px;
-    align-items: center;
+    align-items: flex-start;
     & > div {
       ${globalStyle.flex};
       ${globalStyle.column};
@@ -58,6 +58,7 @@ export const ArticleCardContainer = styled.div`
     }
     .content {
       ${globalStyle.flex};
+      flex: 1;
       p {
         margin: 0px;
         ${globalStyle.flex};

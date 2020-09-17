@@ -4,7 +4,8 @@ export const HeaderContainer = styled.header`
   ${globalStyle.flex};
   ${globalStyle.row};
   background-color: #ffffff;
-  padding: 15px 10px;
+  padding: 10px;
+  position: relative;
   @media (min-width: ${globalStyle.small}) {
     padding: 0px 70px;
   }
@@ -20,8 +21,12 @@ export const HeaderContainer = styled.header`
   }
   .navListBox {
     flex: 1;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 13px;
     @media (max-width: ${globalStyle.small}) {
       justify-content: center;
+      align-items: center;
     }
     .navList {
       ${globalStyle.flex};
@@ -87,6 +92,8 @@ export const HeaderContainer = styled.header`
       height: 28px;
       border: solid 1px red;
       margin-right: 20px;
+      align-items: center;
+      justify-content: center;
     }
     .myProfileNav {
       background: #f9fafc;
@@ -146,5 +153,78 @@ export const HeaderContainer = styled.header`
     ${globalStyle.column};
     width: 18px;
     height: 13px;
+  }
+
+  .sideNavWrapper {
+    position: fixed;
+    ${globalStyle.flex};
+    ${globalStyle.row};
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    transition: all 500ms ease;
+    transform: translate(-100%);
+    &.active {
+      transform: translate(0);
+      z-index: 99;
+    }
+    & > div {
+      ${globalStyle.flex};
+    }
+  }
+  @media (max-width: ${globalStyle.small}) {
+    .navListWrap {
+      background-color: #ffffff;
+      width: 70%;
+      .navList {
+        ${globalStyle.flex};
+        ${globalStyle.column};
+        margin: 0px;
+        padding: 10px;
+        width: 100%;
+        li {
+          ${globalStyle.flex};
+          width: 100%;
+          &:nth-child(1) {
+            span {
+              ${globalStyle.flex};
+              padding: 6px;
+            }
+          }
+          a {
+            ${globalStyle.flex};
+            width: 100%;
+            text-decoration: none;
+            align-items: center;
+            color: #282828;
+            font-weight: 400;
+            font-size: 12px;
+            text-transform: uppercase;
+            i {
+              ${globalStyle.flex};
+              background-color: #dedede;
+              width: 24px;
+              height: 24px;
+              margin-right: 15px;
+            }
+            span {
+              ${globalStyle.flex};
+              flex: 1;
+              padding: 10px 0px;
+            }
+          }
+        }
+      }
+    }
+    .outNavList {
+      flex: 1;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
   }
 `;

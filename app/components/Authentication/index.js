@@ -48,8 +48,8 @@ class Authentication extends React.Component {
     const { otp_1, otp_2, otp_3, otp_4 } = this.state;
     const { submitFun } = this.props;
     if (otp_1 && otp_2 && otp_3 && otp_4) {
-      const OTP = otp_1 + otp_2 + otp_3 + otp_4;
-      submitFun({ OTP });
+      const otp = otp_1 + otp_2 + otp_3 + otp_4;
+      submitFun({ otp });
     } else {
       this.setState({
         error: true,
