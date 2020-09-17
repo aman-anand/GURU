@@ -129,7 +129,7 @@ export class CoursesDetails extends React.PureComponent {
           <title>Home</title>
           <meta name="description" content="Description of Home" />
         </Helmet>
-        {!isMobile ? <Header title="Home" /> : <OptionalHeader title="COURSE DETAILS" goTo="/courses" changeAnimate={this.animateClass} />}
+        {!isMobile ? <Header title="Home" /> : <OptionalHeader title="COURSE DETAILS" goTo="/courses" />}
         <div className="container">
           <div className="leftBox">
             <VideoPlayer data={{ coverImage, coverVideo, courseName, duration }} />
@@ -199,10 +199,10 @@ export class CoursesDetails extends React.PureComponent {
                       </div>
                       {review &&
                         review.map(item => {
-                          const { addedBy, addedOn, review: reviewText } = item || {};
+                          const { addedBy, addedOn, review: reviewText, _id } = item || {};
                           const { fName, lName } = addedBy || {};
                           return (
-                            <div className="cz_list">
+                            <div className="cz_list" key={_id}>
                               <div />
                               <div>
                                 <span>{`${fName} ${lName}`}</span>
