@@ -8,8 +8,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import withSizes from 'react-sizes';
 import PropTypes from 'prop-types';
-import uploadIcon from '../../images/uploadIcon.svg';
-import cameraIcon from '../../images/cameraIcon.svg';
+// import uploadIcon from '../../images/uploadIcon.svg';
+// import cameraIcon from '../../images/cameraIcon.svg';
 import { RegistrationContainer } from './style';
 // import styled from 'styled-components';
 
@@ -140,7 +140,7 @@ class Registration extends React.Component {
               <option value="mango">Mango</option>
             </select>
           </div>
-          <div className="_twoComumnWrapper">
+          {/* <div className="_twoComumnWrapper">
             <div className="uploadField">
               <label htmlFor="fileupload">
                 <input name="aadharImageUrl" type="file" id="fileupload" />
@@ -158,7 +158,7 @@ class Registration extends React.Component {
                 </div>
               </label>
             </div>
-          </div>
+          </div> */}
           <p className="_secText">Address</p>
           <input type="text" value={locality} name="locality" placeholder="Locality/Post Office" onChange={e => this.onChangeAction(e)} />
           <div className="_twoComumnWrapper">
