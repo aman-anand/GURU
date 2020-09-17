@@ -13,7 +13,7 @@ import { VideoPlayerContainer } from './style';
 function VideoPlayer(props) {
   const { data } = props;
   const { coverImage, coverVideo, courseName, duration } = data || {};
-  const [first] = courseName.split('');
+  const [first] = courseName ? courseName.split('') : [];
   return (
     <VideoPlayerContainer>
       <div>
