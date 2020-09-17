@@ -40,7 +40,8 @@ class RegistorFrom extends React.Component {
   };
 
   render() {
-    const { isMobile } = this.props;
+    const { isMobile, formData } = this.props;
+    const { fName } = formData || {};
     const { error } = this.state;
     return (
       <RegistorFromContainer>
@@ -58,6 +59,7 @@ class RegistorFrom extends React.Component {
             <input
               name="fName"
               type="text"
+              value={this.state.fName || fName}
               placeholder="First name *"
               onChange={e => this.onChangeAction(e)}
               className={`${error ? 'input_error' : null}`}
@@ -108,6 +110,7 @@ class RegistorFrom extends React.Component {
 RegistorFrom.propTypes = {
   isMobile: PropTypes.bool,
   submitRegistration: PropTypes.func,
+  formData: PropTypes.object,
 };
 
 const mapSizesToProps = ({ width }) => ({

@@ -11,6 +11,10 @@ import withSizes from 'react-sizes';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import Slide from '@material-ui/core/Slide';
 
 import injectReducer from 'utils/injectReducer';
 import history from '../../utils/history';
@@ -28,15 +32,27 @@ import { SigninContainer } from '../Signin/style';
 import splashIMG from '../../images/splash.png';
 import logoIMG from '../../images/logo.svg';
 
+function Transition(props) {
+  return <Slide direction="up" {...props} />;
+}
 /* eslint-disable react/prefer-stateless-function */
 export class SignUp extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      open: false,
       formData: null,
       stage: 'SIGNUP',
     };
   }
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false, stage: 'SIGNUP' });
+  };
 
   submitRegistration = values => {
     const { phone } = values || {};
@@ -48,6 +64,7 @@ export class SignUp extends React.PureComponent {
       this.props.dispatch(sendOtpAction({ number: `91${phone}` })).then(() => {
         this.setState({
           stage: 'OTP',
+          open: true,
         });
       });
     }
@@ -70,6 +87,11 @@ export class SignUp extends React.PureComponent {
           if (registarSuccess) {
             this.setState({
               stage: 'UPDATE',
+            });
+          } else {
+            this.setState({
+              stage: 'SIGNUP',
+              open: false,
             });
           }
         });
@@ -101,7 +123,7 @@ export class SignUp extends React.PureComponent {
 
   render() {
     const { isMobile } = this.props;
-    const { stage, error } = this.state;
+    const { stage, error, formData } = this.state;
     return (
       <SigninContainer>
         <Helmet>
@@ -123,8 +145,8 @@ export class SignUp extends React.PureComponent {
               {!isMobile ? <Stapes /> : null}
               <div className="blackBox">
                 {['SIGNUP'].includes(stage) ? (
-                  <RegistorFrom submitRegistration={this.submitRegistration} />
-                ) : ['OTP'].includes(stage) ? (
+                  <RegistorFrom submitRegistration={this.submitRegistration} formData={formData} />
+                ) : ['OTP'].includes(stage) && !isMobile ? (
                   <Authentication submitFun={this.submitOtp} error={error} />
                 ) : ['UPDATE'].includes(stage) ? (
                   <Registration updateDetails={this.updateDetails} />
@@ -138,6 +160,23 @@ export class SignUp extends React.PureComponent {
             </div>
           ) : null}
         </div>
+        {isMobile && ['OTP'].includes(stage) ? (
+          <Dialog
+            open={this.state.open}
+            TransitionComponent={Transition}
+            keepMounted
+            onClose={this.handleClose}
+            aria-labelledby="alert-dialog-slide-title"
+            aria-describedby="alert-dialog-slide-description"
+            className="dialogWrapper"
+          >
+            <DialogContent className="sumanta">
+              <DialogContentText id="alert-dialog-slide-description">
+                <Authentication submitFun={this.submitOtp} />
+              </DialogContentText>
+            </DialogContent>
+          </Dialog>
+        ) : null}
       </SigninContainer>
     );
   }

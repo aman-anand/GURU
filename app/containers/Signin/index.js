@@ -37,8 +37,8 @@ export class Signin extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      open: true,
-      stage: 'OTP',
+      open: false,
+      stage: 'LOGIN',
       // store: getFromLocalStore([]),
     };
   }
