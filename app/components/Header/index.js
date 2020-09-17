@@ -107,15 +107,19 @@ export const listCompo = props => {
             </Link>
           </li>
           <li>
-            <Link to="/attendance" className={`${['/attendance'].includes(pathname) ? 'active' : null}`} role="presentation">
+            <a role="presentation" onClick={() => logOut()}>
               <i className="icon" />
               <span>Logout</span>
-            </Link>
+            </a>
           </li>
         </Fragment>
       ) : null}
     </ul>
   );
+};
+
+const logOut = () => {
+  window.localStorage.clear();
 };
 function Header(props) {
   const { isMobile, title } = props;
