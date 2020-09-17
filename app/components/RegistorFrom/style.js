@@ -142,10 +142,10 @@ export const RegistorFromContainer = styled.div`
       align-items: center;
       i {
         ${globalStyle.flex};
-        background-color: #e3d3d3;
+        background-color: #ccc3c3;
         width: 120px;
         height: 120px;
-        border: solid 1px red;
+        border: solid 1px #ababab;
         border-radius: 60px;
       }
     }

@@ -37,8 +37,8 @@ export class Signin extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      stage: 'LOGIN',
+      open: true,
+      stage: 'OTP',
       // store: getFromLocalStore([]),
     };
   }
@@ -150,7 +150,7 @@ export class Signin extends React.PureComponent {
               aria-describedby="alert-dialog-slide-description"
               className="dialogWrapper"
             >
-              <DialogContent>
+              <DialogContent className="sumanta">
                 <DialogContentText id="alert-dialog-slide-description">
                   <Authentication submitFun={this.submitOtp} />
                 </DialogContentText>

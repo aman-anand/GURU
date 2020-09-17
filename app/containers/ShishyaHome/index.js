@@ -19,7 +19,7 @@ import reducer from '../Home/reducer';
 import { homeAction } from '../Home/actions';
 import { getFromLocalStore } from '../../services/CommonSetterGetter';
 import Header from '../../components/Header/Loadable';
-import Footer from '../../components/Footer/Loadable';
+// import Footer from '../../components/Footer/Loadable';
 import Search from '../../components/Search/Loadable';
 import SessionCard from '../../components/SessionCard/Loadable';
 import VideoCard from '../../components/VideoCard/Loadable';
@@ -125,7 +125,7 @@ export class ShishyaHome extends React.PureComponent {
               </Slider>
             </div>
             {/* NOTE: VIDEOS  */}
-            {videoList ? <UpcommingSession title="VIDEOS" subtitle={`${videoList} videos listed`} seeall={!!isMobile} seelLink="/courses" /> : null}
+            {videoList ? <UpcommingSession title="VIDEOS" subtitle={`${videoList} videos listed`} seeall={!!isMobile} seelLink="/videos" /> : null}
             {video && video.length > 4 ? (
               <div className="carosuleWrapper">
                 <Slider {...settingsFour}>
@@ -157,7 +157,7 @@ export class ShishyaHome extends React.PureComponent {
             )}
             {/* NOTE: ARTICLE  */}
             {articleList ? (
-              <UpcommingSession title="ARTICLES" subtitle={`${articleList} articles listed`} seeall={!!isMobile} seelLink="/courses" />
+              <UpcommingSession title="ARTICLES" subtitle={`${articleList} articles listed`} seeall={!!isMobile} seelLink="/articles" />
             ) : null}
             {articleList > 4 ? (
               <div className="carosuleWrapper">
@@ -190,7 +190,7 @@ export class ShishyaHome extends React.PureComponent {
             )}
           </div>
         </div>
-        {isMobile ? <Footer /> : null}
+        {/* {isMobile ? <Footer /> : null} */}
       </HomeContainer>
     );
   }

@@ -17,7 +17,7 @@ function ArticleCard(props) {
   const [first] = title.split('');
   return (
     <ArticleCardContainer color={randomColor} className="arcticalCardWrapper">
-      <a href="/" className="imageBox" role="button">
+      <a href={`/articles/${_id}`} className="imageBox" role="button">
         <div className="imgBox">
           <img src={img || articleimg} alt="" title="" />
         </div>

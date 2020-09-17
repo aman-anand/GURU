@@ -47,13 +47,13 @@ class RegistorFrom extends React.Component {
         <h4 className="_hText">Create AN Account</h4>
         <span className="_decText">Start learning marketing courses</span>
         <div className="_wrapper">
-          {isMobile ? (
+          {/* {isMobile ? (
             <div className="profilePic">
               <i className="_proPic">
                 <img alt="" title="" />
               </i>
             </div>
-          ) : null}
+          ) : null} */}
           <div className="_twoComumnWrapper">
             <input
               name="fName"

@@ -205,5 +205,13 @@ const GlobalStyle = createGlobalStyle`
       margin: 0px;
     }
   }
+  .dialogWrapper {
+    & > div {
+      & > div {
+        margin: 10px;
+        max-width: 310px;
+      }
+    }
+  }
 `;
 export default GlobalStyle;

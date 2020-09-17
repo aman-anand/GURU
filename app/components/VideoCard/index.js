@@ -15,7 +15,7 @@ function VideoCard(props) {
   const { title, thumb, _id } = dataOBJ || {};
   return (
     <VideoCardContainer className="VideoCardContainer" bg={thumb || videoimg}>
-      <a href="/" className="imageBox" role="button">
+      <a href={`/videos/${_id}`} className="imageBox" role="button">
         <div className="bottomBox">
           <div className="_lb">
             <p>

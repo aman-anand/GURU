@@ -24,10 +24,13 @@ export const AuthenticationContainer = styled.div`
       margin-right: 7px;
       text-align: center;
       color: #000000;
-      font-weight: 600;
-      font-size: 18px;
+      font-weight: 500;
+      font-size: 16px;
+      height: 60px;
       @media (max-width: ${globalStyle.small}) {
         padding: 5px;
+        border: 0.5px solid #ced4db;
+        height: 45px;
       }
     }
   }
@@ -69,6 +72,9 @@ export const AuthenticationContainer = styled.div`
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
+    @media (max-width: ${globalStyle.small}) {
+      color: #000000;
+    }
     @media (min-width: ${globalStyle.small}) {
       font-size: 18px;
     }
@@ -76,8 +82,20 @@ export const AuthenticationContainer = styled.div`
   ._decText {
     font-size: 14px;
     font-weight: 300;
+    @media (max-width: ${globalStyle.small}) {
+      color: #000000;
+    }
     @media (min-width: ${globalStyle.small}) {
       font-size: 18px;
+    }
+  }
+  .lockClass {
+    ${globalStyle.flex};
+    margin-bottom: 12px;
+    width: 40px;
+    height: 48px;
+    @media (min-width: ${globalStyle.small}) {
+      display: none;
     }
   }
 `;

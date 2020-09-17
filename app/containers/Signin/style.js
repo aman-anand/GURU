@@ -30,6 +30,10 @@ export const SigninContainer = styled.section`
       ${globalStyle.flex};
       ${globalStyle.column};
       padding: 24px 20px;
+      @media (max-width: ${globalStyle.small}) {
+        padding: 24px 15px;
+        background-color: #e5e5e5;
+      }
       @media (min-width: ${globalStyle.small}) {
         padding-left: 64px;
         padding: 22px 82px;
