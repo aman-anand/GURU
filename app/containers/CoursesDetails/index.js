@@ -31,7 +31,7 @@ import reducer from '../Courses/reducer';
 import { courseDetailsAction } from '../Courses/actions';
 import { getFromLocalStore } from '../../services/CommonSetterGetter';
 import Header from '../../components/Header/Loadable';
-import Footer from '../../components/Footer/Loadable';
+// import Footer from '../../components/Footer/Loadable';
 // import Search from '../../components/Search/Loadable';
 import SessionCard from '../../components/SessionCard/Loadable';
 import VideoCard from '../../components/VideoCard/Loadable';
@@ -254,7 +254,7 @@ export class CoursesDetails extends React.PureComponent {
             </div>
           ) : null}
         </div>
-        {isMobile ? <Footer /> : null}
+        {/* {isMobile ? <Footer /> : null} */}
       </GuruCoursesDetailsContainer>
     );
   }
