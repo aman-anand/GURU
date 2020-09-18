@@ -138,6 +138,9 @@ const GlobalStyle = createGlobalStyle`
       align-self: flex-start;
       margin-bottom: 15px;
     }
+    &.row {
+      ${globalStyle.row};
+    }
   }
 
   .carosuleWrapper {

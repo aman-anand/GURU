@@ -51,12 +51,12 @@ export class ShishyaHome extends React.PureComponent {
     const courseList = course ? course.length : 0;
     const videoList = video ? video.length : 0;
     const articleList = article ? article.length : 0;
-    const settingsThree = {
+    const settingsCourse = {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 3,
+      slidesToShow: courseList < 3 ? courseList : 3,
+      slidesToScroll: courseList < 3 ? courseList : 3,
       arrows: !isMobile,
       nextArrow: <span>NEXT</span>,
       prevArrow: <span>PREVIOUS</span>,
@@ -79,10 +79,25 @@ export class ShishyaHome extends React.PureComponent {
         },
       ],
     };
-    const settingsFour = {
-      ...settingsThree,
-      slidesToShow: 4,
-      slidesToScroll: 4,
+    const settingsVideos = {
+      ...settingsCourse,
+      slidesToShow: videoList < 4 ? videoList : 4,
+      slidesToScroll: videoList < 4 ? videoList : 4,
+      responsive: [
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2,
+          },
+        },
+      ],
+    };
+    const settingsArticle = {
+      ...settingsCourse,
+      slidesToShow: articleList < 4 ? articleList : 4,
+      slidesToScroll: articleList < 4 ? articleList : 4,
       responsive: [
         {
           breakpoint: 600,
@@ -106,11 +121,11 @@ export class ShishyaHome extends React.PureComponent {
           <div className="leftBox">
             {/* NOTE: COURSE */}
             <UpcommingSession title="COURSES" subtitle={`${courseList} courses listed`} seeall={!!isMobile} seelLink="/courses" />
-            <div className="carosuleWrapper">
-              <Slider {...settingsThree}>
+            {!isMobile && courseList <= 3 ? (
+              <div className="cardWrapper row">
                 {course &&
-                  course.map(list => {
-                    const { name, totalSections, duration, totalVideos, coverImage, _id } = list || {};
+                  course.map(item => {
+                    const { name, totalSections, duration, totalVideos, coverImage, _id } = item || {};
                     const courseData = {
                       courseName: name,
                       totalSections,
@@ -122,13 +137,45 @@ export class ShishyaHome extends React.PureComponent {
                     const sticyTwoData = { name: `${totalSections} SECTIONS`, classname: 'expert' };
                     return <SessionCard courseData={courseData} sticyTwo sticyTwoData={sticyTwoData} />;
                   })}
-              </Slider>
-            </div>
+              </div>
+            ) : (
+              <div className="carosuleWrapper">
+                <Slider {...settingsCourse}>
+                  {course &&
+                    course.map(list => {
+                      const { name, totalSections, duration, totalVideos, coverImage, _id } = list || {};
+                      const courseData = {
+                        courseName: name,
+                        totalSections,
+                        totalVideos,
+                        duration,
+                        coverImage,
+                        _id,
+                      };
+                      const sticyTwoData = { name: `${totalSections} SECTIONS`, classname: 'expert' };
+                      return <SessionCard courseData={courseData} sticyTwo sticyTwoData={sticyTwoData} />;
+                    })}
+                </Slider>
+              </div>
+            )}
             {/* NOTE: VIDEOS  */}
             {videoList ? <UpcommingSession title="VIDEOS" subtitle={`${videoList} videos listed`} seeall={!!isMobile} seelLink="/videos" /> : null}
-            {video && video.length > 4 ? (
+            {!isMobile && videoList <= 3 ? (
+              <div className="cardWrapper row">
+                {video &&
+                  video.map(item => {
+                    const { title, thumb, _id } = item || {};
+                    const dataOBJ = {
+                      title,
+                      thumb,
+                      _id,
+                    };
+                    return <VideoCard dataOBJ={dataOBJ} />;
+                  })}
+              </div>
+            ) : (
               <div className="carosuleWrapper">
-                <Slider {...settingsFour}>
+                <Slider {...settingsVideos}>
                   {video &&
                     video.map(item => {
                       const { title, thumb, _id } = item || {};
@@ -141,27 +188,27 @@ export class ShishyaHome extends React.PureComponent {
                     })}
                 </Slider>
               </div>
-            ) : (
-              <div className="cardWrapper">
-                {video &&
-                  video.map(item => {
-                    const { title, thumb, _id } = item || {};
-                    const dataOBJ = {
-                      title,
-                      thumb,
-                      _id,
-                    };
-                    return <VideoCard dataOBJ={dataOBJ} />;
-                  })}
-              </div>
             )}
             {/* NOTE: ARTICLE  */}
             {articleList ? (
               <UpcommingSession title="ARTICLES" subtitle={`${articleList} articles listed`} seeall={!!isMobile} seelLink="/articles" />
             ) : null}
-            {articleList > 4 ? (
+            {!isMobile && articleList <= 3 ? (
+              <div className="cardWrapper row">
+                {article &&
+                  article.map(list => {
+                    const { img, title, _id } = list || {};
+                    const dataOBJ = {
+                      title,
+                      img,
+                      _id,
+                    };
+                    return <ArticleCard dataOBJ={dataOBJ} />;
+                  })}
+              </div>
+            ) : (
               <div className="carosuleWrapper">
-                <Slider {...settingsFour}>
+                <Slider {...settingsArticle}>
                   {article &&
                     article.map(list => {
                       const { img, title, _id } = list || {};
@@ -173,19 +220,6 @@ export class ShishyaHome extends React.PureComponent {
                       return <ArticleCard dataOBJ={dataOBJ} />;
                     })}
                 </Slider>
-              </div>
-            ) : (
-              <div className="cardWrapper">
-                {article &&
-                  article.map(item => {
-                    const { title, thumb, _id } = item || {};
-                    const dataOBJ = {
-                      title,
-                      thumb,
-                      _id,
-                    };
-                    return <ArticleCard dataOBJ={dataOBJ} />;
-                  })}
               </div>
             )}
           </div>

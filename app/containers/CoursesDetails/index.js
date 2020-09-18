@@ -74,6 +74,7 @@ export class CoursesDetails extends React.PureComponent {
     const { params } = match || {};
     const { id: COURSE_ID } = params || {};
     state.COURSE_ID = COURSE_ID || null; // Set LeadId
+    return null;
   }
 
   componentDidMount() {

@@ -8,7 +8,7 @@ export const HomeContainer = styled.section`
     height: 100vh;
   }
   .container {
-    padding: 10px;
+    padding: 15px;
     ${globalStyle.flex};
     ${globalStyle.column};
     box-sizing: border-box;

@@ -4,7 +4,7 @@ export const HeaderContainer = styled.header`
   ${globalStyle.flex};
   ${globalStyle.row};
   background-color: #ffffff;
-  padding: 10px;
+  padding: 15px;
   position: relative;
   @media (min-width: ${globalStyle.small}) {
     padding: 0px 70px;
@@ -53,6 +53,7 @@ export const HeaderContainer = styled.header`
           font-family: 'Rubik', sans-serif;
           &.active {
             background-color: rgba(9, 118, 190, 0.1);
+            color: #0976be;
             &:after {
               content: '';
               position: absolute;
@@ -64,14 +65,16 @@ export const HeaderContainer = styled.header`
               bottom: 0;
               right: 0;
             }
+            svg path {
+              fill: #0976be;
+            }
           }
         }
         .icon {
-          width: 20px;
-          height: 20px;
-          border: solid 1px red;
           box-sizing: border-box;
           margin-right: 12px;
+          justify-content: center;
+          align-items: center;
         }
         span {
           ${globalStyle.row};
@@ -206,12 +209,18 @@ export const HeaderContainer = styled.header`
             font-weight: 400;
             font-size: 12px;
             text-transform: uppercase;
+            &.active {
+              svg path {
+                fill: #0976be;
+              }
+            }
             i {
               ${globalStyle.flex};
-              background-color: #dedede;
               width: 24px;
               height: 24px;
               margin-right: 15px;
+              justify-content: center;
+              align-items: center;
             }
             span {
               ${globalStyle.flex};

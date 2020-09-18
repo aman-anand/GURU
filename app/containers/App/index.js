@@ -19,6 +19,8 @@ import Home from '../Home/Loadable';
 import ShishyaHome from '../ShishyaHome/Loadable';
 import Courses from '../Courses/Loadable';
 import Sessions from '../Sessions/Loadable';
+import Articles from '../Articles/Loadable';
+import Videos from '../Videos/Loadable';
 import GuruCourses from '../GuruCourses/Loadable';
 import CoursesDetails from '../CoursesDetails/Loadable';
 import { AppContainer } from './style';
@@ -89,6 +91,9 @@ export default class App extends React.Component {
 
               <Route exact path="/courses" component={CheckAuthenticationHook(Courses, true)} />
               <Route exact path="/courses/:id" component={CheckAuthenticationHook(CoursesDetails, true)} />
+
+              <Route exact path="/articles" component={CheckAuthenticationHook(Articles, true)} />
+              <Route exact path="/videos" component={CheckAuthenticationHook(Videos, true)} />
 
               <Route exact path="/sessions" component={CheckAuthenticationHook(Sessions, true)} />
 
