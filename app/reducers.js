@@ -7,7 +7,6 @@ import { connectRouter } from 'connected-react-router/immutable';
 
 import history from 'utils/history';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
-import SigninReducer from 'containers/Signin/reducer';
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -15,7 +14,6 @@ import SigninReducer from 'containers/Signin/reducer';
 export default function createReducer(injectedReducers = {}) {
   const rootReducer = combineReducers({
     language: languageProviderReducer,
-    signin: SigninReducer,
     ...injectedReducers,
   });
 

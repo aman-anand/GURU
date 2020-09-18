@@ -62,7 +62,7 @@ export class ShishyaHome extends React.PureComponent {
       prevArrow: <span>PREVIOUS</span>,
       responsive: [
         {
-          breakpoint: 600,
+          breakpoint: 780,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
@@ -70,7 +70,7 @@ export class ShishyaHome extends React.PureComponent {
           },
         },
         {
-          breakpoint: 400,
+          breakpoint: 480,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,

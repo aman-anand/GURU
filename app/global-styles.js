@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: #F7F7F7;
     color: #727B87;
     border-radius: 4px;
-    padding: 12px 17px;
+    padding: 16px;
     font-size: 14px;
     border: solid 1px #ffffff;
     &:focus {
@@ -32,6 +32,17 @@ const GlobalStyle = createGlobalStyle`
     color: #727B87;
     font-size: 12px;
   }
+  
+  input:invalid {
+    border: solid 1px #da3a33;
+    color: #da3a33;
+  }
+  
+  input:invalid:required {
+    border: solid 1px #da3a33;
+    color: #da3a33;
+  }
+
   button {
     padding: 14px 17px !important;
     & > span {
@@ -209,7 +220,7 @@ const GlobalStyle = createGlobalStyle`
     & > div {
       & > div {
         margin: 10px;
-        max-width: 310px;
+        max-width: 350px;
       }
     }
   }

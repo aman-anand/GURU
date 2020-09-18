@@ -15,24 +15,24 @@ import { RegistorFromContainer } from './style';
 class RegistorFrom extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      required: false,
+    };
   }
 
   onChangeAction = eve => {
     const { name, value } = eve.target;
     this.setState({
       [name]: value,
-      error: false,
     });
   };
 
   submitForm = () => {
     const { submitRegistration } = this.props;
-    const { fName, lName, email, phone, aadharNumber } = this.state || {};
-    // if (!(fName && lName && email && phone && aadharNumber && password)) {
-    if (!phone) {
+    const { fName, lName, email, phone, aadharNumber, required } = this.state || {};
+    if (!required && !(fName && lName && email && phone && aadharNumber)) {
       this.setState({
-        error: true,
+        required: true,
       });
     } else {
       submitRegistration({ fName, lName, email, phone, aadharNumber });
@@ -40,9 +40,11 @@ class RegistorFrom extends React.Component {
   };
 
   render() {
-    const { isMobile, formData } = this.props;
-    const { fName } = formData || {};
-    const { error } = this.state;
+    const { isMobile, responseError, formData } = this.props;
+    const { required, fName, lName, email, phone, aadharNumber } = this.state;
+    const { message, success } = responseError || {};
+    const { fName: props_fname, lName: props_lName, email: props_email, phone: props_phone, aadharNumber: props_aadh } = formData || {};
+    console.log('STATE', this.state);
     return (
       <RegistorFromContainer>
         <h4 className="_hText">Create AN Account</h4>
@@ -59,42 +61,50 @@ class RegistorFrom extends React.Component {
             <input
               name="fName"
               type="text"
-              value={this.state.fName || fName}
+              value={fName || props_fname}
               placeholder="First name *"
               onChange={e => this.onChangeAction(e)}
-              className={`${error ? 'input_error' : null}`}
+              required={required}
             />
             <input
               name="lName"
               type="text"
+              value={lName || props_lName}
               placeholder="Last name *"
               onChange={e => this.onChangeAction(e)}
-              className={`${error ? 'input_error' : null}`}
+              required={required}
             />
           </div>
           <div className={`${isMobile ? '_twoRowWrapper' : '_twoComumnWrapper'}`}>
             <input
               name="email"
               type="text"
+              value={email || props_email}
               placeholder="Email Address *"
-              className={`${error ? 'input_error' : null}`}
               onChange={e => this.onChangeAction(e)}
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              required={required}
             />
             <input
               name="phone"
               type="tel"
+              value={phone || props_phone}
               placeholder="Phone Number *"
-              className={`${error ? 'input_error' : null}`}
               onChange={e => this.onChangeAction(e)}
+              pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+              required={required}
             />
           </div>
           <input
             name="aadharNumber"
-            type="tel"
+            type="text"
+            value={aadharNumber || props_aadh}
             placeholder="Aadhar Card Number *"
-            className={`${error ? 'input_error' : null}`}
             onChange={e => this.onChangeAction(e)}
+            pattern="[0-9]{4}[0-9]{4}[0-9]{4}"
+            required={required}
           />
+          {!success ? <span className="error">{message}</span> : null}
           <Button variant="contained" color="primary" type="button" onClick={this.submitForm}>
             PROCEED
           </Button>
@@ -110,6 +120,7 @@ class RegistorFrom extends React.Component {
 RegistorFrom.propTypes = {
   isMobile: PropTypes.bool,
   submitRegistration: PropTypes.func,
+  responseError: PropTypes.object,
   formData: PropTypes.object,
 };
 

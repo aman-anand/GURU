@@ -13,7 +13,6 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import Slide from '@material-ui/core/Slide';
 
 import injectReducer from 'utils/injectReducer';
@@ -80,10 +79,13 @@ export class SignUp extends React.PureComponent {
     this.props.dispatch(verifyOtpAction(params)).then(res => {
       const { payload } = res;
       const { success: otpSuccess, error } = payload;
+      const { message: otpErrMessage } = error || {};
       if (otpSuccess) {
         this.props.dispatch(signupAction(formData)).then(resOBJ => {
           const { payload: resPayload } = resOBJ;
-          const { success: registarSuccess } = resPayload;
+          const { success: registarSuccess, response } = resPayload || {};
+          const { data } = response || {};
+          const { message, success } = data || {};
           if (registarSuccess) {
             this.setState({
               stage: 'UPDATE',
@@ -92,12 +94,16 @@ export class SignUp extends React.PureComponent {
             this.setState({
               stage: 'SIGNUP',
               open: false,
+              error: { message, success },
             });
           }
         });
       } else {
         this.setState({
-          error,
+          error: {
+            error: true,
+            errorMsg: otpErrMessage,
+          },
         });
       }
     });
@@ -124,6 +130,7 @@ export class SignUp extends React.PureComponent {
   render() {
     const { isMobile } = this.props;
     const { stage, error, formData } = this.state;
+    const { error: otpError, errorMsg } = error || {};
     return (
       <SigninContainer>
         <Helmet>
@@ -145,11 +152,11 @@ export class SignUp extends React.PureComponent {
               {!isMobile ? <Stapes /> : null}
               <div className="blackBox">
                 {['SIGNUP'].includes(stage) ? (
-                  <RegistorFrom submitRegistration={this.submitRegistration} formData={formData} />
+                  <RegistorFrom submitRegistration={this.submitRegistration} responseError={error} formData={formData} />
                 ) : ['OTP'].includes(stage) && !isMobile ? (
-                  <Authentication submitFun={this.submitOtp} error={error} />
+                  <Authentication submitFun={this.submitOtp} error={{ error: otpError, errorMsg }} />
                 ) : ['UPDATE'].includes(stage) ? (
-                  <Registration updateDetails={this.updateDetails} />
+                  <Registration updateDetails={this.updateDetails} responseError={error} />
                 ) : null}
               </div>
             </div>
@@ -171,9 +178,7 @@ export class SignUp extends React.PureComponent {
             className="dialogWrapper"
           >
             <DialogContent className="sumanta">
-              <DialogContentText id="alert-dialog-slide-description">
-                <Authentication submitFun={this.submitOtp} />
-              </DialogContentText>
+              <Authentication submitFun={this.submitOtp} error={{ error: otpError, errorMsg }} />
             </DialogContent>
           </Dialog>
         ) : null}

@@ -9,6 +9,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withSizes from 'react-sizes';
 import { Link } from 'react-router-dom';
+import history from '../../utils/history';
 import logoIMG from '../../images/logo.svg';
 import hemburger from '../../images/hemburger.png';
 import { HeaderContainer } from './style';
@@ -120,6 +121,7 @@ export const listCompo = props => {
 
 const logOut = () => {
   window.localStorage.clear();
+  history.push('/signin');
 };
 function Header(props) {
   const { isMobile, title } = props;

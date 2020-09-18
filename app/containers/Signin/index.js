@@ -15,7 +15,6 @@ import { compose } from 'redux';
 import injectReducer from 'utils/injectReducer';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import Slide from '@material-ui/core/Slide';
 import reducer from './reducer';
 import makeSelectSignin from './selectors';
@@ -27,7 +26,7 @@ import { SigninContainer } from './style';
 import splashIMG from '../../images/splash.png';
 import logoIMG from '../../images/logo.svg';
 // import { getFromLocalStore } from '../../services/CommonSetterGetter';
-import { sendOtpAction, verifyOtpAction, loginAction } from './actions';
+import { sendOtpAction, verifyOtpAction, retryOtpAction, loginAction } from './actions';
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
@@ -37,9 +36,9 @@ export class Signin extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      open: true,
       stage: 'LOGIN',
-      // store: getFromLocalStore([]),
+      // store: getFromLocalStore(['phone']),
     };
   }
 
@@ -89,7 +88,7 @@ export class Signin extends React.PureComponent {
     };
     this.props.dispatch(verifyOtpAction(jsonOBJ)).then(otpres => {
       const { payload: payloaddata } = otpres || {};
-      const { success } = payloaddata || {};
+      const { success, message } = payloaddata || {};
       if (success) {
         const paramsJSON = { phone: number };
         this.props.dispatch(loginAction(paramsJSON)).then(res => {
@@ -101,13 +100,28 @@ export class Signin extends React.PureComponent {
             history.push('/home');
           }
         });
+      } else {
+        this.setState({
+          error: true,
+          errorMsg: message,
+        });
       }
     });
   };
 
+  resendOtp = () => {
+    const { store } = this.state;
+    const { number } = store || {};
+    const _obj = {
+      number: `91${number}`,
+      retryCall: true,
+    };
+    this.props.dispatch(retryOtpAction(_obj));
+  };
+
   render() {
     const { isMobile } = this.props;
-    const { stage } = this.state;
+    const { stage, error, errorMsg, store } = this.state;
     return (
       <SigninContainer>
         <Helmet>
@@ -128,9 +142,9 @@ export class Signin extends React.PureComponent {
             <div className="content">
               <div className="blackBox">
                 {['LOGIN'].includes(stage) ? (
-                  <SigninForm submitFun={this.submitMobile} />
+                  <SigninForm submitFun={this.submitMobile} store={store} />
                 ) : ['OTP'].includes(stage) && !isMobile ? (
-                  <Authentication submitFun={this.submitOtp} />
+                  <Authentication submitFun={this.submitOtp} resendOtp={this.resendOtp} error={{ error, errorMsg }} />
                 ) : null}
               </div>
             </div>
@@ -151,9 +165,7 @@ export class Signin extends React.PureComponent {
               className="dialogWrapper"
             >
               <DialogContent className="sumanta">
-                <DialogContentText id="alert-dialog-slide-description">
-                  <Authentication submitFun={this.submitOtp} />
-                </DialogContentText>
+                <Authentication submitFun={this.submitOtp} resendOtp={this.resendOtp} error={{ error, errorMsg }} />
               </DialogContent>
             </Dialog>
           ) : null}
@@ -166,7 +178,6 @@ export class Signin extends React.PureComponent {
 Signin.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isMobile: PropTypes.bool,
-  signin: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({

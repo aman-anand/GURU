@@ -17,7 +17,9 @@ class SigninForm extends React.Component {
     this.state = {
       mobileNo: '',
       mobileValidState: false,
+      required: false,
     };
+    this.submitAction = this.submitAction.bind(this);
   }
 
   mobileInputChange = mobile => {
@@ -38,9 +40,6 @@ class SigninForm extends React.Component {
       error: false,
       mobileNo: mobile1,
     });
-    // if (input !== mobile1 && mobile1.toString().length === 10) {
-    //   this.props.dispatch(mobileValidate(mobile1));
-    // }
   };
 
   onEnterClickMobile = evt => {
@@ -57,10 +56,11 @@ class SigninForm extends React.Component {
   };
 
   submitAction = () => {
-    const { submitFun } = this.props;
+    const { submitFun, store } = this.props;
+    const { number } = store || {};
     const { mobileNo, error, mobileValidState } = this.state;
-    if (!error && mobileValidState) {
-      submitFun({ number: mobileNo });
+    if (!error && (mobileValidState || number)) {
+      submitFun({ number: mobileNo || number });
     } else {
       this.setState({
         error: true,
@@ -70,15 +70,17 @@ class SigninForm extends React.Component {
   };
 
   render() {
-    const { mobileNo, mobileErrorMessage, error } = this.state;
+    const { mobileNo, mobileErrorMessage, error, required } = this.state;
+    const { store } = this.props;
+    const { number } = store || {};
     return (
       <SigninFormContainer>
         <h4 className="_hText">ACCESS YOUR ACCOUNT</h4>
         <span className="_decText">Start learning marketing courses</span>
         <div className="_wrapper">
           <input
-            type="tel"
-            value={mobileNo}
+            type="number"
+            value={mobileNo || number}
             placeholder="Enter Your Mobile Number"
             name="mobile"
             onChange={e => {
@@ -86,9 +88,11 @@ class SigninForm extends React.Component {
             }}
             onKeyPress={this.onEnterClickMobile}
             className={error ? 'input_error' : null}
+            pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+            required={required}
           />
           {error ? <span className="error">{mobileErrorMessage}</span> : null}
-          <Button variant="contained" color="primary" type="button" onClick={this.submitAction}>
+          <Button variant="contained" color="primary" type="button" onClick={this.submitAction} onKeyPress={this.submitAction}>
             SUBMIT
           </Button>
           <span className="donthavetext">
@@ -102,6 +106,7 @@ class SigninForm extends React.Component {
 
 SigninForm.propTypes = {
   submitFun: PropTypes.func,
+  store: PropTypes.object,
 };
 
 export default SigninForm;

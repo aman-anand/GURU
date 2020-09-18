@@ -13,9 +13,11 @@ class Authentication extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: false,
-      errorMsg: '',
+      resendCountTimer: 30,
+      showResend: false,
     };
+    this.intervalId = undefined;
+    this.resendOTPCounter = this.resendOTPCounter.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -26,12 +28,50 @@ class Authentication extends React.Component {
       state.error = [400].includes(statusCode);
       state.errorMsg = message;
     }
+    return null;
   }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
+  getCodeBoxElement = index => document.getElementById(`codeBox${index}`);
+
+  onKeyUpEvent = (index, event) => {
+    const eventCode = event.which || event.keyCode;
+    if (this.getCodeBoxElement(index).value.length === 1) {
+      if (index !== 4) {
+        this.getCodeBoxElement(index + 1).focus();
+      } else {
+        this.getCodeBoxElement(index).blur();
+        // Submit code
+        window.console.log('submit code ');
+      }
+    }
+    if (eventCode === 8 && index !== 1) {
+      this.getCodeBoxElement(index - 1).focus();
+    }
+  };
+
+  onFocusEvent = index => {
+    for (let item = 1; item < index; item += 1) {
+      const currentElement = this.getCodeBoxElement(item);
+      if (!currentElement.value) {
+        currentElement.focus();
+        break;
+      }
+    }
+  };
 
   mobileInputChange = target => {
     const { value, name } = target;
+    let otp = value.replace(/[^\d]/g, '');
+    const len = otp.length;
+    if (len > 1) {
+      otp = otp.slice(0, 1);
+    }
     this.setState({
-      [name]: value,
+      [name]: otp,
     });
   };
 
@@ -45,25 +85,43 @@ class Authentication extends React.Component {
   };
 
   submitOTP = () => {
+    clearInterval(this.intervalId);
     const { otp_1, otp_2, otp_3, otp_4 } = this.state;
-    const { submitFun } = this.props;
     if (otp_1 && otp_2 && otp_3 && otp_4) {
       const otp = otp_1 + otp_2 + otp_3 + otp_4;
-      submitFun({ otp });
-    } else {
-      this.setState({
-        error: true,
-        errorMsg: 'Please enter OTP',
+      this.props.submitFun({ otp });
+      this.resendOTPCounter();
+    }
+  };
+
+  submitResendOTP = () => {
+    clearInterval(this.intervalId);
+    this.props.resendOtp();
+    this.resendOTPCounter();
+  };
+
+  resendOTPCounter = () => {
+    this.intervalId = setInterval(countDown, 1000);
+    const whis = this;
+    function countDown() {
+      whis.setState(prevState => {
+        if (prevState.resendCountTimer < 1) {
+          clearInterval(whis.intervalId);
+          return { resendCountTimer: 30, showResend: true };
+        }
+        return { resendCountTimer: prevState.resendCountTimer - 1, showResend: false };
       });
     }
   };
 
   render() {
-    const { error, errorMsg } = this.state;
-    // console.log('STATE', this.state);
+    const { resendCountTimer, showResend, otp_1, otp_2, otp_3, otp_4 } = this.state;
+    const presentOTP = otp_1 && otp_2 && otp_3 && otp_4;
+    const { error } = this.props;
+    const { error: _pError, errorMsg: _perrorMsg } = error || {};
     return (
       <AuthenticationContainer>
-        <span className="lockClass">
+        <div className="lockClass">
           <svg width="35" height="47" viewBox="0 0 35 47" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M32.1568 18.0167H27.4167V10.1834C27.4168 4.56836 22.8483 0 17.2334 0C11.6185 0 7.05009 4.56836 7.05009 10.1833V18.0166H2.31025C1.03657 18.0166 0.000183493 19.053 0.000183493 20.3267V41.5135C0.000183493 41.5145 0 41.5155 0 41.5166C0 41.5177 0.000183493 41.5186 0.000183493 41.5197V44.6899C0.000183493 45.9636 1.03657 47 2.31025 47H32.1568C33.4305 47 34.4669 45.9636 34.4669 44.6899V20.3267C34.4669 19.053 33.4306 18.0167 32.1568 18.0167ZM8.61679 10.1833C8.61679 5.43236 12.4825 1.56661 17.2335 1.56661C21.9844 1.56661 25.8502 5.43236 25.8502 10.1833V18.0166H24.2835V10.1833C24.2835 6.29644 21.1212 3.1333 17.2335 3.1333C13.3458 3.1333 10.1835 6.29644 10.1835 10.1833V18.0166H8.61679V10.1833ZM11.7501 18.0167V10.1834C11.7501 7.1597 14.2105 4.70009 17.2334 4.70009C20.2563 4.70009 22.7167 7.15979 22.7167 10.1834V18.0167H11.7501ZM2.31025 19.5833H7.83339H10.9667H23.5H26.6333H32.1567C32.5664 19.5833 32.9001 19.917 32.9001 20.3267V40.7333H1.56688V20.3267C1.56688 19.9171 1.90056 19.5833 2.31025 19.5833ZM32.1568 45.4333H2.31025C1.90056 45.4333 1.56688 45.0996 1.56688 44.6899V42.3H32.9002V44.6899C32.9003 45.0996 32.5665 45.4333 32.1568 45.4333Z"
@@ -90,20 +148,23 @@ class Authentication extends React.Component {
               fill="#2E323D"
             />
           </svg>
-        </span>
+        </div>
         <h4 className="_hText">Authentication Code</h4>
         <span className="_decText">Verifying your mobile number</span>
         <div className="_wrapper">
           <div className="otpWrapper">
             {[1, 2, 3, 4].map(ele => (
               <input
+                id={`codeBox${ele}`}
                 key={ele}
-                type="tel"
+                type="number"
                 name={`otp_${ele}`}
+                value={this.state[`otp_${ele}`]}
                 onChange={e => {
                   this.mobileInputChange(e.target);
                 }}
-                onKeyPress={this.onEnterClickMobile}
+                onKeyUp={event => this.onKeyUpEvent(ele, event)}
+                onFocus={() => this.onFocusEvent(ele)}
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus={ele === 1 ? 'autofocus' : false}
                 minLength="1"
@@ -112,11 +173,20 @@ class Authentication extends React.Component {
               />
             ))}
           </div>
-          {error ? <span className="error">{errorMsg}</span> : null}
-          <Button variant="contained" color="primary" type="button" onClick={this.submitOTP}>
+          {_pError ? <span className="error">{_perrorMsg}</span> : null}
+          <Button variant="contained" color="primary" type="button" onClick={this.submitOTP} onKeyDown={this.submitOTP} disabled={!presentOTP}>
             PROCEED
           </Button>
-          {/* <span className="donthavetext">Resend Code 00:30</span> */}
+          {!showResend ? (
+            <span className="donthavetext">
+              Resend Code {resendCountTimer}
+              :00
+            </span>
+          ) : (
+            <span className="donthavetext" onClick={this.submitResendOTP} role="presentation">
+              Resend OTP
+            </span>
+          )}
         </div>
       </AuthenticationContainer>
     );
@@ -125,6 +195,8 @@ class Authentication extends React.Component {
 
 Authentication.propTypes = {
   submitFun: PropTypes.func,
+  resendOtp: PropTypes.func,
+  error: PropTypes.object,
 };
 
 export default Authentication;
