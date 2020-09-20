@@ -11,8 +11,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Courses from 'containers/Courses';
-import CourseDetails from 'containers/CourseDetails';
 import Header from '../../components/Header/Loadable';
 
 import GlobalStyle from '../../global-styles';
@@ -32,9 +30,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Header />
       <Switch>
-        <Route exact path="/" component={Courses} />
-        <Route exact path="/course" component={Courses} />
-        <Route exact path="/course/:id" component={CourseDetails} />
+        <Route exact path="/" component={NotFoundPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
