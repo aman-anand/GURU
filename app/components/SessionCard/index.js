@@ -1,0 +1,17 @@
+/**
+ *
+ * SessionCard
+ *
+ */
+
+import React, { memo } from 'react';
+// import PropTypes from 'prop-types';
+// import styled from 'styled-components';
+
+function SessionCard() {
+  return <div />;
+}
+
+SessionCard.propTypes = {};
+
+export default memo(SessionCard);

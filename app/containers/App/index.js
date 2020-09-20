@@ -11,7 +11,16 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from '../../components/Header/Loadable';
+// import Header from '../../components/Header/Loadable';
+// NOTE: Container
+import Home from '../Home/Loadable';
+import Signin from '../Signin/Loadable';
+import SignUp from '../SignUp/Loadable';
+import Loader from '../../components/Loader/Loadable';
+// Routing hooks
+import CheckAuthenticationHook from '../../utils/CheckAuthenticationHook';
+import RedirectToDashboardHook from '../../utils/RedirectToDashboardHook';
+import PageNotFoundHook from '../../utils/PageNotFoundHook';
 
 import GlobalStyle from '../../global-styles';
 const theme = createMuiTheme({
@@ -28,12 +37,28 @@ const theme = createMuiTheme({
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Header />
+      {/* <Header /> */}
       <Switch>
-        <Route exact path="/" component={NotFoundPage} />
-        <Route component={NotFoundPage} />
+        {/* <Route exact path="/" component={NotFoundPage} /> */}
+        <Route
+          exact
+          path="/home"
+          component={CheckAuthenticationHook(Home, true)}
+        />
+        <Route
+          exact
+          path="/signin"
+          component={RedirectToDashboardHook(Signin, true)}
+        />
+        <Route
+          exact
+          path="/signup"
+          component={RedirectToDashboardHook(SignUp, true)}
+        />
+        <Route exact path="*" component={PageNotFoundHook(NotFoundPage)} />
       </Switch>
       <GlobalStyle />
+      <Loader />
     </ThemeProvider>
   );
 }

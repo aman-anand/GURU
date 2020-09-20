@@ -4,6 +4,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const appLocation = path.resolve(__dirname, '../../app');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
@@ -44,6 +45,23 @@ module.exports = require('./webpack.base.babel')({
 
   // Emit a source map for easier debugging
   // See https://webpack.js.org/configuration/devtool/#devtool
+  resolve: {
+    alias: {
+      DataService: path.resolve(path.join(appLocation, '/dataService')),
+      Model: path.resolve(path.join(appLocation, '/model')),
+      Component: path.resolve(path.join(appLocation, '/components')),
+      Containers: path.resolve(path.join(appLocation, '/containers')),
+      Image: path.resolve(path.join(appLocation, '/images')),
+      Constant: path.resolve(path.join(appLocation, '/constants')),
+      Service: path.resolve(path.join(appLocation, '/services')),
+      Config: path.resolve(path.join(appLocation, '/config')),
+      Global: path.resolve(path.join(appLocation, '/common')),
+    },
+    modules: ['app', 'node_modules'],
+    extensions: ['.js', '.jsx', '.react.js'],
+    mainFields: ['browser', 'jsnext:main', 'main'],
+  },
+
   devtool: 'eval-source-map',
 
   performance: {
