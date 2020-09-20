@@ -5,13 +5,15 @@
  */
 
 import React, { memo } from 'react';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { BredcrumbContainer } from './style';
 
-function Bredcrumb() {
-  return <div />;
+function Bredcrumb(props) {
+  return <BredcrumbContainer>{props.children}</BredcrumbContainer>;
 }
 
-Bredcrumb.propTypes = {};
+Bredcrumb.propTypes = {
+  children: PropTypes.element,
+};
 
 export default memo(Bredcrumb);
