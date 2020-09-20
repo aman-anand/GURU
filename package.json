@@ -89,12 +89,14 @@
     "react-redux": "7.0.2",
     "react-router-dom": "5.0.0",
     "react-sizes": "^2.0.0",
+    "react-slick": "^0.27.11",
     "redux": "4.0.1",
     "redux-logger": "^3.0.6",
     "redux-saga": "1.0.2",
     "redux-thunk": "^2.3.0",
     "reselect": "4.0.0",
     "sanitize.css": "8.0.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "4.2.0"
   },
   "devDependencies": {

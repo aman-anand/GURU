@@ -17,9 +17,7 @@ const homeReducer = (state = initialState, action) =>
       case HOME_FULFILLED:
         {
           const { data } = action.payload;
-          draft.merge({
-            data,
-          });
+          draft.data = data;
         }
         break;
     }

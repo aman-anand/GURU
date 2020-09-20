@@ -20,7 +20,7 @@ function SessionCard(props) {
       className="sessionCardWrapper"
       bg={coverImage || MaskGroup}
     >
-      <a href={`/courses/${_id}`} className="imageBox" role="button">
+      <a href={`/course/${_id}`} className="imageBox" role="button">
         <div className="topBox">
           {sticyOne ? (
             <div className="cardSticker">

@@ -14,6 +14,8 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 // import Header from '../../components/Header/Loadable';
 // NOTE: Container
 import Home from '../Home/Loadable';
+import CourseDetails from '../CourseDetails/Loadable';
+import Course from '../Course/Loadable';
 import Signin from '../Signin/Loadable';
 import SignUp from '../SignUp/Loadable';
 import Loader from '../../components/Loader/Loadable';
@@ -42,11 +44,6 @@ export default function App() {
         {/* <Route exact path="/" component={NotFoundPage} /> */}
         <Route
           exact
-          path="/home"
-          component={CheckAuthenticationHook(Home, true)}
-        />
-        <Route
-          exact
           path="/signin"
           component={RedirectToDashboardHook(Signin, true)}
         />
@@ -54,6 +51,21 @@ export default function App() {
           exact
           path="/signup"
           component={RedirectToDashboardHook(SignUp, true)}
+        />
+        <Route
+          exact
+          path="/home"
+          component={CheckAuthenticationHook(Home, true)}
+        />
+        <Route
+          exact
+          path="/course"
+          component={CheckAuthenticationHook(Course, true)}
+        />
+        <Route
+          exact
+          path="/course/:courseId"
+          component={CheckAuthenticationHook(CourseDetails, true)}
         />
         <Route exact path="*" component={PageNotFoundHook(NotFoundPage)} />
       </Switch>
