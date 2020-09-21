@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { initialState } from './reducer';
+import { initialState } from '../Course/reducer';
 
 /**
  * Direct selector to the courseDetails state domain
