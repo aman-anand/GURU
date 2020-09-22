@@ -36,7 +36,7 @@ export const GuruCoursesDetailsContainer = styled.section`
       width: 33%;
     }
   }
-  .sessionCardWrapper,
+  sessionCardWrapper,
   .VideoCardContainer {
     min-height: 195px;
     max-height: 195px;
@@ -45,6 +45,7 @@ export const GuruCoursesDetailsContainer = styled.section`
     }
   }
   .VideoCardContainer {
+    border: solid 1px red;
     @media (min-width: ${globalStyle.small}) {
       width: 100%;
     }

@@ -18,6 +18,10 @@ import CourseDetails from '../CourseDetails/Loadable';
 import Course from '../Course/Loadable';
 import Signin from '../Signin/Loadable';
 import SignUp from '../SignUp/Loadable';
+import Videos from '../Videos/Loadable';
+import VideoDetails from '../VideoDetails/Loadable';
+import Articles from '../Articles/Loadable';
+import ArticleDetails from '../ArticleDetails/Loadable';
 import Loader from '../../components/Loader/Loadable';
 // Routing hooks
 import CheckAuthenticationHook from '../../utils/CheckAuthenticationHook';
@@ -66,6 +70,26 @@ export default function App() {
           exact
           path="/course/:courseId"
           component={CheckAuthenticationHook(CourseDetails, true)}
+        />
+        <Route
+          exact
+          path="/videos"
+          component={CheckAuthenticationHook(Videos, true)}
+        />
+        <Route
+          exact
+          path="/videos/:videosId"
+          component={CheckAuthenticationHook(VideoDetails, true)}
+        />
+        <Route
+          exact
+          path="/articles"
+          component={CheckAuthenticationHook(Articles, true)}
+        />
+        <Route
+          exact
+          path="/articles/:articlesId"
+          component={CheckAuthenticationHook(ArticleDetails, true)}
         />
         <Route exact path="*" component={PageNotFoundHook(NotFoundPage)} />
       </Switch>

@@ -71,9 +71,9 @@ export const listCompo = props => {
       </li>
       <li>
         <Link
-          to="/courses"
+          to="/course"
           className={`${
-            ['/courses'].includes(pathname) || pathMatch ? 'active' : null
+            ['/course'].includes(pathname) || pathMatch ? 'active' : null
           }`}
           role="presentation"
         >

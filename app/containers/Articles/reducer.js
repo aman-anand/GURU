@@ -4,15 +4,29 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import {
+  ARTICLES_FULFILLED,
+  ARTICLES_REJECTED,
+  ARTICLES_PENDING,
+} from './constants';
 
-export const initialState = {};
+export const initialState = {
+  data: {},
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const articlesReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case ARTICLES_PENDING:
+        break;
+      case ARTICLES_FULFILLED:
+        {
+          const { payload } = action || {};
+          draft.data = payload;
+        }
+        break;
+      case ARTICLES_REJECTED:
         break;
     }
   });

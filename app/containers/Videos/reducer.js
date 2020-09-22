@@ -4,15 +4,25 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import { VIDEOS_FULFILLED, VIDEOS_REJECTED, VIDEOS_PENDING } from './constants';
 
-export const initialState = {};
+export const initialState = {
+  data: {},
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const videosReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case VIDEOS_PENDING:
+        break;
+      case VIDEOS_FULFILLED:
+        {
+          const { payload } = action || {};
+          draft.data = payload;
+        }
+        break;
+      case VIDEOS_REJECTED:
         break;
     }
   });
