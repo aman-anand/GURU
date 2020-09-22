@@ -21,9 +21,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { courseDetailsAction } from '../Course/actions';
 import Header from '../../components/Header/Loadable';
@@ -36,6 +36,7 @@ import VideoCard from '../../components/VideoCard/Loadable';
 import VideoPlayer from '../../components/VideoPlayer/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
 import OptionalHeader from '../../components/OptionalHeader';
+import Assessment from '../../components/Assessment';
 // NOTE: Styles
 import { GuruCoursesDetailsContainer } from './style';
 
@@ -243,29 +244,84 @@ export class CourseDetails extends React.PureComponent {
                 <TabContainer dir={theme.direction}>
                   <div className="cariculamBox">
                     {sections &&
-                      sections.map((object, idx) => {
-                        const { name, _id } = object || {};
+                      sections.map((ele, idx) => {
+                        const { name, _id } = ele || {};
                         const panel = `panel${idx}`;
+                        const { data: sectionsData } = ele || {};
                         return (
-                          <ExpansionPanel
+                          <Accordion
                             key={_id}
                             expanded={expanded === panel}
                             onChange={this.handleChangeAccor(panel)}
+                            className="accordianWrapper"
                           >
-                            <ExpansionPanelSummary
+                            <AccordionSummary
                               expandIcon={<ExpandMoreIcon />}
+                              aria-controls={`${panel}bh-content`}
+                              id={`${panel}bh-header`}
+                              className="headingRow"
                             >
-                              <Typography>{name.toUpperCase()}</Typography>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
-                              <Typography>Data</Typography>
-                            </ExpansionPanelDetails>
-                          </ExpansionPanel>
+                              <p className="accorHeading">{name}</p>
+                            </AccordionSummary>
+                            <AccordionDetails className="accordianData">
+                              {sectionsData &&
+                                sectionsData.map(element => {
+                                  const { title, duration: durationTime } =
+                                    element || {};
+                                  return (
+                                    <div className="listItembox">
+                                      <div className="iconbox">
+                                        <svg
+                                          width="10"
+                                          height="13"
+                                          viewBox="0 0 10 13"
+                                          fill="none"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                          <path
+                                            d="M0 0L10 6.5L0 13V0Z"
+                                            fill="white"
+                                          />
+                                        </svg>
+                                      </div>
+                                      <div className="listContent">
+                                        <span>{title}</span>
+                                        {durationTime ? (
+                                          <span>{durationTime}</span>
+                                        ) : null}
+                                      </div>
+                                      <div className="listStatus">
+                                        <svg
+                                          width="12"
+                                          height="10"
+                                          viewBox="0 0 12 10"
+                                          fill="none"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                          <path
+                                            d="M11 1L4.125 9L1 5.36364"
+                                            stroke="#DA3A33"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                          />
+                                        </svg>
+                                      </div>
+                                    </div>
+                                  );
+                                })}
+                              <Assessment />
+                            </AccordionDetails>
+                          </Accordion>
                         );
                       })}
                   </div>
                 </TabContainer>
-                <TabContainer dir={theme.direction}>Quiz Data</TabContainer>
+                <TabContainer dir={theme.direction}>
+                  <Assessment />
+                  <Assessment />
+                  <Assessment />
+                </TabContainer>
               </SwipeableViews>
             </div>
           </div>

@@ -5,18 +5,9 @@ export const VideoPlayerContainer = styled.div`
   ${globalStyle.column};
   /* height: 225px; */
   border-radius: 5px;
+  position: relative;
   @media (min-width: ${globalStyle.small}) {
     border: solid 1px #c1bfbf;
-    background-color: #dedede;
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.05);
-    position: relative;
-    height: 360px;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 36.46%,
-      rgba(0, 0, 0, 0.74) 82.29%,
-      #000000 100%
-    );
   }
   .playerDesc {
     ${globalStyle.flex};
@@ -25,11 +16,6 @@ export const VideoPlayerContainer = styled.div`
     padding: 10px;
     @media (min-width: ${globalStyle.small}) {
       padding: 16px 24px;
-      color: #ffffff;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
     }
     .box_1,
     .box_2 {

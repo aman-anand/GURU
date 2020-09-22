@@ -184,4 +184,75 @@ export const GuruCoursesDetailsContainer = styled.section`
       }
     }
   }
+  .cariculamBox {
+    & > div {
+      box-shadow: inherit;
+    }
+  }
+  .accordianWrapper {
+    background-color: #F7F7F7;
+    .headingRow {
+      & > div {
+        margin: 0px;
+      }
+    }
+    .accorHeading {
+      text-transform: uppercase;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 12px;
+      color: #000000;
+    }
+  }
+
+  .accordianData {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    flex: 1;
+  }
+
+  .listItembox {
+    ${globalStyle.flex};
+    ${globalStyle.row};
+    flex: 1;
+    cursor: pointer;
+    border-bottom: 0.5px solid #CED4DB;
+    padding: 7.5px 0px;
+    & > div {
+      ${globalStyle.flex};
+      ${globalStyle.column};
+    }
+    .iconbox {
+      background-color: #FFC212;
+      width: 48px;
+      height: 32px;
+      margin-right: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+    .listContent {
+      flex: 1;
+      align-items: flex-start;
+      justify-content: center;
+      span {
+        &:nth-child(1) {
+          font-weight: 500;
+          font-size: 12px;
+          color: #000000;
+          text-transform: uppercase;
+        }
+        &:nth-child(2) {
+          font-weight: normal;
+          font-size: 10px;
+          line-height: 126.9%;
+          color: #727B87;
+        }
+      }
+    }
+    .listStatus {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
 `;
