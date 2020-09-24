@@ -5,10 +5,13 @@
  */
 
 import React, { memo } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { AssessmentContainer } from './style';
 
-function Assessment() {
+function Assessment(props) {
+  const { time, title, questions } = props.data || {};
+  const quLength = questions ? questions.length : 0;
+  console.log('PROPS', props);
   return (
     <AssessmentContainer>
       <div className="iconBox">
@@ -26,17 +29,22 @@ function Assessment() {
         </svg>
       </div>
       <div className="mContent">
-        <span>COMPLETED</span>
-        <span>ASSESSMENT 1</span>
-        <span>5 Questions | 15 Minutes</span>
+        <span className="complete">COMPLETED</span>
+        <span>{title}</span>
+        <span>
+          {quLength} Questions | {time} Minutes
+        </span>
       </div>
       <div className="mRight">
-        <span className="score">Score: 5/5</span>
+        {/* <span className="score">Score: 5/5</span> */}
+        <span className="startButton">START</span>
       </div>
     </AssessmentContainer>
   );
 }
 
-Assessment.propTypes = {};
+Assessment.propTypes = {
+  data: PropTypes.object,
+};
 
 export default memo(Assessment);

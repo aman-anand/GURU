@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import styled from 'styled-components';
 import globalStyle from '../../common/styles/var';
 export const GuruCoursesDetailsContainer = styled.section`
@@ -223,7 +224,8 @@ export const GuruCoursesDetailsContainer = styled.section`
       ${globalStyle.column};
     }
     .iconbox {
-      background-color: #FFC212;
+      background-color: ${props =>
+        props.color ? `#${props.color}` : '#ffc212'};
       width: 48px;
       height: 32px;
       margin-right: 10px;

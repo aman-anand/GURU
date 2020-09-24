@@ -227,5 +227,17 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+  .dWrapp {
+    padding: 10px !important;
+    width: 100%;
+    height: 300px;
+    @media (min-width: ${globalStyle.small}) {
+      width: 550px;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 export default GlobalStyle;

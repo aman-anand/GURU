@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable no-param-reassign */
 /**
  *
@@ -25,11 +26,15 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import Slide from '@material-ui/core/Slide';
 import { courseDetailsAction } from '../Course/actions';
 import Header from '../../components/Header/Loadable';
 import reducer from '../Course/reducer';
 import makeSelectCourseDetails from './selectors';
 import { getFromLocalStore } from '../../services/CommonSetterGetter';
+// NOTE: Material
 
 import SessionCard from '../../components/SessionCard/Loadable';
 import VideoCard from '../../components/VideoCard/Loadable';
@@ -57,14 +62,19 @@ const styles = theme => ({
     width: 500,
   },
 });
-
+function Transition(props) {
+  return <Slide direction="up" {...props} />;
+}
 export class CourseDetails extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       value: 0,
+      videoModel: false,
     };
     this.store = getFromLocalStore(['token', 'id', 'role', 'expires', 'phone']);
+    this.color = Math.floor(Math.random() * 16777215).toString(16);
+    this.listOnClickBox = this.listOnClickBox.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -103,6 +113,20 @@ export class CourseDetails extends React.PureComponent {
     });
   };
 
+  listOnClickBox = params => {
+    const { type, url } = params || {};
+    if (['video'].includes(type)) {
+      this.setState({
+        videoModel: true,
+        url,
+      });
+    }
+  };
+
+  handleClose = () => {
+    this.setState({ videoModel: false });
+  };
+
   render() {
     const { isMobile, theme, courseDetails } = this.props || {};
     const { expanded } = this.state;
@@ -123,7 +147,7 @@ export class CourseDetails extends React.PureComponent {
       sections,
     } = course || {};
     return (
-      <GuruCoursesDetailsContainer>
+      <GuruCoursesDetailsContainer color={this.color}>
         <Helmet>
           <title>COURSE DETAILS</title>
           <meta name="description" content="Description of Home" />
@@ -247,7 +271,11 @@ export class CourseDetails extends React.PureComponent {
                       sections.map((ele, idx) => {
                         const { name, _id } = ele || {};
                         const panel = `panel${idx}`;
-                        const { data: sectionsData } = ele || {};
+                        const {
+                          data: sectionsData,
+                          assessment,
+                          description: desc,
+                        } = ele || {};
                         return (
                           <Accordion
                             key={_id}
@@ -264,25 +292,40 @@ export class CourseDetails extends React.PureComponent {
                               <p className="accorHeading">{name}</p>
                             </AccordionSummary>
                             <AccordionDetails className="accordianData">
+                              <p className="description">{desc}</p>
                               {sectionsData &&
                                 sectionsData.map(element => {
-                                  const { title, duration: durationTime } =
-                                    element || {};
+                                  const {
+                                    title,
+                                    duration: durationTime,
+                                    type,
+                                    url,
+                                  } = element || {};
                                   return (
-                                    <div className="listItembox">
+                                    <div
+                                      className="listItembox ff"
+                                      onClick={() =>
+                                        this.listOnClickBox({ type, url })
+                                      }
+                                      role="presentation"
+                                    >
                                       <div className="iconbox">
-                                        <svg
-                                          width="10"
-                                          height="13"
-                                          viewBox="0 0 10 13"
-                                          fill="none"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <path
-                                            d="M0 0L10 6.5L0 13V0Z"
-                                            fill="white"
-                                          />
-                                        </svg>
+                                        {['video'].includes(type) ? (
+                                          <svg
+                                            width="10"
+                                            height="13"
+                                            viewBox="0 0 10 13"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <path
+                                              d="M0 0L10 6.5L0 13V0Z"
+                                              fill="white"
+                                            />
+                                          </svg>
+                                        ) : (
+                                          <span>a</span>
+                                        )}
                                       </div>
                                       <div className="listContent">
                                         <span>{title}</span>
@@ -310,7 +353,7 @@ export class CourseDetails extends React.PureComponent {
                                     </div>
                                   );
                                 })}
-                              <Assessment />
+                              <Assessment data={assessment} />
                             </AccordionDetails>
                           </Accordion>
                         );
@@ -350,6 +393,24 @@ export class CourseDetails extends React.PureComponent {
           ) : null}
         </div>
         {/* {isMobile ? <Footer /> : null} */}
+        <Dialog
+          open={this.state.videoModel}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={this.handleClose}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"
+          className="dialogVideoWrapper"
+        >
+          <DialogContent className="dWrapp">
+            <iframe
+              id="player"
+              type="text/html"
+              src={this.state.url}
+              frameBorder="0"
+            />
+          </DialogContent>
+        </Dialog>
       </GuruCoursesDetailsContainer>
     );
   }

@@ -18,7 +18,12 @@ export const AssessmentContainer = styled.div`
     justify-content: center;
     & > span {
       &:nth-child(1) {
-        background: #58b368;
+        &.complete {
+          background: #58b368;
+        }
+        &.pending {
+          background: #da3a33;
+        }
         border-radius: 36px;
         font-weight: 500;
         font-size: 10px;
@@ -35,6 +40,7 @@ export const AssessmentContainer = styled.div`
         font-size: 12px;
         color: #000000;
         margin: 3px 0px;
+        text-transform: upercase;
       }
       &:nth-child(3) {
         font-weight: normal;
@@ -46,12 +52,21 @@ export const AssessmentContainer = styled.div`
   }
   .mRight {
     ${globalStyle.flex};
-    span {
+    .score {
       padding: 10px;
       background-color: rgba(206, 212, 219, 0.3);
       font-size: 12px;
       align-self: center;
       justify-content: center;
+    }
+    .startButton {
+      justify-content: center;
+      border: 1px solid #403f3f;
+      font-size: 14px;
+      background-color: transparent;
+      align-self: center;
+      padding: 5px 10px;
+      cursor: pointer;
     }
   }
 `;
