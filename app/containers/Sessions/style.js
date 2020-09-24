@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import globalStyle from '../../common/styles/var';
-export const HomeContainer = styled.section`
+export const SessionContainer = styled.section`
   ${globalStyle.flex};
   ${globalStyle.column};
   @media (max-width: ${globalStyle.small}) {
@@ -38,14 +38,6 @@ export const HomeContainer = styled.section`
   .rightBox {
     @media (min-width: ${globalStyle.small}) {
       width: 33%;
-    }
-  }
-  .attendanceUpdates {
-    margin-top: 24px;
-    ._sessionBox {
-      @media (min-width: ${globalStyle.small}) {
-        align-items: center;
-      }
     }
   }
 `;

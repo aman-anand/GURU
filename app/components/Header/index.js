@@ -114,13 +114,13 @@ export const listCompo = props => {
               />
             </svg>
           </i>
-          <span>Upcoming Sessions</span>
+          <span>Sessions</span>
         </Link>
       </li>
       <li>
         <Link
-          to="/sessions"
-          className={`${['/sessions'].includes(pathname) ? 'active' : null}`}
+          to="/certificate"
+          className={`${['/certificate'].includes(pathname) ? 'active' : null}`}
           role="presentation"
         >
           <i className="icon">
@@ -137,7 +137,7 @@ export const listCompo = props => {
               />
             </svg>
           </i>
-          <span>ATTENDED SESSIONS</span>
+          <span>Certificate</span>
         </Link>
       </li>
       {isMobile ? (

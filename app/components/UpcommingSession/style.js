@@ -59,4 +59,25 @@ export const UpcommingSessionContainer = styled.div`
       }
     }
   }
+
+  p._sessionBox {
+    margin: 0px;
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    span {
+      &:nth-child(1) {
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 14px;
+        text-transform: uppercase;
+        color: #000000;
+      }
+      &:nth-child(2) {
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        color: #403f3f;
+      }
+    }
+  }
 `;

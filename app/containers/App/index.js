@@ -22,6 +22,8 @@ import Videos from '../Videos/Loadable';
 import VideoDetails from '../VideoDetails/Loadable';
 import Articles from '../Articles/Loadable';
 import ArticleDetails from '../ArticleDetails/Loadable';
+import Sessions from '../Sessions/Loadable';
+import Certificates from '../Certificates';
 import Loader from '../../components/Loader/Loadable';
 // Routing hooks
 import CheckAuthenticationHook from '../../utils/CheckAuthenticationHook';
@@ -90,6 +92,16 @@ export default function App() {
           exact
           path="/articles/:articlesId"
           component={CheckAuthenticationHook(ArticleDetails, true)}
+        />
+        <Route
+          exact
+          path="/sessions"
+          component={CheckAuthenticationHook(Sessions, true)}
+        />
+        <Route
+          exact
+          path="/certificate"
+          component={CheckAuthenticationHook(Certificates, true)}
         />
         <Route exact path="*" component={PageNotFoundHook(NotFoundPage)} />
       </Switch>
