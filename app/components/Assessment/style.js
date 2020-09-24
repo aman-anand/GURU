@@ -3,7 +3,14 @@ import globalStyle from '../../common/styles/var';
 export const AssessmentContainer = styled.div`
   ${globalStyle.flex};
   ${globalStyle.row};
-  padding: 7.5px 0px;
+  margin-top: 7.5px;
+  padding: 7.5px 10px;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  &.locked {
+    pointer-events: none;
+    opacity: 0.5;
+  }
   .iconBox {
     ${globalStyle.flex};
     margin-right: 10px;
@@ -67,6 +74,7 @@ export const AssessmentContainer = styled.div`
       align-self: center;
       padding: 5px 10px;
       cursor: pointer;
+      width: 100%;
     }
   }
 `;

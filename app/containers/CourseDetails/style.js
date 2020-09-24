@@ -224,13 +224,21 @@ export const GuruCoursesDetailsContainer = styled.section`
       ${globalStyle.column};
     }
     .iconbox {
-      background-color: ${props =>
-        props.color ? `#${props.color}` : '#ffc212'};
+      background-color: #DA3A33;
       width: 48px;
       height: 32px;
       margin-right: 10px;
       justify-content: center;
       align-items: center;
+      &.video {
+        background-color: #DA3A33;
+      }
+      &.pdf {
+        background-color: #c5c5c5;
+      }
+      &.blog {
+        background-color: #868282;
+      }
     }
     .listContent {
       flex: 1;
@@ -256,5 +264,15 @@ export const GuruCoursesDetailsContainer = styled.section`
       justify-content: center;
     }
   }
-
+  .downlodCertificate {
+    background: #DA3A33;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 7.5px;
+    width: 100%;
+  }
 `;
