@@ -11,6 +11,7 @@ import withSizes from 'react-sizes';
 import { Link } from 'react-router-dom';
 import history from '../../utils/history';
 import { isUserAlreadyLogin } from '../../dataService/Login';
+import { getFromLocalStore } from '../../services/CommonSetterGetter';
 // import styled from 'styled-components';
 import logoIMG from '../../images/logo.svg';
 import hemburger from '../../images/hemburger.png';
@@ -28,7 +29,10 @@ export const listCompo = props => {
   const { isMobile } = props || {};
   const { pathname } = window.location;
   const pathMatch = pathname.indexOf('courses/') > -1;
-  // console.log('pathname', pathname);
+  console.log(
+    'LOCAL',
+    getFromLocalStore(['rollNumber', 'fName', 'lName', 'profileImage']),
+  );
   return (
     <ul className="navList">
       {isMobile ? (
@@ -126,13 +130,13 @@ export const listCompo = props => {
           <i className="icon">
             <svg
               width="20"
-              height="20"
-              viewBox="0 0 20 14"
+              height="19"
+              viewBox="0 0 20 19"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M8 10L13.19 7L8 4V10ZM19.56 2.17C19.69 2.64 19.78 3.27 19.84 4.07C19.91 4.87 19.94 5.56 19.94 6.16L20 7C20 9.19 19.84 10.8 19.56 11.83C19.31 12.73 18.73 13.31 17.83 13.56C17.36 13.69 16.5 13.78 15.18 13.84C13.88 13.91 12.69 13.94 11.59 13.94L10 14C5.81 14 3.2 13.84 2.17 13.56C1.27 13.31 0.69 12.73 0.44 11.83C0.31 11.36 0.22 10.73 0.16 9.93C0.0900001 9.13 0.0599999 8.44 0.0599999 7.84L0 7C0 4.81 0.16 3.2 0.44 2.17C0.69 1.27 1.27 0.69 2.17 0.44C2.64 0.31 3.5 0.22 4.82 0.16C6.12 0.0899998 7.31 0.0599999 8.41 0.0599999L10 0C14.19 0 16.8 0.16 17.83 0.44C18.73 0.69 19.31 1.27 19.56 2.17Z"
+                d="M2 0C0.89 0 0 0.89 0 2V12C0 12.5304 0.210714 13.0391 0.585786 13.4142C0.960859 13.7893 1.46957 14 2 14H10V19L13 16L16 19V14H18C18.5304 14 19.0391 13.7893 19.4142 13.4142C19.7893 13.0391 20 12.5304 20 12V5V3V2C20 1.46957 19.7893 0.960859 19.4142 0.585786C19.0391 0.210714 18.5304 0 18 0H14H2ZM10 2L13 4L16 2V5.5L19 7L16 8.5V12L13 10L10 12V8.5L7 7L10 5.5V2ZM2 2H7V4H2V2ZM2 6H5V8H2V6ZM2 10H7V12H2V10Z"
                 fill="#403F3F"
               />
             </svg>
@@ -142,31 +146,6 @@ export const listCompo = props => {
       </li>
       {isMobile ? (
         <Fragment>
-          <li>
-            <Link
-              to="/sessions"
-              className={`${
-                ['/sessions'].includes(pathname) ? 'active' : null
-              }`}
-              role="presentation"
-            >
-              <i className="icon">
-                <svg
-                  width="20"
-                  height="19"
-                  viewBox="0 0 20 19"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 0C0.89 0 0 0.89 0 2V12C0 12.5304 0.210714 13.0391 0.585786 13.4142C0.960859 13.7893 1.46957 14 2 14H10V19L13 16L16 19V14H18C18.5304 14 19.0391 13.7893 19.4142 13.4142C19.7893 13.0391 20 12.5304 20 12V5V3V2C20 1.46957 19.7893 0.960859 19.4142 0.585786C19.0391 0.210714 18.5304 0 18 0H14H2ZM10 2L13 4L16 2V5.5L19 7L16 8.5V12L13 10L10 12V8.5L7 7L10 5.5V2ZM2 2H7V4H2V2ZM2 6H5V8H2V6ZM2 10H7V12H2V10Z"
-                    fill="#403F3F"
-                  />
-                </svg>
-              </i>
-              <span>Certificate</span>
-            </Link>
-          </li>
           <li>
             <Link
               to="/sessions"
@@ -347,6 +326,8 @@ const logOut = () => {
   history.push('/signin');
 };
 function Header(props) {
+  const { rollNumber, fName, lName, profileImage } =
+    getFromLocalStore(['rollNumber', 'fName', 'lName', 'profileImage']) || {};
   const { isMobile, title } = props || {};
   return (
     <HeaderContainer>
@@ -383,15 +364,50 @@ function Header(props) {
                 </svg>
               </i>
             </div>
+            <div className="chart">
+              <i>
+                <svg
+                  width="17"
+                  height="20"
+                  viewBox="0 0 17 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13 15H4V8.5C4 6 6 4 8.5 4C11 4 13 6 13 8.5V15ZM15 14V8.5C15 5.43 12.86 2.86 10 2.18V1.5C10 1.10218 9.84196 0.720644 9.56066 0.43934C9.27936 0.158035 8.89782 0 8.5 0C8.10218 0 7.72064 0.158035 7.43934 0.43934C7.15804 0.720644 7 1.10218 7 1.5V2.18C4.13 2.86 2 5.43 2 8.5V14L0 16V17H17V16L15 14ZM8.5 20C9.03043 20 9.53914 19.7893 9.91421 19.4142C10.2893 19.0391 10.5 18.5304 10.5 18H6.5C6.5 18.5304 6.71071 19.0391 7.08579 19.4142C7.46086 19.7893 7.96957 20 8.5 20Z"
+                    fill="#403F3F"
+                  />
+                </svg>
+              </i>
+            </div>
             <div className="myProfileNav">
-              <div className="proIcon" />
+              <div className="proIcon">
+                <img src={profileImage} alt="" title="" />
+              </div>
               <div className="proName">
                 <p>
-                  <span>Rajiv Shukla</span>
-                  <span>Roll No: 00274</span>
+                  <span>
+                    {fName} {lName}
+                  </span>
+                  <span>Roll No: {rollNumber}</span>
                 </p>
               </div>
-              <i className="arrow" />
+              <i className="arrow">
+                <svg
+                  width="12"
+                  height="7"
+                  viewBox="0 0 12 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L6 6L11 1"
+                    stroke="#727B87"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </i>
             </div>
           </Fragment>
         ) : (

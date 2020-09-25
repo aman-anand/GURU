@@ -30,7 +30,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
 import Button from '@material-ui/core/Button';
-import { courseDetailsAction } from '../Course/actions';
+import { courseDetailsAction, courseAction } from '../Course/actions';
 import Header from '../../components/Header/Loadable';
 import reducer from '../Course/reducer';
 import makeSelectCourseDetails from './selectors';
@@ -38,7 +38,6 @@ import { getFromLocalStore } from '../../services/CommonSetterGetter';
 // NOTE: Material
 
 import SessionCard from '../../components/SessionCard/Loadable';
-import VideoCard from '../../components/VideoCard/Loadable';
 import VideoPlayer from '../../components/VideoPlayer/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
 import OptionalHeader from '../../components/OptionalHeader';
@@ -94,6 +93,13 @@ export class CourseDetails extends React.PureComponent {
       number,
     };
     this.props.dispatch(courseDetailsAction(paramOBJ));
+    const parms = {
+      page: 1,
+      limit: 4,
+      status: 0,
+      all: true,
+    };
+    this.props.dispatch(courseAction(parms));
   }
 
   handleChange = (event, newValue) => {
@@ -133,10 +139,11 @@ export class CourseDetails extends React.PureComponent {
   render() {
     const { isMobile, theme, courseDetails } = this.props || {};
     const { expanded } = this.state;
-    const { courseDetailsObj } = courseDetails || {};
+    const { courseDetailsObj, courseObj } = courseDetails || {};
     const { data } = courseDetailsObj || {};
     const { course, review, attempt } = data || {};
     const { progress } = attempt || {};
+    const { data: courseData } = courseObj || {};
     const {
       coverImage,
       coverVideo,
@@ -426,22 +433,37 @@ export class CourseDetails extends React.PureComponent {
             <div className="rightBox">
               <SectionHeading title="Other INTERESTING COURSES" />
               <div className="cardWrapper">
-                <SessionCard
-                  sticyTwo
-                  sticyTwoData={{ name: '3 SECTIONS', classname: 'expert' }}
-                />
-                <SessionCard
-                  sticyTwo
-                  sticyTwoData={{ name: 'BEGINNER', classname: 'beginner' }}
-                />
-              </div>
-              <SectionHeading
-                class_name="marginTop"
-                title="Other INTERESTING VIDEOS"
-              />
-              <div className="cardWrapper">
-                <VideoCard />
-                <VideoCard />
+                {courseData &&
+                  courseData.map(list => {
+                    const {
+                      name,
+                      sections: sectionsOBJ,
+                      duration: durationOBJ,
+                      totalVideos: totalVideosOBJ,
+                      coverImage: coverImageOBJ,
+                      _id,
+                    } = list || {};
+                    const courseDataOBJ = {
+                      courseName: name,
+                      totalSections: sectionsOBJ ? sectionsOBJ.length : 0,
+                      totalVideosOBJ,
+                      durationOBJ,
+                      coverImageOBJ,
+                      _id,
+                    };
+                    const sticyTwoData = {
+                      name: `${sectionsOBJ ? sectionsOBJ.length : 0} SECTIONS`,
+                      classname: 'expert',
+                    };
+                    return (
+                      <SessionCard
+                        key={_id}
+                        courseData={courseDataOBJ}
+                        sticyTwo
+                        sticyTwoData={sticyTwoData}
+                      />
+                    );
+                  })}
               </div>
             </div>
           ) : null}

@@ -41,14 +41,17 @@ export class Certificates extends React.PureComponent {
           <div className="leftBox">
             <UpcommingSession
               title="CERTIFICATES"
-              subtitle="1 certificates earned"
+              subtitle="0 certificates earned"
             />
+            <p>Dont have Certification</p>
           </div>
           {!isMobile ? (
             <div className="rightBox">
-              <SessionCard />
-              <SessionCard />
-              <SessionCard />
+              <div className="cardWrapper">
+                <SessionCard />
+                <SessionCard />
+                <SessionCard />
+              </div>
             </div>
           ) : null}
         </div>

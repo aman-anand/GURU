@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /**
  *
  * Sessions
@@ -18,6 +19,8 @@ import reducer from './reducer';
 import SessionCard from '../../components/SessionCard/Loadable';
 import Header from '../../components/Header/Loadable';
 import Bredcrumb from '../../components/Bredcrumb/Loadable';
+import SessionBlock from '../../components/SessionBlock/Loadable';
+import SectionHeading from '../../components/SectionHeading/Loadable';
 // NOTE: Style
 import { SessionContainer } from './style';
 
@@ -38,21 +41,44 @@ export class Sessions extends React.PureComponent {
         <Header title="Sessions" />
         <div className="container">
           <div className="leftBox">
-            <Bredcrumb>
-              <div className="_bWrapper">
-                <span>
-                  <a href="/ddd">SESSIONS</a>
-                </span>
-                <span>{'>'}</span>
-                <span>UPCOMING SESSIONS</span>
+            {!isMobile ? (
+              <Bredcrumb>
+                <div className="_bWrapper">
+                  <span>
+                    <a>SESSIONS</a>
+                  </span>
+                  <span>{'>'}</span>
+                  <span>UPCOMING SESSIONS</span>
+                </div>
+              </Bredcrumb>
+            ) : null}
+            <div className="sessionWrapper">
+              <div className="leftNavSession">
+                <div className="navList">
+                  <a className="active" href="/">
+                    UPCOMING SESSIONS
+                  </a>
+                </div>
+                <div className="navList">
+                  <a href="/">ATTENDED SESSIONS</a>
+                </div>
               </div>
-            </Bredcrumb>
+              <div className="sessionCardWrapper">
+                <SessionBlock />
+                <SessionBlock />
+                <SessionBlock />
+                <SessionBlock />
+              </div>
+            </div>
           </div>
           {!isMobile ? (
             <div className="rightBox">
-              <SessionCard />
-              <SessionCard />
-              <SessionCard />
+              <SectionHeading title="Other INTERESTING COURSES" />
+              <div className="cardWrapper">
+                <SessionCard />
+                <SessionCard />
+                <SessionCard />
+              </div>
             </div>
           ) : null}
         </div>

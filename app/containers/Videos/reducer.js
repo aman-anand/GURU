@@ -5,9 +5,11 @@
  */
 import produce from 'immer';
 import { VIDEOS_FULFILLED, VIDEOS_REJECTED, VIDEOS_PENDING } from './constants';
+import { COURSE_FULFILLED } from '../Course/constants';
 
 export const initialState = {
   data: {},
+  courseObj: {},
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -23,6 +25,12 @@ const videosReducer = (state = initialState, action) =>
         }
         break;
       case VIDEOS_REJECTED:
+        break;
+      case COURSE_FULFILLED:
+        {
+          const { payload } = action;
+          draft.courseObj = payload;
+        }
         break;
     }
   });

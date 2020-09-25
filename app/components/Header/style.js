@@ -93,7 +93,6 @@ export const HeaderContainer = styled.header`
     .chart {
       width: 28px;
       height: 28px;
-      border: solid 1px red;
       margin-right: 20px;
       align-items: center;
       justify-content: center;
@@ -105,7 +104,7 @@ export const HeaderContainer = styled.header`
       align-items: center;
       cursor: pointer;
       @media (min-width: ${globalStyle.small}) {
-        width: 200px;
+        max-width: 250px;
       }
       .proIcon {
         ${globalStyle.row};
@@ -115,6 +114,10 @@ export const HeaderContainer = styled.header`
         border-radius: 60px;
         align-items: center;
         margin-right: 15px;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
       }
       .proName {
         flex: 1;
@@ -137,9 +140,9 @@ export const HeaderContainer = styled.header`
       .arrow {
         ${globalStyle.flex};
         ${globalStyle.column};
-        width: 10px;
+        width: 14px;
         height: 10px;
-        border: solid 1px red;
+        margin-left: 10px;
       }
     }
   }

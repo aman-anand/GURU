@@ -23,7 +23,18 @@ const signinReducer = (state = initialState, action) =>
       case SIGN_IN_FULFILLED:
         {
           const { data, success } = action.payload || {};
-          const { auth, email, role, id, profileImage, phone } = data;
+          const {
+            auth,
+            email,
+            role,
+            id,
+            profileImage,
+            phone,
+            rollNumber,
+            fName,
+            lName,
+            gender,
+          } = data;
           const { token, expires } = auth || {};
           if (success) {
             setLoclStoreArry([
@@ -34,6 +45,10 @@ const signinReducer = (state = initialState, action) =>
               { profileImage },
               { expires },
               { phone },
+              { rollNumber },
+              { fName },
+              { lName },
+              { gender },
             ]);
           }
           draft.data = data;
@@ -45,7 +60,18 @@ const signinReducer = (state = initialState, action) =>
       case REGISTER_FULFILLED:
         {
           const { data, success } = action.payload || {};
-          const { auth, email, role, id, profileImage, phone } = data;
+          const {
+            auth,
+            email,
+            role,
+            id,
+            profileImage,
+            phone,
+            rollNumber,
+            fName,
+            lName,
+            gender,
+          } = data;
           const { token, expires } = auth || {};
           if (success) {
             setLoclStoreArry([
@@ -56,6 +82,10 @@ const signinReducer = (state = initialState, action) =>
               { profileImage },
               { expires },
               { phone },
+              { rollNumber },
+              { fName },
+              { lName },
+              { gender },
             ]);
           }
           draft.merge({
