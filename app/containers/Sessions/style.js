@@ -68,7 +68,22 @@ export const SessionContainer = styled.section`
         @media (min-width: ${globalStyle.small}) {
           margin-bottom: 7.5px;
         }
-        a {
+
+        input {
+          display: none;
+          &:checked {
+            & + label {
+              @media (max-width: ${globalStyle.small}) {
+                background-color: rgba(46, 50, 61, 0.8);
+              }
+              @media (min-width: ${globalStyle.small}) {
+                border-left: solid 7px #000000;
+              }
+            }
+          }
+        }
+
+        label {
           display: block;
           text-decoration: none;
           font-style: normal;
@@ -79,18 +94,12 @@ export const SessionContainer = styled.section`
           color: #ffffff;
           padding: 20px 25px;
           background-color: #2e323d;
+          cursor: pointer;
           @media (min-width: ${globalStyle.small}) {
             color: #000000;
             border-radius: 7px;
             background-color: #ffffff;
-          }
-          &.active {
-            @media (max-width: ${globalStyle.small}) {
-              background-color: rgba(46, 50, 61, 0.8);
-            }
-            @media (min-width: ${globalStyle.small}) {
-              border-left: solid 7px #000000;
-            }
+            border-left: solid 7px #ffffff;
           }
         }
       }

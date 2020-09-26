@@ -27,8 +27,15 @@ import { SessionContainer } from './style';
 export class Sessions extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      sessionRadio: 'upComingSession',
+    };
   }
+
+  onChangeRadio = e => {
+    const { value } = e.target;
+    window.console.log('VALUE', value);
+  };
 
   render() {
     const { isMobile } = this.props;
@@ -55,12 +62,34 @@ export class Sessions extends React.PureComponent {
             <div className="sessionWrapper">
               <div className="leftNavSession">
                 <div className="navList">
-                  <a className="active" href="/">
-                    UPCOMING SESSIONS
-                  </a>
+                  <input
+                    id="upComingSession"
+                    type="radio"
+                    name="session"
+                    value="upComingSession"
+                    ckacked={['upComingSession'].includes(
+                      this.state.sessionRadio,
+                    )}
+                    onChange={e => this.onChangeRadio(e)}
+                  />
+                  <label htmlFor="upComingSession">
+                    <span>UPCOMING SESSIONS</span>
+                  </label>
                 </div>
                 <div className="navList">
-                  <a href="/">ATTENDED SESSIONS</a>
+                  <input
+                    id="attendedSession"
+                    type="radio"
+                    name="session"
+                    value="attendedSession"
+                    ckacked={['attendedSession'].includes(
+                      this.state.sessionRadio,
+                    )}
+                    onChange={e => this.onChangeRadio(e)}
+                  />
+                  <label htmlFor="attendedSession">
+                    <span>ATTENDED SESSIONS</span>
+                  </label>
                 </div>
               </div>
               <div className="sessionCardWrapper">

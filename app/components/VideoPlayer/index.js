@@ -28,7 +28,7 @@ function VideoPlayer(props) {
         <div className="box_2">
           <p>
             <span className="tex_big">{courseName}</span>
-            <span className="tex_small">Course Duration: {duration}</span>
+            <span className="tex_small">Duration: {duration}</span>
           </p>
         </div>
       </div>

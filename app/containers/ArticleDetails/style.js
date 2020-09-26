@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import globalStyle from '../../common/styles/var';
-export const VideoDetailsContainer = styled.section`
+export const ArticleDetailsContainer = styled.section`
   ${globalStyle.flex};
   ${globalStyle.column};
   @media (max-width: ${globalStyle.small}) {

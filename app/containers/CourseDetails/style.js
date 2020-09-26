@@ -64,7 +64,7 @@ export const GuruCoursesDetailsContainer = styled.section`
       &.certificateItem {
         ${globalStyle.flex};
         ${globalStyle.row};
-        background: #f7f7f7;
+        background: #ededed;
         box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         padding: 10px;
@@ -104,87 +104,6 @@ export const GuruCoursesDetailsContainer = styled.section`
     }
   }
 
-  .review_box {
-    ${globalStyle.flex};
-    ${globalStyle.row};
-    background: #F7F7F7;
-    border-radius: 10px;
-    padding: 10px;
-    flex: 1;
-    align-items: center;
-    margin-bottom: 10px;
-    span {
-      ${globalStyle.flex};
-      &:nth-child(1) {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 14px;
-        line-height: 126.9%;
-        text-align: center;
-        color: #000000;
-      }
-      &:nth-child(2) {
-        margin-left: 10px;
-        margin-right: 10px;
-        flex: 1;
-      }
-      &:nth-last-child(1) {
-        font-size: 12px;
-      }
-    }
-  }
-
-  .commentsWrapper {
-    ${globalStyle.flex};
-    ${globalStyle.column};
-    background: #F7F7F7;
-    border-radius: 10px;
-    padding: 10px;
-    flex: 1;
-    margin-bottom: 10px;
-    .cz_list {
-      ${globalStyle.flex};
-      ${globalStyle.row};
-      align-items: center;
-      margin-top: 7.5px;
-      margin-bottom: 7.5px;
-      & > div {
-        ${globalStyle.flex};
-        &:nth-child(1) {
-          border: solid 1px #bdbcbc;
-          width: 35px;
-          height: 35px;
-          border-radius: 50%;
-          background-color: #dedede;
-          margin-right: 10px;
-          align-items: center;
-          justify-content: center;
-        }
-        &:nth-child(2) {
-          ${globalStyle.column};
-          flex: 1;
-          span {
-            line-height: 15px;
-            &:nth-child(1) {
-              font-size: 12px;
-            }
-            &:nth-child(2) {
-              font-size: 11px;
-              color: #9a9898;
-            }
-            &:nth-child(3) {
-              font-size: 12px;
-              color: #000000;
-            }
-          }
-        }
-        input {
-          border: solid 1px #dadada;
-          padding: 7.5px !important;
-        }
-      }
-    }
-  }
   .cariculamBox {
     & > div {
       box-shadow: inherit;

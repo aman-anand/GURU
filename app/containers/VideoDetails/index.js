@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /**
  *
  * VideoDetails
@@ -20,7 +21,8 @@ import OptionalHeader from '../../components/OptionalHeader';
 import VideoPlayer from '../../components/VideoPlayer/Loadable';
 import SessionCard from '../../components/SessionCard/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
-import { courseAction } from '../Videos/actions';
+import Ratings from '../../components/Ratings/Loadable';
+import { courseAction, videosDetailsAction } from '../Videos/actions';
 
 // NOTE: Style
 import { VideoDetailsContainer } from './style';
@@ -30,20 +32,41 @@ export class VideoDetails extends React.PureComponent {
     this.state = {};
   }
 
+  static getDerivedStateFromProps(props, state) {
+    const { match } = props || {};
+    const { params } = match || {};
+    const { videosId: VIDEO_ID } = params || {};
+    state.VIDEO_ID = VIDEO_ID || null; // Set videosId
+    return null;
+  }
+
   componentDidMount() {
+    const { VIDEO_ID } = this.state;
     const parms = {
       page: 1,
       limit: 4,
       status: 0,
       all: true,
     };
+    const paramOBJ = {
+      VIDEO_ID,
+    };
     this.props.dispatch(courseAction(parms));
+    this.props.dispatch(videosDetailsAction(paramOBJ));
   }
 
   render() {
     const { isMobile, videoDetails } = this.props || {};
-    const { courseObj } = videoDetails || {};
+    const { courseObj, details } = videoDetails || {};
     const { data: courseData } = courseObj || {};
+    const { video, review } = details || {};
+    const {
+      name: courseName,
+      description,
+      thumb: coverImage,
+      videoUrl: coverVideo,
+      duration,
+    } = video || {};
     return (
       <VideoDetailsContainer>
         <Helmet>
@@ -51,13 +74,42 @@ export class VideoDetails extends React.PureComponent {
           <meta name="description" content="Description of VideoDetails" />
         </Helmet>
         {!isMobile ? (
-          <Header title="COURSE DETAILS" />
+          <Header title="VIDEO" />
         ) : (
-          <OptionalHeader title="VIDEO DETAILS" goTo="/videos" />
+          <OptionalHeader title="VIDEO" goTo="/videos" />
         )}
         <div className="container">
           <div className="leftBox">
-            <VideoPlayer />
+            <VideoPlayer
+              data={{ coverImage, coverVideo, courseName, duration }}
+            />
+            <div className="_descBox">
+              <p className="_desc">{description}</p>
+              <div className="review_box">
+                <span>REVIEWS</span>
+                <Ratings />
+                <span>Based on {review ? review.length : 0} reviews</span>
+              </div>
+              <div className="commentsWrapper">
+                <p>COMMENTS</p>
+                {review &&
+                  review.map(item => {
+                    const { addedBy, addedOn, review: reviewText, _id } =
+                      item || {};
+                    const { fName, lName } = addedBy || {};
+                    return (
+                      <div className="cz_list" key={_id}>
+                        <div />
+                        <div>
+                          <span>{`${fName} ${lName}`}</span>
+                          <span>{addedOn || 'NULL'}</span>
+                          <span>{reviewText || null}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
           </div>
           {!isMobile ? (
             <div className="rightBox">

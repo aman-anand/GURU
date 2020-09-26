@@ -8,10 +8,14 @@ import {
   ARTICLES_FULFILLED,
   ARTICLES_REJECTED,
   ARTICLES_PENDING,
+  ARTICLES_DETAILS_FULFILLED,
 } from './constants';
+import { COURSE_FULFILLED } from '../Course/constants';
 
 export const initialState = {
   data: {},
+  courseObj: {},
+  details: [],
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -27,6 +31,19 @@ const articlesReducer = (state = initialState, action) =>
         }
         break;
       case ARTICLES_REJECTED:
+        break;
+      case ARTICLES_DETAILS_FULFILLED:
+        {
+          const { payload } = action;
+          const { data } = payload || {};
+          draft.details = data;
+        }
+        break;
+      case COURSE_FULFILLED:
+        {
+          const { payload } = action;
+          draft.courseObj = payload;
+        }
         break;
     }
   });

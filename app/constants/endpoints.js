@@ -1,5 +1,13 @@
 import globalConfig from '../config';
-export const API = globalConfig.API_BASE();
+// export const API = globalConfig.API_BASE();
+let API;
+if (window.location.origin === 'https://uat.bimapaathshala.org') {
+  API = globalConfig.UAT_BASE();
+} else if (window.location.origin === 'https://staging.bimapaathshala.org') {
+  API = globalConfig.STAGE_BASE();
+} else {
+  API = globalConfig.API_BASE();
+}
 
 // NOTE: Sign In API
 export const SEND_OTP = () => `${API}/user/sendOtp`;
@@ -11,7 +19,7 @@ export const REGISTER = () => `${API}/user/register`;
 export const UPDATE = () => `${API}/user`;
 
 // NOTE: Home API
-export const HOME = () => `${API}/main/home`;
+export const HOME = () => `/main/home`;
 
 // NOTE: Course API
 export const ALL_COURSE = () => `${API}/course/all`;
@@ -19,6 +27,8 @@ export const COURSE_DETAILS = () => `${API}/course/details`;
 
 // NOTE: Articles API
 export const ALL_ARTICLES = () => `${API}/document/all`;
+export const ARTICLE_DETAILS = () => `${API}/document`;
 
 // NOTE: Videos API
 export const ALL_VIDEOS = () => `${API}/video/all`;
+export const VIDEO_DETAILS = () => `${API}/video/detail`;

@@ -4,12 +4,18 @@
  *
  */
 import produce from 'immer';
-import { VIDEOS_FULFILLED, VIDEOS_REJECTED, VIDEOS_PENDING } from './constants';
+import {
+  VIDEOS_FULFILLED,
+  VIDEOS_REJECTED,
+  VIDEOS_PENDING,
+  VIDEOS_DETAILS_FULFILLED,
+} from './constants';
 import { COURSE_FULFILLED } from '../Course/constants';
 
 export const initialState = {
   data: {},
   courseObj: {},
+  details: {},
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -30,6 +36,13 @@ const videosReducer = (state = initialState, action) =>
         {
           const { payload } = action;
           draft.courseObj = payload;
+        }
+        break;
+      case VIDEOS_DETAILS_FULFILLED:
+        {
+          const { payload } = action;
+          const { data } = payload || {};
+          draft.details = data;
         }
         break;
     }
