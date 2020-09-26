@@ -4,11 +4,12 @@
  *
  */
 import produce from 'immer';
-import { UPC_SESION_FULFILLED } from './constants';
+import { UPC_SESION_FULFILLED, ATT_SESION_FULFILLED } from './constants';
 import { COURSE_FULFILLED } from '../Course/constants';
 
 export const initialState = {
   upc: {},
+  att: {},
   courseObj: {},
 };
 
@@ -20,6 +21,12 @@ const sessionsReducer = (state = initialState, action) =>
         {
           const { payload } = action;
           draft.upc = payload;
+        }
+        break;
+      case ATT_SESION_FULFILLED:
+        {
+          const { payload } = action;
+          draft.att = payload;
         }
         break;
       case COURSE_FULFILLED:

@@ -4,12 +4,19 @@
  *
  */
 
-import { UPC_SESSION_API, COURSE_API } from '../../dataService/Home';
+import {
+  UPC_SESSION_API,
+  COURSE_API,
+  ATT_SESSION_API,
+} from '../../dataService/Home';
 
 import {
   UPC_SESION_PENDING,
   UPC_SESION_FULFILLED,
   UPC_SESION_REJECTED,
+  ATT_SESION_PENDING,
+  ATT_SESION_FULFILLED,
+  ATT_SESION_REJECTED,
 } from './constants';
 
 import {
@@ -26,6 +33,18 @@ export function upcSessionAction(params) {
       return dispatch(fetchData({ types: UPC_SESION_FULFILLED, data }));
     } catch (err) {
       return dispatch(fetchData({ types: UPC_SESION_REJECTED, err }));
+    }
+  };
+}
+
+export function attSessionAction(params) {
+  return async dispatch => {
+    dispatch(fetchData({ types: ATT_SESION_PENDING }));
+    try {
+      const { data } = await ATT_SESSION_API(params);
+      return dispatch(fetchData({ types: ATT_SESION_FULFILLED, data }));
+    } catch (err) {
+      return dispatch(fetchData({ types: ATT_SESION_REJECTED, err }));
     }
   };
 }

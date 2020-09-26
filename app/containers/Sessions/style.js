@@ -68,21 +68,6 @@ export const SessionContainer = styled.section`
         @media (min-width: ${globalStyle.small}) {
           margin-bottom: 7.5px;
         }
-
-        input {
-          display: none;
-          &:checked {
-            & + label {
-              @media (max-width: ${globalStyle.small}) {
-                background-color: rgba(46, 50, 61, 0.8);
-              }
-              @media (min-width: ${globalStyle.small}) {
-                border-left: solid 7px #000000;
-              }
-            }
-          }
-        }
-
         label {
           display: block;
           text-decoration: none;
@@ -100,6 +85,14 @@ export const SessionContainer = styled.section`
             border-radius: 7px;
             background-color: #ffffff;
             border-left: solid 7px #ffffff;
+          }
+          &.active {
+            @media (max-width: ${globalStyle.small}) {
+              background-color: rgba(46, 50, 61, 0.8);
+            }
+            @media (min-width: ${globalStyle.small}) {
+              border-left: solid 7px #000000;
+            }
           }
         }
       }

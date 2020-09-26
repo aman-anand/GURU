@@ -21,7 +21,7 @@ import Header from '../../components/Header/Loadable';
 import Bredcrumb from '../../components/Bredcrumb/Loadable';
 import SessionBlock from '../../components/SessionBlock/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
-import { upcSessionAction, courseAction } from './actions';
+import { upcSessionAction, courseAction, attSessionAction } from './actions';
 // NOTE: Style
 import { SessionContainer } from './style';
 
@@ -34,16 +34,22 @@ export class Sessions extends React.PureComponent {
     this.onChangeRadio = this.onChangeRadio.bind(this);
   }
 
-  onChangeRadio = e => {
-    const { value } = e.target;
-    window.console.log('VALUE', value);
-    // this.setState({
-    //   sessionRadio: value,
-    // });
+  onChangeRadio = params => {
+    this.setState({
+      sessionRadio: params,
+    });
+    if (['upComingSession'].includes(params)) {
+      this.props.dispatch(upcSessionAction());
+    } else if (['attendedSession'].includes(params)) {
+      this.props.dispatch(attSessionAction());
+    }
   };
 
   componentDidMount() {
-    this.props.dispatch(upcSessionAction());
+    const { sessionRadio } = this.state;
+    if (['upComingSession'].includes(sessionRadio)) {
+      this.props.dispatch(upcSessionAction());
+    }
     const parms = {
       page: 1,
       limit: 4,
@@ -55,11 +61,11 @@ export class Sessions extends React.PureComponent {
 
   render() {
     const { isMobile, sessions } = this.props;
+    const { sessionRadio } = this.state;
     const { upc, courseObj } = sessions || {};
     const { data: courseData } = courseObj || {};
     const { data: upsData } = upc || {};
     window.console.log('Selected Session', this.state.sessionRadio);
-    window.console.log('upsData', upsData);
     return (
       <SessionContainer>
         <Helmet>
@@ -83,26 +89,28 @@ export class Sessions extends React.PureComponent {
             <div className="sessionWrapper">
               <div className="leftNavSession">
                 <div className="navList">
-                  <input
-                    id="upComingSession"
-                    type="radio"
-                    name="session"
-                    value="upComingSession"
-                    onChange={e => this.onChangeRadio(e)}
-                  />
-                  <label htmlFor="upComingSession">
+                  <label
+                    htmlFor="upComingSession"
+                    onClick={() => this.onChangeRadio('upComingSession')}
+                    className={
+                      ['upComingSession'].includes(sessionRadio)
+                        ? 'active'
+                        : null
+                    }
+                  >
                     <span>UPCOMING SESSIONS</span>
                   </label>
                 </div>
                 <div className="navList">
-                  <input
-                    id="attendedSession"
-                    type="radio"
-                    name="session"
-                    value="attendedSession"
-                    onChange={e => this.onChangeRadio(e)}
-                  />
-                  <label htmlFor="attendedSession">
+                  <label
+                    htmlFor="attendedSession"
+                    onClick={() => this.onChangeRadio('attendedSession')}
+                    className={
+                      ['attendedSession'].includes(sessionRadio)
+                        ? 'active'
+                        : null
+                    }
+                  >
                     <span>ATTENDED SESSIONS</span>
                   </label>
                 </div>
