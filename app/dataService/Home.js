@@ -6,6 +6,7 @@ import {
   ARTICLE_DETAILS,
   ALL_VIDEOS,
   VIDEO_DETAILS,
+  UPC_SESSION,
 } from '../constants/endpoints';
 import { makeHttpRequest as makeHttpCall } from './common/HttpProvider';
 
@@ -57,5 +58,10 @@ export const VIDEO_DETAILS_API = (params, hideLoader) => {
     method: 'GET',
     hideLoader,
   };
+  return makeHttpCall(config);
+};
+
+export const UPC_SESSION_API = (params, hideLoader) => {
+  const config = { url: UPC_SESSION(), params, method: 'GET', hideLoader };
   return makeHttpCall(config);
 };

@@ -42,8 +42,8 @@ export class Videos extends React.PureComponent {
 
   render() {
     const { isMobile, videos } = this.props;
-    const { data: parendData } = videos || {};
-    const { data: video, total: videoList } = parendData || {};
+    const { data: parentData } = videos || {};
+    const { data: video, total: videoList } = parentData || {};
     return (
       <HomeContainer>
         <Helmet>

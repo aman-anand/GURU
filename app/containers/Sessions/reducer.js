@@ -4,15 +4,29 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import { UPC_SESION_FULFILLED } from './constants';
+import { COURSE_FULFILLED } from '../Course/constants';
 
-export const initialState = {};
+export const initialState = {
+  upc: {},
+  courseObj: {},
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const sessionsReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case UPC_SESION_FULFILLED:
+        {
+          const { payload } = action;
+          draft.upc = payload;
+        }
+        break;
+      case COURSE_FULFILLED:
+        {
+          const { payload } = action;
+          draft.courseObj = payload;
+        }
         break;
     }
   });

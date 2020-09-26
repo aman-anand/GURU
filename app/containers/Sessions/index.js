@@ -21,6 +21,7 @@ import Header from '../../components/Header/Loadable';
 import Bredcrumb from '../../components/Bredcrumb/Loadable';
 import SessionBlock from '../../components/SessionBlock/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
+import { upcSessionAction, courseAction } from './actions';
 // NOTE: Style
 import { SessionContainer } from './style';
 
@@ -30,15 +31,35 @@ export class Sessions extends React.PureComponent {
     this.state = {
       sessionRadio: 'upComingSession',
     };
+    this.onChangeRadio = this.onChangeRadio.bind(this);
   }
 
   onChangeRadio = e => {
     const { value } = e.target;
     window.console.log('VALUE', value);
+    // this.setState({
+    //   sessionRadio: value,
+    // });
   };
 
+  componentDidMount() {
+    this.props.dispatch(upcSessionAction());
+    const parms = {
+      page: 1,
+      limit: 4,
+      status: 0,
+      all: true,
+    };
+    this.props.dispatch(courseAction(parms));
+  }
+
   render() {
-    const { isMobile } = this.props;
+    const { isMobile, sessions } = this.props;
+    const { upc, courseObj } = sessions || {};
+    const { data: courseData } = courseObj || {};
+    const { data: upsData } = upc || {};
+    window.console.log('Selected Session', this.state.sessionRadio);
+    window.console.log('upsData', upsData);
     return (
       <SessionContainer>
         <Helmet>
@@ -67,9 +88,6 @@ export class Sessions extends React.PureComponent {
                     type="radio"
                     name="session"
                     value="upComingSession"
-                    ckacked={['upComingSession'].includes(
-                      this.state.sessionRadio,
-                    )}
                     onChange={e => this.onChangeRadio(e)}
                   />
                   <label htmlFor="upComingSession">
@@ -82,9 +100,6 @@ export class Sessions extends React.PureComponent {
                     type="radio"
                     name="session"
                     value="attendedSession"
-                    ckacked={['attendedSession'].includes(
-                      this.state.sessionRadio,
-                    )}
                     onChange={e => this.onChangeRadio(e)}
                   />
                   <label htmlFor="attendedSession">
@@ -93,10 +108,16 @@ export class Sessions extends React.PureComponent {
                 </div>
               </div>
               <div className="sessionCardWrapper">
-                <SessionBlock />
-                <SessionBlock />
-                <SessionBlock />
-                <SessionBlock />
+                {upsData &&
+                  upsData.map(item => {
+                    const { name, displaySessionDate, address, attendees } =
+                      item || {};
+                    return (
+                      <SessionBlock
+                        data={{ name, displaySessionDate, address, attendees }}
+                      />
+                    );
+                  })}
               </div>
             </div>
           </div>
@@ -104,9 +125,37 @@ export class Sessions extends React.PureComponent {
             <div className="rightBox">
               <SectionHeading title="Other INTERESTING COURSES" />
               <div className="cardWrapper">
-                <SessionCard />
-                <SessionCard />
-                <SessionCard />
+                {courseData &&
+                  courseData.map(list => {
+                    const {
+                      name,
+                      sections: sectionsOBJ,
+                      duration: durationOBJ,
+                      totalVideos: totalVideosOBJ,
+                      coverImage: coverImageOBJ,
+                      _id,
+                    } = list || {};
+                    const courseDataOBJ = {
+                      courseName: name,
+                      totalSections: sectionsOBJ ? sectionsOBJ.length : 0,
+                      totalVideosOBJ,
+                      durationOBJ,
+                      coverImageOBJ,
+                      _id,
+                    };
+                    const sticyTwoData = {
+                      name: `${sectionsOBJ ? sectionsOBJ.length : 0} SECTIONS`,
+                      classname: 'expert',
+                    };
+                    return (
+                      <SessionCard
+                        key={_id}
+                        courseData={courseDataOBJ}
+                        sticyTwo
+                        sticyTwoData={sticyTwoData}
+                      />
+                    );
+                  })}
               </div>
             </div>
           ) : null}
@@ -117,8 +166,9 @@ export class Sessions extends React.PureComponent {
 }
 
 Sessions.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   isMobile: PropTypes.bool,
+  sessions: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

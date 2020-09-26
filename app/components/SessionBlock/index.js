@@ -8,7 +8,11 @@ import React, { memo } from 'react';
 // import PropTypes from 'prop-types';
 import { SessionBlockContainer } from './style';
 const color = Math.floor(Math.random() * 16777215).toString(16);
-function SessionBlock() {
+function SessionBlock(props) {
+  const { data } = props || {};
+  const { name, displaySessionDate, address, attendees } = data || {};
+  const { locality, city, state, pincode } = address || {};
+  const length = attendees ? attendees.length : 0;
   return (
     <SessionBlockContainer color={color}>
       <div className="topBlock">
@@ -28,9 +32,11 @@ function SessionBlock() {
         </div>
         <div className="contentBlock">
           <p>
-            <span>Session Name</span>
-            <span>16 August 2020 | 02:00 PM</span>
-            <span>NANDED, MAHARASHTRA, 034450</span>
+            <span>{name}</span>
+            <span>{displaySessionDate}</span>
+            <span>
+              {locality}, {city}, {state}, {pincode}
+            </span>
           </p>
         </div>
       </div>
@@ -43,7 +49,7 @@ function SessionBlock() {
             <span />
             <span />
             <span />
-            <span>+10</span>
+            <span>+{length}</span>
           </div>
           <span className="text2">trainee are attending sessions</span>
         </div>

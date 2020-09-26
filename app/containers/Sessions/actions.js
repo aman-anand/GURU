@@ -4,10 +4,49 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import { UPC_SESSION_API, COURSE_API } from '../../dataService/Home';
 
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
+import {
+  UPC_SESION_PENDING,
+  UPC_SESION_FULFILLED,
+  UPC_SESION_REJECTED,
+} from './constants';
+
+import {
+  COURSE_FULFILLED,
+  COURSE_PENDING,
+  COURSE_REJECTED,
+} from '../Course/constants';
+
+export function upcSessionAction(params) {
+  return async dispatch => {
+    dispatch(fetchData({ types: UPC_SESION_PENDING }));
+    try {
+      const { data } = await UPC_SESSION_API(params);
+      return dispatch(fetchData({ types: UPC_SESION_FULFILLED, data }));
+    } catch (err) {
+      return dispatch(fetchData({ types: UPC_SESION_REJECTED, err }));
+    }
   };
 }
+
+export function courseAction(params) {
+  return async dispatch => {
+    dispatch(fetchData({ types: COURSE_PENDING }));
+    try {
+      const { data } = await COURSE_API(params);
+      return dispatch(fetchData({ types: COURSE_FULFILLED, data }));
+    } catch (err) {
+      return dispatch(fetchData({ types: COURSE_REJECTED, err }));
+    }
+  };
+}
+
+// ANCHOR: Common featch method
+export const fetchData = params => {
+  const { types, data, err } = params || {};
+  return {
+    type: types,
+    payload: data || err || {},
+  };
+};

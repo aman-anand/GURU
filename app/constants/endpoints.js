@@ -32,3 +32,6 @@ export const ARTICLE_DETAILS = () => `${API}/document`;
 // NOTE: Videos API
 export const ALL_VIDEOS = () => `${API}/video/all`;
 export const VIDEO_DETAILS = () => `${API}/video/detail`;
+
+// NOTE: Session
+export const UPC_SESSION = () => `${API}/sessions/upcoming`;
