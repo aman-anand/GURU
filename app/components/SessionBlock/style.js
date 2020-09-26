@@ -27,6 +27,7 @@ export const SessionBlockContainer = styled.section`
       height: 48px;
       border-radius: 50%;
       background: ${props => (props.color ? `#${props.color}` : '#da3a33')};
+      border: solid 1px #d8d8d8;
       align-items: center;
       justify-content: center;
       margin-right: 15px;

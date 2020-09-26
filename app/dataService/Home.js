@@ -8,6 +8,7 @@ import {
   VIDEO_DETAILS,
   UPC_SESSION,
   ATT_SESSION,
+  CERTIFICATE,
 } from '../constants/endpoints';
 import { makeHttpRequest as makeHttpCall } from './common/HttpProvider';
 
@@ -68,5 +69,9 @@ export const UPC_SESSION_API = (params, hideLoader) => {
 };
 export const ATT_SESSION_API = (params, hideLoader) => {
   const config = { url: ATT_SESSION(), params, method: 'GET', hideLoader };
+  return makeHttpCall(config);
+};
+export const CERTIFICATE_API = (params, hideLoader) => {
+  const config = { url: CERTIFICATE(), params, method: 'GET', hideLoader };
   return makeHttpCall(config);
 };

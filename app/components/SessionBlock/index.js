@@ -7,10 +7,9 @@
 import React, { memo } from 'react';
 // import PropTypes from 'prop-types';
 import { SessionBlockContainer } from './style';
-const color = Math.floor(Math.random() * 16777215).toString(16);
 function SessionBlock(props) {
-  const { data } = props || {};
-  const { name, displaySessionDate, address, attendees } = data || {};
+  const { data, selectedSession, color } = props || {};
+  const { name, displaySessionDate, address, attendees, guru } = data || {};
   const { locality, city, state, pincode } = address || {};
   const length = attendees ? attendees.length : 0;
   return (
@@ -41,18 +40,32 @@ function SessionBlock(props) {
         </div>
       </div>
       <div className="bottomBlock">
-        {/* <span className="text1">
-          <b>Guru Name:</b> Keshav Kumar
-  </span> */}
-        <div className="upComContent">
-          <div className="cercleBox">
-            <span />
-            <span />
-            <span />
-            <span>+{length}</span>
+        {['attendedSession'].includes(selectedSession) ? (
+          <span className="text1">
+            <b>Guru Name:</b>{' '}
+            {guru &&
+              guru.map(dataList => {
+                const { fName, lName } = dataList || {};
+                return (
+                  <span>
+                    {fName} {lName}
+                    {', '}
+                  </span>
+                );
+              })}
+          </span>
+        ) : null}
+        {['upComingSession'].includes(selectedSession) ? (
+          <div className="upComContent">
+            <div className="cercleBox">
+              <span />
+              <span />
+              <span />
+              <span>+{length}</span>
+            </div>
+            <span className="text2">trainee are attending sessions</span>
           </div>
-          <span className="text2">trainee are attending sessions</span>
-        </div>
+        ) : null}
       </div>
     </SessionBlockContainer>
   );

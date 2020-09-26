@@ -65,7 +65,6 @@ export class Sessions extends React.PureComponent {
     const { upc, courseObj } = sessions || {};
     const { data: courseData } = courseObj || {};
     const { data: upsData } = upc || {};
-    window.console.log('Selected Session', this.state.sessionRadio);
     return (
       <SessionContainer>
         <Helmet>
@@ -118,11 +117,29 @@ export class Sessions extends React.PureComponent {
               <div className="sessionCardWrapper">
                 {upsData &&
                   upsData.map(item => {
-                    const { name, displaySessionDate, address, attendees } =
-                      item || {};
+                    const {
+                      name,
+                      displaySessionDate,
+                      address,
+                      attendees,
+                      guru,
+                      _id,
+                    } = item || {};
+                    const color = Math.floor(Math.random() * 16777215).toString(
+                      16,
+                    );
                     return (
                       <SessionBlock
-                        data={{ name, displaySessionDate, address, attendees }}
+                        key={_id}
+                        color={color}
+                        selectedSession={this.state.sessionRadio}
+                        data={{
+                          name,
+                          displaySessionDate,
+                          address,
+                          attendees,
+                          guru,
+                        }}
                       />
                     );
                   })}

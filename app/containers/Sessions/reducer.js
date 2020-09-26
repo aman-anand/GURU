@@ -9,7 +9,6 @@ import { COURSE_FULFILLED } from '../Course/constants';
 
 export const initialState = {
   upc: {},
-  att: {},
   courseObj: {},
 };
 
@@ -26,7 +25,7 @@ const sessionsReducer = (state = initialState, action) =>
       case ATT_SESION_FULFILLED:
         {
           const { payload } = action;
-          draft.att = payload;
+          draft.upc = payload;
         }
         break;
       case COURSE_FULFILLED:
