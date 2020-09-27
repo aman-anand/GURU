@@ -25,6 +25,7 @@ import ArticleDetails from '../ArticleDetails/Loadable';
 import Sessions from '../Sessions/Loadable';
 import Certificates from '../Certificates';
 import SessionDetails from '../SessionDetails';
+import LeaderBoard from '../LeaderBoard';
 import Loader from '../../components/Loader/Loadable';
 // Routing hooks
 import CheckAuthenticationHook from '../../utils/CheckAuthenticationHook';
@@ -108,6 +109,11 @@ export default function App() {
           exact
           path="/certificate"
           component={CheckAuthenticationHook(Certificates, true)}
+        />
+        <Route
+          exact
+          path="/leaderboard"
+          component={CheckAuthenticationHook(LeaderBoard, true)}
         />
         <Route exact path="*" component={PageNotFoundHook(NotFoundPage)} />
       </Switch>

@@ -115,6 +115,7 @@ export class Sessions extends React.PureComponent {
                 </div>
               </div>
               <div className="sessionCardWrapper">
+                {upsData && !upsData.length ? <p>Do not have data</p> : null}
                 {upsData &&
                   upsData.map(item => {
                     const {
@@ -139,6 +140,7 @@ export class Sessions extends React.PureComponent {
                           address,
                           attendees,
                           guru,
+                          _id,
                         }}
                       />
                     );
@@ -148,7 +150,9 @@ export class Sessions extends React.PureComponent {
           </div>
           {!isMobile ? (
             <div className="rightBox">
-              <SectionHeading title="Other INTERESTING COURSES" />
+              {courseData && courseData.length ? (
+                <SectionHeading title="Other INTERESTING COURSES" />
+              ) : null}
               <div className="cardWrapper">
                 {courseData &&
                   courseData.map(list => {

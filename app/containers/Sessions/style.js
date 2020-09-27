@@ -77,8 +77,8 @@ export const SessionContainer = styled.section`
           line-height: 17px;
           text-transform: uppercase;
           color: #ffffff;
-          padding: 20px 25px;
-          background-color: #2e323d;
+          padding: 15px 25px;
+          background-color: rgba(46, 50, 61, 0.8);
           cursor: pointer;
           text-align: center;
           @media (min-width: ${globalStyle.small}) {
@@ -89,7 +89,7 @@ export const SessionContainer = styled.section`
           }
           &.active {
             @media (max-width: ${globalStyle.small}) {
-              background-color: rgba(46, 50, 61, 0.8);
+              background-color: #2e323d;
             }
             @media (min-width: ${globalStyle.small}) {
               border-left: solid 7px #000000;
@@ -113,8 +113,8 @@ export const SessionContainer = styled.section`
       ${globalStyle.flex};
       ${globalStyle.column};
       flex: 1;
-      padding: 20px 25px;
-      background-color: #2e323d;
+      padding: 15px 25px;
+      background-color: rgba(46, 50, 61, 0.8);
       span {
         font-style: normal;
         font-weight: 500;
@@ -127,7 +127,7 @@ export const SessionContainer = styled.section`
         text-transform: uppercase;
       }
       &.active {
-        background-color: rgba(46, 50, 61, 0.8);
+        background-color: #2e323d;
       }
     }
   }
@@ -138,10 +138,11 @@ export const SessionContainer = styled.section`
   .imgWraper {
     ${globalStyle.flex};
     ${globalStyle.column};
-    border: solid 1px red;
+    border: solid 1px #2e333d;
     flex: 1;
     min-height: 250px;
     padding: 15px;
+    background-color: #c5c5c5;
     @media (max-width: ${globalStyle.small}) {
       margin: 0px -15px;
       min-height: 200px;
@@ -187,5 +188,55 @@ export const SessionContainer = styled.section`
   .accordianwrapper {
     ${globalStyle.flex};
     ${globalStyle.column};
+    .acorlist {
+      background: #f3f3f3;
+      border-radius: 5px;
+      border: solid 1px #bdbdbd;
+      padding: 15px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      input {
+        display: none;
+        &:checked {
+          & + .accorData {
+            display: block;
+          }
+        }
+      }
+      &.active {
+        .icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    .accorData {
+      display: none;
+      margin-top: 15px;
+    }
+    .accorLabel {
+      ${globalStyle.flex};
+      ${globalStyle.row};
+      align-items: center;
+      span {
+        ${globalStyle.flex};
+        flex: 1;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 126.9%;
+        color: #000000;
+      }
+      .icon {
+        width: 14px;
+        height: 9px;
+        ${globalStyle.flex};
+        transition: all 1s ease-out;
+      }
+    }
+  }
+  .description {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #2e323d;
   }
 `;

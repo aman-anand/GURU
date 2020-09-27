@@ -73,6 +73,14 @@ export const ArticleCardContainer = styled.div`
             line-height: 17px;
             text-transform: uppercase;
             color: #000000;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 140px;
+            display: block;
+            @media (min-width: ${globalStyle.small}) {
+              max-width: 180px;
+            }
           }
           &:nth-child(2) {
             font-weight: 300;

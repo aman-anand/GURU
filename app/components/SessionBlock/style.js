@@ -5,7 +5,6 @@ export const SessionBlockContainer = styled.section`
   ${globalStyle.column};
   border-radius: 10px;
   background: #e4e4e4;
-  padding: 15px;
   @media (max-width: ${globalStyle.small}) {
     margin-top: 15px;
   }
@@ -15,7 +14,13 @@ export const SessionBlockContainer = styled.section`
     border-radius: 5px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   }
-  & > div {
+  & > .anchor {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    padding: 15px;
+    text-decoration: none;
+  }
+  .anchor > div {
     ${globalStyle.flex};
     ${globalStyle.row};
   }

@@ -29,10 +29,6 @@ export const listCompo = props => {
   const { isMobile } = props || {};
   const { pathname } = window.location;
   const pathMatch = pathname.indexOf('courses/') > -1;
-  console.log(
-    'LOCAL',
-    getFromLocalStore(['rollNumber', 'fName', 'lName', 'profileImage']),
-  );
   return (
     <ul className="navList">
       {isMobile ? (

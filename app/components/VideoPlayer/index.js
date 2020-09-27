@@ -5,6 +5,7 @@
  */
 
 import React, { memo } from 'react';
+import { Player } from 'video-react';
 import PropTypes from 'prop-types';
 import { VideoPlayerContainer } from './style';
 
@@ -14,12 +15,13 @@ function VideoPlayer(props) {
   const [first] = courseName ? courseName.split('') : [];
   return (
     <VideoPlayerContainer>
-      <div>
-        <video width="100%" controls poster={coverImage}>
+      <div className="playerBox">
+        <Player playsInline poster={coverImage} src={coverVideo} />
+        {/* <video width="100%" controls poster={coverImage}>
           <track kind="captions" {...props} />
           <source src={coverVideo} type="video/mp4" />
           Your browser does not support HTML video.
-        </video>
+  </video> */}
       </div>
       <div className="playerDesc">
         <div className="box_1">

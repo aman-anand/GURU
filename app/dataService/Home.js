@@ -9,6 +9,7 @@ import {
   UPC_SESSION,
   ATT_SESSION,
   CERTIFICATE,
+  SESSION_DETAILS,
 } from '../constants/endpoints';
 import { makeHttpRequest as makeHttpCall } from './common/HttpProvider';
 
@@ -69,6 +70,17 @@ export const UPC_SESSION_API = (params, hideLoader) => {
 };
 export const ATT_SESSION_API = (params, hideLoader) => {
   const config = { url: ATT_SESSION(), params, method: 'GET', hideLoader };
+  return makeHttpCall(config);
+};
+
+export const SESSION_DETAILS_API = (params, hideLoader) => {
+  const { SESSION_ID } = params || {};
+  const config = {
+    url: SESSION_DETAILS(),
+    params: { _id: SESSION_ID },
+    method: 'GET',
+    hideLoader,
+  };
   return makeHttpCall(config);
 };
 export const CERTIFICATE_API = (params, hideLoader) => {

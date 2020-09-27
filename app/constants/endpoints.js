@@ -38,6 +38,7 @@ export const VIDEO_DETAILS = () => `${API}/video/detail`;
 // NOTE: Session
 export const UPC_SESSION = () => `${API}/sessions/upcoming`;
 export const ATT_SESSION = () => `${API}/sessions/completed`;
+export const SESSION_DETAILS = () => `${API}/sessions/details`;
 
 // NOTE: Certification
 export const CERTIFICATE = () => `${API}/certificate/user`;

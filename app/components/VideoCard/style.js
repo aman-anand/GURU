@@ -23,6 +23,7 @@ export const VideoCardContainer = styled.div`
   .imageBox {
     background-image: url(${props => (props.bg ? props.bg : '')});
     background-size: cover;
+    background-position: center center;
     ${globalStyle.flex};
     ${globalStyle.column};
     position: absolute;
@@ -61,7 +62,10 @@ export const VideoCardContainer = styled.div`
       }
       ._lb {
         flex: 1;
-        padding: 16px 23px;
+        padding: 16px;
+        @media (min-width: ${globalStyle.small}) {
+          padding: 16px 23px;
+        }
         p {
           margin: 0px;
           color: #ffffff;

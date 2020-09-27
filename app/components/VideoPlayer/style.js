@@ -9,4 +9,6 @@ export const VideoPlayerContainer = styled.div`
   @media (min-width: ${globalStyle.small}) {
     border: solid 1px #c1bfbf;
   }
+  .playerBox {
+  }
 `;
