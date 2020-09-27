@@ -24,6 +24,7 @@ import Articles from '../Articles/Loadable';
 import ArticleDetails from '../ArticleDetails/Loadable';
 import Sessions from '../Sessions/Loadable';
 import Certificates from '../Certificates';
+import SessionDetails from '../SessionDetails';
 import Loader from '../../components/Loader/Loadable';
 // Routing hooks
 import CheckAuthenticationHook from '../../utils/CheckAuthenticationHook';
@@ -97,6 +98,11 @@ export default function App() {
           exact
           path="/sessions"
           component={CheckAuthenticationHook(Sessions, true)}
+        />
+        <Route
+          exact
+          path="/sessions/:sessionId"
+          component={CheckAuthenticationHook(SessionDetails, true)}
         />
         <Route
           exact

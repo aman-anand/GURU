@@ -9,6 +9,8 @@ if (window.location.origin === 'https://uat.bimapaathshala.org') {
   API = globalConfig.API_BASE();
 }
 
+window.console.log('BASE API', API);
+
 // NOTE: Sign In API
 export const SEND_OTP = () => `${API}/user/sendOtp`;
 export const VERIFY_OTP = () => `${API}/user/verifyOtp`;

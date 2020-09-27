@@ -8,7 +8,7 @@ export const SessionContainer = styled.section`
     height: 100vh;
   }
   .container {
-    padding: 0px 15px;
+    padding: 0px 15px 15px 15px;
     ${globalStyle.flex};
     ${globalStyle.column};
     box-sizing: border-box;
@@ -80,6 +80,7 @@ export const SessionContainer = styled.section`
           padding: 20px 25px;
           background-color: #2e323d;
           cursor: pointer;
+          text-align: center;
           @media (min-width: ${globalStyle.small}) {
             color: #000000;
             border-radius: 7px;
@@ -101,5 +102,90 @@ export const SessionContainer = styled.section`
       ${globalStyle.column};
       flex: 1;
     }
+  }
+  .tabwrap {
+    ${globalStyle.flex};
+    ${globalStyle.row};
+    @media (max-width: ${globalStyle.small}) {
+      margin: 0px -15px;
+    }
+    .list {
+      ${globalStyle.flex};
+      ${globalStyle.column};
+      flex: 1;
+      padding: 20px 25px;
+      background-color: #2e323d;
+      span {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #ffffff;
+        cursor: pointer;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      &.active {
+        background-color: rgba(46, 50, 61, 0.8);
+      }
+    }
+  }
+  .detailsSessionWrapper {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+  }
+  .imgWraper {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    border: solid 1px red;
+    flex: 1;
+    min-height: 250px;
+    padding: 15px;
+    @media (max-width: ${globalStyle.small}) {
+      margin: 0px -15px;
+      min-height: 200px;
+    }
+  }
+  .playerDesc {
+    padding: 10px;
+    margin: 0px -10px 10px -10px;
+  }
+  .tabdata {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    @media (min-width: ${globalStyle.small}) {
+      padding: 0px 10px;
+    }
+  }
+  .dateBox {
+    background: #ededed;
+    @media (min-width: ${globalStyle.small}) {
+      background: #ffffff;
+    }
+    border-radius: 5px;
+    padding: 15px 5px;
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
+  .map {
+    border: solid 1px red;
+    min-height: 130px;
+    background-color: #dedede;
+    border: solid 1px #b1b1b1;
+    border-radius: 5px;
+    @media (min-width: ${globalStyle.small}) {
+      min-height: 200px;
+    }
+  }
+  .accordianwrapper {
+    ${globalStyle.flex};
+    ${globalStyle.column};
   }
 `;
