@@ -21,7 +21,7 @@ export const REGISTER = () => `${API}/user/register`;
 export const UPDATE = () => `${API}/user`;
 
 // NOTE: Home API
-export const HOME = () => `/main/home`;
+export const HOME = () => `${API}/main/home`;
 
 // NOTE: Course API
 export const ALL_COURSE = () => `${API}/course/all`;
