@@ -4,15 +4,21 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import { LEADER_FULFILLED } from './constants';
 
-export const initialState = {};
+export const initialState = {
+  leader: {},
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const leaderBoardReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case LEADER_FULFILLED:
+        {
+          const { data } = action.payload;
+          draft.leader = data;
+        }
         break;
     }
   });

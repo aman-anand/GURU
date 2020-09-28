@@ -10,6 +10,7 @@ import {
   ATT_SESSION,
   CERTIFICATE,
   SESSION_DETAILS,
+  LEADER,
 } from '../constants/endpoints';
 import { makeHttpRequest as makeHttpCall } from './common/HttpProvider';
 
@@ -85,5 +86,9 @@ export const SESSION_DETAILS_API = (params, hideLoader) => {
 };
 export const CERTIFICATE_API = (params, hideLoader) => {
   const config = { url: CERTIFICATE(), params, method: 'GET', hideLoader };
+  return makeHttpCall(config);
+};
+export const LEADER_API = (params, hideLoader) => {
+  const config = { url: LEADER(), params, method: 'GET', hideLoader };
   return makeHttpCall(config);
 };
