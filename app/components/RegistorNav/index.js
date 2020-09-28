@@ -15,9 +15,9 @@ function RegistorNav() {
       <div className={`${['/signin'].includes(pathname) ? 'active' : null}`}>
         <Link to="/signin">LOGIN</Link>
       </div>
-      <div className={`${['/signup'].includes(pathname) ? 'active' : null}`}>
+      {/* <div className={`${['/signup'].includes(pathname) ? 'active' : null}`}>
         <Link to="/signup">REGISTER</Link>
-      </div>
+  </div> */}
     </RegistorNavContainer>
   );
 }

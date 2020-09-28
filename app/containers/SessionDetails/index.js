@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { Player } from 'video-react';
 import withSizes from 'react-sizes';
 
 import injectReducer from 'utils/injectReducer';
@@ -144,6 +145,7 @@ export class SessionDetails extends React.PureComponent {
     const {
       name,
       coverVideo,
+      coverImage,
       description,
       displaySessionDate,
       duration,
@@ -185,11 +187,7 @@ export class SessionDetails extends React.PureComponent {
             <div className="detailsSessionWrapper">
               {isMobile ? this.tabComponent() : null}
               <div className="imgWraper">
-                <video width="100%" controls>
-                  <track kind="captions" {...this.props} />
-                  <source src={coverVideo} type="video/mp4" />
-                  Your browser does not support HTML video.
-                </video>
+                <Player playsInline poster={coverImage} src={coverVideo} />
               </div>
               {!isMobile ? this.tabComponent() : null}
               <div className="tabdata">

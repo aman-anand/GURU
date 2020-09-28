@@ -33,6 +33,10 @@ class Authentication extends React.Component {
     return null;
   }
 
+  componentDidMount() {
+    this.resendOTPCounter();
+  }
+
   componentWillUnmount() {
     clearInterval(this.intervalId);
   }
@@ -99,7 +103,7 @@ class Authentication extends React.Component {
   submitResendOTP = () => {
     clearInterval(this.intervalId);
     this.props.resendOtp();
-    this.resendOTPCounter();
+    // this.resendOTPCounter();
   };
 
   resendOTPCounter = () => {

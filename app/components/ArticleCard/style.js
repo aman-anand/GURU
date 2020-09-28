@@ -25,6 +25,12 @@ export const ArticleCardContainer = styled.div`
     ${globalStyle.column};
     border-radius: 5px;
     overflow: hidden;
+    @media (max-width: 400px) {
+      height: 85px;
+    }
+    @media (min-width: 401px && max-width: ${globalStyle.small}) {
+      height: 100px;
+    }
     @media (min-width: ${globalStyle.small}) {
       height: 130px;
     }
@@ -76,7 +82,7 @@ export const ArticleCardContainer = styled.div`
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
-            max-width: 140px;
+            max-width: 80px;
             display: block;
             @media (min-width: ${globalStyle.small}) {
               max-width: 180px;

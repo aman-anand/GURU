@@ -171,7 +171,6 @@ export class Signin extends React.PureComponent {
               open={this.state.open}
               TransitionComponent={Transition}
               keepMounted
-              onClose={this.handleClose}
               aria-labelledby="alert-dialog-slide-title"
               aria-describedby="alert-dialog-slide-description"
               className="dialogWrapper"
