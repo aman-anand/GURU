@@ -25,17 +25,48 @@ export const ArticleCardContainer = styled.div`
     ${globalStyle.column};
     border-radius: 5px;
     overflow: hidden;
-    @media (max-width: 400px) {
-      height: 85px;
-    }
-    @media (min-width: 401px && max-width: ${globalStyle.small}) {
-      height: 100px;
-    }
-    @media (min-width: ${globalStyle.small}) {
-      height: 130px;
-    }
+    position: relative;
     img {
       width: 100%;
+    }
+    .content {
+      position: absolute;
+      ${globalStyle.flex};
+      ${globalStyle.column};
+      background: linear-gradient(
+        0deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(255, 255, 255, 0.007440476190476164) 75%
+      );
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      p {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+        padding: 10px 18px;
+        bottom: 0;
+        span {
+          display: flex;
+          text-transform: uppercase;
+          line-height: 16px;
+          &:nth-child(1) {
+            text-transform: uppercase;
+            color: #ffffff;
+            font-weight: 400;
+            font-size: 12px;
+          }
+          &:nth-child(2) {
+            text-transform: uppercase;
+            color: #ffffff;
+            font-weight: 300;
+            font-size: 11px;
+          }
+        }
+      }
     }
   }
   .bottomBox {

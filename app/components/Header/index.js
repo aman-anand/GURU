@@ -144,9 +144,9 @@ export const listCompo = props => {
         <Fragment>
           <li>
             <Link
-              to="/sessions"
+              to="/leaderboard"
               className={`${
-                ['/sessions'].includes(pathname) ? 'active' : null
+                ['/leaderboard'].includes(pathname) ? 'active' : null
               }`}
               role="presentation"
             >
@@ -167,7 +167,7 @@ export const listCompo = props => {
               <span>LEADERBOARD</span>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               to="/sessions"
               className={`${
@@ -191,15 +191,9 @@ export const listCompo = props => {
               </i>
               <span>REFER A FRIEND</span>
             </Link>
-          </li>
+            </li> */}
           <li>
-            <Link
-              to="/sessions"
-              className={`${
-                ['/sessions'].includes(pathname) ? 'active' : null
-              }`}
-              role="presentation"
-            >
+            <Link to="/" role="presentation">
               <i className="icon">
                 <svg
                   width="16"
@@ -218,13 +212,7 @@ export const listCompo = props => {
             </Link>
           </li>
           <li>
-            <Link
-              to="/sessions"
-              className={`${
-                ['/sessions'].includes(pathname) ? 'active' : null
-              }`}
-              role="presentation"
-            >
+            <Link to="/" role="presentation">
               <i className="icon">
                 <svg
                   width="20"
@@ -243,13 +231,7 @@ export const listCompo = props => {
             </Link>
           </li>
           <li>
-            <Link
-              to="/sessions"
-              className={`${
-                ['/sessions'].includes(pathname) ? 'active' : null
-              }`}
-              role="presentation"
-            >
+            <Link to="/" role="presentation">
               <i className="icon">
                 <svg
                   width="18"
@@ -268,13 +250,7 @@ export const listCompo = props => {
             </Link>
           </li>
           <li>
-            <Link
-              to="/sessions"
-              className={`${
-                ['/sessions'].includes(pathname) ? 'active' : null
-              }`}
-              role="presentation"
-            >
+            <Link to="/" role="presentation">
               <i className="icon">
                 <svg
                   width="18"

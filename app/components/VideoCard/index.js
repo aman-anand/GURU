@@ -11,7 +11,7 @@ import { VideoCardContainer } from './style';
 function VideoCard(props) {
   const { dataOBJ } = props || {};
   // eslint-disable-next-line no-unused-vars
-  const { title, thumb, _id } = dataOBJ || {};
+  const { name, thumb, _id } = dataOBJ || {};
   return (
     <VideoCardContainer className="VideoCardContainer" bg={thumb || videoimg}>
       <a href={`/videos/${_id}`} className="imageBox" role="button">
@@ -33,7 +33,7 @@ function VideoCard(props) {
                   />
                 </svg>
               </i>
-              <span>{title || 'Name'}</span>
+              <span>{name || 'Name'}</span>
             </p>
           </div>
         </div>

@@ -208,9 +208,9 @@ export class Home extends React.PureComponent {
               <div className="cardWrapper row">
                 {video &&
                   video.map(item => {
-                    const { title, thumb, _id } = item || {};
+                    const { name, thumb, _id } = item || {};
                     const dataOBJ = {
-                      title,
+                      name,
                       thumb,
                       _id,
                     };
@@ -222,9 +222,9 @@ export class Home extends React.PureComponent {
                 <Slider {...settingsVideos}>
                   {video &&
                     video.map(item => {
-                      const { title, thumb, _id } = item || {};
+                      const { name, thumb, _id } = item || {};
                       const dataOBJ = {
-                        title,
+                        name,
                         thumb,
                         _id,
                       };
@@ -246,11 +246,12 @@ export class Home extends React.PureComponent {
               <div className="cardWrapper row">
                 {article &&
                   article.map(list => {
-                    const { img, title, _id } = list || {};
+                    const { img, title, _id, readingTime } = list || {};
                     const dataOBJ = {
                       title,
                       img,
                       _id,
+                      readingTime,
                     };
                     return <ArticleCard dataOBJ={dataOBJ} />;
                   })}
@@ -260,11 +261,12 @@ export class Home extends React.PureComponent {
                 <Slider {...settingsArticle}>
                   {article &&
                     article.map(list => {
-                      const { img, title, _id } = list || {};
+                      const { img, title, _id, readingTime } = list || {};
                       const dataOBJ = {
                         title,
                         img,
                         _id,
+                        readingTime,
                       };
                       return <ArticleCard dataOBJ={dataOBJ} />;
                     })}
