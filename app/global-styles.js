@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import globalStyle from './common/styles/var';
 import { GlobalFontStyles } from './common/styles/font';
+import { VideoPlayerStyle } from './common/styles/video';
 
 const GlobalStyle = createGlobalStyle`
   ${GlobalFontStyles};
@@ -391,5 +392,6 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+  ${VideoPlayerStyle};
 `;
 export default GlobalStyle;

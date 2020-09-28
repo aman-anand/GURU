@@ -26,6 +26,9 @@ export const ArticleCardContainer = styled.div`
     border-radius: 5px;
     overflow: hidden;
     position: relative;
+    @media (max-width: ${globalStyle.small}) {
+      max-height: 100px;
+    }
     img {
       width: 100%;
     }
@@ -49,6 +52,7 @@ export const ArticleCardContainer = styled.div`
         margin: 0px;
         padding: 10px 18px;
         bottom: 0;
+        width: 100%;
         span {
           display: flex;
           text-transform: uppercase;
@@ -58,6 +62,11 @@ export const ArticleCardContainer = styled.div`
             color: #ffffff;
             font-weight: 400;
             font-size: 12px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            display: block;
+            width: 100%;
           }
           &:nth-child(2) {
             text-transform: uppercase;
