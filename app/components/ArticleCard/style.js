@@ -26,8 +26,9 @@ export const ArticleCardContainer = styled.div`
     border-radius: 5px;
     overflow: hidden;
     position: relative;
-    @media (max-width: ${globalStyle.small}) {
-      max-height: 100px;
+    max-height: 100px;
+    @media (min-width: ${globalStyle.small}) {
+      max-height: 150px;
     }
     img {
       width: 100%;
