@@ -103,8 +103,14 @@ export const HeaderContainer = styled.header`
       padding: 7px 20px;
       align-items: center;
       cursor: pointer;
+      position: relative;
       @media (min-width: ${globalStyle.small}) {
         max-width: 250px;
+      }
+      &:hover {
+        .profileMenu {
+          display: block;
+        }
       }
       .proIcon {
         ${globalStyle.row};
@@ -237,6 +243,69 @@ export const HeaderContainer = styled.header`
     .outNavList {
       flex: 1;
       background-color: rgba(0, 0, 0, 0.7);
+    }
+  }
+
+  .profileMenu {
+    display: none;
+    width: 200px;
+    position: absolute;
+    top: 52px;
+    background: #fff;
+    right: 0;
+    z-index: 2;
+    padding-top: 15px;
+    .navList {
+      ${globalStyle.flex};
+      ${globalStyle.column};
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+      li {
+        ${globalStyle.flex};
+        ${globalStyle.row};
+        margin: 0px;
+        a {
+          ${globalStyle.flex};
+          ${globalStyle.row};
+          width: 100%;
+          text-decoration: none;
+          color: #403f3f;
+          padding: 10px 15px;
+          align-items: center;
+          position: relative;
+          font-family: 'Rubik', sans-serif;
+          &.active {
+            background-color: rgba(9, 118, 190, 0.1);
+            color: #0976be;
+            &:after {
+              content: '';
+              position: absolute;
+              width: 100%;
+              height: 5px;
+              border-radius: 10px;
+              background-color: #0976be;
+              left: 0;
+              bottom: 0;
+              right: 0;
+            }
+            svg path {
+              fill: #0976be;
+            }
+          }
+        }
+        .icon {
+          box-sizing: border-box;
+          margin-right: 12px;
+          justify-content: center;
+          align-items: center;
+        }
+        span {
+          ${globalStyle.row};
+          font-weight: 500;
+          font-size: 14px;
+        }
+      }
     }
   }
 `;
