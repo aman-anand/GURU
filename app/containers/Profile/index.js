@@ -14,6 +14,7 @@ import { compose } from 'redux';
 import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectProfile from './selectors';
 import reducer from './reducer';
+import Header from '../../components/Header/Loadable';
 
 export function Profile() {
   useInjectReducer({ key: 'profile', reducer });
@@ -24,6 +25,7 @@ export function Profile() {
         <title>Profile</title>
         <meta name="description" content="Description of Profile" />
       </Helmet>
+      <Header />
       <div>Profile Settings</div>
     </div>
   );

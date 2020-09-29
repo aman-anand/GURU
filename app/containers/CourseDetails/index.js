@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable no-param-reassign */
 /**
@@ -43,6 +44,7 @@ import SectionHeading from '../../components/SectionHeading/Loadable';
 import OptionalHeader from '../../components/OptionalHeader';
 import Assessment from '../../components/Assessment';
 import ListItembox from '../../components/ListItembox';
+import Ratings from '../../components/Ratings/Loadable';
 // NOTE: Styles
 import { GuruCoursesDetailsContainer } from './style';
 
@@ -130,6 +132,12 @@ export class CourseDetails extends React.PureComponent {
       });
     } else if (['File', 'blog'].includes(type)) {
       window.open(url, '_blank');
+    } else if (['audio'].includes(type)) {
+      this.setState({
+        videoModel: true,
+        url,
+        type,
+      });
     }
   };
 
@@ -154,8 +162,6 @@ export class CourseDetails extends React.PureComponent {
       totalVideos,
       totalAssessments,
       description,
-      totalStudents,
-      rating,
       sections,
     } = course || {};
     return (
@@ -240,10 +246,10 @@ export class CourseDetails extends React.PureComponent {
                       </div>
                     </div>
                     {/* NOTE: start */}
-                    <p>{totalStudents} shishya have watched this course</p>
+                    {/* <p>{totalStudents} shishya have watched this course</p> */}
                     <div className="review_box">
                       <span>REVIEWS</span>
-                      <span>{rating}</span>
+                      <Ratings />
                       <span>Based on {review ? review.length : 0} reviews</span>
                     </div>
                     <div className="commentsWrapper">
@@ -405,12 +411,21 @@ export class CourseDetails extends React.PureComponent {
           className="dialogVideoWrapper"
         >
           <DialogContent className="dWrapp">
-            <iframe
-              id="player"
-              type="text/html"
-              src={this.state.url}
-              frameBorder="0"
-            />
+            {['video'].includes(this.state.type) ? (
+              <iframe
+                id="player"
+                type="text/html"
+                src={this.state.url}
+                frameBorder="0"
+                title="iframe"
+              />
+            ) : null}
+            {['audio'].includes(this.state.type) ? (
+              <audio controls>
+                <source src={this.state.url} type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+            ) : null}
           </DialogContent>
         </Dialog>
       </GuruCoursesDetailsContainer>

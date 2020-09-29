@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /**
@@ -106,6 +107,12 @@ export class SessionDetails extends React.PureComponent {
       });
     } else if (['File', 'blog'].includes(type)) {
       window.open(url, '_blank');
+    } else if (['audio'].includes(type)) {
+      this.setState({
+        videoModel: true,
+        url,
+        type,
+      });
     }
   };
 
@@ -151,6 +158,7 @@ export class SessionDetails extends React.PureComponent {
       duration,
       address,
       location,
+      curriculum,
     } = detailsData || {};
     const [first] = name ? name.split('') : [];
     const { locality, city, state, pincode } = address || {};
@@ -230,78 +238,76 @@ export class SessionDetails extends React.PureComponent {
                   <Fragment>
                     <div className="playerDesc">
                       <div className="box_1">
-                        <i>I</i>
+                        <i>{first}</i>
                       </div>
                       <div className="box_2">
                         <p>
-                          <span className="tex_big">
-                            Insurance - Basic Level{' '}
+                          <span className="tex_big">{name}</span>
+                          <span className="tex_small">
+                            Duration: {duration}
                           </span>
-                          <span className="tex_small">Duration: 14 Hrs</span>
                         </p>
                       </div>
                     </div>
                     {/* Accordian */}
                     <div className="accordianwrapper">
-                      <label className="acorlist active">
-                        <div className="accorLabel" htmlFor="id_1">
-                          <span>BEGINNER FINANCE</span>
-                          <i className="icon">
-                            <svg
-                              width="12"
-                              height="7"
-                              viewBox="0 0 12 7"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M1 1L6 6L11 1"
-                                stroke="black"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </i>
-                        </div>
-                        <input type="radio" name="accor" id="id_1" />
-                        <div className="accorData">
-                          <ListItembox
-                            data={{
-                              type: 'blog',
-                              title: 'Sumanta',
-                              durationTime: '0 ll',
-                              url: 'google.com',
-                            }}
-                            onMethod={this.listOnClickBox}
-                            arrow={false}
-                          />
-                        </div>
-                      </label>
-                      <label className="acorlist active">
-                        <div className="accorLabel" htmlFor="id_2">
-                          <span>BEGINNER FINANCE</span>
-                          <i className="icon">
-                            <svg
-                              width="12"
-                              height="7"
-                              viewBox="0 0 12 7"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M1 1L6 6L11 1"
-                                stroke="black"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </i>
-                        </div>
-                        <input type="radio" name="accor" id="id_2" />
-                        <div className="accorData">Accor data 2</div>
-                      </label>
+                      {curriculum &&
+                        curriculum.map(cur => {
+                          const {
+                            description: curDesc,
+                            name: curName,
+                            data: curData,
+                          } = cur || {};
+                          return (
+                            <label className="acorlist active">
+                              <div className="accorLabel" htmlFor="id_1">
+                                <span>{curName}</span>
+                                <i className="icon">
+                                  <svg
+                                    width="12"
+                                    height="7"
+                                    viewBox="0 0 12 7"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M1 1L6 6L11 1"
+                                      stroke="black"
+                                      strokeWidth="1.5"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    />
+                                  </svg>
+                                </i>
+                              </div>
+                              <input type="radio" name="accor" id="id_1" />
+                              <div className="accorData">
+                                <p>{curDesc}</p>
+                                {curData &&
+                                  curData.map(list => {
+                                    const {
+                                      title,
+                                      type,
+                                      url,
+                                      duration: durationTime,
+                                    } = list || {};
+                                    return (
+                                      <ListItembox
+                                        data={{
+                                          type,
+                                          title,
+                                          durationTime,
+                                          url,
+                                        }}
+                                        onMethod={this.listOnClickBox}
+                                        arrow={false}
+                                      />
+                                    );
+                                  })}
+                              </div>
+                            </label>
+                          );
+                        })}
                     </div>
                   </Fragment>
                 ) : null}
@@ -357,13 +363,21 @@ export class SessionDetails extends React.PureComponent {
           className="dialogVideoWrapper"
         >
           <DialogContent className="dWrapp">
-            <iframe
-              id="player"
-              type="text/html"
-              src={this.state.url}
-              frameBorder="0"
-              title="iframe"
-            />
+            {['video'].includes(this.state.type) ? (
+              <iframe
+                id="player"
+                type="text/html"
+                src={this.state.url}
+                frameBorder="0"
+                title="iframe"
+              />
+            ) : null}
+            {['audio'].includes(this.state.type) ? (
+              <audio controls>
+                <source src={this.state.url} type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+            ) : null}
           </DialogContent>
         </Dialog>
       </SessionContainer>

@@ -94,29 +94,107 @@ export const listCompo = props => {
           <span>Courses</span>
         </Link>
       </li>
-      <li>
-        <Link
-          to="/sessions"
-          className={`${['/sessions'].includes(pathname) ? 'active' : null}`}
-          role="presentation"
-        >
-          <i className="icon">
-            <svg
-              width="18"
-              height="20"
-              viewBox="0 0 18 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+      {isMobile ? (
+        <Fragment>
+          <li>
+            <Link
+              to="/videos"
+              className={`${['/videos'].includes(pathname) ? 'active' : null}`}
+              role="presentation"
             >
-              <path
-                d="M16 18H2V7H16V18ZM13 0V2H5V0H3V2H2C0.89 2 0 2.89 0 4V18C0 18.5304 0.210714 19.0391 0.585786 19.4142C0.960859 19.7893 1.46957 20 2 20H16C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18V4C18 2.89 17.1 2 16 2H15V0H13ZM14 11H9V16H14V11Z"
-                fill="#403F3F"
-              />
-            </svg>
-          </i>
-          <span>Sessions</span>
-        </Link>
-      </li>
+              <i className="icon">
+                <svg
+                  width="20"
+                  height="14"
+                  viewBox="0 0 20 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 10L13.19 7L8 4V10ZM19.56 2.17C19.69 2.64 19.78 3.27 19.84 4.07C19.91 4.87 19.94 5.56 19.94 6.16L20 7C20 9.19 19.84 10.8 19.56 11.83C19.31 12.73 18.73 13.31 17.83 13.56C17.36 13.69 16.5 13.78 15.18 13.84C13.88 13.91 12.69 13.94 11.59 13.94L10 14C5.81 14 3.2 13.84 2.17 13.56C1.27 13.31 0.69 12.73 0.44 11.83C0.31 11.36 0.22 10.73 0.16 9.93C0.0900001 9.13 0.0599999 8.44 0.0599999 7.84L0 7C0 4.81 0.16 3.2 0.44 2.17C0.69 1.27 1.27 0.69 2.17 0.44C2.64 0.31 3.5 0.22 4.82 0.16C6.12 0.0899998 7.31 0.0599999 8.41 0.0599999L10 0C14.19 0 16.8 0.16 17.83 0.44C18.73 0.69 19.31 1.27 19.56 2.17Z"
+                    fill="#403F3F"
+                  />
+                </svg>
+              </i>
+              <span>Videos</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/sessions"
+              className={`${
+                ['/sessions'].includes(pathname) ? 'active' : null
+              }`}
+              role="presentation"
+            >
+              <i className="icon">
+                <svg
+                  width="18"
+                  height="20"
+                  viewBox="0 0 18 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16 18H2V7H16V18ZM13 0V2H5V0H3V2H2C0.89 2 0 2.89 0 4V18C0 18.5304 0.210714 19.0391 0.585786 19.4142C0.960859 19.7893 1.46957 20 2 20H16C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18V4C18 2.89 17.1 2 16 2H15V0H13ZM14 11H9V16H14V11Z"
+                    fill="#403F3F"
+                  />
+                </svg>
+              </i>
+              <span>Upcoming Sessions</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/attendsessions"
+              className={`${
+                ['/attendsessions'].includes(pathname) ? 'active' : null
+              }`}
+              role="presentation"
+            >
+              <i className="icon">
+                <svg
+                  width="20"
+                  height="14"
+                  viewBox="0 0 20 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 10L13.19 7L8 4V10ZM19.56 2.17C19.69 2.64 19.78 3.27 19.84 4.07C19.91 4.87 19.94 5.56 19.94 6.16L20 7C20 9.19 19.84 10.8 19.56 11.83C19.31 12.73 18.73 13.31 17.83 13.56C17.36 13.69 16.5 13.78 15.18 13.84C13.88 13.91 12.69 13.94 11.59 13.94L10 14C5.81 14 3.2 13.84 2.17 13.56C1.27 13.31 0.69 12.73 0.44 11.83C0.31 11.36 0.22 10.73 0.16 9.93C0.0900001 9.13 0.0599999 8.44 0.0599999 7.84L0 7C0 4.81 0.16 3.2 0.44 2.17C0.69 1.27 1.27 0.69 2.17 0.44C2.64 0.31 3.5 0.22 4.82 0.16C6.12 0.0899998 7.31 0.0599999 8.41 0.0599999L10 0C14.19 0 16.8 0.16 17.83 0.44C18.73 0.69 19.31 1.27 19.56 2.17Z"
+                    fill="#403F3F"
+                  />
+                </svg>
+              </i>
+              <span>Attend Sessions</span>
+            </Link>
+          </li>
+        </Fragment>
+      ) : (
+        <li>
+          <Link
+            to="/sessions"
+            className={`${['/sessions'].includes(pathname) ? 'active' : null}`}
+            role="presentation"
+          >
+            <i className="icon">
+              <svg
+                width="18"
+                height="20"
+                viewBox="0 0 18 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 18H2V7H16V18ZM13 0V2H5V0H3V2H2C0.89 2 0 2.89 0 4V18C0 18.5304 0.210714 19.0391 0.585786 19.4142C0.960859 19.7893 1.46957 20 2 20H16C16.5304 20 17.0391 19.7893 17.4142 19.4142C17.7893 19.0391 18 18.5304 18 18V4C18 2.89 17.1 2 16 2H15V0H13ZM14 11H9V16H14V11Z"
+                  fill="#403F3F"
+                />
+              </svg>
+            </i>
+            <span>Sessions</span>
+          </Link>
+        </li>
+      )}
       <li>
         <Link
           to="/certificate"

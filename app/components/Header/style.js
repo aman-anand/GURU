@@ -218,9 +218,13 @@ export const HeaderContainer = styled.header`
             font-weight: 400;
             font-size: 12px;
             text-transform: uppercase;
+            padding: 4px 0px;
             &.active {
               svg path {
                 fill: #0976be;
+              }
+              span {
+                color: #0976be;
               }
             }
             i {

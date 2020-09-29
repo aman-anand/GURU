@@ -392,6 +392,13 @@ const GlobalStyle = createGlobalStyle`
       }
     }
   }
+  .tabBlock {
+    & > div {
+      & > div {
+        height: 46px;
+      }
+    }
+  }
   ${VideoPlayerStyle};
 `;
 export default GlobalStyle;

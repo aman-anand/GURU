@@ -105,6 +105,11 @@ export default function App() {
         />
         <Route
           exact
+          path="/attendsessions"
+          component={CheckAuthenticationHook(Sessions, true)}
+        />
+        <Route
+          exact
           path="/sessions/:sessionId"
           component={CheckAuthenticationHook(SessionDetails, true)}
         />
