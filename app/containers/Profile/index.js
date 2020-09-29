@@ -15,7 +15,7 @@ import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectProfile from './selectors';
 import reducer from './reducer';
 import Header from '../../components/Header/Loadable';
-
+import Footer from '../../components/Footer/Loadable';
 export function Profile() {
   useInjectReducer({ key: 'profile', reducer });
 
@@ -25,8 +25,9 @@ export function Profile() {
         <title>Profile</title>
         <meta name="description" content="Description of Profile" />
       </Helmet>
-      <Header />
+      <Header title="PROFILE" />
       <div>Profile Settings</div>
+      <Footer />
     </div>
   );
 }

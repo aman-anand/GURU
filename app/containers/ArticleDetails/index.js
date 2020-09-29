@@ -59,7 +59,10 @@ export class ArticleDetails extends React.PureComponent {
     const { courseObj, details } = articleDetails || {};
     const { data: courseData } = courseObj || {};
     const firstArticles = details[0] || [];
-    const { title, data, readingTime, img } = firstArticles || {};
+    const { title, data, readingTime, img, data: descData } =
+      firstArticles || {};
+    const firstDes = descData ? descData[0] : {};
+    const { body } = firstDes || {};
     return (
       <ArticleDetailsContainer>
         <Helmet>
@@ -74,6 +77,10 @@ export class ArticleDetails extends React.PureComponent {
         <div className="container">
           <div className="leftBox">
             <ArticleBlock data={{ title, readingTime, img, data }} />
+            <div
+              className="articleDesc"
+              dangerouslySetInnerHTML={{ __html: body }}
+            />
           </div>
           {!isMobile ? (
             <div className="rightBox">

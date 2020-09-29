@@ -18,6 +18,7 @@ import makeSelectSessions from './selectors';
 import reducer from './reducer';
 import SessionCard from '../../components/SessionCard/Loadable';
 import Header from '../../components/Header/Loadable';
+import Footer from '../../components/Footer/Loadable';
 import Bredcrumb from '../../components/Bredcrumb/Loadable';
 import SessionBlock from '../../components/SessionBlock/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
@@ -29,7 +30,7 @@ export class Sessions extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      sessionRadio: 'upComingSession',
+      sessionRadio: 'Upcoming',
     };
     this.onChangeRadio = this.onChangeRadio.bind(this);
   }
@@ -40,14 +41,14 @@ export class Sessions extends React.PureComponent {
     });
     if (['upComingSession'].includes(params)) {
       this.props.dispatch(upcSessionAction());
-    } else if (['attendedSession'].includes(params)) {
+    } else if (['attended'].includes(params)) {
       this.props.dispatch(attSessionAction());
     }
   };
 
   componentDidMount() {
     const { sessionRadio } = this.state;
-    if (['upComingSession'].includes(sessionRadio)) {
+    if (['Upcoming'].includes(sessionRadio)) {
       this.props.dispatch(upcSessionAction());
     }
     const parms = {
@@ -89,12 +90,10 @@ export class Sessions extends React.PureComponent {
               <div className="leftNavSession">
                 <div className="navList">
                   <label
-                    htmlFor="upComingSession"
-                    onClick={() => this.onChangeRadio('upComingSession')}
+                    htmlFor="Upcoming"
+                    onClick={() => this.onChangeRadio('Upcoming')}
                     className={
-                      ['upComingSession'].includes(sessionRadio)
-                        ? 'active'
-                        : null
+                      ['Upcoming'].includes(sessionRadio) ? 'active' : null
                     }
                   >
                     <span>UPCOMING SESSIONS</span>
@@ -102,12 +101,10 @@ export class Sessions extends React.PureComponent {
                 </div>
                 <div className="navList">
                   <label
-                    htmlFor="attendedSession"
-                    onClick={() => this.onChangeRadio('attendedSession')}
+                    htmlFor="attended"
+                    onClick={() => this.onChangeRadio('attended')}
                     className={
-                      ['attendedSession'].includes(sessionRadio)
-                        ? 'active'
-                        : null
+                      ['attended'].includes(sessionRadio) ? 'active' : null
                     }
                   >
                     <span>ATTENDED SESSIONS</span>
@@ -115,7 +112,9 @@ export class Sessions extends React.PureComponent {
                 </div>
               </div>
               <div className="sessionCardWrapper">
-                {upsData && !upsData.length ? <p>Do not have data</p> : null}
+                {upsData && !upsData.length ? (
+                  <p>No {this.state.sessionRadio} Session</p>
+                ) : null}
                 {upsData &&
                   upsData.map(item => {
                     const {
@@ -189,6 +188,7 @@ export class Sessions extends React.PureComponent {
             </div>
           ) : null}
         </div>
+        {isMobile ? <Footer /> : null}
       </SessionContainer>
     );
   }

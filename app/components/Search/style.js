@@ -8,7 +8,7 @@ export const SearchContainer = styled.div`
   box-sizing: border-box;
   border-radius: 5px;
   position: relative;
-  margin-bottom: 16px;
+  margin: 10px 15px;
   span {
     ${globalStyle.flex};
     position: absolute;
@@ -27,6 +27,6 @@ export const SearchContainer = styled.div`
     line-height: 14px;
     text-transform: capitalize;
     color: #727b87;
-    padding-left: 40px;
+    padding: 12px 15px 12px 40px;
   }
 `;

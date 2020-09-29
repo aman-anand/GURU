@@ -50,4 +50,10 @@ export const ArticleDetailsContainer = styled.section`
       width: 100%;
     }
   }
+  .articleDesc {
+    p {
+      font-weight: normal;
+      font-size: 14px;
+    }
+  }
 `;

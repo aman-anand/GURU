@@ -19,6 +19,7 @@ import reducer from './reducer';
 import { homeAction } from './actions';
 import { getFromLocalStore } from '../../services/CommonSetterGetter';
 import Header from '../../components/Header/Loadable';
+import Footer from '../../components/Footer/Loadable';
 import Search from '../../components/Search/Loadable';
 import SessionCard from '../../components/SessionCard/Loadable';
 import VideoCard from '../../components/VideoCard/Loadable';
@@ -116,8 +117,8 @@ export class Home extends React.PureComponent {
           <meta name="description" content="Description of Home" />
         </Helmet>
         <Header title="Home" />
+        {isMobile ? <Search /> : null}
         <div className="container">
-          {isMobile ? <Search /> : null}
           <div className="leftBox">
             {/* NOTE: COURSE */}
             <UpcommingSession
@@ -275,7 +276,7 @@ export class Home extends React.PureComponent {
             )}
           </div>
         </div>
-        {/* {isMobile ? <Footer /> : null} */}
+        {isMobile ? <Footer /> : null}
       </HomeContainer>
     );
   }

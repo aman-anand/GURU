@@ -7,6 +7,7 @@ export const ArticleBlockContainer = styled.section`
     ${globalStyle.flex};
     ${globalStyle.column};
     padding: 7.5px;
+    text-transform: uppercase;
     @media (max-width: ${globalStyle.small}) {
       background-color: #ffffff;
     }
@@ -20,7 +21,6 @@ export const ArticleBlockContainer = styled.section`
 
   .imgBox {
     background-color: #dedede;
-    border: solid 1px #bbbaba;
     ${globalStyle.flex};
     ${globalStyle.column};
     justify-content: center;
@@ -30,6 +30,10 @@ export const ArticleBlockContainer = styled.section`
     }
     @media (min-width: ${globalStyle.small}) {
       min-height: 350px;
+      border: solid 1px #bbbaba;
+    }
+    img {
+      width: 100%;
     }
   }
 `;
