@@ -375,6 +375,10 @@ const logOut = () => {
   window.localStorage.clear();
   history.push('/signin');
 };
+
+const openChartBox = () => {
+  document.getElementById('chartBoard').style.visibility = 'visible';
+};
 function Header(props) {
   const { rollNumber, fName, lName, profileImage } =
     getFromLocalStore(['rollNumber', 'fName', 'lName', 'profileImage']) || {};
@@ -398,7 +402,11 @@ function Header(props) {
       <div className="navRight">
         {isUserAlreadyLogin() && !isMobile ? (
           <Fragment>
-            <div className="chart">
+            <div
+              className="chart"
+              onClick={() => openChartBox()}
+              role="presentation"
+            >
               <i>
                 <svg
                   width="16"

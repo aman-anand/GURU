@@ -18,6 +18,7 @@ import makeSelectCertificates from './selectors';
 import reducer from './reducer';
 import SessionCard from '../../components/SessionCard/Loadable';
 import Header from '../../components/Header/Loadable';
+import Footer from '../../components/Footer/Loadable';
 import UpcommingSession from '../../components/UpcommingSession/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
 import CetificateBlock from '../../components/CetificateBlock/Loadable';
@@ -120,6 +121,7 @@ export class Certificates extends React.PureComponent {
             </div>
           ) : null}
         </div>
+        {isMobile ? <Footer /> : null}
       </CertificatesContainer>
     );
   }

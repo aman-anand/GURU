@@ -79,7 +79,10 @@ function Footer() {
           </Link>
         </li>
         <li>
-          <Link to="/profile">
+          <Link
+            to="/profile"
+            className={`${['/profile'].includes(pathname) ? 'active' : null}`}
+          >
             <i className="icon">
               <svg
                 width="18"
@@ -94,6 +97,7 @@ function Footer() {
                 />
               </svg>
             </i>
+            <span>Profile</span>
           </Link>
         </li>
       </ul>

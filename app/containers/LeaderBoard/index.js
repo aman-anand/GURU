@@ -32,6 +32,11 @@ export class LeaderBoard extends React.PureComponent {
   }
 
   render() {
+    const { leaderBoard } = this.props;
+    const { leader } = leaderBoard || {};
+    const leaderOBJ = leader.length > 0 ? leader[0] : {};
+    const { leaderboard: leadOBJ } = leaderOBJ || {};
+    window.console.log('Leader board', leadOBJ);
     return (
       <LeaderBoardContainer>
         <Helmet>
@@ -286,18 +291,29 @@ export class LeaderBoard extends React.PureComponent {
                 <span>#Level</span>
               </div>
             </div>
-            <div className="listBox">
-              <div className="left">
-                <i className="icon" />
-                <div className="content">
-                  <span>Sanjana Ghosh</span>
-                  <span>3 Course Completed</span>
-                </div>
-              </div>
-              <div className="right">
-                <div className="cercile">5</div>
-              </div>
-            </div>
+            {leadOBJ &&
+              leadOBJ.map((ele, idx) => {
+                const { totalCourses, user } = ele || {};
+                const { fName, lName, profileImage } = user || {};
+                return (
+                  <div className="listBox">
+                    <div className="left">
+                      <i className="icon">
+                        <img src={profileImage} alt="" title="" />
+                      </i>
+                      <div className="content">
+                        <span>
+                          {fName} {lName}
+                        </span>
+                        <span>{totalCourses} Course Completed</span>
+                      </div>
+                    </div>
+                    <div className="right">
+                      <div className="cercile">{idx}</div>
+                    </div>
+                  </div>
+                );
+              })}
             <div className="listBox">
               <div className="left">
                 <i className="icon" />
@@ -319,6 +335,7 @@ export class LeaderBoard extends React.PureComponent {
 
 LeaderBoard.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  leaderBoard: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

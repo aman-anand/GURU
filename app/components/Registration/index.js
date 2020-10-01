@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { Fragment, memo } from 'react';
 import Button from '@material-ui/core/Button';
 import withSizes from 'react-sizes';
 import PropTypes from 'prop-types';
@@ -71,16 +71,20 @@ class Registration extends React.Component {
     const { isMobile } = this.props;
     return (
       <RegistrationContainer>
-        <h4 className="_hText">PENDING DETAILS</h4>
-        <span className="_decText">Start learning marketing courses</span>
+        {!isMobile ? (
+          <Fragment>
+            <h4 className="_hText">ADDITIONAL INFORMATION UPDATES</h4>
+            <span className="_decText">Start learning marketing courses</span>
+          </Fragment>
+        ) : null}
         <div className="_wrapper">
-          {isMobile ? (
+          {/* {isMobile ? (
             <div className="profilePic">
               <i className="_proPic">
                 <img alt="" title="" />
               </i>
             </div>
-          ) : null}
+          ) : null} */}
           <input
             type="text"
             name="eferral"

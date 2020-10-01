@@ -5,6 +5,7 @@ export const RegistrationContainer = styled.div`
   ${globalStyle.column};
   width: 100%;
   @media (min-width: ${globalStyle.small}) {
+    margin-top: 25px;
     max-width: 500px;
     align-items: center;
   }
@@ -49,16 +50,10 @@ export const RegistrationContainer = styled.div`
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
-    @media (min-width: ${globalStyle.small}) {
-      font-size: 18px;
-    }
   }
   ._decText {
     font-size: 14px;
     font-weight: 300;
-    @media (min-width: ${globalStyle.small}) {
-      font-size: 18px;
-    }
   }
   ._twoComumnWrapper {
     box-sizing: border-box;

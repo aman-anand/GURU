@@ -171,6 +171,10 @@ export const LeaderBoardContainer = styled.section`
         border-radius: 50%;
         margin-right: 20px;
         background-color: #dedede;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
       }
       .content {
         ${globalStyle.flex};

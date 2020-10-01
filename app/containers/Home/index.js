@@ -25,6 +25,7 @@ import SessionCard from '../../components/SessionCard/Loadable';
 import VideoCard from '../../components/VideoCard/Loadable';
 import ArticleCard from '../../components/ArticleCard/Loadable';
 import UpcommingSession from '../../components/UpcommingSession/Loadable';
+import ChartBord from '../../components/ChartBord/Loadable';
 
 // NOTE: Styles
 import { HomeContainer } from './style';
@@ -276,6 +277,7 @@ export class Home extends React.PureComponent {
             )}
           </div>
         </div>
+        <ChartBord />
         {isMobile ? <Footer /> : null}
       </HomeContainer>
     );

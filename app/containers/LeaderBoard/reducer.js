@@ -7,7 +7,7 @@ import produce from 'immer';
 import { LEADER_FULFILLED } from './constants';
 
 export const initialState = {
-  leader: {},
+  leader: [],
 };
 
 /* eslint-disable default-case, no-param-reassign */
