@@ -42,5 +42,9 @@ export const SESSION_DETAILS = () => `${API}/sessions/details`;
 
 // NOTE: Certification
 export const CERTIFICATE = () => `${API}/certificate/user`;
+
 // NOTE: Leader board
 export const LEADER = () => `${API}/leaderboard`;
+
+// NOTE: Comment
+export const SUBMIT_COMMENT = () => `${API}/chat/startChat`;

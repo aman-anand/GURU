@@ -11,6 +11,7 @@ import {
   CERTIFICATE,
   SESSION_DETAILS,
   LEADER,
+  SUBMIT_COMMENT,
 } from '../constants/endpoints';
 import { makeHttpRequest as makeHttpCall } from './common/HttpProvider';
 
@@ -90,5 +91,14 @@ export const CERTIFICATE_API = (params, hideLoader) => {
 };
 export const LEADER_API = (params, hideLoader) => {
   const config = { url: LEADER(), params, method: 'GET', hideLoader };
+  return makeHttpCall(config);
+};
+export const SEND_COMMENT_API = (params, hideLoader) => {
+  const config = {
+    url: SUBMIT_COMMENT(),
+    data: params,
+    method: 'POST',
+    hideLoader,
+  };
   return makeHttpCall(config);
 };

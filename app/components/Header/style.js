@@ -96,6 +96,14 @@ export const HeaderContainer = styled.header`
       margin-right: 20px;
       align-items: center;
       justify-content: center;
+      position: relative;
+    }
+    .notification {
+      &.active {
+        .notificationWrapper {
+          display: block;
+        }
+      }
     }
     .myProfileNav {
       background: #f9fafc;
@@ -311,5 +319,19 @@ export const HeaderContainer = styled.header`
         }
       }
     }
+  }
+
+  .notificationWrapper {
+    border: solid 1px red;
+    position: absolute;
+    top: 46px;
+    right: 0;
+    padding: 5px 10px;
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    z-index: 2;
+    background-color: #ffffff;
+    width: 300px;
+    display: none;
   }
 `;

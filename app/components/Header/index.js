@@ -271,7 +271,7 @@ export const listCompo = props => {
             </Link>
             </li> */}
           <li>
-            <Link to="/" role="presentation">
+            <Link to="/chart" role="presentation">
               <i className="icon">
                 <svg
                   width="16"
@@ -422,7 +422,7 @@ function Header(props) {
                 </svg>
               </i>
             </div>
-            <div className="chart">
+            <div className="chart notification">
               <i>
                 <svg
                   width="17"
@@ -437,6 +437,9 @@ function Header(props) {
                   />
                 </svg>
               </i>
+              <div className="notificationWrapper">
+                <div>Notification</div>
+              </div>
             </div>
             <div className="myProfileNav">
               <div className="proIcon">

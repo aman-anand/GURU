@@ -302,10 +302,14 @@ const GlobalStyle = createGlobalStyle`
           width: 35px;
           height: 35px;
           border-radius: 50%;
-          background-color: #dedede;
+          background-color: #ffffff;
           margin-right: 10px;
           align-items: center;
           justify-content: center;
+          overflow: hidden;
+          img {
+            width: 100%;
+          }
         }
         &:nth-child(2) {
           ${globalStyle.column};

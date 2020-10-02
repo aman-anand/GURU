@@ -142,4 +142,39 @@ export const GuruCoursesDetailsContainer = styled.section`
     margin-top: 7.5px;
     width: 100%;
   }
+  .postCommentwrapper {
+    ${globalStyle.flex};
+    ${globalStyle.row};
+    .icon {
+      border: solid 1px #bdbcbc;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      margin-right: 10px;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 100%;
+      }
+    }
+    .postComment {
+      ${globalStyle.flex};
+      ${globalStyle.row};
+      flex: 1;
+      .leftPostCom {
+        ${globalStyle.flex};
+        flex: 1;
+        input {
+          width: 100%;
+        }
+      }
+      button {
+        background: #0976BE;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        color: #ffffff;
+      }
+    }
+  }
 `;

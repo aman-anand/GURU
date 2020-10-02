@@ -29,6 +29,7 @@ import LeaderBoard from '../LeaderBoard/Loadable';
 import Setting from '../Setting/Loadable';
 import Feedback from '../Feedback/Loadable';
 import Profile from '../Profile/Loadable';
+import Chart from '../Chart/Loadable';
 import Loader from '../../components/Loader/Loadable';
 // Routing hooks
 import CheckAuthenticationHook from '../../utils/CheckAuthenticationHook';
@@ -137,6 +138,11 @@ export default function App() {
           exact
           path="/profile"
           component={CheckAuthenticationHook(Profile, true)}
+        />
+        <Route
+          exact
+          path="/chart"
+          component={CheckAuthenticationHook(Chart, true)}
         />
         <Route exact path="*" component={PageNotFoundHook(NotFoundPage)} />
       </Switch>

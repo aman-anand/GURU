@@ -4,7 +4,11 @@
  *
  */
 
-import { COURSE_API, COURSE_DETAILS_API } from '../../dataService/Home';
+import {
+  COURSE_API,
+  COURSE_DETAILS_API,
+  SEND_COMMENT_API,
+} from '../../dataService/Home';
 import {
   COURSE_FULFILLED,
   COURSE_PENDING,
@@ -12,6 +16,9 @@ import {
   COURSE_DETAILS_PENDING,
   COURSE_DETAILS_FULFILLED,
   COURSE_DETAILS_REJECTED,
+  SEND_COMMENT_PENDING,
+  SEND_COMMENT_FULFILLED,
+  SEND_COMMENT_REJECTED,
 } from './constants';
 
 export function courseAction(params) {
@@ -34,6 +41,18 @@ export function courseDetailsAction(params) {
       return dispatch(fetchData({ types: COURSE_DETAILS_FULFILLED, data }));
     } catch (err) {
       return dispatch(fetchData({ types: COURSE_DETAILS_REJECTED, err }));
+    }
+  };
+}
+
+export function submitCommentAction(params) {
+  return async dispatch => {
+    dispatch(fetchData({ types: SEND_COMMENT_PENDING }));
+    try {
+      const { data } = await SEND_COMMENT_API(params);
+      return dispatch(fetchData({ types: SEND_COMMENT_FULFILLED, data }));
+    } catch (err) {
+      return dispatch(fetchData({ types: SEND_COMMENT_REJECTED, err }));
     }
   };
 }

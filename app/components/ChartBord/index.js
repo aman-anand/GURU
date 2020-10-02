@@ -18,12 +18,21 @@ export class ChartBord extends React.PureComponent {
     this.state = {};
   }
 
+  chartBoardCloseFn = () => {
+    document.getElementById('chartBoard').style.visibility = 'hidden';
+  };
+
   render() {
     const { isMobile } = this.props;
     return (
       <ChartBordContainer id="chartBoard">
         {!isMobile ? (
-          <div className="chartLeftBox" id="chartBoardClose" />
+          <div
+            className="chartLeftBox"
+            id="chartBoardClose"
+            onClick={() => this.chartBoardCloseFn()}
+            role="presentation"
+          />
         ) : null}
         <div className="chartRightBox">
           <div className="chartHeader">
@@ -44,7 +53,11 @@ export class ChartBord extends React.PureComponent {
             <div className="_conte_ch_h">
               <span>CHAT WITH GURU</span>
             </div>
-            <div className="_right_ch_h">
+            <div
+              className="_right_ch_h"
+              onClick={() => this.chartBoardCloseFn()}
+              role="presentation"
+            >
               <svg
                 width="14"
                 height="14"
