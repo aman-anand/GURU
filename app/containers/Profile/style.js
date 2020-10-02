@@ -14,6 +14,7 @@ export const ProfileContainer = styled.section`
     flex: 1;
     align-self: center;
     width: 100%;
+    position: relative;
     @media (min-width: 1142px) {
       width: 780px;
       padding: 10px 0px;
@@ -32,8 +33,7 @@ export const ProfileContainer = styled.section`
       ${globalStyle.flex};
       background: #ffffff;
       @media (max-width: ${globalStyle.small}) {
-        background-color: rgba(46 50 61 / 86%);
-        color: #ffffff;
+        background-color: #2e323d;
       }
       @media (min-width: ${globalStyle.small}) {
         border-radius: 5px;
@@ -49,7 +49,7 @@ export const ProfileContainer = styled.section`
         text-align: center;
         color: #000000;
         @media (max-width: ${globalStyle.small}) {
-          color: #ffffff;
+          color: rgb(255 255 255 / 43%);
           text-transform: uppercase;
         }
         padding: 15px;
@@ -58,9 +58,7 @@ export const ProfileContainer = styled.section`
       }
       &.active {
         background-color: #2e323d;
-        @media (max-width: ${globalStyle.small}) {
-          background-color: #2e323d;
-        }
+        background-color: rgba(46 50 61 / 86%);
         span {
           color: #ffffff;
         }
@@ -72,6 +70,7 @@ export const ProfileContainer = styled.section`
     ${globalStyle.flex};
     ${globalStyle.column};
     align-items: center;
+    overflow: auto;
     @media (max-width: ${globalStyle.small}) {
       padding: 0px 15px 15px 15px;
     }

@@ -34,7 +34,7 @@ import Button from '@material-ui/core/Button';
 import {
   courseDetailsAction,
   courseAction,
-  submitCommentAction,
+  submitReviewAction,
 } from '../Course/actions';
 import Header from '../../components/Header/Loadable';
 import reducer from '../Course/reducer';
@@ -161,13 +161,19 @@ export class CourseDetails extends React.PureComponent {
   };
 
   submitComment = () => {
-    const { comment } = this.state;
-    const userId = window.localStorage.getItem('id');
+    const { comment, COURSE_ID } = this.state;
     const jsonOBJ = {
-      user: userId,
-      comment,
+      review: comment,
+      rating: 3,
+      addedForId: COURSE_ID,
+      typeOf: 'course',
+      reviewType: 'text',
     };
-    this.props.dispatch(submitCommentAction(jsonOBJ));
+    this.props.dispatch(submitReviewAction(jsonOBJ)).then(() => {
+      this.setState({
+        comment: '',
+      });
+    });
   };
 
   startExamAction = params => {
@@ -312,6 +318,7 @@ export class CourseDetails extends React.PureComponent {
                                 <input
                                   placeholder="write your feedback here"
                                   type="text"
+                                  value={this.state.comment}
                                   onChange={e =>
                                     this.onChangeComment(e.target.value)
                                   }

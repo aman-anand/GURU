@@ -404,5 +404,8 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   ${VideoPlayerStyle};
+  .none {
+    pointer-events: none;
+  }
 `;
 export default GlobalStyle;

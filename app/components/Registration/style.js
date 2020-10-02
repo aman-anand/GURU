@@ -66,6 +66,14 @@ export const RegistrationContainer = styled.div`
       width: 50%;
     }
   }
+  ._rowWrapper {
+    box-sizing: border-box;
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    input {
+      margin: 0px 10px 12px 10px;
+    }
+  }
   ._twoRowWrapper {
     box-sizing: border-box;
     ${globalStyle.flex};

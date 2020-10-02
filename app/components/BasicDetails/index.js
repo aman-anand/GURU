@@ -11,6 +11,7 @@ import withSizes from 'react-sizes';
 import Button from '@material-ui/core/Button';
 import uploadIcon from '../../images/uploadIcon.svg';
 import cameraIcon from '../../images/cameraIcon.svg';
+import activeImg from '../../images/active.png';
 import { BasicDetailsContainer } from './style';
 
 class BasicDetails extends React.Component {
@@ -18,6 +19,8 @@ class BasicDetails extends React.Component {
     super(props);
     this.state = {
       required: false,
+      aadharImg: window.localStorage.getItem('aadharImageUrl'),
+      profileImg: window.localStorage.getItem('profileImage'),
     };
   }
 
@@ -29,37 +32,87 @@ class BasicDetails extends React.Component {
   };
 
   submitForm = () => {
-    const { submitRegistration } = this.props;
-    const { fName, lName, email, phone, aadharNumber, required } =
-      this.state || {};
-    if (!required && !(fName && lName && email && phone && aadharNumber)) {
+    const {
+      submitRegistration,
+      formData,
+      aadharImageUrl,
+      profileImage,
+    } = this.props;
+    const {
+      fName,
+      lName,
+      phone,
+      aadharNumber,
+      required,
+      pincode,
+      aadharImg,
+      profileImg,
+    } = this.state || {};
+    const {
+      fName: props_fName,
+      lName: props_lName,
+      phone: props_phone,
+      aadharNumber: props_aadharNumber,
+      pincode: props_pincode,
+    } = formData || {};
+    const jsonOBJ = {
+      fName: props_fName || fName,
+      lName: props_lName || lName,
+      phone: props_phone || phone,
+      aadharNumber: props_aadharNumber || aadharNumber,
+      pincode: props_pincode || pincode,
+      aadharImageUrl: aadharImg || aadharImageUrl,
+      profileImage: profileImg || profileImage,
+    };
+    if (
+      !required &&
+      !(
+        (fName || props_fName) &&
+        (lName || props_lName) &&
+        (phone || props_phone) &&
+        (aadharNumber || props_aadharNumber) &&
+        (pincode || props_pincode)
+      )
+    ) {
       this.setState({
         required: true,
       });
     } else {
-      submitRegistration({ fName, lName, email, phone, aadharNumber });
+      submitRegistration(jsonOBJ);
     }
   };
 
+  uploadFile = event => {
+    const { uploadAction } = this.props;
+    uploadAction(event.target.name, event.target.files[0]);
+  };
+
   render() {
-    const { isMobile, responseError, formData } = this.props;
+    const {
+      isMobile,
+      responseError,
+      formData,
+      aadharImageUrl,
+      profileImage,
+    } = this.props;
     const {
       required,
       fName,
       lName,
-      email,
       phone,
       aadharNumber,
-      password,
+      pincode,
+      aadharImg,
+      profileImg,
     } = this.state;
     const { message, success } = responseError || {};
     const {
       fName: props_fname,
       lName: props_lName,
-      email: props_email,
       phone: props_phone,
       aadharNumber: props_aadh,
-      password: props_pass,
+      pincode: props_pincode,
+      rollNumber,
     } = formData || {};
     window.console.log('STATE', this.state);
     return (
@@ -72,25 +125,35 @@ class BasicDetails extends React.Component {
         ) : null}
         <div className="_wrapper">
           <div className="picWrapper">
-            <div className="profilePic">
+            <label className="profilePic" htmlFor="fileupload">
+              <input
+                name="profileImage"
+                type="file"
+                id="fileupload"
+                onChange={e => this.uploadFile(e)}
+              />
               <i className="_proPic">
-                <img alt="" title="" />
+                <img src={profileImage || profileImg} alt="" title="" />
               </i>
               <div className="cam">
-                <svg
-                  width="15"
-                  height="14"
-                  viewBox="0 0 15 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1.5 1.55556H3.75L5.25 0H9.75L11.25 1.55556H13.5C13.8978 1.55556 14.2794 1.71944 14.5607 2.01117C14.842 2.30289 15 2.69855 15 3.11111V12.4444C15 12.857 14.842 13.2527 14.5607 13.5444C14.2794 13.8361 13.8978 14 13.5 14H1.5C1.10218 14 0.720644 13.8361 0.43934 13.5444C0.158035 13.2527 0 12.857 0 12.4444V3.11111C0 2.69855 0.158035 2.30289 0.43934 2.01117C0.720644 1.71944 1.10218 1.55556 1.5 1.55556ZM7.5 3.88889C6.50544 3.88889 5.55161 4.29861 4.84835 5.02792C4.14509 5.75723 3.75 6.74638 3.75 7.77778C3.75 8.80918 4.14509 9.79833 4.84835 10.5276C5.55161 11.2569 6.50544 11.6667 7.5 11.6667C8.49456 11.6667 9.44839 11.2569 10.1517 10.5276C10.8549 9.79833 11.25 8.80918 11.25 7.77778C11.25 6.74638 10.8549 5.75723 10.1517 5.02792C9.44839 4.29861 8.49456 3.88889 7.5 3.88889ZM7.5 5.44444C8.09674 5.44444 8.66903 5.69028 9.09099 6.12786C9.51295 6.56545 9.75 7.15894 9.75 7.77778C9.75 8.39662 9.51295 8.99011 9.09099 9.42769C8.66903 9.86528 8.09674 10.1111 7.5 10.1111C6.90326 10.1111 6.33097 9.86528 5.90901 9.42769C5.48705 8.99011 5.25 8.39662 5.25 7.77778C5.25 7.15894 5.48705 6.56545 5.90901 6.12786C6.33097 5.69028 6.90326 5.44444 7.5 5.44444Z"
-                    fill="white"
-                  />
-                </svg>
+                {profileImage || profileImg ? (
+                  <img src={activeImg} alt="" title="" />
+                ) : (
+                  <svg
+                    width="15"
+                    height="14"
+                    viewBox="0 0 15 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1.5 1.55556H3.75L5.25 0H9.75L11.25 1.55556H13.5C13.8978 1.55556 14.2794 1.71944 14.5607 2.01117C14.842 2.30289 15 2.69855 15 3.11111V12.4444C15 12.857 14.842 13.2527 14.5607 13.5444C14.2794 13.8361 13.8978 14 13.5 14H1.5C1.10218 14 0.720644 13.8361 0.43934 13.5444C0.158035 13.2527 0 12.857 0 12.4444V3.11111C0 2.69855 0.158035 2.30289 0.43934 2.01117C0.720644 1.71944 1.10218 1.55556 1.5 1.55556ZM7.5 3.88889C6.50544 3.88889 5.55161 4.29861 4.84835 5.02792C4.14509 5.75723 3.75 6.74638 3.75 7.77778C3.75 8.80918 4.14509 9.79833 4.84835 10.5276C5.55161 11.2569 6.50544 11.6667 7.5 11.6667C8.49456 11.6667 9.44839 11.2569 10.1517 10.5276C10.8549 9.79833 11.25 8.80918 11.25 7.77778C11.25 6.74638 10.8549 5.75723 10.1517 5.02792C9.44839 4.29861 8.49456 3.88889 7.5 3.88889ZM7.5 5.44444C8.09674 5.44444 8.66903 5.69028 9.09099 6.12786C9.51295 6.56545 9.75 7.15894 9.75 7.77778C9.75 8.39662 9.51295 8.99011 9.09099 9.42769C8.66903 9.86528 8.09674 10.1111 7.5 10.1111C6.90326 10.1111 6.33097 9.86528 5.90901 9.42769C5.48705 8.99011 5.25 8.39662 5.25 7.77778C5.25 7.15894 5.48705 6.56545 5.90901 6.12786C6.33097 5.69028 6.90326 5.44444 7.5 5.44444Z"
+                      fill="white"
+                    />
+                  </svg>
+                )}
               </div>
-            </div>
+            </label>
             <div className="rollNo">
               <i>
                 <svg
@@ -106,7 +169,7 @@ class BasicDetails extends React.Component {
                   />
                 </svg>
               </i>
-              <span>ROLL NO: 506355</span>
+              <span>ROLL NO: {rollNumber}</span>
             </div>
           </div>
           <div className="_twoComumnWrapper">
@@ -127,18 +190,7 @@ class BasicDetails extends React.Component {
               required={required}
             />
           </div>
-          <div
-            className={`${isMobile ? '_twoRowWrapper' : '_twoComumnWrapper'}`}
-          >
-            <input
-              name="email"
-              type="text"
-              value={email || props_email}
-              placeholder="Email Address *"
-              onChange={e => this.onChangeAction(e)}
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-              required={required}
-            />
+          <div className="_twoRowWrapper">
             <input
               name="phone"
               type="tel"
@@ -158,10 +210,33 @@ class BasicDetails extends React.Component {
             pattern="[0-9]{4}[0-9]{4}[0-9]{4}"
             required={required}
           />
-          <div className="uploadField">
+          <input
+            name="pincode"
+            type="text"
+            value={pincode || props_pincode}
+            placeholder="Pincode *"
+            onChange={e => this.onChangeAction(e)}
+            pattern="[0-9]{6}"
+            required={required}
+          />
+          <div
+            className={`${
+              aadharImg || aadharImageUrl ? 'uploadField none' : 'uploadField'
+            }`}
+          >
             <label htmlFor="fileupload">
-              <input name="aadharImageUrl" type="file" id="fileupload" />
+              <input
+                name="aadharImageUrl"
+                type="file"
+                id="fileupload"
+                onChange={e => this.uploadFile(e)}
+              />
               <div className="_leftUpload">
+                {aadharImg || aadharImageUrl ? (
+                  <span className="uploded">
+                    <img src={activeImg} alt="" title="" />
+                  </span>
+                ) : null}
                 <img src={uploadIcon} alt="" title="" />
               </div>
               <div className="_rightUpload">
@@ -175,15 +250,6 @@ class BasicDetails extends React.Component {
               </div>
             </label>
           </div>
-          <input
-            name="passwoed"
-            type="password"
-            value={password || props_pass}
-            placeholder="Password *"
-            onChange={e => this.onChangeAction(e)}
-            pattern="[0-9]{4}[0-9]{4}[0-9]{4}"
-            required={required}
-          />
           {!success ? <span className="error">{message}</span> : null}
           <Button
             variant="contained"
@@ -204,6 +270,9 @@ BasicDetails.propTypes = {
   submitRegistration: PropTypes.func,
   responseError: PropTypes.object,
   formData: PropTypes.object,
+  uploadAction: PropTypes.func,
+  aadharImageUrl: PropTypes.string,
+  profileImage: PropTypes.string,
 };
 
 const mapSizesToProps = ({ width }) => ({

@@ -4,7 +4,11 @@
  *
  */
 import produce from 'immer';
-import { COURSE_FULFILLED, COURSE_DETAILS_FULFILLED } from './constants';
+import {
+  COURSE_FULFILLED,
+  COURSE_DETAILS_FULFILLED,
+  SEND_COMMENT_FULFILLED,
+} from './constants';
 
 export const initialState = {
   courseObj: {},
@@ -25,6 +29,13 @@ const courseReducer = (state = initialState, action) =>
         {
           const { payload } = action;
           draft.courseDetailsObj = payload;
+        }
+        break;
+      case SEND_COMMENT_FULFILLED:
+        {
+          const { payload } = action;
+          const { data: actionData } = payload;
+          draft.courseDetailsObj.data.review.unshift(actionData);
         }
         break;
     }

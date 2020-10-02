@@ -48,3 +48,9 @@ export const LEADER = () => `${API}/leaderboard`;
 
 // NOTE: Comment
 export const SUBMIT_COMMENT = () => `${API}/chat/startChat`;
+
+// NOTE: Upload
+export const UPLOAD = () => `${API}/upload`;
+
+// NOTE: Upload
+export const ADD_REVIEW = () => `${API}/review`;

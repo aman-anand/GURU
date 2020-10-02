@@ -7,7 +7,7 @@
 import {
   COURSE_API,
   COURSE_DETAILS_API,
-  SEND_COMMENT_API,
+  ADD_REVIEW_API,
 } from '../../dataService/Home';
 import {
   COURSE_FULFILLED,
@@ -45,11 +45,11 @@ export function courseDetailsAction(params) {
   };
 }
 
-export function submitCommentAction(params) {
+export function submitReviewAction(params) {
   return async dispatch => {
     dispatch(fetchData({ types: SEND_COMMENT_PENDING }));
     try {
-      const { data } = await SEND_COMMENT_API(params);
+      const { data } = await ADD_REVIEW_API(params);
       return dispatch(fetchData({ types: SEND_COMMENT_FULFILLED, data }));
     } catch (err) {
       return dispatch(fetchData({ types: SEND_COMMENT_REJECTED, err }));

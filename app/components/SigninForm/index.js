@@ -7,7 +7,6 @@
 import React, { memo } from 'react';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { SigninFormContainer } from './style';
 
 class SigninForm extends React.Component {
@@ -100,9 +99,6 @@ class SigninForm extends React.Component {
           >
             SUBMIT
           </Button>
-          <span className="donthavetext">
-            <Link to="signup">Don’t have your account?</Link>
-          </span>
         </div>
       </SigninFormContainer>
     );

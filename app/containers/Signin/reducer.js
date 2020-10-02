@@ -34,7 +34,11 @@ const signinReducer = (state = initialState, action) =>
             fName,
             lName,
             gender,
+            aadharNumber,
+            address,
           } = data;
+          const { city, country, locality, pincode, state: adressState } =
+            address || {};
           const { token, expires } = auth || {};
           if (success) {
             setLoclStoreArry([
@@ -49,6 +53,12 @@ const signinReducer = (state = initialState, action) =>
               { fName },
               { lName },
               { gender },
+              { aadharNumber },
+              { city },
+              { country },
+              { locality },
+              { pincode },
+              { state: adressState },
             ]);
           }
           draft.data = data;

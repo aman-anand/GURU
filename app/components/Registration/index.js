@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /**
  *
  * Registration
@@ -16,7 +17,6 @@ class Registration extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: false,
       formObj: {},
     };
   }
@@ -40,23 +40,15 @@ class Registration extends React.Component {
   };
 
   onSubmitForm = () => {
-    const { updateDetails } = this.props;
+    const { submitRegistration } = this.props;
     const { formObj } = this.state;
-    const { dob, age, martialstatus, occupation, monthertounge } =
-      formObj || {};
-    if (dob && age && martialstatus && occupation && monthertounge) {
-      updateDetails(formObj);
-    } else {
-      this.setState({
-        error: true,
-      });
-    }
+    submitRegistration(formObj);
   };
 
   render() {
-    const { error, formObj } = this.state;
+    const { formObj } = this.state;
+    const { isMobile, formData } = this.props;
     const {
-      eferral,
       dob,
       age,
       martialstatus,
@@ -64,11 +56,24 @@ class Registration extends React.Component {
       monthertounge,
       dependants,
       locality,
-      district,
+      city,
       state,
-      pincode,
+      gender,
+      email,
     } = formObj || {};
-    const { isMobile } = this.props;
+    const {
+      dob: props_dob,
+      age: props_age,
+      martialstatus: props_martialstatus,
+      occupation: props_occupation,
+      monthertounge: props_monthertounge,
+      dependants: props_dependants,
+      locality: props_locality,
+      city: props_city,
+      state: props_state,
+      gender: props_gender,
+      email: props_email,
+    } = formData || {};
     return (
       <RegistrationContainer>
         {!isMobile ? (
@@ -78,152 +83,133 @@ class Registration extends React.Component {
           </Fragment>
         ) : null}
         <div className="_wrapper">
-          {/* {isMobile ? (
-            <div className="profilePic">
-              <i className="_proPic">
-                <img alt="" title="" />
-              </i>
-            </div>
-          ) : null} */}
-          <input
-            type="text"
-            name="eferral"
-            value={eferral}
-            placeholder="Referral Code"
-            onChange={e => this.onChangeAction(e)}
-          />
           <div className="genderWrapper">
             <span>Gender</span>
             <div className="_genderBox" onChange={e => this.onChangeAction(e)}>
               <label htmlFor="male">
-                <input type="radio" name="gender" value="male" id="male" />
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  id="male"
+                  checked={props_gender || gender === 'male'}
+                />
                 <span>Male</span>
               </label>
               <label htmlFor="female">
-                <input type="radio" name="gender" value="female" id="female" />
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  id="female"
+                  checked={props_gender || gender === 'female'}
+                />
                 <span>Female</span>
               </label>
             </div>
+          </div>
+          <input
+            type="text"
+            value={props_email || email}
+            name="email"
+            placeholder="Email Address"
+            onChange={e => this.onChangeAction(e)}
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          />
+          <div className="_rowWrapper">
+            <select
+              name="occupation"
+              value={props_occupation || occupation}
+              onChange={e => this.onChangeAction(e)}
+            >
+              <option>Occupation</option>
+              <option value="farmer">Farmer</option>
+              <option value="accountant">Accountant</option>
+              <option value="driver">Driver</option>
+            </select>
           </div>
           <div className="_twoComumnWrapper">
             <input
               type="date"
               name="dob"
-              value={dob}
-              placeholder="Date of Birth *"
+              value={props_dob || dob}
+              placeholder="Date of Birth"
               onChange={e => this.onChangeAction(e)}
-              className={`${error && !dob ? 'input_error' : null}`}
             />
             <input
               type="number"
               name="age"
-              value={age}
+              value={props_age || age}
               maxLength="2"
               size="2"
               placeholder="Age *"
               onChange={e => this.onChangeAction(e)}
-              className={`${error && !age ? 'input_error' : null}`}
             />
-            <input
-              type="text"
-              name="martialstatus"
-              value={martialstatus}
-              placeholder="Martial Status *"
+          </div>
+          <div className="_rowWrapper">
+            <select
+              name="monthertounge"
+              value={props_monthertounge || monthertounge}
               onChange={e => this.onChangeAction(e)}
-              className={`${error && !martialstatus ? 'input_error' : null}`}
-            />
+            >
+              <option>Mother Tongue</option>
+              <option value="hindi">Hindi</option>
+              <option value="english">English</option>
+              <option value="gujurati">Gujurati</option>
+              <option value="marathi">Marathi</option>
+              <option value="others">Others</option>
+            </select>
           </div>
           <div className="_twoComumnWrapper">
             <select
-              name="occupation"
-              value={occupation}
+              name="martialstatus"
+              value={props_martialstatus || martialstatus}
               onChange={e => this.onChangeAction(e)}
-              className={`${error && !occupation ? 'select_error' : null}`}
             >
-              <option>Occupation *</option>
-              <option value="lime">Lime</option>
-              <option value="coconut">Coconut</option>
-              <option value="mango">Mango</option>
-            </select>
-            <select
-              name="monthertounge"
-              value={monthertounge}
-              onChange={e => this.onChangeAction(e)}
-              className={`${error && !monthertounge ? 'select_error' : null}`}
-            >
-              <option>Mother Tongue *</option>
-              <option value="english">English</option>
-              <option value="hindi">Hindi</option>
+              <option>Marital Status</option>
+              <option value="married">Married</option>
+              <option value="unmarried">Unmarried</option>
             </select>
             <select
               name="dependants"
-              value={dependants}
+              value={props_dependants || dependants}
               onChange={e => this.onChangeAction(e)}
             >
-              <option>No. of Dependants *</option>
-              <option value="lime">Lime</option>
-              <option value="coconut">Coconut</option>
-              <option value="mango">Mango</option>
+              <option>No. of Dependants</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
           </div>
-          {/* <div className="_twoComumnWrapper">
-            <div className="uploadField">
-              <label htmlFor="fileupload">
-                <input name="aadharImageUrl" type="file" id="fileupload" />
-                <div className="_leftUpload">
-                  <img src={uploadIcon} alt="" title="" />
-                </div>
-                <div className="_rightUpload">
-                  <span className="uploadText">
-                    <i>
-                      <img src={cameraIcon} alt="" title="" />
-                    </i>
-                    Upload
-                  </span>
-                  <span> Aadhar Card</span>
-                </div>
-              </label>
-            </div>
-          </div> */}
           <p className="_secText">Address</p>
           <input
             type="text"
-            value={locality}
+            value={props_locality || locality}
             name="locality"
             placeholder="Locality/Post Office"
             onChange={e => this.onChangeAction(e)}
           />
-          <div className="_twoComumnWrapper">
-            <select
-              name="district"
-              value={district}
-              onChange={e => this.onChangeAction(e)}
-            >
-              <option>City/District/Region</option>
-              <option value="mumbai">Mumbai</option>
-              <option value="thane">Thane</option>
-              <option value="pune">Pune</option>
-            </select>
-            <select
-              name="state"
-              value={state}
-              onChange={e => this.onChangeAction(e)}
-            >
-              <option>state</option>
-              <option value="maharastra">Maharastra</option>
-              <option value="kolkata">Kolkata</option>
-              <option value="delhi">Delhi</option>
-            </select>
-            <input
-              type="number"
-              name="pincode"
-              value={pincode}
-              min="6"
-              max="6"
-              placeholder="Pin code"
-              onChange={e => this.onChangeAction(e)}
-            />
-          </div>
+          <input
+            type="text"
+            value={props_city || city}
+            name="city"
+            placeholder="City/District/Region"
+            onChange={e => this.onChangeAction(e)}
+          />
+          <input
+            type="text"
+            value={props_state || state}
+            name="state"
+            placeholder="State"
+            onChange={e => this.onChangeAction(e)}
+          />
           <Button
             variant="contained"
             color="primary"
@@ -240,7 +226,8 @@ class Registration extends React.Component {
 
 Registration.propTypes = {
   isMobile: PropTypes.bool,
-  updateDetails: PropTypes.func,
+  submitRegistration: PropTypes.func,
+  formData: PropTypes.object,
 };
 
 const mapSizesToProps = ({ width }) => ({

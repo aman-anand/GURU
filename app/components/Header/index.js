@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import history from '../../utils/history';
 import { isUserAlreadyLogin } from '../../dataService/Login';
 import { getFromLocalStore } from '../../services/CommonSetterGetter';
-// import styled from 'styled-components';
+import Notification from '../Notification/Loadable';
 import logoIMG from '../../images/logo.svg';
 import hemburger from '../../images/hemburger.png';
 import { HeaderContainer } from './style';
@@ -23,6 +23,11 @@ const closeNavigate = () => {
 const openNavigate = () => {
   const element = document.getElementById('mobileNavigation');
   element.classList.add('active');
+};
+
+const openNotification = () => {
+  const element = document.getElementById('notification');
+  element.classList.toggle('active');
 };
 
 export const listCompo = props => {
@@ -422,7 +427,12 @@ function Header(props) {
                 </svg>
               </i>
             </div>
-            <div className="chart notification">
+            <div
+              className="chart notification"
+              id="notification"
+              onClick={() => openNotification()}
+              role="presentation"
+            >
               <i>
                 <svg
                   width="17"
@@ -437,9 +447,7 @@ function Header(props) {
                   />
                 </svg>
               </i>
-              <div className="notificationWrapper">
-                <div>Notification</div>
-              </div>
+              <Notification />
             </div>
             <div className="myProfileNav">
               <div className="proIcon">

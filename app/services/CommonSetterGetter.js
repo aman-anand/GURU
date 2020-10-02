@@ -12,7 +12,7 @@ export const getFromLocalStore = key => {
   const storageKeys = Object.keys(storage);
   key.map(ele => {
     if (storageKeys.includes(ele)) {
-      object[ele] = ['null', 'undefined'].includes(storage[ele])
+      object[ele] = ['null', 'undefined', ''].includes(storage[ele])
         ? null
         : storage[ele];
     }

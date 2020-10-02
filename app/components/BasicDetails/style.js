@@ -100,6 +100,10 @@ export const BasicDetailsContainer = styled.div`
       ._leftUpload {
         justify-content: flex-end;
         padding-right: 7.5px;
+        align-items: center;
+        .uploded {
+          margin-right: 10px;
+        }
       }
       ._rightUpload {
         justify-content: flex-start;
@@ -134,6 +138,9 @@ export const BasicDetailsContainer = styled.div`
     align-items: center;
     margin-right: 20px;
     position: relative;
+    input {
+      display: none;
+    }
     i {
       ${globalStyle.flex};
       background-color: #ccc3c3;
@@ -141,6 +148,10 @@ export const BasicDetailsContainer = styled.div`
       height: 120px;
       border: solid 1px #ababab;
       border-radius: 60px;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
     }
     .cam {
       background: #da3a33;
