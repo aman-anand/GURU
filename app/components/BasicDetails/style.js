@@ -27,6 +27,7 @@ export const BasicDetailsContainer = styled.div`
     font-size: 14px;
     font-weight: 600;
     text-align: center;
+    cursor: pointer;
     @media (min-width: ${globalStyle.small}) {
       color: #ffffff;
     }

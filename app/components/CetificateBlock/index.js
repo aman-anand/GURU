@@ -5,18 +5,31 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
+import CloseIcon from '@material-ui/icons/Close';
 import { CetificateBlockContainer } from './style';
-
-const viewUrl = url => {
-  window.open(url, '_blank');
-};
 
 function CetificateBlock(props) {
   const { data } = props;
+  const [open, setOpen] = useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const { display_certificateDate, certificateUrl, name, color } = data || {};
+  const download = url => {
+    window.open(url, '_blank');
+  };
+  const viewUrl = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <CetificateBlockContainer color={color}>
       <div className="_leftBox">
@@ -48,10 +61,37 @@ function CetificateBlock(props) {
         >
           VIEW
         </Button>
-        <Button variant="contained" color="primary" type="button">
+        <Button
+          variant="contained"
+          color="primary"
+          type="button"
+          onClick={() => download(certificateUrl)}
+        >
           DOWNLOAD
         </Button>
       </div>
+      <Dialog
+        fullScreen={fullScreen}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="responsive-dialog-title"
+      >
+        <div className="pdfPreview">
+          <div className="head">
+            <CloseIcon onClick={handleClose} />
+          </div>
+          <div className="cont">
+            <embed
+              src={`${certificateUrl}#toolbar=0&navpanes=0&scrollbar=0`}
+              type="application/pdf"
+              frameBorder="0"
+              scrolling="auto"
+              height="100%"
+              width="100%"
+            />
+          </div>
+        </div>
+      </Dialog>
     </CetificateBlockContainer>
   );
 }

@@ -19,9 +19,24 @@ class BasicDetails extends React.Component {
     super(props);
     this.state = {
       required: false,
-      aadharImg: window.localStorage.getItem('aadharImageUrl'),
-      profileImg: window.localStorage.getItem('profileImage'),
     };
+  }
+
+  componentDidMount() {
+    const { formData, aadharImageUrl, profileImage } = this.props;
+    const { fName, lName, phone, aadharNumber, pincode, rollNumber } =
+      formData || {};
+    this.setState({
+      fName,
+      lName,
+      phone,
+      aadharNumber,
+      pincode,
+      rollNumber,
+      aadharImageUrl:
+        aadharImageUrl || window.localStorage.getItem('aadharImageUrl'),
+      profileImage: profileImage || window.localStorage.getItem('profileImage'),
+    });
   }
 
   onChangeAction = eve => {
@@ -32,12 +47,7 @@ class BasicDetails extends React.Component {
   };
 
   submitForm = () => {
-    const {
-      submitRegistration,
-      formData,
-      aadharImageUrl,
-      profileImage,
-    } = this.props;
+    const { submitRegistration } = this.props;
     const {
       fName,
       lName,
@@ -45,35 +55,19 @@ class BasicDetails extends React.Component {
       aadharNumber,
       required,
       pincode,
-      aadharImg,
-      profileImg,
+      aadharImageUrl,
+      profileImage,
     } = this.state || {};
-    const {
-      fName: props_fName,
-      lName: props_lName,
-      phone: props_phone,
-      aadharNumber: props_aadharNumber,
-      pincode: props_pincode,
-    } = formData || {};
     const jsonOBJ = {
-      fName: props_fName || fName,
-      lName: props_lName || lName,
-      phone: props_phone || phone,
-      aadharNumber: props_aadharNumber || aadharNumber,
-      pincode: props_pincode || pincode,
-      aadharImageUrl: aadharImg || aadharImageUrl,
-      profileImage: profileImg || profileImage,
+      fName,
+      lName,
+      phone,
+      aadharNumber,
+      pincode,
+      aadharImageUrl,
+      profileImage,
     };
-    if (
-      !required &&
-      !(
-        (fName || props_fName) &&
-        (lName || props_lName) &&
-        (phone || props_phone) &&
-        (aadharNumber || props_aadharNumber) &&
-        (pincode || props_pincode)
-      )
-    ) {
+    if (!required && !(fName && lName && phone && aadharNumber && pincode)) {
       this.setState({
         required: true,
       });
@@ -88,13 +82,7 @@ class BasicDetails extends React.Component {
   };
 
   render() {
-    const {
-      isMobile,
-      responseError,
-      formData,
-      aadharImageUrl,
-      profileImage,
-    } = this.props;
+    const { isMobile, responseError } = this.props;
     const {
       required,
       fName,
@@ -102,18 +90,11 @@ class BasicDetails extends React.Component {
       phone,
       aadharNumber,
       pincode,
-      aadharImg,
-      profileImg,
+      aadharImageUrl,
+      profileImage,
+      rollNumber,
     } = this.state;
     const { message, success } = responseError || {};
-    const {
-      fName: props_fname,
-      lName: props_lName,
-      phone: props_phone,
-      aadharNumber: props_aadh,
-      pincode: props_pincode,
-      rollNumber,
-    } = formData || {};
     window.console.log('STATE', this.state);
     return (
       <BasicDetailsContainer>
@@ -133,10 +114,10 @@ class BasicDetails extends React.Component {
                 onChange={e => this.uploadFile(e)}
               />
               <i className="_proPic">
-                <img src={profileImage || profileImg} alt="" title="" />
+                <img src={profileImage} alt="" title="" />
               </i>
               <div className="cam">
-                {profileImage || profileImg ? (
+                {profileImage ? (
                   <img src={activeImg} alt="" title="" />
                 ) : (
                   <svg
@@ -176,7 +157,7 @@ class BasicDetails extends React.Component {
             <input
               name="fName"
               type="text"
-              value={fName || props_fname}
+              value={fName}
               placeholder="First name *"
               onChange={e => this.onChangeAction(e)}
               required={required}
@@ -184,7 +165,7 @@ class BasicDetails extends React.Component {
             <input
               name="lName"
               type="text"
-              value={lName || props_lName}
+              value={lName}
               placeholder="Last name *"
               onChange={e => this.onChangeAction(e)}
               required={required}
@@ -194,17 +175,18 @@ class BasicDetails extends React.Component {
             <input
               name="phone"
               type="tel"
-              value={phone || props_phone}
+              value={phone}
               placeholder="Phone Number *"
               onChange={e => this.onChangeAction(e)}
               pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+              disabled
               required={required}
             />
           </div>
           <input
             name="aadharNumber"
             type="text"
-            value={aadharNumber || props_aadh}
+            value={aadharNumber}
             placeholder="Aadhar Card Number *"
             onChange={e => this.onChangeAction(e)}
             pattern="[0-9]{4}[0-9]{4}[0-9]{4}"
@@ -213,26 +195,22 @@ class BasicDetails extends React.Component {
           <input
             name="pincode"
             type="text"
-            value={pincode || props_pincode}
+            value={pincode}
             placeholder="Pincode *"
             onChange={e => this.onChangeAction(e)}
             pattern="[0-9]{6}"
             required={required}
           />
-          <div
-            className={`${
-              aadharImg || aadharImageUrl ? 'uploadField none' : 'uploadField'
-            }`}
-          >
-            <label htmlFor="fileupload">
+          <div className="uploadField">
+            <label htmlFor="aadharImageUpload">
               <input
                 name="aadharImageUrl"
                 type="file"
-                id="fileupload"
+                id="aadharImageUpload"
                 onChange={e => this.uploadFile(e)}
               />
               <div className="_leftUpload">
-                {aadharImg || aadharImageUrl ? (
+                {aadharImageUrl ? (
                   <span className="uploded">
                     <img src={activeImg} alt="" title="" />
                   </span>

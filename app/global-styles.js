@@ -407,5 +407,36 @@ const GlobalStyle = createGlobalStyle`
   .none {
     pointer-events: none;
   }
+
+  {/* NOTE: Logout Modal */}
+  .logoutWrapp {
+    ${globalStyle.flex}
+    ${globalStyle.column}
+    margin-bottom: 0px !important;
+    & > span {
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 7px 17px !important
+      margin-bottom: 3px;
+    }
+  }
+
+  .pdfPreview {
+    ${globalStyle.flex}
+    ${globalStyle.column}
+    flex: 1;
+    .head {
+      ${globalStyle.flex}
+      padding: 10px;
+      border: solid 1px red;
+    }
+    .cont {
+      ${globalStyle.flex}
+      padding: 10px;
+      flex: 1;
+      border: solid 1px red;
+    }
+  }
 `;
 export default GlobalStyle;

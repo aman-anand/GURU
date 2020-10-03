@@ -21,6 +21,38 @@ class Registration extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { formData } = this.props;
+    const {
+      dob,
+      age,
+      martialstatus,
+      occupation,
+      monthertounge,
+      dependants,
+      locality,
+      city,
+      state,
+      gender,
+      email,
+    } = formData || {};
+    this.setState({
+      formObj: {
+        dob,
+        age,
+        martialstatus,
+        occupation,
+        monthertounge,
+        dependants,
+        locality,
+        city,
+        state,
+        gender,
+        email,
+      },
+    });
+  }
+
   onChangeAction = e => {
     const { value, name } = e.target;
     const { formObj } = this.state;
@@ -47,7 +79,7 @@ class Registration extends React.Component {
 
   render() {
     const { formObj } = this.state;
-    const { isMobile, formData } = this.props;
+    const { isMobile } = this.props;
     const {
       dob,
       age,
@@ -61,19 +93,6 @@ class Registration extends React.Component {
       gender,
       email,
     } = formObj || {};
-    const {
-      dob: props_dob,
-      age: props_age,
-      martialstatus: props_martialstatus,
-      occupation: props_occupation,
-      monthertounge: props_monthertounge,
-      dependants: props_dependants,
-      locality: props_locality,
-      city: props_city,
-      state: props_state,
-      gender: props_gender,
-      email: props_email,
-    } = formData || {};
     return (
       <RegistrationContainer>
         {!isMobile ? (
@@ -92,7 +111,7 @@ class Registration extends React.Component {
                   name="gender"
                   value="male"
                   id="male"
-                  checked={props_gender || gender === 'male'}
+                  checked={gender === 'male'}
                 />
                 <span>Male</span>
               </label>
@@ -102,7 +121,7 @@ class Registration extends React.Component {
                   name="gender"
                   value="female"
                   id="female"
-                  checked={props_gender || gender === 'female'}
+                  checked={gender === 'female'}
                 />
                 <span>Female</span>
               </label>
@@ -110,7 +129,7 @@ class Registration extends React.Component {
           </div>
           <input
             type="text"
-            value={props_email || email}
+            value={email}
             name="email"
             placeholder="Email Address"
             onChange={e => this.onChangeAction(e)}
@@ -119,7 +138,7 @@ class Registration extends React.Component {
           <div className="_rowWrapper">
             <select
               name="occupation"
-              value={props_occupation || occupation}
+              value={occupation}
               onChange={e => this.onChangeAction(e)}
             >
               <option>Occupation</option>
@@ -132,14 +151,14 @@ class Registration extends React.Component {
             <input
               type="date"
               name="dob"
-              value={props_dob || dob}
+              value={dob}
               placeholder="Date of Birth"
               onChange={e => this.onChangeAction(e)}
             />
             <input
               type="number"
               name="age"
-              value={props_age || age}
+              value={age}
               maxLength="2"
               size="2"
               placeholder="Age *"
@@ -149,7 +168,7 @@ class Registration extends React.Component {
           <div className="_rowWrapper">
             <select
               name="monthertounge"
-              value={props_monthertounge || monthertounge}
+              value={monthertounge}
               onChange={e => this.onChangeAction(e)}
             >
               <option>Mother Tongue</option>
@@ -163,7 +182,7 @@ class Registration extends React.Component {
           <div className="_twoComumnWrapper">
             <select
               name="martialstatus"
-              value={props_martialstatus || martialstatus}
+              value={martialstatus}
               onChange={e => this.onChangeAction(e)}
             >
               <option>Marital Status</option>
@@ -172,7 +191,7 @@ class Registration extends React.Component {
             </select>
             <select
               name="dependants"
-              value={props_dependants || dependants}
+              value={dependants}
               onChange={e => this.onChangeAction(e)}
             >
               <option>No. of Dependants</option>
@@ -191,21 +210,21 @@ class Registration extends React.Component {
           <p className="_secText">Address</p>
           <input
             type="text"
-            value={props_locality || locality}
+            value={locality}
             name="locality"
             placeholder="Locality/Post Office"
             onChange={e => this.onChangeAction(e)}
           />
           <input
             type="text"
-            value={props_city || city}
+            value={city}
             name="city"
             placeholder="City/District/Region"
             onChange={e => this.onChangeAction(e)}
           />
           <input
             type="text"
-            value={props_state || state}
+            value={state}
             name="state"
             placeholder="State"
             onChange={e => this.onChangeAction(e)}
@@ -216,7 +235,7 @@ class Registration extends React.Component {
             type="button"
             onClick={this.onSubmitForm}
           >
-            PROCEED
+            SAVE DETAILS
           </Button>
         </div>
       </RegistrationContainer>

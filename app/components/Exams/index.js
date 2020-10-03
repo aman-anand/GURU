@@ -1,3 +1,5 @@
+/* eslint-disable func-names */
+/* eslint-disable no-param-reassign */
 /**
  *
  * Exams
@@ -35,7 +37,16 @@ function Exams(props) {
       }
     }, 1000);
   });
-
+  window.onbeforeunload = function(evt) {
+    const message = 'Are you sure you want to leave?';
+    if (typeof evt === 'undefined') {
+      evt = window.event;
+    }
+    if (evt) {
+      evt.returnValue = message;
+    }
+    return message;
+  };
   return (
     <ExamsContainer>
       <div className="topSec">

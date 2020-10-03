@@ -75,4 +75,7 @@ export const CetificateBlockContainer = styled.section`
       }
     }
   }
+  .pdfPreview {
+    border: solid 1px red;
+  }
 `;

@@ -35,7 +35,13 @@ const signinReducer = (state = initialState, action) =>
             lName,
             gender,
             aadharNumber,
+            aadharImageUrl,
             address,
+            dob,
+            age,
+            occupation,
+            maritalStatus,
+            motherTongue,
           } = data;
           const { city, country, locality, pincode, state: adressState } =
             address || {};
@@ -54,6 +60,12 @@ const signinReducer = (state = initialState, action) =>
               { lName },
               { gender },
               { aadharNumber },
+              { aadharImageUrl },
+              { dob },
+              { age },
+              { occupation },
+              { maritalStatus },
+              { motherTongue },
               { city },
               { country },
               { locality },

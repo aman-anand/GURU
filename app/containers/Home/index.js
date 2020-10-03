@@ -121,6 +121,44 @@ export class Home extends React.PureComponent {
         {isMobile ? <Search /> : null}
         <div className="container">
           <div className="leftBox">
+            {/* NOTE: VIDEOS  */}
+            {videoList ? (
+              <UpcommingSession
+                title="VIDEOS"
+                subtitle={`${videoList} videos listed`}
+                seeall={!!isMobile}
+                seelLink="/videos"
+              />
+            ) : null}
+            {!isMobile && videoList <= 3 ? (
+              <div className="cardWrapper row">
+                {video &&
+                  video.map(item => {
+                    const { name, thumb, _id } = item || {};
+                    const dataOBJ = {
+                      name,
+                      thumb,
+                      _id,
+                    };
+                    return <VideoCard dataOBJ={dataOBJ} />;
+                  })}
+              </div>
+            ) : (
+              <div className="carosuleWrapper">
+                <Slider {...settingsVideos}>
+                  {video &&
+                    video.map(item => {
+                      const { name, thumb, _id } = item || {};
+                      const dataOBJ = {
+                        name,
+                        thumb,
+                        _id,
+                      };
+                      return <VideoCard dataOBJ={dataOBJ} />;
+                    })}
+                </Slider>
+              </div>
+            )}
             {/* NOTE: COURSE */}
             <UpcommingSession
               title="COURSES"
@@ -193,44 +231,6 @@ export class Home extends React.PureComponent {
                           sticyTwoData={sticyTwoData}
                         />
                       );
-                    })}
-                </Slider>
-              </div>
-            )}
-            {/* NOTE: VIDEOS  */}
-            {videoList ? (
-              <UpcommingSession
-                title="VIDEOS"
-                subtitle={`${videoList} videos listed`}
-                seeall={!!isMobile}
-                seelLink="/videos"
-              />
-            ) : null}
-            {!isMobile && videoList <= 3 ? (
-              <div className="cardWrapper row">
-                {video &&
-                  video.map(item => {
-                    const { name, thumb, _id } = item || {};
-                    const dataOBJ = {
-                      name,
-                      thumb,
-                      _id,
-                    };
-                    return <VideoCard dataOBJ={dataOBJ} />;
-                  })}
-              </div>
-            ) : (
-              <div className="carosuleWrapper">
-                <Slider {...settingsVideos}>
-                  {video &&
-                    video.map(item => {
-                      const { name, thumb, _id } = item || {};
-                      const dataOBJ = {
-                        name,
-                        thumb,
-                        _id,
-                      };
-                      return <VideoCard dataOBJ={dataOBJ} />;
                     })}
                 </Slider>
               </div>

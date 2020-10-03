@@ -103,35 +103,33 @@ class Authentication extends React.Component {
   submitResendOTP = () => {
     clearInterval(this.intervalId);
     this.props.resendOtp();
-    // this.resendOTPCounter();
   };
 
   resendOTPCounter = () => {
-    this.intervalId = setInterval(countDown, 1000);
-    const whis = this;
-    function countDown() {
-      whis.setState(prevState => {
-        if (prevState.resendCountTimer < 1) {
-          clearInterval(whis.intervalId);
-          return { resendCountTimer: 30, showResend: true };
-        }
-        return {
-          resendCountTimer: prevState.resendCountTimer - 1,
-          showResend: false,
-        };
-      });
-    }
+    const duration = 60 * 3;
+    let timer = duration;
+    let minutes;
+    let seconds;
+    const downloadTimer = setInterval(function function1() {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? `0${minutes}` : minutes;
+      seconds = seconds < 10 ? `0${seconds}` : seconds;
+      document.getElementById(
+        'donthavetext',
+      ).innerHTML = `Resend Code ${minutes} : ${seconds}`;
+
+      timer -= 1;
+      if (timer <= 0) {
+        clearInterval(downloadTimer);
+        document.getElementById('donthavetext').innerHTML = 'Resend OTP';
+      }
+    }, 1000);
   };
 
   render() {
-    const {
-      resendCountTimer,
-      showResend,
-      otp_1,
-      otp_2,
-      otp_3,
-      otp_4,
-    } = this.state;
+    const { otp_1, otp_2, otp_3, otp_4 } = this.state;
     const presentOTP = otp_1 && otp_2 && otp_3 && otp_4;
     const { error } = this.props;
     const { error: _pError, errorMsg: _perrorMsg } = error || {};
@@ -206,20 +204,14 @@ class Authentication extends React.Component {
           >
             PROCEED
           </Button>
-          {!showResend ? (
-            <span className="donthavetext">
-              Resend Code {resendCountTimer}
-              :00
-            </span>
-          ) : (
-            <span
-              className="donthavetext"
-              onClick={this.submitResendOTP}
-              role="presentation"
-            >
-              Resend OTP
-            </span>
-          )}
+          <span
+            className="donthavetext"
+            id="donthavetext"
+            onClick={this.submitResendOTP}
+            role="presentation"
+          >
+            Resend Code
+          </span>
         </div>
       </AuthenticationContainer>
     );
