@@ -112,6 +112,8 @@ export const ExamsContainer = styled.div`
           font-weight: normal;
           font-size: 14px;
           color: #403F3F;
+          ${globalStyle.flex};
+          flex: 1;
         }
       }
       input {
@@ -149,7 +151,9 @@ export const ExamsContainer = styled.div`
     align-items: center;
     .quesCount {
       ${globalStyle.flex};
-      flex: 1;
+      @media (min-width: ${globalStyle.small}) {
+        flex: 1;
+      }
     }
     .questionButton {
       background-color: #ffffff;
@@ -158,6 +162,20 @@ export const ExamsContainer = styled.div`
       ${globalStyle.flex};
       align-items: center;
       cursor: pointer;
+      min-height: 32px;
+      min-width: 220px;
+      align-items: center;
+      justify-content: center;
+      @media (max-width: ${globalStyle.small}) {
+        flex: 1;
+        margin-left: 15px;
+      }
+      &.submitAnswar {
+        background-color: #58B368;
+        span {
+          color: #ffffff;
+        }
+      }
       i {
         margin-right: 10px;
       }

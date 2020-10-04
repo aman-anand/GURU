@@ -14,6 +14,7 @@ import { compose } from 'redux';
 import withSizes from 'react-sizes';
 
 import injectReducer from 'utils/injectReducer';
+import Button from '@material-ui/core/Button';
 import makeSelectVideoDetails from './selectors';
 import reducer from '../Videos/reducer';
 import Header from '../../components/Header/Loadable';
@@ -22,14 +23,21 @@ import VideoPlayer from '../../components/VideoPlayer/Loadable';
 import SessionCard from '../../components/SessionCard/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
 import Ratings from '../../components/Ratings/Loadable';
-import { courseAction, videosDetailsAction } from '../Videos/actions';
+import {
+  courseAction,
+  videosDetailsAction,
+  submitReviewAction,
+} from '../Videos/actions';
+import defoultProfileImg from '../../images/defoult_profile.png';
 
 // NOTE: Style
 import { VideoDetailsContainer } from './style';
 export class VideoDetails extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      comment: '',
+    };
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -55,6 +63,28 @@ export class VideoDetails extends React.PureComponent {
     this.props.dispatch(videosDetailsAction(paramOBJ));
   }
 
+  onChangeComment = value => {
+    this.setState({
+      comment: value,
+    });
+  };
+
+  submitComment = () => {
+    const { comment, VIDEO_ID } = this.state;
+    const jsonOBJ = {
+      review: comment,
+      rating: 3,
+      addedForId: VIDEO_ID,
+      typeOf: 'video',
+      reviewType: 'text',
+    };
+    this.props.dispatch(submitReviewAction(jsonOBJ)).then(() => {
+      this.setState({
+        comment: '',
+      });
+    });
+  };
+
   render() {
     const { isMobile, videoDetails } = this.props || {};
     const { courseObj, details } = videoDetails || {};
@@ -67,6 +97,7 @@ export class VideoDetails extends React.PureComponent {
       videoUrl: coverVideo,
       duration,
     } = video || {};
+    const { comment } = this.state;
     return (
       <VideoDetailsContainer>
         <Helmet>
@@ -92,14 +123,42 @@ export class VideoDetails extends React.PureComponent {
               </div>
               <div className="commentsWrapper">
                 <p>COMMENTS</p>
+                <div className="postCommentwrapper">
+                  <div className="icon">
+                    <img src={defoultProfileImg} alt="" title="" />
+                  </div>
+                  <div className="postComment">
+                    <div className="leftPostCom">
+                      <input
+                        placeholder="write your feedback here"
+                        type="text"
+                        value={this.state.comment}
+                        onChange={e => this.onChangeComment(e.target.value)}
+                      />
+                    </div>
+                    <Button
+                      type="button"
+                      disabled={!comment.length}
+                      onClick={() => this.submitComment()}
+                    >
+                      Send
+                    </Button>
+                  </div>
+                </div>
                 {review &&
                   review.map(item => {
                     const { addedBy, addedOn, review: reviewText, _id } =
                       item || {};
-                    const { fName, lName } = addedBy || {};
+                    const { fName, lName, profileImage } = addedBy || {};
                     return (
                       <div className="cz_list" key={_id}>
-                        <div />
+                        <div>
+                          <img
+                            src={profileImage || defoultProfileImg}
+                            alt=""
+                            title=""
+                          />
+                        </div>
                         <div>
                           <span>{`${fName} ${lName}`}</span>
                           <span>{addedOn || 'NULL'}</span>

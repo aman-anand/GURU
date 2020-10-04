@@ -141,7 +141,7 @@ export const SessionContainer = styled.section`
     border: solid 1px #2e333d;
     flex: 1;
     min-height: 250px;
-    padding: 15px;
+    padding: 0px;
     background-color: #c5c5c5;
     @media (max-width: ${globalStyle.small}) {
       margin: 0px -15px;

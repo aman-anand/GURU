@@ -185,7 +185,7 @@ export class SessionDetails extends React.PureComponent {
               <Bredcrumb>
                 <div className="_bWrapper">
                   <span>
-                    <a>SESSIONS</a>
+                    <a href="/sessions">SESSIONS</a>
                   </span>
                   <span>{'>'}</span>
                   <span>SESSION DETAIL</span>

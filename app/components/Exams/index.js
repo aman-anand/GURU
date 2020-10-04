@@ -6,14 +6,20 @@
  *
  */
 
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import Snackbar from '@material-ui/core/Snackbar';
 import { ExamsContainer } from './style';
 
 function Exams(props) {
+  const [quesAttem, setQuesAttem] = useState(0);
+  const [selectAnswar, setSelectAnswar] = useState({});
+  const [answarList, setAnswarList] = useState([]);
+  const [open, setOpen] = React.useState(false);
   const { data } = props;
-  const { time, title, questions } = data || {};
-  window.console.log('PROPS', props);
+  const { startAssesment, courseName } = data || {};
+  const { time, title, questions } = startAssesment || {};
+  // window.console.log('PROPS', props);
   useEffect(() => {
     window.console.log('LOG');
     const duration = time ? 60 * parseInt(time, 10) : 1;
@@ -37,6 +43,29 @@ function Exams(props) {
       }
     }, 1000);
   });
+  const nextQuestion = () => {
+    const radios = document.querySelectorAll('input[type="radio"]:checked');
+    const value = radios.length > 0 ? radios[0].value : null;
+    // console.log('NEXT', value);
+    if (value) {
+      const ele = document.querySelectorAll('input[type="radio"]');
+      for (let i = 0; i < ele.length; i += 1) ele[i].checked = false;
+      setQuesAttem(quesAttem + 1);
+      setAnswarList([...answarList, selectAnswar]);
+      window.console.log('window.answarList', answarList);
+    } else {
+      setOpen(true);
+      window.console.log('Please select answar');
+    }
+  };
+  // const answarSelected = params => {
+  //   const { selected, _id } = params || {};
+  //   setSelectAnswar({
+  //     selected,
+  //     _id,
+  //   });
+  //   console.log('Selected', selected, '===', _id);
+  // };
   window.onbeforeunload = function(evt) {
     const message = 'Are you sure you want to leave?';
     if (typeof evt === 'undefined') {
@@ -47,17 +76,22 @@ function Exams(props) {
     }
     return message;
   };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const { _id: qusId } = questions[quesAttem] || {};
+  window.console.log('ANS LIST', answarList);
   return (
     <ExamsContainer>
       <div className="topSec">
         <div className="topSecData">
           <div className="tlSect">
-            <span className="textH">COURSE NAME</span>
+            <span className="textH">{courseName}</span>
             <span className="textS">{title}</span>
           </div>
           <div className="trSect">
             <div className="examTimes" id="countdown">
-              TIME LEFT: 14:29 MINS
+              TIME LEFT: {time} MINS
             </div>
           </div>
         </div>
@@ -67,15 +101,21 @@ function Exams(props) {
       </div>
       <div className="middleSec">
         <div className="quesWrapper">
-          <h5>{questions[0].question}</h5>
+          <h5>{questions[quesAttem].question}</h5>
           <div className="answarOpt">
-            {questions[0].options.map((ele, idx) => (
+            {questions[quesAttem].options.map((ele, idx) => (
               <div className="ansBox">
                 <input
                   type="radio"
                   id={`and_${idx}`}
-                  name="answer"
+                  name={`answar_${quesAttem}`}
                   value={ele}
+                  onChange={() =>
+                    setSelectAnswar({
+                      answer: ele,
+                      _id: qusId,
+                    })
+                  }
                 />
                 <label htmlFor={`and_${idx}`}>
                   <i className="icon" />
@@ -87,9 +127,34 @@ function Exams(props) {
         </div>
       </div>
       <div className="bottomSec">
-        <div className="quesCount">1/{questions.length}</div>
-        <div>
-          <div className="questionButton">
+        <div className="quesCount">
+          {quesAttem + 1} / {questions.length}
+        </div>
+        <div
+          className={`${
+            quesAttem >= 4
+              ? 'submitAnswar questionButton'
+              : 'next questionButton'
+          }`}
+          onClick={() => nextQuestion()}
+          role="presentation"
+        >
+          {quesAttem >= 4 ? (
+            <i>
+              <svg
+                width="14"
+                height="11"
+                viewBox="0 0 14 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14 1.1566L4.4 11L0 6.48844L1.128 5.33184L4.4 8.6786L12.872 0L14 1.1566Z"
+                  fill="white"
+                />
+              </svg>
+            </i>
+          ) : (
             <i>
               <svg
                 width="20"
@@ -104,10 +169,18 @@ function Exams(props) {
                 />
               </svg>
             </i>
-            <span>NEXT QUESTION</span>
-          </div>
+          )}
+
+          <span>{quesAttem >= 4 ? 'SUBMIT ANSWAR' : 'NEXT QUESTION'}</span>
         </div>
       </div>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'bottom' }}
+        open={open}
+        onClose={handleClose}
+        message="Please select answar"
+        key={{ vertical: 'bottom' } + { horizontal: 'right' }}
+      />
     </ExamsContainer>
   );
 }

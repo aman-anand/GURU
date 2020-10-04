@@ -79,10 +79,10 @@ export class Sessions extends React.PureComponent {
               <Bredcrumb>
                 <div className="_bWrapper">
                   <span>
-                    <a>SESSIONS</a>
+                    <a href="/sessions">SESSIONS</a>
                   </span>
                   <span>{'>'}</span>
-                  <span>UPCOMING SESSIONS</span>
+                  <span>{sessionRadio} SESSIONS</span>
                 </div>
               </Bredcrumb>
             ) : null}

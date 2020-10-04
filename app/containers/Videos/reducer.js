@@ -9,6 +9,7 @@ import {
   VIDEOS_REJECTED,
   VIDEOS_PENDING,
   VIDEOS_DETAILS_FULFILLED,
+  SEND_COMMENT_FULFILLED,
 } from './constants';
 import { COURSE_FULFILLED } from '../Course/constants';
 
@@ -43,6 +44,13 @@ const videosReducer = (state = initialState, action) =>
           const { payload } = action;
           const { data } = payload || {};
           draft.details = data;
+        }
+        break;
+      case SEND_COMMENT_FULFILLED:
+        {
+          const { payload } = action;
+          const { data: actionData } = payload;
+          draft.details.review.unshift(actionData);
         }
         break;
     }

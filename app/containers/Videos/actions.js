@@ -11,6 +11,9 @@ import {
   VIDEOS_DETAILS_PENDING,
   VIDEOS_DETAILS_FULFILLED,
   VIDEOS_DETAILS_REJECTED,
+  SEND_COMMENT_PENDING,
+  SEND_COMMENT_FULFILLED,
+  SEND_COMMENT_REJECTED,
 } from './constants';
 import {
   COURSE_FULFILLED,
@@ -21,6 +24,7 @@ import {
   VIDEOS_API,
   COURSE_API,
   VIDEO_DETAILS_API,
+  ADD_REVIEW_API,
 } from '../../dataService/Home';
 
 export function videosAction(params) {
@@ -55,6 +59,18 @@ export function courseAction(params) {
       return dispatch(fetchData({ types: COURSE_FULFILLED, data }));
     } catch (err) {
       return dispatch(fetchData({ types: COURSE_REJECTED, err }));
+    }
+  };
+}
+
+export function submitReviewAction(params) {
+  return async dispatch => {
+    dispatch(fetchData({ types: SEND_COMMENT_PENDING }));
+    try {
+      const { data } = await ADD_REVIEW_API(params);
+      return dispatch(fetchData({ types: SEND_COMMENT_FULFILLED, data }));
+    } catch (err) {
+      return dispatch(fetchData({ types: SEND_COMMENT_REJECTED, err }));
     }
   };
 }

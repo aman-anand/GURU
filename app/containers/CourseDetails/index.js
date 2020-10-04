@@ -219,7 +219,7 @@ export class CourseDetails extends React.PureComponent {
         {startExam ? (
           <Fragment>
             {/* NOTE: Exams */}
-            <Exams data={startAssesment} />
+            <Exams data={{ startAssesment, courseName }} />
           </Fragment>
         ) : (
           <Fragment>

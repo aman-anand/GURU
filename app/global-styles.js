@@ -429,13 +429,11 @@ const GlobalStyle = createGlobalStyle`
     .head {
       ${globalStyle.flex}
       padding: 10px;
-      border: solid 1px red;
     }
     .cont {
       ${globalStyle.flex}
       padding: 10px;
       flex: 1;
-      border: solid 1px red;
     }
   }
 `;

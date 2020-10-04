@@ -81,14 +81,7 @@ function CetificateBlock(props) {
             <CloseIcon onClick={handleClose} />
           </div>
           <div className="cont">
-            <embed
-              src={`${certificateUrl}#toolbar=0&navpanes=0&scrollbar=0`}
-              type="application/pdf"
-              frameBorder="0"
-              scrolling="auto"
-              height="100%"
-              width="100%"
-            />
+            <embed src={certificateUrl} width="500" height="375" />
           </div>
         </div>
       </Dialog>

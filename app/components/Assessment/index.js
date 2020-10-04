@@ -13,7 +13,6 @@ function Assessment(props) {
   const { attempt, data, onAction } = props || {};
   const { time, title, questions } = data || {};
   const { score, locked, completed } = attempt || {};
-  window.console.log('attempt', attempt, data);
   const quLength = questions ? questions.length : 0;
   return (
     <AssessmentContainer
