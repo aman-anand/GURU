@@ -8,6 +8,7 @@ import {
   COURSE_API,
   COURSE_DETAILS_API,
   ADD_REVIEW_API,
+  SUBMIT_QUIZ_API,
 } from '../../dataService/Home';
 import {
   COURSE_FULFILLED,
@@ -19,6 +20,9 @@ import {
   SEND_COMMENT_PENDING,
   SEND_COMMENT_FULFILLED,
   SEND_COMMENT_REJECTED,
+  SUBMIT_QUIZ_PENDING,
+  SUBMIT_QUIZ_FULFILLED,
+  SUBMIT_QUIZ_REJECTED,
 } from './constants';
 
 export function courseAction(params) {
@@ -41,6 +45,18 @@ export function courseDetailsAction(params) {
       return dispatch(fetchData({ types: COURSE_DETAILS_FULFILLED, data }));
     } catch (err) {
       return dispatch(fetchData({ types: COURSE_DETAILS_REJECTED, err }));
+    }
+  };
+}
+
+export function submitQuizAction(params) {
+  return async dispatch => {
+    dispatch(fetchData({ types: SUBMIT_QUIZ_PENDING }));
+    try {
+      const { data } = await SUBMIT_QUIZ_API(params);
+      return dispatch(fetchData({ types: SUBMIT_QUIZ_FULFILLED, data }));
+    } catch (err) {
+      return dispatch(fetchData({ types: SUBMIT_QUIZ_REJECTED, err }));
     }
   };
 }

@@ -18,6 +18,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
 import history from '../../utils/history';
+import BasicDetails from '../../components/BasicDetails/Loadable';
 import SigninForm from '../../components/SigninForm/Loadable';
 import Authentication from '../../components/Authentication/Loadable';
 import RegistorNav from '../../components/RegistorNav/Loadable';
@@ -95,8 +96,8 @@ export class Signin extends React.PureComponent {
     };
     this.props.dispatch(verifyOtpAction(jsonOBJ)).then(otpres => {
       const { payload: payloaddata } = otpres || {};
-      const { success, message } = payloaddata || {};
-      if (success) {
+      const { success, isLogIn } = payloaddata || {};
+      if (isLogIn && success) {
         const paramsJSON = { phone: number };
         this.props.dispatch(loginAction(paramsJSON)).then(res => {
           const { payload } = res || {};
@@ -109,8 +110,9 @@ export class Signin extends React.PureComponent {
         });
       } else {
         this.setState({
-          error: true,
-          errorMsg: message,
+          stage: 'SIGNUP',
+          // error: true,
+          // errorMsg: message,
         });
       }
     });
@@ -157,6 +159,8 @@ export class Signin extends React.PureComponent {
                     resendOtp={this.resendOtp}
                     error={{ error, errorMsg }}
                   />
+                ) : ['SIGNUP'].includes(stage) ? (
+                  <BasicDetails />
                 ) : null}
               </div>
             </div>

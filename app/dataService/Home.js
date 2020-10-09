@@ -2,6 +2,7 @@ import {
   HOME,
   ALL_COURSE,
   COURSE_DETAILS,
+  SUBMIT_QUIZ,
   ALL_ARTICLES,
   ARTICLE_DETAILS,
   ALL_VIDEOS,
@@ -35,6 +36,16 @@ export const COURSE_DETAILS_API = (params, hideLoader) => {
     params: { _id: COURSE_ID },
     data: { number },
     method: 'GET',
+    hideLoader,
+  };
+  return makeHttpCall(config);
+};
+
+export const SUBMIT_QUIZ_API = (params, hideLoader) => {
+  const config = {
+    url: SUBMIT_QUIZ(),
+    data: params,
+    method: 'POST',
     hideLoader,
   };
   return makeHttpCall(config);

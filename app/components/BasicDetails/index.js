@@ -9,8 +9,8 @@ import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
 import withSizes from 'react-sizes';
 import Button from '@material-ui/core/Button';
-import uploadIcon from '../../images/uploadIcon.svg';
-import cameraIcon from '../../images/cameraIcon.svg';
+// import uploadIcon from '../../images/uploadIcon.svg';
+// import cameraIcon from '../../images/cameraIcon.svg';
 import activeImg from '../../images/active.png';
 import { BasicDetailsContainer } from './style';
 
@@ -48,26 +48,16 @@ class BasicDetails extends React.Component {
 
   submitForm = () => {
     const { submitRegistration } = this.props;
-    const {
-      fName,
-      lName,
-      phone,
-      aadharNumber,
-      required,
-      pincode,
-      aadharImageUrl,
-      profileImage,
-    } = this.state || {};
+    const { fName, lName, phone, required, pincode, profileImage } =
+      this.state || {};
     const jsonOBJ = {
       fName,
       lName,
       phone,
-      aadharNumber,
       pincode,
-      aadharImageUrl,
       profileImage,
     };
-    if (!required && !(fName && lName && phone && aadharNumber && pincode)) {
+    if (!required && !(fName && lName && phone && pincode)) {
       this.setState({
         required: true,
       });
@@ -88,9 +78,7 @@ class BasicDetails extends React.Component {
       fName,
       lName,
       phone,
-      aadharNumber,
       pincode,
-      aadharImageUrl,
       profileImage,
       rollNumber,
     } = this.state;
@@ -183,15 +171,15 @@ class BasicDetails extends React.Component {
               required={required}
             />
           </div>
-          <input
+          {/* <input
             name="aadharNumber"
             type="text"
             value={aadharNumber}
             placeholder="Aadhar Card Number *"
             onChange={e => this.onChangeAction(e)}
             pattern="[0-9]{4}[0-9]{4}[0-9]{4}"
-            required={required}
-          />
+            required={required} 
+          /> */}
           <input
             name="pincode"
             type="text"
@@ -201,7 +189,7 @@ class BasicDetails extends React.Component {
             pattern="[0-9]{6}"
             required={required}
           />
-          <div className="uploadField">
+          {/* <div className="uploadField">
             <label htmlFor="aadharImageUpload">
               <input
                 name="aadharImageUrl"
@@ -227,7 +215,7 @@ class BasicDetails extends React.Component {
                 <span> Aadhar Card</span>
               </div>
             </label>
-          </div>
+          </div> */}
           {!success ? <span className="error">{message}</span> : null}
           <Button
             variant="contained"

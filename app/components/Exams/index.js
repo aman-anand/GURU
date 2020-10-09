@@ -17,11 +17,10 @@ function Exams(props) {
   const [answarList, setAnswarList] = useState([]);
   const [open, setOpen] = React.useState(false);
   const { data } = props;
-  const { startAssesment, courseName } = data || {};
+  const { startAssesment, courseName, attemptID } = data || {};
   const { time, title, questions } = startAssesment || {};
   // window.console.log('PROPS', props);
   useEffect(() => {
-    window.console.log('LOG');
     const duration = time ? 60 * parseInt(time, 10) : 1;
     let timer = duration;
     let minutes;
@@ -43,29 +42,32 @@ function Exams(props) {
       }
     }, 1000);
   });
-  const nextQuestion = () => {
+  const nextQuestion = qusParms => {
     const radios = document.querySelectorAll('input[type="radio"]:checked');
     const value = radios.length > 0 ? radios[0].value : null;
     // console.log('NEXT', value);
     if (value) {
       const ele = document.querySelectorAll('input[type="radio"]');
       for (let i = 0; i < ele.length; i += 1) ele[i].checked = false;
-      setQuesAttem(quesAttem + 1);
-      setAnswarList([...answarList, selectAnswar]);
+      if (quesAttem + 1 < qusParms.length) {
+        setQuesAttem(quesAttem + 1);
+        setAnswarList([...answarList, selectAnswar]);
+      } else {
+        answarList.push(selectAnswar);
+        submitAnswar();
+      }
+      // submitAnswar();
       window.console.log('window.answarList', answarList);
     } else {
       setOpen(true);
       window.console.log('Please select answar');
     }
   };
-  // const answarSelected = params => {
-  //   const { selected, _id } = params || {};
-  //   setSelectAnswar({
-  //     selected,
-  //     _id,
-  //   });
-  //   console.log('Selected', selected, '===', _id);
-  // };
+
+  const submitAnswar = () => {
+    props.submitQuiz({ answarList, data, attemptID });
+    console.log('SUBMIT', answarList);
+  };
   window.onbeforeunload = function(evt) {
     const message = 'Are you sure you want to leave?';
     if (typeof evt === 'undefined') {
@@ -80,9 +82,11 @@ function Exams(props) {
     setOpen(false);
   };
   const { _id: qusId } = questions[quesAttem] || {};
-  window.console.log('ANS LIST', answarList);
+  window.console.log('DATA', data);
+  const percentage = 100 / (quesAttem + 1);
+  console.log('Percentage', percentage);
   return (
-    <ExamsContainer>
+    <ExamsContainer percentage={percentage}>
       <div className="topSec">
         <div className="topSecData">
           <div className="tlSect">
@@ -130,31 +134,12 @@ function Exams(props) {
         <div className="quesCount">
           {quesAttem + 1} / {questions.length}
         </div>
-        <div
-          className={`${
-            quesAttem >= 4
-              ? 'submitAnswar questionButton'
-              : 'next questionButton'
-          }`}
-          onClick={() => nextQuestion()}
-          role="presentation"
-        >
-          {quesAttem >= 4 ? (
-            <i>
-              <svg
-                width="14"
-                height="11"
-                viewBox="0 0 14 11"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M14 1.1566L4.4 11L0 6.48844L1.128 5.33184L4.4 8.6786L12.872 0L14 1.1566Z"
-                  fill="white"
-                />
-              </svg>
-            </i>
-          ) : (
+        {quesAttem + 1 < questions.length ? (
+          <div
+            className="next questionButton"
+            onClick={() => nextQuestion(questions)}
+            role="presentation"
+          >
             <i>
               <svg
                 width="20"
@@ -169,10 +154,32 @@ function Exams(props) {
                 />
               </svg>
             </i>
-          )}
 
-          <span>{quesAttem >= 4 ? 'SUBMIT ANSWAR' : 'NEXT QUESTION'}</span>
-        </div>
+            <span>NEXT QUESTION</span>
+          </div>
+        ) : (
+          <div
+            className="submitAnswar questionButton"
+            onClick={() => nextQuestion(questions)}
+            role="presentation"
+          >
+            <i>
+              <svg
+                width="14"
+                height="11"
+                viewBox="0 0 14 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14 1.1566L4.4 11L0 6.48844L1.128 5.33184L4.4 8.6786L12.872 0L14 1.1566Z"
+                  fill="white"
+                />
+              </svg>
+            </i>
+            <span>SUBMIT ANSWAR</span>
+          </div>
+        )}
       </div>
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'bottom' }}
@@ -187,6 +194,7 @@ function Exams(props) {
 
 Exams.propTypes = {
   data: PropTypes.object,
+  submitQuiz: PropTypes.func,
 };
 
 export default memo(Exams);

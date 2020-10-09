@@ -35,6 +35,7 @@ import {
   courseDetailsAction,
   courseAction,
   submitReviewAction,
+  submitQuizAction,
 } from '../Course/actions';
 import Header from '../../components/Header/Loadable';
 import reducer from '../Course/reducer';
@@ -185,13 +186,27 @@ export class CourseDetails extends React.PureComponent {
     });
   };
 
+  submitQuiz = params => {
+    const { answarList, data, attemptID } = params || {};
+    const { startAssesment, courseId } = data || {};
+    const { courseSection: assesment } = startAssesment || {};
+    const jsonOBJ = {
+      course: courseId,
+      assesment,
+      attemptId: attemptID,
+      answers: [...answarList],
+    };
+    this.props.dispatch(submitQuizAction(jsonOBJ));
+    console.log('PARAMS', params);
+  };
+
   render() {
     const { isMobile, theme, courseDetails } = this.props || {};
     const { expanded } = this.state;
     const { courseDetailsObj, courseObj } = courseDetails || {};
     const { data } = courseDetailsObj || {};
     const { course, review, attempt } = data || {};
-    const { progress } = attempt || {};
+    const { progress, attemptID } = attempt || {};
     const { data: courseData } = courseObj || {};
     const {
       coverImage,
@@ -203,6 +218,7 @@ export class CourseDetails extends React.PureComponent {
       totalAssessments,
       description,
       sections,
+      id,
     } = course || {};
     const { comment, startExam, startAssesment } = this.state;
     return (
@@ -219,7 +235,10 @@ export class CourseDetails extends React.PureComponent {
         {startExam ? (
           <Fragment>
             {/* NOTE: Exams */}
-            <Exams data={{ startAssesment, courseName }} />
+            <Exams
+              data={{ startAssesment, courseName, courseId: id, attemptID }}
+              submitQuiz={this.submitQuiz}
+            />
           </Fragment>
         ) : (
           <Fragment>
