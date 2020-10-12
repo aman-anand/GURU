@@ -436,5 +436,13 @@ const GlobalStyle = createGlobalStyle`
       flex: 1;
     }
   }
+
+  button[aria-live="polite"] {
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    margin: auto;
+  }
 `;
 export default GlobalStyle;

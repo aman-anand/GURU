@@ -216,7 +216,7 @@ export class CourseDetails extends React.PureComponent {
     const { courseDetailsObj, courseObj } = courseDetails || {};
     const { data } = courseDetailsObj || {};
     const { course, review, attempt } = data || {};
-    const { progress, attemptID } = attempt || {};
+    const { progress, attemptID, completed, certificate } = attempt || {};
     const { data: courseData } = courseObj || {};
     const {
       coverImage,
@@ -488,6 +488,7 @@ export class CourseDetails extends React.PureComponent {
                         variant="contained"
                         color="primary"
                         type="button"
+                        disabled={!completed && !certificate}
                       >
                         DOWNLOAD CERTIFICATE
                       </Button>
