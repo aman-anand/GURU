@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable no-param-reassign */
@@ -189,20 +190,29 @@ export class CourseDetails extends React.PureComponent {
   submitQuiz = params => {
     const { answarList, data, attemptID } = params || {};
     const { startAssesment, courseId } = data || {};
-    const { courseSection: assesment } = startAssesment || {};
+    const { _id } = startAssesment || {};
     const jsonOBJ = {
       course: courseId,
-      assesment,
+      assessment: _id,
       attemptId: attemptID,
       answers: [...answarList],
     };
-    this.props.dispatch(submitQuizAction(jsonOBJ));
+    this.props.dispatch(submitQuizAction(jsonOBJ)).then(res => {
+      const { payload } = res || {};
+      const { data: payloadData } = payload || {};
+      const { type, certificate } = payloadData || {};
+      if (['failed'].includes(type) && !certificate) {
+        this.setState({
+          startExam: false,
+          tryAgain: true,
+        });
+      }
+    });
     console.log('PARAMS', params);
   };
 
   render() {
     const { isMobile, theme, courseDetails } = this.props || {};
-    const { expanded } = this.state;
     const { courseDetailsObj, courseObj } = courseDetails || {};
     const { data } = courseDetailsObj || {};
     const { course, review, attempt } = data || {};
@@ -220,7 +230,13 @@ export class CourseDetails extends React.PureComponent {
       sections,
       id,
     } = course || {};
-    const { comment, startExam, startAssesment } = this.state;
+    const {
+      comment,
+      startExam,
+      tryAgain,
+      startAssesment,
+      expanded,
+    } = this.state;
     return (
       <GuruCoursesDetailsContainer>
         <Helmet>
@@ -240,7 +256,14 @@ export class CourseDetails extends React.PureComponent {
               submitQuiz={this.submitQuiz}
             />
           </Fragment>
-        ) : (
+        ) : null}
+        {tryAgain ? (
+          <Fragment>
+            {/* NOTE: Exams */}
+            <div>Try Again</div>
+          </Fragment>
+        ) : null}
+        {!startExam && !tryAgain ? (
           <Fragment>
             <div className="container">
               {/* NOTE: All data */}
@@ -514,7 +537,7 @@ export class CourseDetails extends React.PureComponent {
               ) : null}
             </div>
           </Fragment>
-        )}
+        ) : null}
         {/* {isMobile ? <Footer /> : null} */}
         <Dialog
           open={this.state.videoModel}

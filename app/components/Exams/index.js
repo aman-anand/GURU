@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable func-names */
 /* eslint-disable no-param-reassign */
 /**
@@ -8,6 +9,11 @@
 
 import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import withSizes from 'react-sizes';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 import Snackbar from '@material-ui/core/Snackbar';
 import { ExamsContainer } from './style';
 
@@ -15,13 +21,15 @@ function Exams(props) {
   const [quesAttem, setQuesAttem] = useState(0);
   const [selectAnswar, setSelectAnswar] = useState({});
   const [answarList, setAnswarList] = useState([]);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [timeup, setTimeUp] = useState(false);
   const { data } = props;
   const { startAssesment, courseName, attemptID } = data || {};
   const { time, title, questions } = startAssesment || {};
   // window.console.log('PROPS', props);
   useEffect(() => {
-    const duration = time ? 60 * parseInt(time, 10) : 1;
+    clearInterval(downloadTimer);
+    const duration = time ? 60 * parseInt(1, 10) : 1;
     let timer = duration;
     let minutes;
     let seconds;
@@ -38,6 +46,7 @@ function Exams(props) {
       timer -= 1;
       if (timer <= 0) {
         clearInterval(downloadTimer);
+        setTimeUp(true);
         document.getElementById('countdown').innerHTML = 'Time is up!';
       }
     }, 1000);
@@ -68,22 +77,26 @@ function Exams(props) {
     props.submitQuiz({ answarList, data, attemptID });
     console.log('SUBMIT', answarList);
   };
-  window.onbeforeunload = function(evt) {
-    const message = 'Are you sure you want to leave?';
-    if (typeof evt === 'undefined') {
-      evt = window.event;
-    }
-    if (evt) {
-      evt.returnValue = message;
-    }
-    return message;
-  };
+  // window.onbeforeunload = function(evt) {
+  //   const message = 'Are you sure you want to leave?';
+  //   if (typeof evt === 'undefined') {
+  //     evt = window.event;
+  //   }
+  //   if (evt) {
+  //     evt.returnValue = message;
+  //   }
+  //   return message;
+  // };
   const handleClose = () => {
     setOpen(false);
   };
+  const handleTimeUpSucess = () => {
+    setTimeUp(false);
+    console.log('Time Up Modal are closed');
+  };
   const { _id: qusId } = questions[quesAttem] || {};
   window.console.log('DATA', data);
-  const percentage = 100 / (quesAttem + 1);
+  const percentage = 100 / questions.length;
   console.log('Percentage', percentage);
   return (
     <ExamsContainer percentage={percentage}>
@@ -100,7 +113,7 @@ function Exams(props) {
           </div>
         </div>
         <div className="percentage">
-          <span className="percent_30" />
+          <span style={{ width: `${percentage * (quesAttem + 1)}%` }} />
         </div>
       </div>
       <div className="middleSec">
@@ -181,6 +194,20 @@ function Exams(props) {
           </div>
         )}
       </div>
+      <Dialog open={timeup}>
+        <DialogContent className="sumanta">
+          <DialogContentText className="logoutWrapp">
+            <span>Time is up. Good try.</span>
+            <Button
+              onClick={handleTimeUpSucess}
+              variant="contained"
+              color="primary"
+            >
+              ok
+            </Button>
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'bottom' }}
         open={open}
@@ -196,5 +223,8 @@ Exams.propTypes = {
   data: PropTypes.object,
   submitQuiz: PropTypes.func,
 };
+const mapSizesToProps = ({ width }) => ({
+  isMobile: width < 768,
+});
 
-export default memo(Exams);
+export default memo(withSizes(mapSizesToProps)(Exams));

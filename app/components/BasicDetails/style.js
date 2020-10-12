@@ -7,6 +7,8 @@ export const BasicDetailsContainer = styled.div`
   align-items: center;
   @media (min-width: ${globalStyle.small}) {
     margin-top: 25px;
+    max-width: 350px;
+    align-items: center;
   }
   ._wrapper {
     margin-top: 20px;

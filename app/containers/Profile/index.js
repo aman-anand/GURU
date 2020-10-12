@@ -77,6 +77,11 @@ export class Profile extends React.PureComponent {
   submitRegistration = values => {
     window.console.log('values', values);
     const {
+      profileImage,
+      fName,
+      lName,
+      phone,
+      pincode,
       age,
       city,
       dependants,
@@ -90,6 +95,11 @@ export class Profile extends React.PureComponent {
       state,
     } = values || {};
     setLoclStoreArry([
+      { profileImage },
+      { fName },
+      { lName },
+      { phone },
+      { pincode },
       { age },
       { city },
       { dependants },
@@ -112,7 +122,7 @@ export class Profile extends React.PureComponent {
 
   render() {
     const { isMobile } = this.props || {};
-    const { store, aadharImageUrl, profileImage } = this.state;
+    const { store, profileImage } = this.state;
     const { rollNumber } = store || {};
     console.log('STORE', store, rollNumber);
     return (
@@ -156,9 +166,8 @@ export class Profile extends React.PureComponent {
               {['basicinfo'].includes(this.state.selectedTabs) ? (
                 <BasicDetails
                   formData={store}
-                  aadharImageUrl={aadharImageUrl}
                   profileImage={profileImage}
-                  uploadAction={this.uploadActionFn}
+                  // uploadAction={this.uploadActionFn}
                   submitRegistration={this.submitRegistration}
                 />
               ) : null}

@@ -22,12 +22,16 @@ import BasicDetails from '../../components/BasicDetails/Loadable';
 import SigninForm from '../../components/SigninForm/Loadable';
 import Authentication from '../../components/Authentication/Loadable';
 import RegistorNav from '../../components/RegistorNav/Loadable';
+import {
+  getFromLocalStore,
+  setLoclStoreArry,
+} from '../../services/CommonSetterGetter';
 
 import {
   sendOtpAction,
   verifyOtpAction,
   retryOtpAction,
-  loginAction,
+  profileUpdateAction,
 } from './actions';
 import reducer from './reducer';
 import makeSelectSignin from './selectors';
@@ -46,7 +50,26 @@ export class Signin extends React.PureComponent {
     this.state = {
       open: true,
       stage: 'LOGIN',
-      // store: getFromLocalStore(['phone']),
+      store: getFromLocalStore([
+        'rollNumber',
+        'fName',
+        'lName',
+        'phone',
+        'profileImage',
+        'aadharNumber',
+        'pincode',
+        'age',
+        'city',
+        'dependants',
+        'dob',
+        'email',
+        'gender',
+        'locality',
+        'martialstatus',
+        'monthertounge',
+        'occupation',
+        'state',
+      ]),
     };
   }
 
@@ -96,23 +119,21 @@ export class Signin extends React.PureComponent {
     };
     this.props.dispatch(verifyOtpAction(jsonOBJ)).then(otpres => {
       const { payload: payloaddata } = otpres || {};
-      const { success, isLogIn } = payloaddata || {};
-      if (isLogIn && success) {
-        const paramsJSON = { phone: number };
-        this.props.dispatch(loginAction(paramsJSON)).then(res => {
-          const { payload } = res || {};
-          const { data } = payload || {};
-          const { auth, role } = data || {};
-          const { token } = auth || {};
-          if (token && role) {
-            history.push('/home');
-          }
-        });
+      const { success, isLogIn, message } = payloaddata || {};
+      if (success) {
+        if (isLogIn) {
+          history.push('/home');
+        } else {
+          this.setState({
+            stage: 'SIGNUP',
+            // error: true,
+            // errorMsg: message,
+          });
+        }
       } else {
         this.setState({
-          stage: 'SIGNUP',
-          // error: true,
-          // errorMsg: message,
+          error: true,
+          errorMsg: message,
         });
       }
     });
@@ -126,6 +147,20 @@ export class Signin extends React.PureComponent {
       retryCall: true,
     };
     this.props.dispatch(retryOtpAction(objparams));
+  };
+
+  submitRegistration = values => {
+    window.console.log('values', values);
+    const { fName, lName, phone, pincode } = values || {};
+    setLoclStoreArry([{ fName }, { lName }, { phone }, { pincode }]);
+    const id = window.localStorage.getItem('id');
+    const jsonObj = {
+      ...values,
+      _id: id,
+    };
+    this.props.dispatch(profileUpdateAction(jsonObj)).then(() => {
+      history.push('/home');
+    });
   };
 
   render() {
@@ -160,7 +195,11 @@ export class Signin extends React.PureComponent {
                     error={{ error, errorMsg }}
                   />
                 ) : ['SIGNUP'].includes(stage) ? (
-                  <BasicDetails />
+                  <BasicDetails
+                    formData={store}
+                    // uploadAction={this.uploadActionFn}
+                    submitRegistration={this.submitRegistration}
+                  />
                 ) : null}
               </div>
             </div>

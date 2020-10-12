@@ -1,6 +1,9 @@
+/* eslint-disable func-names */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-mixed-operators,no-mixed-operators */
 import axios from 'axios';
+import history from '../../utils/history';
+import { REFRESH_TOKEN } from '../../constants/endpoints';
 import globalConfig from '../../config';
 
 export const showLoader = () => {
@@ -23,10 +26,31 @@ axios.interceptors.request.use(config => {
   c.headers.Authorization = `Bearer ${token}`;
   return c;
 });
-axios.interceptors.response.use(
-  response => response,
-  error => Promise.reject(error),
-);
+axios.interceptors.response.use(response => response, function(error) {
+  if (error.response.status === 401) {
+    const existToken = window.localStorage.getItem('token');
+    return axios({
+      method: 'post',
+      url: REFRESH_TOKEN(),
+      data: {
+        token: existToken,
+      },
+    }).then(res => {
+      const { data } = res || {};
+      const { success, message, data: resData } = data || {};
+      const { token } = resData || {};
+      if (token) {
+        window.localStorage.setItem('token', token);
+        window.location.reload();
+      }
+      if (!success && ['NOT FOUND.'].includes(message)) {
+        window.localStorage.clear();
+        history.push('/signin');
+      }
+    });
+  }
+  return Promise.reject(error);
+});
 
 export const makeHttpRequest = config => {
   if (!config.hideLoader) {

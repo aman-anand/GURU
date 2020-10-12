@@ -37,8 +37,13 @@ export const SIGN_UP_API = (params, hideLoader) => {
   return makeHttpCall(config);
 };
 
-export const UPDATE_DETAILS = (params, hideLoader) => {
-  const config = { url: UPDATE(), data: params, method: 'PUT', hideLoader };
+export const UPDATE_API = (params, hideLoader) => {
+  const config = {
+    url: UPDATE(),
+    data: params,
+    method: 'PUT',
+    hideLoader,
+  };
   return makeHttpCall(config);
 };
 

@@ -5,9 +5,9 @@
  */
 import produce from 'immer';
 import {
-  SIGN_IN_FULFILLED,
-  OTP_FULFILLED,
-  REGISTER_FULFILLED,
+  SEND_OTP_FULFILLED,
+  VERIFY_OTP_FULFILLED,
+  PROFILE_UPDATE_FULFILLED,
 } from './constants';
 import { setLoclStoreArry } from '../../services/CommonSetterGetter';
 
@@ -20,7 +20,10 @@ export const initialState = {
 const signinReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case SIGN_IN_FULFILLED:
+      case SEND_OTP_FULFILLED:
+        draft.stage = 'OTP';
+        break;
+      case VERIFY_OTP_FULFILLED:
         {
           const { data, success } = action.payload || {};
           const {
@@ -76,44 +79,8 @@ const signinReducer = (state = initialState, action) =>
           draft.data = data;
         }
         break;
-      case OTP_FULFILLED:
-        draft.stage = 'OTP';
-        break;
-      case REGISTER_FULFILLED:
-        {
-          const { data, success } = action.payload || {};
-          const {
-            auth,
-            email,
-            role,
-            id,
-            profileImage,
-            phone,
-            rollNumber,
-            fName,
-            lName,
-            gender,
-          } = data;
-          const { token, expires } = auth || {};
-          if (success) {
-            setLoclStoreArry([
-              { token },
-              { email },
-              { role },
-              { id },
-              { profileImage },
-              { expires },
-              { phone },
-              { rollNumber },
-              { fName },
-              { lName },
-              { gender },
-            ]);
-          }
-          draft.merge({
-            data,
-          });
-        }
+      case PROFILE_UPDATE_FULFILLED:
+        draft.data = {};
         break;
     }
   });

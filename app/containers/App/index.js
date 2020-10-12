@@ -17,7 +17,6 @@ import Home from '../Home/Loadable';
 import CourseDetails from '../CourseDetails/Loadable';
 import Course from '../Course/Loadable';
 import Signin from '../Signin/Loadable';
-import SignUp from '../SignUp/Loadable';
 import Videos from '../Videos/Loadable';
 import VideoDetails from '../VideoDetails/Loadable';
 import Articles from '../Articles/Loadable';
@@ -58,11 +57,6 @@ export default function App() {
           exact
           path="/signin"
           component={RedirectToDashboardHook(Signin, true)}
-        />
-        <Route
-          exact
-          path="/signup"
-          component={RedirectToDashboardHook(SignUp, true)}
         />
         <Route
           exact
