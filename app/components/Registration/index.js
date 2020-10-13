@@ -215,20 +215,22 @@ class Registration extends React.Component {
             placeholder="Locality/Post Office"
             onChange={e => this.onChangeAction(e)}
           />
-          <input
-            type="text"
-            value={city}
-            name="city"
-            placeholder="City/District/Region"
-            onChange={e => this.onChangeAction(e)}
-          />
-          <input
-            type="text"
-            value={state}
-            name="state"
-            placeholder="State"
-            onChange={e => this.onChangeAction(e)}
-          />
+          <div className="_twoComumnWrapper">
+            <input
+              type="text"
+              value={city}
+              name="city"
+              placeholder="City/District/Region"
+              onChange={e => this.onChangeAction(e)}
+            />
+            <input
+              type="text"
+              value={state}
+              name="state"
+              placeholder="State"
+              onChange={e => this.onChangeAction(e)}
+            />
+          </div>
           <Button
             variant="contained"
             color="primary"

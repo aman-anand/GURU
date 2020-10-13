@@ -119,9 +119,10 @@ export class Signin extends React.PureComponent {
     };
     this.props.dispatch(verifyOtpAction(jsonOBJ)).then(otpres => {
       const { payload: payloaddata } = otpres || {};
-      const { success, isLogIn, message } = payloaddata || {};
+      const { success, isLogIn, message, data } = payloaddata || {};
+      const { fName, lName } = data || {};
       if (success) {
-        if (isLogIn) {
+        if (isLogIn && fName && lName) {
           history.push('/home');
         } else {
           this.setState({

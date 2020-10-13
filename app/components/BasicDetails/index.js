@@ -9,8 +9,7 @@ import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
 import withSizes from 'react-sizes';
 import Button from '@material-ui/core/Button';
-// import uploadIcon from '../../images/uploadIcon.svg';
-// import cameraIcon from '../../images/cameraIcon.svg';
+import { language } from '../../services/CommonSetterGetter';
 import activeImg from '../../images/active.png';
 import { BasicDetailsContainer } from './style';
 
@@ -23,7 +22,7 @@ class BasicDetails extends React.Component {
   }
 
   componentDidMount() {
-    const { formData, aadharImageUrl, profileImage } = this.props;
+    const { formData, profileImage } = this.props;
     const { fName, lName, phone, number, aadharNumber, pincode, rollNumber } =
       formData || {};
     this.setState({
@@ -34,10 +33,9 @@ class BasicDetails extends React.Component {
       aadharNumber,
       pincode,
       rollNumber,
-      aadharImageUrl:
-        aadharImageUrl || window.localStorage.getItem('aadharImageUrl'),
       profileImage: profileImage || window.localStorage.getItem('profileImage'),
     });
+    // console.log('LANG', language());
   }
 
   onChangeAction = eve => {
@@ -152,6 +150,7 @@ class BasicDetails extends React.Component {
               value={fName}
               placeholder="First name *"
               onChange={e => this.onChangeAction(e)}
+              pattern="^[a-zA-Z][\sa-zA-Z]*"
               required={required}
             />
             <input
@@ -227,7 +226,7 @@ class BasicDetails extends React.Component {
             type="button"
             onClick={this.submitForm}
           >
-            SAVE DETAILS
+            {language().txt_update_info}
           </Button>
         </div>
       </BasicDetailsContainer>
@@ -241,7 +240,7 @@ BasicDetails.propTypes = {
   responseError: PropTypes.object,
   formData: PropTypes.object,
   uploadAction: PropTypes.func,
-  aadharImageUrl: PropTypes.string,
+  // aadharImageUrl: PropTypes.string,
   profileImage: PropTypes.string,
 };
 

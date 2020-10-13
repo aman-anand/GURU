@@ -20,6 +20,7 @@ import { uploadAction, profileUpdateAction } from './actions';
 import {
   getFromLocalStore,
   setLoclStoreArry,
+  language,
 } from '../../services/CommonSetterGetter';
 import Header from '../../components/Header/Loadable';
 import BasicDetails from '../../components/BasicDetails/Loadable';
@@ -147,7 +148,7 @@ export class Profile extends React.PureComponent {
               onClick={() => this.tabChange('basicinfo')}
               role="presentation"
             >
-              <span>{!isMobile ? 'Basic Details' : 'Basic Info'}</span>
+              <span>{language().txt_basic_info}</span>
             </div>
             <div
               className={`${
@@ -158,7 +159,7 @@ export class Profile extends React.PureComponent {
               onClick={() => this.tabChange('moreinfo')}
               role="presentation"
             >
-              <span>More Info</span>
+              <span>{language().txt_more_info}</span>
             </div>
           </div>
           <div className="tabContent">

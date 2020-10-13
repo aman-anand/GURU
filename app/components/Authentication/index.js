@@ -34,6 +34,8 @@ class Authentication extends React.Component {
   }
 
   componentDidMount() {
+    clearInterval(this.intervalId);
+    console.log('Counter');
     this.resendOTPCounter();
   }
 
@@ -96,7 +98,7 @@ class Authentication extends React.Component {
     if (otp_1 && otp_2 && otp_3 && otp_4) {
       const otp = otp_1 + otp_2 + otp_3 + otp_4;
       this.props.submitFun({ otp });
-      this.resendOTPCounter();
+      // this.resendOTPCounter();
     }
   };
 
