@@ -4,15 +4,22 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import { SEND_COMMENT_FULFILLED } from './constants';
 
-export const initialState = {};
+export const initialState = {
+  data: {},
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const feedbackReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case SEND_COMMENT_FULFILLED:
+        {
+          const { payload } = action;
+          const { data: actionData } = payload;
+          draft.data = actionData;
+        }
         break;
     }
   });

@@ -5,7 +5,7 @@
  */
 
 import React, { memo } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
@@ -18,20 +18,45 @@ import makeSelectFeedback from './selectors';
 import reducer from './reducer';
 import Header from '../../components/Header/Loadable';
 import OptionalHeader from '../../components/OptionalHeader';
+import { submitReviewAction } from './actions';
 import { FeedbackContainer } from './style';
 
 export class Feedback extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      success: false,
+    };
   }
 
   submitForm = () => {
-    console.log('Submit Form');
+    const { feedback } = this.state;
+    const ID = window.localStorage.getItem('id');
+    const JSON = {
+      review: feedback,
+      addedForId: ID,
+      typeOf: 'feedback',
+      reviewType: 'text',
+    };
+    this.props.dispatch(submitReviewAction(JSON)).then(() => {
+      this.setState({
+        feedback: '',
+        success: true,
+        message: 'Feedback submit successfully',
+      });
+    });
+  };
+
+  onChnageText = values => {
+    this.setState({
+      feedback: values,
+    });
+    window.console.log('Value', values);
   };
 
   render() {
     const { isMobile } = this.props || {};
+    const { feedback } = this.state || {};
     return (
       <FeedbackContainer>
         <Helmet>
@@ -70,7 +95,15 @@ export class Feedback extends React.PureComponent {
         </div>
         <div className="container">
           <div className="feedbackform">
-            <textarea type="text" placeholder="Write your feedback here" />
+            <textarea
+              type="text"
+              value={feedback}
+              placeholder="Write your feedback here"
+              onChange={e => this.onChnageText(e.target.value)}
+            />
+            {this.state.success && this.state.message ? (
+              <span>{this.state.message}</span>
+            ) : null}
             <Button
               variant="contained"
               color="primary"
@@ -87,7 +120,7 @@ export class Feedback extends React.PureComponent {
 }
 
 Feedback.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
