@@ -35,7 +35,6 @@ class Authentication extends React.Component {
 
   componentDidMount() {
     clearInterval(this.intervalId);
-    console.log('Counter');
     this.resendOTPCounter();
   }
 

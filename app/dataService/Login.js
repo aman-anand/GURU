@@ -48,8 +48,17 @@ export const UPDATE_API = (params, hideLoader) => {
 };
 
 export const isUserAlreadyLogin = () => {
-  const store = getFromLocalStore(['token', 'id', 'role', 'expires', 'phone']);
-  const { token, id, role, expires, phone } = store || {};
-  const auth = !!token && !!id && !!role && !!expires && !!phone;
+  const store = getFromLocalStore([
+    'token',
+    'id',
+    'role',
+    'expires',
+    'phone',
+    'fName',
+    'lName',
+  ]);
+  const { token, id, role, expires, phone, fName, lName } = store || {};
+  const auth =
+    !!token && !!id && !!role && !!expires && !!phone && !!fName && !!lName;
   return auth;
 };

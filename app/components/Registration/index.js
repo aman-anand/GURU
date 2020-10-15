@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import withSizes from 'react-sizes';
 import PropTypes from 'prop-types';
 import { RegistrationContainer } from './style';
-// import uploadIcon from '../../images/uploadIcon.svg';
+import { language } from '../../services/CommonSetterGetter';
 // import cameraIcon from '../../images/cameraIcon.svg';
 
 class Registration extends React.Component {
@@ -141,10 +141,10 @@ class Registration extends React.Component {
               value={occupation}
               onChange={e => this.onChangeAction(e)}
             >
-              <option>Occupation</option>
-              <option value="farmer">Farmer</option>
-              <option value="accountant">Accountant</option>
-              <option value="driver">Driver</option>
+              <option>{language().txt_occupation_comp}</option>
+              {language().occupation.map(ele => (
+                <option value={ele}>{ele}</option>
+              ))}
             </select>
           </div>
           <div className="_twoComumnWrapper">
@@ -172,11 +172,9 @@ class Registration extends React.Component {
               onChange={e => this.onChangeAction(e)}
             >
               <option>Mother Tongue</option>
-              <option value="hindi">Hindi</option>
-              <option value="english">English</option>
-              <option value="gujurati">Gujurati</option>
-              <option value="marathi">Marathi</option>
-              <option value="others">Others</option>
+              {language().mothertonge.map(ele => (
+                <option value={ele}>{ele}</option>
+              ))}
             </select>
           </div>
           <div className="_twoComumnWrapper">
@@ -186,8 +184,9 @@ class Registration extends React.Component {
               onChange={e => this.onChangeAction(e)}
             >
               <option>Marital Status</option>
-              <option value="married">Married</option>
-              <option value="unmarried">Unmarried</option>
+              {language().maritalstatus.map(ele => (
+                <option value={ele}>{ele}</option>
+              ))}
             </select>
             <select
               name="dependants"
@@ -195,16 +194,9 @@ class Registration extends React.Component {
               onChange={e => this.onChangeAction(e)}
             >
               <option>No. of Dependants</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
+              {language().dependent.map(ele => (
+                <option value={ele}>{ele}</option>
+              ))}
             </select>
           </div>
           <p className="_secText">Address</p>

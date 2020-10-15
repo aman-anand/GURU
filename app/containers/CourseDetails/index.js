@@ -16,7 +16,6 @@ import { createStructuredSelector } from 'reselect';
 import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import withSizes from 'react-sizes';
-
 import injectReducer from 'utils/injectReducer';
 
 import SwipeableViews from 'react-swipeable-views';
@@ -30,8 +29,10 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 import Slide from '@material-ui/core/Slide';
 import Button from '@material-ui/core/Button';
+// import history from '../../utils/history';
 import {
   courseDetailsAction,
   courseAction,
@@ -52,6 +53,7 @@ import Assessment from '../../components/Assessment';
 import ListItembox from '../../components/ListItembox';
 import Ratings from '../../components/Ratings/Loadable';
 import Exams from '../../components/Exams/Loadable';
+import Result from '../../components/Result/Loadable';
 import defoultProfileImg from '../../images/defoult_profile.png';
 // NOTE: Styles
 import { GuruCoursesDetailsContainer } from './style';
@@ -84,7 +86,9 @@ export class CourseDetails extends React.PureComponent {
       videoModel: false,
       comment: '',
       startExam: false,
+      tryAgain: false,
       startAssesment: '',
+      alert: false,
     };
     this.store = getFromLocalStore(['token', 'id', 'role', 'expires', 'phone']);
     this.color = Math.floor(Math.random() * 16777215).toString(16);
@@ -98,6 +102,13 @@ export class CourseDetails extends React.PureComponent {
     state.COURSE_ID = COURSE_ID || null; // Set LeadId
     return null;
   }
+
+  alertClose = () => {
+    this.setState({
+      alert: false,
+    });
+    window.location.reload();
+  };
 
   componentDidMount() {
     const { COURSE_ID } = this.state;
@@ -199,9 +210,15 @@ export class CourseDetails extends React.PureComponent {
     };
     this.props.dispatch(submitQuizAction(jsonOBJ)).then(res => {
       const { payload } = res || {};
-      const { data: payloadData } = payload || {};
+      const { data: payloadData, success, message } = payload || {};
       const { type, certificate } = payloadData || {};
-      if (['failed'].includes(type) && !certificate) {
+      if (!success) {
+        this.setState({
+          alert: true,
+          message,
+        });
+      }
+      if (success && ['failed'].includes(type) && !certificate) {
         this.setState({
           startExam: false,
           tryAgain: true,
@@ -259,8 +276,8 @@ export class CourseDetails extends React.PureComponent {
         ) : null}
         {tryAgain ? (
           <Fragment>
-            {/* NOTE: Exams */}
-            <div>Try Again</div>
+            {/* NOTE: Result */}
+            <Result />
           </Fragment>
         ) : null}
         {!startExam && !tryAgain ? (
@@ -565,6 +582,21 @@ export class CourseDetails extends React.PureComponent {
                 Your browser does not support the audio element.
               </audio>
             ) : null}
+          </DialogContent>
+        </Dialog>
+        {/* NOTE: Exam responce */}
+        <Dialog open={this.state.alert}>
+          <DialogContent className="sumanta">
+            <DialogContentText className="logoutWrapp">
+              <span>{this.state.message}</span>
+              <Button
+                onClick={this.alertClose}
+                variant="contained"
+                color="primary"
+              >
+                ok
+              </Button>
+            </DialogContentText>
           </DialogContent>
         </Dialog>
       </GuruCoursesDetailsContainer>

@@ -29,7 +29,7 @@ function Exams(props) {
   // window.console.log('PROPS', props);
   useEffect(() => {
     clearInterval(downloadTimer);
-    const duration = time ? 60 * parseInt(1, 10) : 1;
+    const duration = time ? 60 * parseInt(time, 10) : 1;
     let timer = duration;
     let minutes;
     let seconds;
@@ -209,10 +209,10 @@ function Exams(props) {
         </DialogContent>
       </Dialog>
       <Snackbar
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'bottom' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         open={open}
         onClose={handleClose}
-        message="Please select answar"
+        message="Please Choose Answer"
         key={{ vertical: 'bottom' } + { horizontal: 'right' }}
       />
     </ExamsContainer>
