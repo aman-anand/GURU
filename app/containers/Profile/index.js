@@ -38,8 +38,6 @@ export class Profile extends React.PureComponent {
         'fName',
         'lName',
         'phone',
-        'profileImage',
-        'aadharNumber',
         'pincode',
         'age',
         'city',
@@ -113,10 +111,28 @@ export class Profile extends React.PureComponent {
       { occupation },
       { state },
     ]);
-    const id = window.localStorage.getItem('id');
+    const localData = getFromLocalStore([
+      'rollNumber',
+      'fName',
+      'lName',
+      'phone',
+      'pincode',
+      'age',
+      'city',
+      'dependants',
+      'dob',
+      'email',
+      'gender',
+      'locality',
+      'martialstatus',
+      'monthertounge',
+      'occupation',
+      'state',
+      'id',
+    ]);
+    console.log('localData', localData);
     const jsonObj = {
-      ...values,
-      _id: id,
+      ...localData,
     };
     this.props.dispatch(profileUpdateAction(jsonObj));
   };
@@ -167,8 +183,9 @@ export class Profile extends React.PureComponent {
               {['basicinfo'].includes(this.state.selectedTabs) ? (
                 <BasicDetails
                   formData={store}
+                  proImg
                   profileImage={profileImage}
-                  // uploadAction={this.uploadActionFn}
+                  uploadAction={this.uploadActionFn}
                   submitRegistration={this.submitRegistration}
                 />
               ) : null}

@@ -5,13 +5,14 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import withSizes from 'react-sizes';
+import Button from '@material-ui/core/Button';
 
 import injectReducer from 'utils/injectReducer';
 import makeSelectCertificates from './selectors';
@@ -23,6 +24,8 @@ import UpcommingSession from '../../components/UpcommingSession/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
 import CetificateBlock from '../../components/CetificateBlock/Loadable';
 import { certificateAction, courseAction } from './actions';
+import certificateIllustration from '../../images/certificate_illustration.png';
+import { language } from '../../services/CommonSetterGetter';
 
 // NOTE: Style
 import { CertificatesContainer } from './style';
@@ -59,28 +62,44 @@ export class Certificates extends React.PureComponent {
         <Header title="CERTIFICATES" />
         <div className="container">
           <div className="leftBox">
-            <UpcommingSession
-              title="CERTIFICATES"
-              subtitle={`${certCount} certificates earned`}
-            />
-            {certiObj &&
-              certiObj.map(cert => {
-                const { display_certificateDate, certificateUrl, attempt } =
-                  cert || {};
-                const { course } = attempt || {};
-                const { name } = course || {};
-                const color = Math.floor(Math.random() * 16777215).toString(16);
-                return (
-                  <CetificateBlock
-                    data={{
-                      color,
-                      display_certificateDate,
-                      certificateUrl,
-                      name,
-                    }}
-                  />
-                );
-              })}
+            {certCount ? (
+              <Fragment>
+                <UpcommingSession
+                  title="CERTIFICATES"
+                  subtitle={`${certCount} certificates earned`}
+                />
+                {certiObj &&
+                  certiObj.map(cert => {
+                    const { display_certificateDate, certificateUrl, attempt } =
+                      cert || {};
+                    const { course } = attempt || {};
+                    const { name } = course || {};
+                    const color = Math.floor(Math.random() * 16777215).toString(
+                      16,
+                    );
+                    return (
+                      <CetificateBlock
+                        data={{
+                          color,
+                          display_certificateDate,
+                          certificateUrl,
+                          name,
+                        }}
+                      />
+                    );
+                  })}
+              </Fragment>
+            ) : (
+              <div className="emptyWrapper">
+                <i>
+                  <img src={certificateIllustration} title="" alt="" />
+                </i>
+                <p className="paraMsg">{language().no_certificate_message}</p>
+                <Button href="/course" variant="contained" color="primary">
+                  {language().txt_view_courses}
+                </Button>
+              </div>
+            )}
           </div>
           {!isMobile ? (
             <div className="rightBox">

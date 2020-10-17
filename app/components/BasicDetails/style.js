@@ -58,24 +58,41 @@ export const BasicDetailsContainer = styled.div`
     font-size: 14px;
     font-weight: 300;
   }
+  .fieldWrapper {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    margin-bottom: 12px;
+    input {
+      ${globalStyle.flex};
+      width: 100%;
+      margin: 0px;
+      &.error {
+        border: solid 1px red;
+      }
+    }
+  }
+  .fieldError {
+    color: red;
+    font-size: 14px;
+  }
   ._twoComumnWrapper {
     box-sizing: border-box;
     ${globalStyle.flex};
     ${globalStyle.row};
-    margin: 0px -10px 12px -10px;
-    input {
-      margin: 0px 10px;
-      width: 50%;
+    .fieldWrapper {
+      flex: 1;
+      &:nth-child(1) {
+        padding-right: 7.5px;
+      }
+      &:nth-child(2) {
+        padding-left: 7.5px;
+      }
     }
   }
   ._twoRowWrapper {
     box-sizing: border-box;
     ${globalStyle.flex};
     ${globalStyle.column};
-    margin: 0px -10px 0px -10px;
-    input {
-      margin: 0px 10px 12px 10px;
-    }
   }
   .uploadField {
     height: 96px;
@@ -194,5 +211,8 @@ export const BasicDetailsContainer = styled.div`
         line-height: 14px;
       }
     }
+  }
+  .updateButton {
+    width: 100%;
   }
 `;

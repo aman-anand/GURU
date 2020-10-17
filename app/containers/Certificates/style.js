@@ -40,4 +40,23 @@ export const CertificatesContainer = styled.section`
       width: 33%;
     }
   }
+
+  .emptyWrapper {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    i {
+      width: 200px;
+      img {
+        width: 100%;
+      }
+    }
+    .paraMsg {
+      max-width: 350px;
+      text-align: center;
+    }
+  }
 `;

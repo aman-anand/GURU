@@ -1,3 +1,6 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
 /**
  *
@@ -6,6 +9,7 @@
  */
 
 import React, { Fragment, memo } from 'react';
+import { Form, Field } from 'react-final-form';
 import PropTypes from 'prop-types';
 import withSizes from 'react-sizes';
 import Button from '@material-ui/core/Button';
@@ -17,38 +21,45 @@ class BasicDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      required: false,
+      data: {},
     };
   }
 
-  componentDidMount() {
-    const { formData, profileImage } = this.props;
-    const { fName, lName, phone, number, aadharNumber, pincode, rollNumber } =
-      formData || {};
-    this.setState({
-      fName,
-      lName,
-      phone,
-      number,
-      aadharNumber,
-      pincode,
-      rollNumber,
-      profileImage: profileImage || window.localStorage.getItem('profileImage'),
-    });
-    // console.log('LANG', language());
+  static getDerivedStateFromProps(props, state) {
+    const { profileImage: img, formData } = props || {};
+    const { phone, number, rollNumber, fName, lName, pincode } = formData || {};
+    state.profileImage = img || window.localStorage.getItem('profileImage');
+    state.rollNumber = rollNumber;
+    state.data.phone = number || phone;
+    state.data.fName = fName;
+    state.data.lName = lName;
+    state.data.pincode = pincode;
+    return null;
   }
 
-  onChangeAction = eve => {
-    const { name, value } = eve.target;
-    this.setState({
-      [name]: value,
-    });
+  // componentDidMount() {
+  //   const { formData } = this.props;
+  //   const { phone, number, rollNumber, fName, lName, pincode } = formData || {};
+  //   this.setState({
+  //     rollNumber,
+  //     data: {
+  //       phone: number || phone,
+  //       fName,
+  //       lName,
+  //       pincode,
+  //     },
+  //   });
+  // }
+
+  uploadFile = event => {
+    const { uploadAction } = this.props;
+    uploadAction(event.target.name, event.target.files[0]);
   };
 
-  submitForm = () => {
+  onSubmit = values => {
+    const { fName, lName, phone, pincode } = values || {};
+    const { profileImage } = this.state || {};
     const { submitRegistration } = this.props;
-    const { fName, lName, phone, required, pincode, profileImage } =
-      this.state || {};
     const jsonOBJ = {
       fName,
       lName,
@@ -56,34 +67,31 @@ class BasicDetails extends React.Component {
       pincode,
       profileImage,
     };
-    if (!required && !(fName && lName && phone && pincode)) {
-      this.setState({
-        required: true,
-      });
-    } else {
+    if (fName && lName && phone && pincode) {
       submitRegistration(jsonOBJ);
     }
   };
 
-  uploadFile = event => {
-    const { uploadAction } = this.props;
-    uploadAction(event.target.name, event.target.files[0]);
-  };
-
   render() {
-    const { isMobile, responseError } = this.props;
-    const {
-      required,
-      fName,
-      lName,
-      phone,
-      number,
-      pincode,
-      profileImage,
-      rollNumber,
-    } = this.state;
+    const { isMobile, responseError, proImg } = this.props;
+    const { rollNumber, profileImage } = this.state;
     const { message, success } = responseError || {};
-    window.console.log('STATE', this.state);
+    // window.console.log('STATE', this.state);
+    // NOTE: Validateor Start
+    const required = value => (value ? undefined : 'Required');
+    const regex = /^[0-9a-zA-Z\_]+$/;
+    const nameValidate = value =>
+      regex.test(value) ? undefined : 'special characters not allowed';
+    const mustBeNumber = value =>
+      isNaN(value) ? 'Must be a number' : undefined;
+    const minValue = value =>
+      value.length === 6 ? undefined : 'Should be a only six digit';
+    const composeValidators = (...validators) => value =>
+      validators.reduce(
+        (error, validator) => error || validator(value),
+        undefined,
+      );
+    // NOTE: Validateor End
     return (
       <BasicDetailsContainer>
         {!isMobile ? (
@@ -93,7 +101,7 @@ class BasicDetails extends React.Component {
           </Fragment>
         ) : null}
         <div className="_wrapper">
-          {profileImage ? (
+          {proImg ? (
             <div className="picWrapper">
               <label className="profilePic" htmlFor="fileupload">
                 <input
@@ -143,91 +151,112 @@ class BasicDetails extends React.Component {
               </div>
             </div>
           ) : null}
-          <div className="_twoComumnWrapper">
-            <input
-              name="fName"
-              type="text"
-              value={fName}
-              placeholder="First name *"
-              onChange={e => this.onChangeAction(e)}
-              pattern="^[a-zA-Z][\sa-zA-Z]*"
-              required={required}
-            />
-            <input
-              name="lName"
-              type="text"
-              value={lName}
-              placeholder="Last name *"
-              onChange={e => this.onChangeAction(e)}
-              required={required}
-            />
-          </div>
-          <div className="_twoRowWrapper">
-            <input
-              name="phone"
-              type="tel"
-              value={phone || number}
-              placeholder="Phone Number *"
-              onChange={e => this.onChangeAction(e)}
-              pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
-              disabled
-              required={required}
-            />
-          </div>
-          {/* <input
-            name="aadharNumber"
-            type="text"
-            value={aadharNumber}
-            placeholder="Aadhar Card Number *"
-            onChange={e => this.onChangeAction(e)}
-            pattern="[0-9]{4}[0-9]{4}[0-9]{4}"
-            required={required} 
-          /> */}
-          <input
-            name="pincode"
-            type="text"
-            value={pincode}
-            placeholder="Pincode *"
-            onChange={e => this.onChangeAction(e)}
-            pattern="[0-9]{6}"
-            required={required}
+          {/* ==== */}
+          <Form
+            onSubmit={this.onSubmit}
+            initialValues={this.state.data}
+            render={({ handleSubmit, pristine, form, submitting }) => (
+              <form onSubmit={handleSubmit}>
+                <div className="_twoComumnWrapper">
+                  <Field
+                    name="fName"
+                    validate={composeValidators(required, nameValidate)}
+                  >
+                    {({ input, meta }) => (
+                      <div className="fieldWrapper">
+                        <input
+                          {...input}
+                          type="text"
+                          placeholder="First name *"
+                          className={
+                            meta.error && meta.touched ? 'error' : null
+                          }
+                        />
+                        {meta.error && meta.touched && (
+                          <span className="fieldError">{meta.error}</span>
+                        )}
+                      </div>
+                    )}
+                  </Field>
+                  <Field name="lName" validate={required}>
+                    {({ input, meta }) => (
+                      <div className="fieldWrapper">
+                        <input
+                          {...input}
+                          type="text"
+                          placeholder="Last Name *"
+                          className={
+                            meta.error && meta.touched ? 'error' : null
+                          }
+                        />
+                        {meta.error && meta.touched && (
+                          <span className="fieldError">{meta.error}</span>
+                        )}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+                <div className="_twoRowWrapper">
+                  <Field name="phone" validate={required}>
+                    {({ input, meta }) => (
+                      <div className="fieldWrapper">
+                        <input
+                          {...input}
+                          type="text"
+                          placeholder="Phone Number *"
+                          disabled
+                        />
+                        {meta.error && meta.touched && (
+                          <span className="fieldError">{meta.error}</span>
+                        )}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+                <div className="_twoRowWrapper">
+                  <Field
+                    name="pincode"
+                    validate={composeValidators(
+                      required,
+                      mustBeNumber,
+                      minValue,
+                    )}
+                  >
+                    {({ input, meta }) => (
+                      <div className="fieldWrapper">
+                        <input
+                          {...input}
+                          type="number"
+                          placeholder="pincode"
+                          className={
+                            meta.error && meta.touched ? 'error' : null
+                          }
+                        />
+                        {meta.error && meta.touched && (
+                          <span className="fieldError">{meta.error}</span>
+                        )}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+
+                <div className="buttons">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    disabled={submitting || pristine}
+                    className="updateButton"
+                  >
+                    {language().txt_update_info}
+                  </Button>
+                </div>
+                {!success ? <span className="error">{message}</span> : null}
+                {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+              </form>
+            )}
           />
-          {/* <div className="uploadField">
-            <label htmlFor="aadharImageUpload">
-              <input
-                name="aadharImageUrl"
-                type="file"
-                id="aadharImageUpload"
-                onChange={e => this.uploadFile(e)}
-              />
-              <div className="_leftUpload">
-                {aadharImageUrl ? (
-                  <span className="uploded">
-                    <img src={activeImg} alt="" title="" />
-                  </span>
-                ) : null}
-                <img src={uploadIcon} alt="" title="" />
-              </div>
-              <div className="_rightUpload">
-                <span className="uploadText">
-                  <i>
-                    <img src={cameraIcon} alt="" title="" />
-                  </i>
-                  Upload
-                </span>
-                <span> Aadhar Card</span>
-              </div>
-            </label>
-          </div> */}
-          {!success ? <span className="error">{message}</span> : null}
-          <Button
-            variant="contained"
-            color="primary"
-            type="button"
-            onClick={this.submitForm}
-          >
-            {language().txt_update_info}
-          </Button>
+          {/* ==== */}
         </div>
       </BasicDetailsContainer>
     );
@@ -240,7 +269,7 @@ BasicDetails.propTypes = {
   responseError: PropTypes.object,
   formData: PropTypes.object,
   uploadAction: PropTypes.func,
-  // aadharImageUrl: PropTypes.string,
+  proImg: PropTypes.bool,
   profileImage: PropTypes.string,
 };
 
