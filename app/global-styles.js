@@ -240,6 +240,10 @@ const GlobalStyle = createGlobalStyle`
       height: 100%;
     }
   }
+  .audioWrapp {
+    padding: 10px !important;
+    width: 100%;
+  }
   ._descBox {
     padding: 10px;
     ._desc {

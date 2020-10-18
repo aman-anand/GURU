@@ -11,7 +11,8 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import withSizes from 'react-sizes';
-
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import injectReducer from 'utils/injectReducer';
 import Button from '@material-ui/core/Button';
 import makeSelectFeedback from './selectors';
@@ -21,11 +22,15 @@ import OptionalHeader from '../../components/OptionalHeader';
 import { submitReviewAction } from './actions';
 import { FeedbackContainer } from './style';
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 export class Feedback extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      success: false,
+      feedback: '',
+      snake: false,
     };
   }
 
@@ -38,12 +43,19 @@ export class Feedback extends React.PureComponent {
       typeOf: 'feedback',
       reviewType: 'text',
     };
-    this.props.dispatch(submitReviewAction(JSON)).then(() => {
-      this.setState({
-        feedback: '',
-        success: true,
-        message: 'Feedback submit successfully',
+    if (feedback.length > 10) {
+      this.props.dispatch(submitReviewAction(JSON)).then(() => {
+        window.location.reload();
+        this.setState({
+          snake: true,
+        });
       });
+    }
+  };
+
+  handleClose = () => {
+    this.setState({
+      snake: false,
     });
   };
 
@@ -97,7 +109,6 @@ export class Feedback extends React.PureComponent {
           <div className="feedbackform">
             <textarea
               type="text"
-              value={feedback}
               placeholder="Write your feedback here"
               onChange={e => this.onChnageText(e.target.value)}
             />
@@ -109,11 +120,26 @@ export class Feedback extends React.PureComponent {
               color="primary"
               type="button"
               onClick={this.submitForm}
+              disabled={feedback.length < 10}
             >
               SUBMIT FEEDBACK
             </Button>
           </div>
         </div>
+        <Snackbar
+          open={this.state.snake}
+          autoHideDuration={2000}
+          onClose={this.handleClose}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        >
+          <Alert
+            onClose={this.handleClose}
+            severity="success"
+            className="successAlert"
+          >
+            Feedback submit successfully
+          </Alert>
+        </Snackbar>
       </FeedbackContainer>
     );
   }

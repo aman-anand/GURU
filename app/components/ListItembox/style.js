@@ -12,20 +12,30 @@ export const ListItemboxContainer = styled.div`
     ${globalStyle.column};
   }
   .iconbox {
-    background-color: #da3a33;
     width: 48px;
     height: 32px;
     margin-right: 10px;
     justify-content: center;
     align-items: center;
     &.video {
-      background-color: #da3a33;
+      img {
+        width: 100%;
+      }
     }
     &.pdf {
-      background-color: #c5c5c5;
+      background-color: #868282;
+      img {
+        height: 60%;
+      }
     }
     &.blog {
       background-color: #868282;
+    }
+    &.audio {
+      background-color: #868282;
+      img {
+        height: 60%;
+      }
     }
   }
   .listContent {

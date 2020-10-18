@@ -459,6 +459,7 @@ export class CourseDetails extends React.PureComponent {
                                         duration: durationTime,
                                         type,
                                         url,
+                                        thumb,
                                       } = element || {};
                                       return (
                                         <ListItembox
@@ -467,6 +468,7 @@ export class CourseDetails extends React.PureComponent {
                                             title,
                                             durationTime,
                                             url,
+                                            thumb,
                                           }}
                                           onMethod={this.listOnClickBox}
                                         />
@@ -564,9 +566,17 @@ export class CourseDetails extends React.PureComponent {
           onClose={this.handleClose}
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
-          className="dialogVideoWrapper"
+          className={`${
+            ['video'].includes(this.state.type)
+              ? 'dialogVideoWrapper'
+              : 'dialogAudioWrapper'
+          }`}
         >
-          <DialogContent className="dWrapp">
+          <DialogContent
+            className={`${
+              ['video'].includes(this.state.type) ? 'dWrapp' : 'audioWrapp'
+            }`}
+          >
             {['video'].includes(this.state.type) ? (
               <iframe
                 id="player"
