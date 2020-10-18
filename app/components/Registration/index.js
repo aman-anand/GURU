@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
 /**
  *
@@ -6,11 +7,12 @@
  */
 
 import React, { Fragment, memo } from 'react';
+import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
 import withSizes from 'react-sizes';
 import PropTypes from 'prop-types';
 import { RegistrationContainer } from './style';
-import { language } from '../../services/CommonSetterGetter';
+import { language, setLoclStoreArry } from '../../services/CommonSetterGetter';
 // import cameraIcon from '../../images/cameraIcon.svg';
 
 class Registration extends React.Component {
@@ -21,55 +23,36 @@ class Registration extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const { formData } = this.props;
+  static getDerivedStateFromProps(props, state) {
+    const { formData } = props || {};
     const {
+      gender,
+      email,
+      occupation,
       dob,
       age,
-      martialstatus,
-      occupation,
       monthertounge,
+      martialstatus,
       dependants,
       locality,
       city,
-      state,
+      state: state_india,
+    } = formData || {};
+    state.data = {
       gender,
       email,
-    } = formData || {};
-    this.setState({
-      formObj: {
-        dob,
-        age,
-        martialstatus,
-        occupation,
-        monthertounge,
-        dependants,
-        locality,
-        city,
-        state,
-        gender,
-        email,
-      },
-    });
+      occupation,
+      dob,
+      age,
+      monthertounge,
+      martialstatus,
+      dependants,
+      locality,
+      city,
+      state: state_india,
+    };
+    return null;
   }
-
-  onChangeAction = e => {
-    const { value, name } = e.target;
-    const { formObj } = this.state;
-    const obj = { [name]: value };
-    this.setState({
-      formObj: Object.assign(formObj, obj),
-    });
-  };
-
-  onEnterClick = evt => {
-    const { value, name } = evt.target;
-    if (evt.key === 'Enter' || evt.charCode === 13 || evt.keyCode === 13) {
-      this.setState({
-        [name]: value,
-      });
-    }
-  };
 
   onSubmitForm = () => {
     const { submitRegistration } = this.props;
@@ -77,22 +60,50 @@ class Registration extends React.Component {
     submitRegistration(formObj);
   };
 
-  render() {
-    const { formObj } = this.state;
-    const { isMobile } = this.props;
+  onSubmit = values => {
     const {
-      dob,
-      age,
-      martialstatus,
+      gender,
+      email,
       occupation,
+      dob,
       monthertounge,
+      martialstatus,
       dependants,
       locality,
       city,
       state,
-      gender,
-      email,
-    } = formObj || {};
+    } = values || {};
+    setLoclStoreArry([
+      { gender },
+      { email },
+      { occupation },
+      { dob },
+      {
+        age: Math.floor((new Date() - new Date(dob).getTime()) / 3.15576e10),
+      },
+      { monthertounge },
+      { martialstatus },
+      { dependants },
+      { locality },
+      { city },
+      { state },
+    ]);
+    const { submitRegistration } = this.props;
+    if (values) {
+      submitRegistration();
+    }
+  };
+
+  render() {
+    const { isMobile } = this.props;
+    const Error = ({ name }) => (
+      <Field name={name} subscription={{ error: true, touched: true }}>
+        {({ meta: { error, touched } }) =>
+          error && touched ? <span>{error}</span> : null
+        }
+      </Field>
+    );
+    // NOTE: Validateor End
     return (
       <RegistrationContainer>
         {!isMobile ? (
@@ -102,135 +113,266 @@ class Registration extends React.Component {
           </Fragment>
         ) : null}
         <div className="_wrapper">
-          <div className="genderWrapper">
-            <span>Gender</span>
-            <div className="_genderBox" onChange={e => this.onChangeAction(e)}>
-              <label htmlFor="male">
-                <input
-                  type="radio"
-                  name="gender"
-                  value="male"
-                  id="male"
-                  checked={gender === 'male'}
-                />
-                <span>Male</span>
-              </label>
-              <label htmlFor="female">
-                <input
-                  type="radio"
-                  name="gender"
-                  value="female"
-                  id="female"
-                  checked={gender === 'female'}
-                />
-                <span>Female</span>
-              </label>
-            </div>
-          </div>
-          <input
-            type="text"
-            value={email}
-            name="email"
-            placeholder="Email Address"
-            onChange={e => this.onChangeAction(e)}
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          {/* NOTE: Start form */}
+          <Form
+            onSubmit={this.onSubmit}
+            initialValues={this.state.data}
+            validate={values => {
+              const errors = {};
+              if (!values.gender) {
+                errors.gender = 'Required';
+              }
+              if (!values.email) {
+                errors.email = 'Required';
+              } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+              ) {
+                errors.email = 'Please enter valid email';
+              }
+              if (!values.occupation) {
+                errors.occupation = 'Required';
+              }
+              if (!values.dob) {
+                errors.dob = 'Required';
+              }
+              if (!values.age) {
+                errors.age = 'Required';
+              }
+              if (!values.monthertounge) {
+                errors.monthertounge = 'Required';
+              }
+              if (!values.martialstatus) {
+                errors.martialstatus = 'Required';
+              }
+              if (!values.dependants) {
+                errors.dependants = 'Required';
+              }
+              if (!values.locality) {
+                errors.locality = 'Required';
+              }
+              if (!values.city) {
+                errors.city = 'Required';
+              }
+              if (!values.state) {
+                errors.state = 'Required';
+              }
+              return errors;
+            }}
+            render={({ handleSubmit, pristine, form, submitting, values }) => (
+              <form onSubmit={handleSubmit}>
+                <div className="genderWrapper">
+                  <div className="_genderBox">
+                    <span>Gender</span>
+                    <label htmlFor="male">
+                      <Field
+                        id="male"
+                        name="gender"
+                        component="input"
+                        type="radio"
+                        value="male"
+                      />
+                      <span>Male</span>
+                    </label>
+                    <label htmlFor="female">
+                      <Field
+                        id="female"
+                        name="gender"
+                        component="input"
+                        type="radio"
+                        value="female"
+                      />
+                      <span>Female</span>
+                    </label>
+                  </div>
+                  <Error name="gender" />
+                </div>
+                <div className="_rowWrapper">
+                  <Field name="email">
+                    {({ input, meta }) => (
+                      <div className="fieldWrapper">
+                        <input
+                          {...input}
+                          type="text"
+                          placeholder="Email Address"
+                          className={
+                            meta.error && meta.touched ? 'error' : null
+                          }
+                        />
+                        {meta.error && meta.touched && (
+                          <span className="fieldError">{meta.error}</span>
+                        )}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+                <div className="_twoRowWrapper">
+                  <Field name="occupation" component="select">
+                    <option>{language().txt_occupation_comp}</option>
+                    {language().occupation.map(time => (
+                      <option key={time} value={time}>
+                        {time}
+                      </option>
+                    ))}
+                  </Field>
+                </div>
+
+                <div className="_twoComumnWrapper">
+                  <Field name="dob">
+                    {({ input, meta }) => (
+                      <div className="fieldWrapper">
+                        <input
+                          {...input}
+                          type="date"
+                          placeholder="Date of Birth"
+                          max={
+                            new Date(
+                              new Date().getTime() -
+                                new Date().getTimezoneOffset() * 60000,
+                            )
+                              .toISOString()
+                              .split('T')[0]
+                          }
+                          className={
+                            meta.error && meta.touched ? 'DOB error' : 'DOB'
+                          }
+                        />
+                        {meta.error && meta.touched && (
+                          <span className="fieldError">{meta.error}</span>
+                        )}
+                      </div>
+                    )}
+                  </Field>
+                  <Field name="age">
+                    {({ input, meta }) => (
+                      <div className="fieldWrapper">
+                        <input
+                          {...input}
+                          type="number"
+                          placeholder="age"
+                          value={Math.floor(
+                            (new Date() - new Date(values.dob).getTime()) /
+                              3.15576e10,
+                          )}
+                          style={{ pointerEvents: 'none' }}
+                          className={
+                            meta.error && meta.touched ? 'error' : null
+                          }
+                        />
+                        {meta.error && meta.touched && (
+                          <span className="fieldError">{meta.error}</span>
+                        )}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+                <div className="_rowWrapper">
+                  <Field name="monthertounge" component="select">
+                    <option>Mother Tongue</option>
+                    {language().mothertonge.map(time => (
+                      <option key={time} value={time}>
+                        {time}
+                      </option>
+                    ))}
+                  </Field>
+                </div>
+
+                <div className="_twoComumnWrapper">
+                  <div className="fieldWrapper">
+                    <Field name="martialstatus" component="select">
+                      <option>Marital Status</option>
+                      {language().maritalstatus.map(time => (
+                        <option key={time} value={time}>
+                          {time}
+                        </option>
+                      ))}
+                    </Field>
+                  </div>
+                  <div className="fieldWrapper">
+                    <Field name="dependants" component="select">
+                      <option>No. of Dependants</option>
+                      {language().dependent.map(time => (
+                        <option key={time} value={time}>
+                          {time}
+                        </option>
+                      ))}
+                    </Field>
+                  </div>
+                </div>
+                <p className="_secText">Address</p>
+
+                <div className="_rowWrapper">
+                  <Field name="locality">
+                    {({ input, meta }) => (
+                      <div className="fieldWrapper">
+                        <input
+                          {...input}
+                          type="text"
+                          placeholder="Locality/Post Office"
+                          className={
+                            meta.error && meta.touched ? 'error' : null
+                          }
+                        />
+                        {meta.error && meta.touched && (
+                          <span className="fieldError">{meta.error}</span>
+                        )}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+
+                <div className="_twoComumnWrapper">
+                  <Field name="city">
+                    {({ input, meta }) => (
+                      <div className="fieldWrapper">
+                        <input
+                          {...input}
+                          type="text"
+                          placeholder="city"
+                          className={
+                            meta.error && meta.touched ? 'error' : null
+                          }
+                        />
+                        {meta.error && meta.touched && (
+                          <span className="fieldError">{meta.error}</span>
+                        )}
+                      </div>
+                    )}
+                  </Field>
+                  <Field name="state">
+                    {({ input, meta }) => (
+                      <div className="fieldWrapper">
+                        <input
+                          {...input}
+                          type="text"
+                          placeholder="state"
+                          className={
+                            meta.error && meta.touched ? 'error' : null
+                          }
+                        />
+                        {meta.error && meta.touched && (
+                          <span className="fieldError">{meta.error}</span>
+                        )}
+                      </div>
+                    )}
+                  </Field>
+                </div>
+
+                <div className="buttons">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    disabled={submitting || pristine}
+                    className="updateButton"
+                  >
+                    {language().txt_update_info}
+                  </Button>
+                </div>
+                {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+              </form>
+            )}
           />
-          <div className="_rowWrapper">
-            <select
-              name="occupation"
-              value={occupation}
-              onChange={e => this.onChangeAction(e)}
-            >
-              <option>{language().txt_occupation_comp}</option>
-              {language().occupation.map(ele => (
-                <option value={ele}>{ele}</option>
-              ))}
-            </select>
-          </div>
-          <div className="_twoComumnWrapper">
-            <input
-              type="date"
-              name="dob"
-              value={dob}
-              placeholder="Date of Birth"
-              onChange={e => this.onChangeAction(e)}
-            />
-            <input
-              type="number"
-              name="age"
-              value={age}
-              maxLength="2"
-              size="2"
-              placeholder="Age *"
-              onChange={e => this.onChangeAction(e)}
-            />
-          </div>
-          <div className="_rowWrapper">
-            <select
-              name="monthertounge"
-              value={monthertounge}
-              onChange={e => this.onChangeAction(e)}
-            >
-              <option>Mother Tongue</option>
-              {language().mothertonge.map(ele => (
-                <option value={ele}>{ele}</option>
-              ))}
-            </select>
-          </div>
-          <div className="_twoComumnWrapper">
-            <select
-              name="martialstatus"
-              value={martialstatus}
-              onChange={e => this.onChangeAction(e)}
-            >
-              <option>Marital Status</option>
-              {language().maritalstatus.map(ele => (
-                <option value={ele}>{ele}</option>
-              ))}
-            </select>
-            <select
-              name="dependants"
-              value={dependants}
-              onChange={e => this.onChangeAction(e)}
-            >
-              <option>No. of Dependants</option>
-              {language().dependent.map(ele => (
-                <option value={ele}>{ele}</option>
-              ))}
-            </select>
-          </div>
-          <p className="_secText">Address</p>
-          <input
-            type="text"
-            value={locality}
-            name="locality"
-            placeholder="Locality/Post Office"
-            onChange={e => this.onChangeAction(e)}
-          />
-          <div className="_twoComumnWrapper">
-            <input
-              type="text"
-              value={city}
-              name="city"
-              placeholder="City/District/Region"
-              onChange={e => this.onChangeAction(e)}
-            />
-            <input
-              type="text"
-              value={state}
-              name="state"
-              placeholder="State"
-              onChange={e => this.onChangeAction(e)}
-            />
-          </div>
-          <Button
-            variant="contained"
-            color="primary"
-            type="button"
-            onClick={this.onSubmitForm}
-          >
-            SAVE DETAILS
-          </Button>
+          {/* NOTE: End form */}
         </div>
       </RegistrationContainer>
     );
@@ -241,6 +383,7 @@ Registration.propTypes = {
   isMobile: PropTypes.bool,
   submitRegistration: PropTypes.func,
   formData: PropTypes.object,
+  message: PropTypes.string,
 };
 
 const mapSizesToProps = ({ width }) => ({

@@ -309,7 +309,7 @@ function Header(props) {
               </Link>
             </li>
             <li>
-              <Link to="/" role="presentation">
+              <Link to="/feedback" role="presentation">
                 <i className="icon">
                   <svg
                     width="20"

@@ -444,5 +444,8 @@ const GlobalStyle = createGlobalStyle`
     bottom: 0 !important;
     margin: auto;
   }
+  .successAlert {
+    align-items: center;
+  }
 `;
 export default GlobalStyle;

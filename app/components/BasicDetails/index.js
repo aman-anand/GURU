@@ -13,7 +13,7 @@ import { Form, Field } from 'react-final-form';
 import PropTypes from 'prop-types';
 import withSizes from 'react-sizes';
 import Button from '@material-ui/core/Button';
-import { language } from '../../services/CommonSetterGetter';
+import { language, setLoclStoreArry } from '../../services/CommonSetterGetter';
 import activeImg from '../../images/active.png';
 import { BasicDetailsContainer } from './style';
 
@@ -30,10 +30,7 @@ class BasicDetails extends React.Component {
     const { phone, number, rollNumber, fName, lName, pincode } = formData || {};
     state.profileImage = img || window.localStorage.getItem('profileImage');
     state.rollNumber = rollNumber;
-    state.data.phone = number || phone;
-    state.data.fName = fName;
-    state.data.lName = lName;
-    state.data.pincode = pincode;
+    state.data = { phone: number || phone, fName, lName, pincode };
     return null;
   }
 
@@ -58,24 +55,16 @@ class BasicDetails extends React.Component {
 
   onSubmit = values => {
     const { fName, lName, phone, pincode } = values || {};
-    const { profileImage } = this.state || {};
+    setLoclStoreArry([{ fName }, { lName }, { phone }, { pincode }]);
     const { submitRegistration } = this.props;
-    const jsonOBJ = {
-      fName,
-      lName,
-      phone,
-      pincode,
-      profileImage,
-    };
     if (fName && lName && phone && pincode) {
-      submitRegistration(jsonOBJ);
+      submitRegistration();
     }
   };
 
   render() {
-    const { isMobile, responseError, proImg } = this.props;
+    const { isMobile, proImg } = this.props;
     const { rollNumber, profileImage } = this.state;
-    const { message, success } = responseError || {};
     // window.console.log('STATE', this.state);
     // NOTE: Validateor Start
     const required = value => (value ? undefined : 'Required');
@@ -104,12 +93,14 @@ class BasicDetails extends React.Component {
           {proImg ? (
             <div className="picWrapper">
               <label className="profilePic" htmlFor="fileupload">
-                <input
-                  name="profileImage"
-                  type="file"
-                  id="fileupload"
-                  onChange={e => this.uploadFile(e)}
-                />
+                {!profileImage ? (
+                  <input
+                    name="profileImage"
+                    type="file"
+                    id="fileupload"
+                    onChange={e => this.uploadFile(e)}
+                  />
+                ) : null}
                 <i className="_proPic">
                   <img src={profileImage} alt="" title="" />
                 </i>
@@ -251,7 +242,6 @@ class BasicDetails extends React.Component {
                     {language().txt_update_info}
                   </Button>
                 </div>
-                {!success ? <span className="error">{message}</span> : null}
                 {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
               </form>
             )}
@@ -271,6 +261,7 @@ BasicDetails.propTypes = {
   uploadAction: PropTypes.func,
   proImg: PropTypes.bool,
   profileImage: PropTypes.string,
+  message: PropTypes.string,
 };
 
 const mapSizesToProps = ({ width }) => ({

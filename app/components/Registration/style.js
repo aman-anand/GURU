@@ -15,6 +15,9 @@ export const RegistrationContainer = styled.div`
     ${globalStyle.column};
     align-self: stretch;
   }
+  .DOB {
+    height: 50px;
+  }
   input,
   select {
     ${globalStyle.flex};
@@ -55,33 +58,49 @@ export const RegistrationContainer = styled.div`
     font-size: 14px;
     font-weight: 300;
   }
+  .fieldWrapper {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    margin-bottom: 12px;
+    input {
+      ${globalStyle.flex};
+      width: 100%;
+      margin: 0px;
+      &.error {
+        border: solid 1px red;
+      }
+    }
+  }
+  .fieldError {
+    color: red;
+    font-size: 14px;
+  }
   ._twoComumnWrapper {
     box-sizing: border-box;
     ${globalStyle.flex};
     ${globalStyle.row};
-    margin: 0px -6px 12px -6px;
-    input,
     select {
-      margin: 0px 6px;
-      width: 50%;
+      width: 100%;
+    }
+    .fieldWrapper {
+      flex: 1;
+      &:nth-child(1) {
+        padding-right: 7.5px;
+      }
+      &:nth-child(2) {
+        padding-left: 7.5px;
+      }
     }
   }
   ._rowWrapper {
     box-sizing: border-box;
     ${globalStyle.flex};
     ${globalStyle.column};
-    input {
-      margin: 0px 10px 12px 10px;
-    }
   }
   ._twoRowWrapper {
     box-sizing: border-box;
     ${globalStyle.flex};
     ${globalStyle.column};
-    margin: 0px -10px 0px -10px;
-    input {
-      margin: 0px 10px 12px 10px;
-    }
   }
 
   .genderWrapper {
@@ -101,6 +120,7 @@ export const RegistrationContainer = styled.div`
       flex: 1;
       margin-left: 25px;
       margin-right: -7.5px;
+      align-items: center;
       label {
         ${globalStyle.flex};
         flex: 1;
@@ -135,5 +155,8 @@ export const RegistrationContainer = styled.div`
         }
       }
     }
+  }
+  .updateButton {
+    width: 100%;
   }
 `;

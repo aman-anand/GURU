@@ -12,28 +12,30 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import withSizes from 'react-sizes';
-
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import injectReducer from 'utils/injectReducer';
 import makeSelectProfile from './selectors';
 import reducer from './reducer';
 import { uploadAction, profileUpdateAction } from './actions';
-import {
-  getFromLocalStore,
-  setLoclStoreArry,
-  language,
-} from '../../services/CommonSetterGetter';
+import { getFromLocalStore, language } from '../../services/CommonSetterGetter';
 import Header from '../../components/Header/Loadable';
 import BasicDetails from '../../components/BasicDetails/Loadable';
 import Registration from '../../components/Registration/Loadable';
 import OptionalHeader from '../../components/OptionalHeader';
 // NOTE: Style
 import { ProfileContainer } from './style';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 export class Profile extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       selectedTabs: 'basicinfo',
       store: getFromLocalStore([
+        'profileImage',
         'rollNumber',
         'fName',
         'lName',
@@ -51,6 +53,7 @@ export class Profile extends React.PureComponent {
         'occupation',
         'state',
       ]),
+      snake: false,
     };
   }
 
@@ -75,43 +78,8 @@ export class Profile extends React.PureComponent {
 
   submitRegistration = values => {
     window.console.log('values', values);
-    const {
-      profileImage,
-      fName,
-      lName,
-      phone,
-      pincode,
-      age,
-      city,
-      dependants,
-      dob,
-      email,
-      gender,
-      locality,
-      martialstatus,
-      monthertounge,
-      occupation,
-      state,
-    } = values || {};
-    setLoclStoreArry([
-      { profileImage },
-      { fName },
-      { lName },
-      { phone },
-      { pincode },
-      { age },
-      { city },
-      { dependants },
-      { dob },
-      { email },
-      { gender },
-      { locality },
-      { martialstatus },
-      { monthertounge },
-      { occupation },
-      { state },
-    ]);
     const localData = getFromLocalStore([
+      'profileImage',
       'rollNumber',
       'fName',
       'lName',
@@ -133,8 +101,23 @@ export class Profile extends React.PureComponent {
     console.log('localData', localData);
     const jsonObj = {
       ...localData,
+      _id: localData.id,
     };
-    this.props.dispatch(profileUpdateAction(jsonObj));
+    this.props.dispatch(profileUpdateAction(jsonObj)).then(res => {
+      const { payload } = res || {};
+      const { success } = payload || {};
+      if (success) {
+        this.setState({
+          snake: true,
+        });
+      }
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      snake: false,
+    });
   };
 
   render() {
@@ -198,6 +181,20 @@ export class Profile extends React.PureComponent {
             </div>
           </div>
         </div>
+        <Snackbar
+          open={this.state.snake}
+          autoHideDuration={2000}
+          onClose={this.handleClose}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        >
+          <Alert
+            onClose={this.handleClose}
+            severity="success"
+            className="successAlert"
+          >
+            Profile Update successfully
+          </Alert>
+        </Snackbar>
       </ProfileContainer>
     );
   }
