@@ -99,8 +99,8 @@ export class Feedback extends React.PureComponent {
               </i>
               <h4>FEEDBACK</h4>
               <p>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip
+                We would love to know what you think about us. Please write to
+                us and share your feedback.
               </p>
             </div>
           </div>

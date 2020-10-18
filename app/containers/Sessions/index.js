@@ -96,7 +96,7 @@ export class Sessions extends React.PureComponent {
                       ['Upcoming'].includes(sessionRadio) ? 'active' : null
                     }
                   >
-                    <span>UPCOMING SESSIONS</span>
+                    <span>UPCOMING</span>
                   </label>
                 </div>
                 <div className="navList">
@@ -107,7 +107,7 @@ export class Sessions extends React.PureComponent {
                       ['attended'].includes(sessionRadio) ? 'active' : null
                     }
                   >
-                    <span>ATTENDED SESSIONS</span>
+                    <span>ATTENDED</span>
                   </label>
                 </div>
               </div>

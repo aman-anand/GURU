@@ -39,7 +39,7 @@ class Registration extends React.Component {
       state: state_india,
     } = formData || {};
     state.data = {
-      gender,
+      gender: 'male' || gender,
       email,
       occupation,
       dob,
@@ -119,42 +119,10 @@ class Registration extends React.Component {
             initialValues={this.state.data}
             validate={values => {
               const errors = {};
-              if (!values.gender) {
-                errors.gender = 'Required';
-              }
-              if (!values.email) {
-                errors.email = 'Required';
-              } else if (
+              if (
                 !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
               ) {
                 errors.email = 'Please enter valid email';
-              }
-              if (!values.occupation) {
-                errors.occupation = 'Required';
-              }
-              if (!values.dob) {
-                errors.dob = 'Required';
-              }
-              if (!values.age) {
-                errors.age = 'Required';
-              }
-              if (!values.monthertounge) {
-                errors.monthertounge = 'Required';
-              }
-              if (!values.martialstatus) {
-                errors.martialstatus = 'Required';
-              }
-              if (!values.dependants) {
-                errors.dependants = 'Required';
-              }
-              if (!values.locality) {
-                errors.locality = 'Required';
-              }
-              if (!values.city) {
-                errors.city = 'Required';
-              }
-              if (!values.state) {
-                errors.state = 'Required';
               }
               return errors;
             }}

@@ -174,7 +174,7 @@ export const BasicDetailsContainer = styled.div`
       }
     }
     .cam {
-      background: #ffffff;
+      background: #da3a33;
       width: 32px;
       height: 32px;
       border-radius: 50%;

@@ -53,6 +53,7 @@ import Assessment from '../../components/Assessment';
 import ListItembox from '../../components/ListItembox';
 import Ratings from '../../components/Ratings/Loadable';
 import Exams from '../../components/Exams/Loadable';
+import Quiz from '../../components/Quiz/Loadable';
 import Result from '../../components/Result/Loadable';
 import defoultProfileImg from '../../images/defoult_profile.png';
 // NOTE: Styles
@@ -152,7 +153,7 @@ export class CourseDetails extends React.PureComponent {
         videoModel: true,
         url,
       });
-    } else if (['File', 'blog'].includes(type)) {
+    } else if (['File', 'blog', 'file'].includes(type)) {
       window.open(url, '_blank');
     } else if (['audio'].includes(type)) {
       this.setState({
@@ -269,6 +270,10 @@ export class CourseDetails extends React.PureComponent {
           <Fragment>
             {/* NOTE: Exams */}
             <Exams
+              data={{ startAssesment, courseName, courseId: id, attemptID }}
+              submitQuiz={this.submitQuiz}
+            />
+            <Quiz
               data={{ startAssesment, courseName, courseId: id, attemptID }}
               submitQuiz={this.submitQuiz}
             />

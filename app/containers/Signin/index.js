@@ -22,10 +22,7 @@ import BasicDetails from '../../components/BasicDetails/Loadable';
 import SigninForm from '../../components/SigninForm/Loadable';
 import Authentication from '../../components/Authentication/Loadable';
 import RegistorNav from '../../components/RegistorNav/Loadable';
-import {
-  getFromLocalStore,
-  setLoclStoreArry,
-} from '../../services/CommonSetterGetter';
+import { getFromLocalStore } from '../../services/CommonSetterGetter';
 
 import {
   sendOtpAction,
@@ -152,17 +149,48 @@ export class Signin extends React.PureComponent {
 
   submitRegistration = values => {
     window.console.log('values', values);
-    const { fName, lName, phone, pincode } = values || {};
-    setLoclStoreArry([{ fName }, { lName }, { phone }, { pincode }]);
-    const id = window.localStorage.getItem('id');
+    const localData = getFromLocalStore([
+      'profileImage',
+      'rollNumber',
+      'fName',
+      'lName',
+      'phone',
+      'pincode',
+      'age',
+      'city',
+      'dependants',
+      'dob',
+      'email',
+      'gender',
+      'locality',
+      'martialstatus',
+      'monthertounge',
+      'occupation',
+      'state',
+      'id',
+    ]);
     const jsonObj = {
-      ...values,
-      _id: id,
+      ...localData,
+      _id: localData.id,
     };
     this.props.dispatch(profileUpdateAction(jsonObj)).then(() => {
       history.push('/home');
     });
   };
+
+  // submitRegistration = values => {
+  //   window.console.log('values', values);
+  //   const { fName, lName, phone, pincode } = values || {};
+  //   setLoclStoreArry([{ fName }, { lName }, { phone }, { pincode }]);
+  //   const id = window.localStorage.getItem('id');
+  //   const jsonObj = {
+  //     ...values,
+  //     _id: id,
+  //   };
+  //   this.props.dispatch(profileUpdateAction(jsonObj)).then(() => {
+  //     history.push('/home');
+  //   });
+  // };
 
   render() {
     const { isMobile } = this.props;
