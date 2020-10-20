@@ -448,6 +448,9 @@ const GlobalStyle = createGlobalStyle`
     bottom: 0 !important;
     margin: auto;
   }
+  .video-react-poster {
+    background-size: cover !important;
+  }
   .successAlert {
     align-items: center;
   }
