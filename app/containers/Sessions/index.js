@@ -22,7 +22,9 @@ import Footer from '../../components/Footer/Loadable';
 import Bredcrumb from '../../components/Bredcrumb/Loadable';
 import SessionBlock from '../../components/SessionBlock/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
+import certificateIllustration from '../../images/certificate_illustration.png';
 import { upcSessionAction, courseAction, attSessionAction } from './actions';
+import { language } from '../../services/CommonSetterGetter';
 // NOTE: Style
 import { SessionContainer } from './style';
 
@@ -113,7 +115,16 @@ export class Sessions extends React.PureComponent {
               </div>
               <div className="sessionCardWrapper">
                 {upsData && !upsData.length ? (
-                  <p>No {this.state.sessionRadio} Session</p>
+                  <div className="emptySession">
+                    <i>
+                      <img src={certificateIllustration} title="" alt="" />
+                    </i>
+                    <p className="paraMsg">
+                      {['attended'].includes(sessionRadio)
+                        ? language().no_completed_session
+                        : language().no_upcoming_session}
+                    </p>
+                  </div>
                 ) : null}
                 {upsData &&
                   upsData.map(item => {

@@ -13,7 +13,6 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 // import Header from '../../components/Header/Loadable';
 // NOTE: Container
-import { red } from '@material-ui/core/colors';
 import Home from '../Home/Loadable';
 import CourseDetails from '../CourseDetails/Loadable';
 import Course from '../Course/Loadable';
@@ -141,7 +140,6 @@ export default function App() {
         />
         <Route exact path="*" component={PageNotFoundHook(NotFoundPage)} />
       </Switch>
-      <div style={{ fontSize: '10px', textAlign: 'right' }}>Build - 1.2.2</div>
       <GlobalStyle />
       <Loader />
     </ThemeProvider>

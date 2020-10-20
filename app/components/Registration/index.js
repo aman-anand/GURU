@@ -24,32 +24,18 @@ class Registration extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    const { formData } = props || {};
-    const {
-      gender,
-      email,
-      occupation,
-      dob,
-      age,
-      monthertounge,
-      martialstatus,
-      dependants,
-      locality,
-      city,
-      state: state_india,
-    } = formData || {};
     state.data = {
-      gender: 'male' || gender,
-      email,
-      occupation,
-      dob,
-      age,
-      monthertounge,
-      martialstatus,
-      dependants,
-      locality,
-      city,
-      state: state_india,
+      gender: window.localStorage.getItem('gender'),
+      email: window.localStorage.getItem('email'),
+      occupation: window.localStorage.getItem('occupation'),
+      dob: window.localStorage.getItem('dob'),
+      age: window.localStorage.getItem('age'),
+      monthertounge: window.localStorage.getItem('monthertounge'),
+      martialstatus: window.localStorage.getItem('martialstatus'),
+      dependants: window.localStorage.getItem('dependants'),
+      locality: window.localStorage.getItem('locality'),
+      city: window.localStorage.getItem('city'),
+      state: window.localStorage.getItem('state'),
     };
     return null;
   }

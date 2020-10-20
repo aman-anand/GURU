@@ -52,7 +52,7 @@ import OptionalHeader from '../../components/OptionalHeader';
 import Assessment from '../../components/Assessment';
 import ListItembox from '../../components/ListItembox';
 import Ratings from '../../components/Ratings/Loadable';
-import Exams from '../../components/Exams/Loadable';
+// import Exams from '../../components/Exams/Loadable';
 import Quiz from '../../components/Quiz/Loadable';
 import Result from '../../components/Result/Loadable';
 import defoultProfileImg from '../../images/defoult_profile.png';
@@ -269,10 +269,10 @@ export class CourseDetails extends React.PureComponent {
         {startExam ? (
           <Fragment>
             {/* NOTE: Exams */}
-            <Exams
+            {/* <Exams
               data={{ startAssesment, courseName, courseId: id, attemptID }}
               submitQuiz={this.submitQuiz}
-            />
+            /> */}
             <Quiz
               data={{ startAssesment, courseName, courseId: id, attemptID }}
               submitQuiz={this.submitQuiz}

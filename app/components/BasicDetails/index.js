@@ -27,10 +27,15 @@ class BasicDetails extends React.Component {
 
   static getDerivedStateFromProps(props, state) {
     const { profileImage: img, formData } = props || {};
-    const { phone, number, rollNumber, fName, lName, pincode } = formData || {};
+    const { rollNumber } = formData || {};
     state.profileImage = img || window.localStorage.getItem('profileImage');
     state.rollNumber = rollNumber;
-    state.data = { phone: number || phone, fName, lName, pincode };
+    state.data = {
+      phone: window.localStorage.getItem('phone'),
+      fName: window.localStorage.getItem('fName'),
+      lName: window.localStorage.getItem('lName'),
+      pincode: window.localStorage.getItem('pincode'),
+    };
     return null;
   }
 

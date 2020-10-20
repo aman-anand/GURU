@@ -24,6 +24,35 @@ export class Quiz extends React.PureComponent {
       open: false,
       timeup: false,
     };
+    this.downloadTimer = null;
+  }
+
+  componentDidMount() {
+    const { data } = this.props;
+    const { startAssesment } = data || {};
+    const { time } = startAssesment || {};
+    clearInterval(this.downloadTimer);
+    const duration = time ? 60 * parseInt(2, 10) : 1;
+    let timer = duration;
+    let minutes;
+    let seconds;
+    this.downloadTimer = setInterval(function function1() {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? `0${minutes}` : minutes;
+      seconds = seconds < 10 ? `0${seconds}` : seconds;
+      document.getElementById(
+        'countdown',
+      ).innerHTML = `TIME LEFT ${minutes} : ${seconds} MINS`;
+
+      timer -= 1;
+      if (timer <= 0) {
+        clearInterval(this.downloadTimer);
+        document.getElementById('countdown').innerHTML = 'Time is up!';
+        window.console.log('THIS', this);
+      }
+    }, 1000);
   }
 
   nextQuestion = qusParms => {
@@ -54,8 +83,10 @@ export class Quiz extends React.PureComponent {
   };
 
   submitAnswar = () => {
+    const { answarList } = this.state;
+    const { data } = this.props;
+    const { attemptID } = data || {};
     this.props.submitQuiz({ answarList, data, attemptID });
-    console.log('SUBMIT', answarList);
   };
 
   handleClose = () => {
@@ -68,11 +99,11 @@ export class Quiz extends React.PureComponent {
     this.setState({
       timeup: false,
     });
-    console.log('Time Up Modal are closed');
+    window.console.log('Time Up Modal are closed');
   };
 
   selectAnswar = params => {
-    console.log('Params', params);
+    window.console.log('Params', params);
     this.setState({
       selectAnswar: { ...params },
     });
@@ -81,10 +112,11 @@ export class Quiz extends React.PureComponent {
   render() {
     const { data } = this.props;
     const { quesAttem, timeup, open } = this.state;
-    const { startAssesment, courseName, attemptID } = data || {};
+    const { startAssesment, courseName } = data || {};
     const { time, title, questions } = startAssesment || {};
     const { _id: qusId } = questions[quesAttem] || {};
     const percentage = 100 / questions.length;
+    window.console.log('timeup', timeup);
     return (
       <QuizContainer percentage={percentage}>
         <div className="topSec">

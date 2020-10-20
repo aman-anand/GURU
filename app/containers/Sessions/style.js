@@ -239,4 +239,18 @@ export const SessionContainer = styled.section`
     line-height: 17px;
     color: #2e323d;
   }
+  .emptySession {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    align-items: center;
+    background-color: #f9fafc;
+    border-radius: 10px;
+    padding: 15px;
+    i {
+      width: 200px;
+      img {
+        width: 100%;
+      }
+    }
+  }
 `;
