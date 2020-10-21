@@ -55,10 +55,7 @@ export const GuruCoursesDetailsContainer = styled.section`
     ${globalStyle.flex};
     ${globalStyle.row};
     flex-wrap: wrap;
-    /*@media (max-width: ${globalStyle.small}) {
-      margin-left: -12px;
-      margin-right: -12px;
-    }*/
+    margin-bottom: 10px;
     & > div {
       &.sectionItem,
       &.certificateItem {
@@ -68,7 +65,6 @@ export const GuruCoursesDetailsContainer = styled.section`
         box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         padding: 10px;
-        margin: 7.5px;
         justify-content: center;
         align-items: center;
         @media (min-width: ${globalStyle.small}) {
@@ -101,6 +97,12 @@ export const GuruCoursesDetailsContainer = styled.section`
           }
         }
       }
+      &.sectionItem {
+        margin-right: 7.5px;
+      }
+      &.certificateItem {
+        margin-left: 7.5px;
+      }
     }
   }
 
@@ -110,7 +112,7 @@ export const GuruCoursesDetailsContainer = styled.section`
     }
   }
   .accordianWrapper {
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
     .headingRow {
       & > div {
         margin: 0px;
@@ -130,15 +132,15 @@ export const GuruCoursesDetailsContainer = styled.section`
     ${globalStyle.column};
     flex: 1;
   }
-  
+
   .downlodCertificate {
-    background: #DA3A33;
+    background: #da3a33;
     border-radius: 5px;
     font-weight: bold;
     font-size: 12px;
     line-height: 14px;
     text-align: center;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-top: 7.5px;
     width: 100%;
   }
@@ -170,11 +172,17 @@ export const GuruCoursesDetailsContainer = styled.section`
         }
       }
       button {
-        background: #0976BE;
+        background: #0976be;
         box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         color: #ffffff;
       }
     }
+  }
+  .startCourseBtn {
+    margin-bottom: 10px;
+    background-color: #58b368 !important;
+    color: #ffffff !important;
+    width: 100%;
   }
 `;

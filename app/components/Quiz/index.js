@@ -32,7 +32,7 @@ export class Quiz extends React.PureComponent {
     const { startAssesment } = data || {};
     const { time } = startAssesment || {};
     clearInterval(this.downloadTimer);
-    const duration = time ? 60 * parseInt(2, 10) : 1;
+    const duration = time ? 60 * parseInt(time, 10) : 1;
     let timer = duration;
     let minutes;
     let seconds;
@@ -50,9 +50,11 @@ export class Quiz extends React.PureComponent {
       if (timer <= 0) {
         clearInterval(this.downloadTimer);
         document.getElementById('countdown').innerHTML = 'Time is up!';
+        // document.getElementById('timeupPopup').click();
         window.console.log('THIS', this);
       }
     }, 1000);
+    console.log('True', this.downloadTimer);
   }
 
   nextQuestion = qusParms => {
@@ -106,6 +108,13 @@ export class Quiz extends React.PureComponent {
     window.console.log('Params', params);
     this.setState({
       selectAnswar: { ...params },
+    });
+  };
+
+  openTimeUp = () => {
+    clearInterval(this.downloadTimer);
+    this.setState({
+      timeup: true,
     });
   };
 
@@ -209,6 +218,14 @@ export class Quiz extends React.PureComponent {
               <span>SUBMIT ANSWAR</span>
             </div>
           )}
+        </div>
+        <div
+          id="timeupPopup"
+          onClick={() => this.openTimeUp()}
+          role="presentation"
+          style={{ display: 'none' }}
+        >
+          Test
         </div>
         <Dialog open={timeup}>
           <DialogContent className="sumanta">

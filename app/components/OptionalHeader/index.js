@@ -19,6 +19,11 @@ const changeAnimateFn = (goTo, props) => {
   return null;
 };
 
+// const openNotification = () => {
+//   const element = document.getElementById('notification');
+//   element.classList.toggle('active');
+// };
+
 function OptionalHeader(props) {
   const { goTo, title, sendCloseMessage, isMobile } = props;
   return (

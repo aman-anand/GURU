@@ -88,6 +88,8 @@ export class CourseDetails extends React.PureComponent {
       comment: '',
       startExam: false,
       tryAgain: false,
+      sessionPpassed: false,
+      congratulation: false,
       startAssesment: '',
       alert: false,
     };
@@ -108,7 +110,7 @@ export class CourseDetails extends React.PureComponent {
     this.setState({
       alert: false,
     });
-    window.location.reload();
+    // window.location.reload();
   };
 
   componentDidMount() {
@@ -219,10 +221,25 @@ export class CourseDetails extends React.PureComponent {
           message,
         });
       }
-      if (success && ['failed'].includes(type) && !certificate) {
+      if (success && ['failed'].includes(type)) {
         this.setState({
           startExam: false,
           tryAgain: true,
+        });
+      }
+      if (success && ['passed'].includes(type)) {
+        this.setState({
+          startExam: false,
+          tryAgain: false,
+          sessionPpassed: true,
+        });
+      }
+      if (success && ['passed'].includes(type) && certificate) {
+        this.setState({
+          startExam: false,
+          tryAgain: false,
+          sessionPpassed: false,
+          congratulation: true,
         });
       }
     });
@@ -252,6 +269,8 @@ export class CourseDetails extends React.PureComponent {
       comment,
       startExam,
       tryAgain,
+      sessionPpassed,
+      congratulation,
       startAssesment,
       expanded,
     } = this.state;
@@ -282,7 +301,17 @@ export class CourseDetails extends React.PureComponent {
         {tryAgain ? (
           <Fragment>
             {/* NOTE: Result */}
-            <Result />
+            <Result type="failed" />
+          </Fragment>
+        ) : null}
+        {sessionPpassed ? (
+          <Fragment>
+            <Result type="passed" />
+          </Fragment>
+        ) : null}
+        {congratulation ? (
+          <Fragment>
+            <Result type="passed" certificate />
           </Fragment>
         ) : null}
         {!startExam && !tryAgain ? (
@@ -362,6 +391,19 @@ export class CourseDetails extends React.PureComponent {
                             </div>
                           </div>
                         </div>
+                        <Button
+                          className="startCourseBtn"
+                          variant="contained"
+                          color="primary"
+                          type="button"
+                          onClick={() => {
+                            this.setState({
+                              value: 1,
+                            });
+                          }}
+                        >
+                          START COURSE
+                        </Button>
                         {/* NOTE: start */}
                         {/* <p>{totalStudents} shishya have watched this course</p> */}
                         <div className="review_box">
