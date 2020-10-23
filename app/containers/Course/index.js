@@ -50,8 +50,8 @@ export class Course extends React.PureComponent {
           <meta name="description" content="Description of Courses" />
         </Helmet>
         <Header title="Courses" />
+        {isMobile ? <Search /> : null}
         <div className="container">
-          {isMobile ? <Search /> : null}
           <div className="leftBox">
             <UpcommingSession
               title="COURSES"

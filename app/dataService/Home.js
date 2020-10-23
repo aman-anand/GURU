@@ -16,6 +16,7 @@ import {
   UPLOAD,
   UPDATE,
   ADD_REVIEW,
+  NOTIFICATION,
 } from '../constants/endpoints';
 import { makeHttpRequest as makeHttpCall } from './common/HttpProvider';
 
@@ -141,5 +142,10 @@ export const UPDATE_API = (params, hideLoader) => {
     method: 'PUT',
     hideLoader,
   };
+  return makeHttpCall(config);
+};
+
+export const NOTIFICATION_API = (params, hideLoader) => {
+  const config = { url: NOTIFICATION(), params, method: 'GET', hideLoader };
   return makeHttpCall(config);
 };

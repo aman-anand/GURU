@@ -97,13 +97,8 @@ export const HeaderContainer = styled.header`
       align-items: center;
       justify-content: center;
       position: relative;
-    }
-    .notification {
-      &.active {
-        .notificationWrapper {
-          display: block;
-        }
-      }
+      ${globalStyle.flex};
+      cursor: pointer;
     }
     .myProfileNav {
       background: #f9fafc;

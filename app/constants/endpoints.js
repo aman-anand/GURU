@@ -58,3 +58,6 @@ export const ADD_REVIEW = () => `${API}/review`;
 
 // NOTE: Refres Token
 export const REFRESH_TOKEN = () => `${API}/user/refreshToken`;
+
+// NOTE: Notification
+export const NOTIFICATION = () => `${API}/notification`;
