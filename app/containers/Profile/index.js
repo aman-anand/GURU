@@ -98,9 +98,12 @@ export class Profile extends React.PureComponent {
       'state',
       'id',
     ]);
+    const { city, pincode, locality, state } = localData || {};
+
     console.log('localData', localData);
     const jsonObj = {
       ...localData,
+      address: { city, pincode, locality, state },
       _id: localData.id,
     };
     this.props.dispatch(profileUpdateAction(jsonObj)).then(res => {

@@ -55,8 +55,8 @@ export class Videos extends React.PureComponent {
         ) : (
           <OptionalHeader title="VIDEOS" goTo="/home" />
         )}
+        {isMobile ? <Search /> : null}
         <div className="container">
-          {isMobile ? <Search /> : null}
           <div className="leftBox">
             <UpcommingSession
               title="VIDEOS"

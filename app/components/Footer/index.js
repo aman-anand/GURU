@@ -58,8 +58,10 @@ function Footer() {
         </li>
         <li>
           <Link
-            to="/sessions"
-            className={`${['/sessions'].includes(pathname) ? 'active' : null}`}
+            to="/upcomingsessions"
+            className={`${
+              ['/upcomingsessions'].includes(pathname) ? 'active' : null
+            }`}
           >
             <i className="icon">
               <svg

@@ -25,7 +25,7 @@ class Registration extends React.Component {
 
   static getDerivedStateFromProps(props, state) {
     state.data = {
-      gender: window.localStorage.getItem('gender'),
+      gender: window.localStorage.getItem('gender') || 'male',
       email: !['null'].includes(window.localStorage.getItem('email'))
         ? window.localStorage.getItem('email')
         : null,
