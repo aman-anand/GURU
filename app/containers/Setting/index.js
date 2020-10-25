@@ -22,7 +22,9 @@ import { SettingContainer } from './style';
 export class Setting extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      // language: 'eng',
+    };
   }
 
   render() {
@@ -61,7 +63,13 @@ export class Setting extends React.PureComponent {
           </p>
           <div className="radioWrapper">
             <label htmlFor="eng">
-              <input type="radio" name="language" id="eng" value="eng" />
+              <input
+                type="radio"
+                name="language"
+                id="eng"
+                value="eng"
+                checked
+              />
               <div className="radioBox">
                 <span className="title">English</span>
                 <span className="icon" />
@@ -71,6 +79,13 @@ export class Setting extends React.PureComponent {
               <input type="radio" name="language" id="hin" value="hin" />
               <div className="radioBox">
                 <span className="title">{language().txt_hindi}</span>
+                <span className="icon" />
+              </div>
+            </label>
+            <label htmlFor="mh">
+              <input type="radio" name="language" id="mh" value="mh" />
+              <div className="radioBox">
+                <span className="title">{language().txt_marathi}</span>
                 <span className="icon" />
               </div>
             </label>
