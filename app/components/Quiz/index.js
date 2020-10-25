@@ -50,7 +50,7 @@ export class Quiz extends React.PureComponent {
       if (timer <= 0) {
         clearInterval(this.downloadTimer);
         document.getElementById('countdown').innerHTML = 'Time is up!';
-        // document.getElementById('timeupPopup').click();
+        document.getElementById('timeupPopup').click();
         window.console.log('THIS', this);
       }
     }, 1000);
