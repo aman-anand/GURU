@@ -141,7 +141,7 @@ export class Sessions extends React.PureComponent {
                     </i>
                     <p className="paraMsg">
                       {['attendsessions'].includes(sessionRadio)
-                        ? language().no_completed_session
+                        ? language().no_attended_session
                         : language().no_upcoming_session}
                     </p>
                   </div>
