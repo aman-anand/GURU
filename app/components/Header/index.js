@@ -131,9 +131,9 @@ function Header(props) {
             </li>
             <li>
               <Link
-                to="/sessions"
+                to="/upcomingsessions"
                 className={`${
-                  ['/sessions'].includes(pathname) ? 'active' : null
+                  ['/upcomingsessions'].includes(pathname) ? 'active' : null
                 }`}
                 role="presentation"
               >
@@ -183,9 +183,11 @@ function Header(props) {
         ) : (
           <li>
             <Link
-              to="/sessions"
+              to="/upcomingsessions"
               className={`${
-                ['/sessions'].includes(pathname) ? 'active' : null
+                ['/upcomingsessions', '/attendsessions'].includes(pathname)
+                  ? 'active'
+                  : null
               }`}
               role="presentation"
             >

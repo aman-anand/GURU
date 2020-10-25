@@ -23,9 +23,9 @@ function CetificateBlock(props) {
   const download = url => {
     window.open(url, '_blank');
   };
-  const viewUrl = () => {
-    setOpen(true);
-  };
+  // const viewUrl = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -53,14 +53,14 @@ function CetificateBlock(props) {
         </p>
       </div>
       <div className="_rightBox">
-        <Button
+        {/* <Button
           variant="contained"
           color="primary"
           type="button"
           onClick={() => viewUrl(certificateUrl)}
         >
           VIEW
-        </Button>
+        </Button> */}
         <Button
           variant="contained"
           color="primary"

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /**
  *
@@ -12,6 +13,7 @@ import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import withSizes from 'react-sizes';
+import history from 'utils/history';
 
 import injectReducer from 'utils/injectReducer';
 import makeSelectSessions from './selectors';
@@ -32,26 +34,35 @@ export class Sessions extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      sessionRadio: 'Upcoming',
+      sessionRadio: 'upcomingsessions',
     };
     this.onChangeRadio = this.onChangeRadio.bind(this);
   }
 
+  static getDerivedStateFromProps(props, state) {
+    const { match } = props || {};
+    const { path } = match || {};
+    const PATH = path ? path.split('/') : [];
+    const [, secound] = PATH || [];
+    state.sessionRadio = secound;
+    return null;
+  }
+
   onChangeRadio = params => {
-    this.setState({
-      sessionRadio: params,
-    });
-    if (['upComingSession'].includes(params)) {
-      this.props.dispatch(upcSessionAction());
-    } else if (['attended'].includes(params)) {
-      this.props.dispatch(attSessionAction());
+    if (['upcomingsessions'].includes(params)) {
+      history.push('/upcomingsessions');
+    } else if (['attendsessions'].includes(params)) {
+      history.push('/attendsessions');
     }
   };
 
   componentDidMount() {
     const { sessionRadio } = this.state;
-    if (['Upcoming'].includes(sessionRadio)) {
+    if (['upcomingsessions'].includes(sessionRadio)) {
       this.props.dispatch(upcSessionAction());
+    }
+    if (['attendsessions'].includes(sessionRadio)) {
+      this.props.dispatch(attSessionAction());
     }
     const parms = {
       page: 1,
@@ -81,10 +92,15 @@ export class Sessions extends React.PureComponent {
               <Bredcrumb>
                 <div className="_bWrapper">
                   <span>
-                    <a href="/sessions">SESSIONS</a>
+                    <a href="/upcomingsessions">SESSIONS</a>
                   </span>
                   <span>{'>'}</span>
-                  <span>{sessionRadio} SESSIONS</span>
+                  <span>
+                    {['upcomingsessions'].includes(sessionRadio)
+                      ? 'upcoming'
+                      : 'attended'}{' '}
+                    SESSIONS
+                  </span>
                 </div>
               </Bredcrumb>
             ) : null}
@@ -93,9 +109,11 @@ export class Sessions extends React.PureComponent {
                 <div className="navList">
                   <label
                     htmlFor="Upcoming"
-                    onClick={() => this.onChangeRadio('Upcoming')}
+                    onClick={() => this.onChangeRadio('upcomingsessions')}
                     className={
-                      ['Upcoming'].includes(sessionRadio) ? 'active' : null
+                      ['upcomingsessions'].includes(sessionRadio)
+                        ? 'active'
+                        : null
                     }
                   >
                     <span>UPCOMING</span>
@@ -104,9 +122,11 @@ export class Sessions extends React.PureComponent {
                 <div className="navList">
                   <label
                     htmlFor="attended"
-                    onClick={() => this.onChangeRadio('attended')}
+                    onClick={() => this.onChangeRadio('attendsessions')}
                     className={
-                      ['attended'].includes(sessionRadio) ? 'active' : null
+                      ['attendsessions'].includes(sessionRadio)
+                        ? 'active'
+                        : null
                     }
                   >
                     <span>ATTENDED</span>
@@ -120,7 +140,7 @@ export class Sessions extends React.PureComponent {
                       <img src={certificateIllustration} title="" alt="" />
                     </i>
                     <p className="paraMsg">
-                      {['attended'].includes(sessionRadio)
+                      {['attendsessions'].includes(sessionRadio)
                         ? language().no_completed_session
                         : language().no_upcoming_session}
                     </p>

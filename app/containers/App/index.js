@@ -95,7 +95,7 @@ export default function App() {
         />
         <Route
           exact
-          path="/sessions"
+          path="/upcomingsessions"
           component={CheckAuthenticationHook(Sessions, true)}
         />
         <Route

@@ -36,14 +36,15 @@ const OptionalHeaderContainer = styled.nav`
     justify-content: center;
     color: #403f3f;
   }
-  .notify {
-    .iconBox {
+  .notification {
+    i {
       width: 24px;
       height: 24px;
       text-align: center;
       justify-content: center;
       margin: 2px;
-      corsur: pointer;
+      cursor: pointer;
+      padding: 3px;
     }
   }
 `;

@@ -143,6 +143,10 @@ export const GuruCoursesDetailsContainer = styled.section`
     color: #ffffff;
     margin-top: 7.5px;
     width: 100%;
+    &:disabled {
+      background: rgba(218 58 51 / 36%);
+      color: #ffffff;
+    }
   }
   .postCommentwrapper {
     ${globalStyle.flex};
