@@ -251,7 +251,7 @@ export class CourseDetails extends React.PureComponent {
     const { courseDetailsObj, courseObj } = courseDetails || {};
     const { data } = courseDetailsObj || {};
     const { course, review, attempt } = data || {};
-    const { progress, attemptID, completed, certificate } = attempt || {};
+    const { progress, completed, certificate, _id: attemptID } = attempt || {};
     const { data: courseData } = courseObj || {};
     const {
       coverImage,
@@ -293,7 +293,12 @@ export class CourseDetails extends React.PureComponent {
               submitQuiz={this.submitQuiz}
             /> */}
             <Quiz
-              data={{ startAssesment, courseName, courseId: id, attemptID }}
+              data={{
+                startAssesment,
+                courseName,
+                courseId: id,
+                attemptID,
+              }}
               submitQuiz={this.submitQuiz}
             />
           </Fragment>
@@ -314,7 +319,7 @@ export class CourseDetails extends React.PureComponent {
             <Result type="passed" certificate />
           </Fragment>
         ) : null}
-        {!startExam && !tryAgain ? (
+        {!startExam && !tryAgain && !sessionPpassed && !congratulation ? (
           <Fragment>
             <div className="container">
               {/* NOTE: All data */}

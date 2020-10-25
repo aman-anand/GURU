@@ -19,6 +19,7 @@ import Header from '../../components/Header/Loadable';
 import { leaderAction } from './actions';
 
 // NOTE: Style
+import avtar from '../../images/avtar.png';
 import { LeaderBoardContainer } from './style';
 
 export class LeaderBoard extends React.PureComponent {
@@ -36,7 +37,18 @@ export class LeaderBoard extends React.PureComponent {
     const { leader } = leaderBoard || {};
     const leaderOBJ = leader.length > 0 ? leader[0] : {};
     const { leaderboard: leadOBJ } = leaderOBJ || {};
-    window.console.log('Leader board', leadOBJ);
+    const topThree = leadOBJ ? leadOBJ.splice(0, 3) : [];
+    const firstOBJ = topThree ? topThree[0] : [];
+    const { user: fUser } = firstOBJ || {};
+    const { profileImage: F_P_IMG, fName: FFN, lName: FLN } = fUser || {};
+    const secoundOBJ = topThree ? topThree[1] : [];
+    const { user: sUser } = secoundOBJ || {};
+    const { profileImage: S_P_IMG, fName: SFN, lName: SLN } = sUser || {};
+    const thirdOBJ = topThree ? topThree[2] : [];
+    const { user: tUser } = thirdOBJ || {};
+    const { profileImage: T_P_IMG, fName: TFN, lName: TLN } = tUser || {};
+
+    window.console.log('Leader board', leadOBJ, topThree);
     return (
       <LeaderBoardContainer>
         <Helmet>
@@ -51,11 +63,7 @@ export class LeaderBoard extends React.PureComponent {
               <div className="secound">
                 <span className="imgBox">
                   <div className="img">
-                    <img
-                      src="https://bimapaathshala-uat.s3.ap-south-1.amazonaws.com/content/18a1a5a753220b52804ab2a1e8c4c76740c93816a0cb0570ff73c0e7bb5234.jpg"
-                      alt=""
-                      title=""
-                    />
+                    <img src={S_P_IMG || avtar} alt="" title="" />
                   </div>
                   <span className="batch">
                     <svg
@@ -120,16 +128,14 @@ export class LeaderBoard extends React.PureComponent {
                     </svg>
                   </span>
                 </span>
-                <span className="text">Keshav Pimple</span>
+                <span className="text">
+                  {SFN} {SLN}
+                </span>
               </div>
               <div className="first">
                 <span className="imgBox">
                   <div className="img">
-                    <img
-                      src="https://bimapaathshala-uat.s3.ap-south-1.amazonaws.com/content/18a1a5a753220b52804ab2a1e8c4c76740c93816a0cb0570ff73c0e7bb5234.jpg"
-                      alt=""
-                      title=""
-                    />
+                    <img src={F_P_IMG || avtar} alt="" title="" />
                   </div>
                   <span className="batch">
                     <svg
@@ -198,16 +204,14 @@ export class LeaderBoard extends React.PureComponent {
                     </svg>
                   </span>
                 </span>
-                <span className="text">Ajay Verma</span>
+                <span className="text">
+                  {FFN} {FLN}
+                </span>
               </div>
               <div className="third">
                 <span className="imgBox">
                   <div className="img">
-                    <img
-                      src="https://bimapaathshala-uat.s3.ap-south-1.amazonaws.com/content/18a1a5a753220b52804ab2a1e8c4c76740c93816a0cb0570ff73c0e7bb5234.jpg"
-                      alt=""
-                      title=""
-                    />
+                    <img src={T_P_IMG || avtar} alt="" title="" />
                   </div>
                   <span className="batch">
                     <svg
@@ -276,7 +280,9 @@ export class LeaderBoard extends React.PureComponent {
                     </svg>
                   </span>
                 </span>
-                <span className="text">Durgesh Walke</span>
+                <span className="text">
+                  {TFN} {TLN}
+                </span>
               </div>
             </div>
           </div>

@@ -54,7 +54,7 @@ export class Quiz extends React.PureComponent {
         window.console.log('THIS', this);
       }
     }, 1000);
-    console.log('True', this.downloadTimer);
+    // console.log('True', this.downloadTimer);
   }
 
   nextQuestion = qusParms => {

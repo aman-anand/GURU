@@ -71,6 +71,7 @@ export const LeaderBoardContainer = styled.section`
           .img {
             width: 105px;
             height: 105px;
+            ${globalStyle.flex};
             @media (min-width: ${globalStyle.small}) {
               width: 145px;
               height: 145px;
@@ -101,6 +102,7 @@ export const LeaderBoardContainer = styled.section`
           top: 0;
           border-radius: 50%;
           overflow: hidden;
+          ${globalStyle.flex};
           @media (min-width: ${globalStyle.small}) {
             width: 120px;
             height: 120px;
