@@ -23,9 +23,16 @@ export class Setting extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      // language: 'eng',
+      language: 'eng',
     };
   }
+
+  languageChange = e => {
+    // console.log('EEE', e.target.value);
+    this.setState({
+      language: e.target.value,
+    });
+  };
 
   render() {
     return (
@@ -68,7 +75,8 @@ export class Setting extends React.PureComponent {
                 name="language"
                 id="eng"
                 value="eng"
-                checked
+                checked={!!this.state.language}
+                onChange={e => this.languageChange(e)}
               />
               <div className="radioBox">
                 <span className="title">English</span>
@@ -76,14 +84,28 @@ export class Setting extends React.PureComponent {
               </div>
             </label>
             <label htmlFor="hin">
-              <input type="radio" name="language" id="hin" value="hin" />
+              <input
+                type="radio"
+                name="language"
+                id="hin"
+                value="hin"
+                checked={!!this.state.language}
+                onChange={e => this.languageChange(e)}
+              />
               <div className="radioBox">
                 <span className="title">{language().txt_hindi}</span>
                 <span className="icon" />
               </div>
             </label>
             <label htmlFor="mh">
-              <input type="radio" name="language" id="mh" value="mh" />
+              <input
+                type="radio"
+                name="language"
+                id="mh"
+                value="mh"
+                onChange={e => this.languageChange(e)}
+                checked={!!this.state.language}
+              />
               <div className="radioBox">
                 <span className="title">{language().txt_marathi}</span>
                 <span className="icon" />

@@ -154,6 +154,7 @@ export class CourseDetails extends React.PureComponent {
       this.setState({
         videoModel: true,
         url,
+        type,
       });
     } else if (['File', 'blog', 'file'].includes(type)) {
       window.open(url, '_blank');
@@ -633,7 +634,9 @@ export class CourseDetails extends React.PureComponent {
               <iframe
                 id="player"
                 type="text/html"
-                src={this.state.url}
+                src={`https://www.youtube.com/embed/${
+                  this.state.url
+                }?autoplay=1`}
                 frameBorder="0"
                 title="iframe"
               />
