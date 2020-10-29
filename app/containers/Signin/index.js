@@ -36,7 +36,7 @@ import makeSelectSignin from './selectors';
 // NOTE: Styles
 import { SigninContainer } from './style';
 import splashIMG from '../../images/splash.png';
-import logoIMG from '../../images/logo.svg';
+import logoIMG from '../../images/logo.png';
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }

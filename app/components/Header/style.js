@@ -18,6 +18,9 @@ export const HeaderContainer = styled.header`
       margin-right: 75px;
     }
     align-items: center;
+    img {
+      height: 70px;
+    }
   }
   .navListBox {
     flex: 1;

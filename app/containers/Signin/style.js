@@ -24,6 +24,9 @@ export const SigninContainer = styled.section`
       .logo {
         ${globalStyle.flex};
         width: 120px;
+        img {
+          width: 100%;
+        }
       }
     }
     .content {

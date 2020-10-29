@@ -67,10 +67,11 @@ export class Videos extends React.PureComponent {
                 video.map(item => {
                   const { name, thumb, _id } = item || {};
                   const dataOBJ = {
-                    title: name,
+                    name,
                     thumb,
                     _id,
                   };
+                  console.log('ITEM', dataOBJ);
                   return <VideoCard key={_id} dataOBJ={dataOBJ} />;
                 })}
             </div>
