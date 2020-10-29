@@ -7,6 +7,7 @@
 import React, { memo } from 'react';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+// import { language } from '../../services/CommonSetterGetter';
 import { SigninFormContainer } from './style';
 
 class SigninForm extends React.Component {
@@ -74,7 +75,7 @@ class SigninForm extends React.Component {
     return (
       <SigninFormContainer>
         <h4 className="_hText">ACCESS YOUR ACCOUNT</h4>
-        <span className="_decText">Start learning marketing courses</span>
+        <span className="_decText">Start Exploring Bima Paathshala</span>
         <div className="_wrapper">
           <input
             type="number"
@@ -99,6 +100,12 @@ class SigninForm extends React.Component {
           >
             SUBMIT
           </Button>
+          <p className="bottomText">
+            <span>By signing up. you agree to our</span>
+            <span>
+              <a href="/">Tearms</a> and <a href="/">Privacy Policy</a>
+            </span>
+          </p>
         </div>
       </SigninFormContainer>
     );

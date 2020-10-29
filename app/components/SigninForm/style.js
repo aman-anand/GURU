@@ -64,4 +64,20 @@ export const SigninFormContainer = styled.div`
       font-size: 18px;
     }
   }
+
+  .bottomText {
+    margin: 0px;
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    @media (min-width: ${globalStyle.small}) {
+      color: #ffffff;
+    }
+    a {
+      text-decoration: none;
+      color: #0976c1;
+    }
+  }
 `;
