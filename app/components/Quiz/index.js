@@ -105,7 +105,6 @@ export class Quiz extends React.PureComponent {
   };
 
   selectAnswar = params => {
-    window.console.log('Params', params);
     this.setState({
       selectAnswar: { ...params },
     });

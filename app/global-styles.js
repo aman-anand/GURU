@@ -243,6 +243,15 @@ const GlobalStyle = createGlobalStyle`
   .audioWrapp {
     padding: 10px !important;
     width: 100%;
+    figure {
+      margin: 0px;
+      audio {
+        width: 275px;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
   }
   ._descBox {
     padding: 10px;

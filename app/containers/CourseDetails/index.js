@@ -31,7 +31,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-// import Slide from '@material-ui/core/Slide';
+import Slide from '@material-ui/core/Slide';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
@@ -81,9 +81,9 @@ const styles = theme => ({
     width: 500,
   },
 });
-// function Transition(props) {
-//   return <Slide direction="up" {...props} />;
-// }
+function Transition(props) {
+  return <Slide direction="up" {...props} />;
+}
 
 export class CourseDetails extends React.PureComponent {
   constructor(props) {
@@ -91,6 +91,7 @@ export class CourseDetails extends React.PureComponent {
     this.state = {
       value: 0,
       videoModel: false,
+      audioModel: false,
       comment: '',
       startExam: false,
       tryAgain: false,
@@ -165,8 +166,13 @@ export class CourseDetails extends React.PureComponent {
     });
   };
 
+  audioClose = () => {
+    this.setState({
+      audioModel: false,
+    });
+  };
+
   listOnClickBox = params => {
-    console.log('PARAMS', params);
     const { type, url, youtubeId, blogId } = params || {};
     if (['video'].includes(type)) {
       if (youtubeId) {
@@ -181,21 +187,46 @@ export class CourseDetails extends React.PureComponent {
           snakeMsg: 'Video is not avalable',
         });
       }
-    } else if (['File', 'blog', 'Blog', 'file'].includes(type)) {
-      if (blogId) {
+    } else if (['File', 'file'].includes(type)) {
+      if (url) {
         window.open(url, '_blank');
+      } else {
+        this.setState({
+          snake: true,
+          snakeMsg: 'File are not avalable',
+        });
+      }
+    } else if (['blog', 'Blog'].includes(type)) {
+      if (blogId) {
+        window.open(blogId, '_blank');
+      } else {
+        this.setState({
+          snake: true,
+          snakeMsg: 'Blog are not avalable',
+        });
       }
     } else if (['audio'].includes(type)) {
-      this.setState({
-        videoModel: true,
-        // url,
-        // type,
-      });
+      console.log('URL', url);
+      if (url) {
+        this.setState({
+          audioModel: true,
+          audioURL: url,
+        });
+      } else {
+        this.setState({
+          snake: true,
+          snakeMsg: 'Audio is not avalable',
+        });
+      }
     }
   };
 
   videoModalClose = () => {
     this.setState({ videoModel: false });
+  };
+
+  audioModalClose = () => {
+    this.setState({ audioModel: false });
   };
 
   onChangeComment = value => {
@@ -271,7 +302,6 @@ export class CourseDetails extends React.PureComponent {
         });
       }
     });
-    console.log('PARAMS', params);
   };
 
   render() {
@@ -550,7 +580,6 @@ export class CourseDetails extends React.PureComponent {
                                         youtubeId: YOU_ID,
                                         blogId,
                                       } = element || {};
-                                      console.log('element', element);
                                       return (
                                         <ListItembox
                                           data={{
@@ -662,6 +691,29 @@ export class CourseDetails extends React.PureComponent {
           />
         ) : null}
         {/* Video Model End */}
+
+        {/* Audio Model Start */}
+        {this.state.audioModel ? (
+          <Dialog
+            open={this.state.audioModel}
+            TransitionComponent={Transition}
+            keepMounted
+            onClose={this.audioClose}
+            aria-labelledby="alert-dialog-slide-title"
+            aria-describedby="alert-dialog-slide-description"
+            className="dialogAudioWrapper"
+          >
+            <DialogContent className="audioWrapp">
+              <figure>
+                <audio controls src={this.state.audioURL}>
+                  Your browser does not support the
+                  <code>audio</code> element.
+                </audio>
+              </figure>
+            </DialogContent>
+          </Dialog>
+        ) : null}
+        {/* Audio Model End */}
 
         {/* NOTE: Exam responce */}
         <Dialog open={this.state.alert}>

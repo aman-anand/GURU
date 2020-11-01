@@ -96,7 +96,6 @@ export class SessionDetails extends React.PureComponent {
     this.setState({
       activeTabs: params,
     });
-    window.console.log('PARAMS', params);
   };
 
   listOnClickBox = params => {
