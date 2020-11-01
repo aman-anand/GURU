@@ -17,7 +17,10 @@ import Slider from 'react-slick';
 import makeSelectHome from './selectors';
 import reducer from './reducer';
 import { homeAction } from './actions';
-import { getFromLocalStore } from '../../services/CommonSetterGetter';
+import {
+  getFromLocalStore,
+  languageString,
+} from '../../services/CommonSetterGetter';
 import Header from '../../components/Header/Loadable';
 import Footer from '../../components/Footer/Loadable';
 import Search from '../../components/Search/Loadable';
@@ -123,8 +126,8 @@ export class Home extends React.PureComponent {
           <div className="leftBox">
             {/* NOTE: COURSE */}
             <UpcommingSession
-              title="COURSES"
-              subtitle={`${courseList} courses listed`}
+              title={languageString('txt_courses').toUpperCase()}
+              subtitle={`${courseList} ${languageString('txt_courses_listed')}`}
               seeall={!!isMobile}
               seelLink="/course"
             />
@@ -149,7 +152,9 @@ export class Home extends React.PureComponent {
                       _id,
                     };
                     const sticyTwoData = {
-                      name: `${totalSections} SECTIONS`,
+                      name: `${totalSections} ${languageString(
+                        'txt_showcase_section_title',
+                      ).toUpperCase()}`,
                       classname: 'expert',
                     };
                     return (
@@ -200,8 +205,8 @@ export class Home extends React.PureComponent {
             {/* NOTE: VIDEOS  */}
             {videoList ? (
               <UpcommingSession
-                title="VIDEOS"
-                subtitle={`${videoList} videos listed`}
+                title={languageString('txt_videos').toUpperCase()}
+                subtitle={`${videoList} ${languageString('txt_videos_listed')}`}
                 seeall={!!isMobile}
                 seelLink="/videos"
               />
@@ -238,8 +243,10 @@ export class Home extends React.PureComponent {
             {/* NOTE: ARTICLE  */}
             {articleList ? (
               <UpcommingSession
-                title="ARTICLES"
-                subtitle={`${articleList} articles listed`}
+                title={languageString('txt_articles').toUpperCase()}
+                subtitle={`${articleList} ${languageString(
+                  'txt_articles_listed',
+                ).toUpperCase()}`}
                 seeall={!!isMobile}
                 seelLink="/articles"
               />

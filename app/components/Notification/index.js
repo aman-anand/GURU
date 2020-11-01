@@ -8,7 +8,7 @@ import React, { memo, useState } from 'react';
 import withSizes from 'react-sizes';
 // import PropTypes from 'prop-types';
 import { NOTIFICATION_API } from '../../dataService/Home';
-import { language } from '../../services/CommonSetterGetter';
+import { languageString } from '../../services/CommonSetterGetter';
 import { NotificationContainer } from './style';
 
 function Notification(props) {
@@ -78,7 +78,7 @@ function Notification(props) {
                   </svg>
                 </i>
               </div>
-              <div className="title">{language().txt_notification}</div>
+              <div className="title">{languageString('txt_notification')}</div>
             </div>
           ) : null}
           {notifydata && notifydata.length ? (
@@ -110,7 +110,9 @@ function Notification(props) {
               </div>
             ))
           ) : (
-            <div className="noDataMsg">{language().no_notifications_msg}</div>
+            <div className="noDataMsg">
+              {languageString('no_notifications_msg')}
+            </div>
           )}
         </div>
       ) : null}

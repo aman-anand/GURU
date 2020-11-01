@@ -13,7 +13,10 @@ import { Form, Field } from 'react-final-form';
 import PropTypes from 'prop-types';
 import withSizes from 'react-sizes';
 import Button from '@material-ui/core/Button';
-import { language, setLoclStoreArry } from '../../services/CommonSetterGetter';
+import {
+  languageString,
+  setLoclStoreArry,
+} from '../../services/CommonSetterGetter';
 import activeImg from '../../images/active.png';
 import { BasicDetailsContainer } from './style';
 
@@ -86,6 +89,8 @@ class BasicDetails extends React.Component {
         undefined,
       );
     // NOTE: Validateor End
+
+    console.log('language', languageString('txt_update_info'));
     return (
       <BasicDetailsContainer>
         {!isMobile ? (
@@ -244,7 +249,7 @@ class BasicDetails extends React.Component {
                     disabled={submitting || pristine}
                     className="updateButton"
                   >
-                    {language().txt_update_info}
+                    {languageString('txt_update_info')}
                   </Button>
                 </div>
                 {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}

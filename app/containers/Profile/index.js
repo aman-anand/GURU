@@ -18,7 +18,10 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectProfile from './selectors';
 import reducer from './reducer';
 import { uploadAction, profileUpdateAction } from './actions';
-import { getFromLocalStore, language } from '../../services/CommonSetterGetter';
+import {
+  getFromLocalStore,
+  languageString,
+} from '../../services/CommonSetterGetter';
 import Header from '../../components/Header/Loadable';
 import BasicDetails from '../../components/BasicDetails/Loadable';
 import Registration from '../../components/Registration/Loadable';
@@ -150,7 +153,7 @@ export class Profile extends React.PureComponent {
               onClick={() => this.tabChange('basicinfo')}
               role="presentation"
             >
-              <span>{language().txt_basic_info}</span>
+              <span>{languageString('txt_basic_info')}</span>
             </div>
             <div
               className={`${
@@ -161,7 +164,7 @@ export class Profile extends React.PureComponent {
               onClick={() => this.tabChange('moreinfo')}
               role="presentation"
             >
-              <span>{language().txt_more_info}</span>
+              <span>{languageString('txt_more_info')}</span>
             </div>
           </div>
           <div className="tabContent">

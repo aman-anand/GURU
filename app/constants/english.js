@@ -1,442 +1,1794 @@
 export const ENG = {
-  app_name: 'Bima Paathshala',
-  txt_submit: 'Submit',
-  txt_education_made_easy: 'Education Made Easy',
-  txt_company_name_copy: 'Company Name. All Rights Reserved.',
-  txt_select_role: 'Select Role',
-  txt_guru: 'Guru',
-  txt_shishya: 'Shishya',
-  txt_login: 'Login',
-  txt_register: 'Register',
-  txt_access_your_account: 'Access Your Account',
-  txt_start_learning_marketing: 'Start Learning Finance Courses',
-  txt_phone_number_comp: 'Phone Number *',
-  txt_password_comp: 'Password *',
-  txt_dont_have_account: "Don\\'t have an account?",
-  txt_create_account: 'Create Account',
-  txt_firstname_comp: 'First Name *',
-  txt_lastname_comp: 'Last Name *',
-  txt_email_address_comp: 'Email Address',
-  txt_proceed: 'Proceed',
-  txt_already_have_account: 'Already have an account?',
-  txt_authentication_code: 'Authentication Code',
-  txt_verifying_mobile_number: 'Verifying your mobile number',
-  txt_resend_code: 'Resend Code in %s minute',
-  txt_continue_registeration: 'Continue Registration',
-  txt_pending_details: 'Pending Details',
-  txt_gender: 'Gender',
-  txt_male: 'Male',
-  txt_female: 'Female',
-  txt_occupation_comp: 'Occupation',
-  txt_date_of_birth_comp: 'Date of Birth',
-  txt_age_comp: 'Age',
-  txt_mother_tongue_comp: 'Mother Tongue',
-  txt_marital_status_comp: 'Marital Status',
-  txt_dependent: 'Dependant',
-  txt_address: 'Address',
-  txt_locality: 'Locality/Post Office',
-  txt_city: 'City/District/Region',
-  txt_pin_code: 'Pin code *',
-  txt_state: 'State',
-  txt_search_learning_content: 'Search Courses',
-  txt_courses: 'Courses',
-  txt_see_all: 'See All',
-  txt_videos: 'Videos',
-  txt_articles: 'Articles',
-  txt_home: 'Home',
-  txt_upcoming_sessions: 'Upcoming Sessions',
-  txt_attended_sessions: 'Attended Sessions',
-  txt_certificates: 'Certificates',
-  txt_refer_friend: 'Refer a Friend',
-  txt_feedback: 'Feedback',
-  txt_share: 'Share',
-  txt_logout: 'Logout',
-  txt_reviews: 'Reviews',
-  txt_review: 'Review',
-  txt_comments: 'Comments',
-  txt_comment: 'Comment',
-  txt_sessions: 'Sessions',
-  txt_session: 'Session',
-  txt_detail: 'Detail',
-  txt_curriculum: 'Curriculum',
-  txt_start_session: 'Start Session',
-  txt_end_session: 'End Session',
-  txt_search_shishya: 'Search Shishya',
-  txt_add_new_shishya: 'Add New Shishya',
-  txt_add_shishya: 'Add Shishya',
-  txt_cancel: 'Cancel',
-  txt_shishya_will_be_joining: 'Shishya will be joining the session',
-  txt_brief: 'Brief',
-  txt_quiz: 'Quiz',
-  txt_certificate: 'Certificate',
-  txt_add_new_comment: 'Comment',
-  txt_close: 'Close',
-  txt_download_certificate: 'Download Certificate',
-  txt_next_que: 'Next Question',
-  txt_submit_answer: 'Submit Answers',
-  txt_try_again: "Try Again, you\\'ll probably get it right next time.",
-  txt_another_attempt: 'Another Attempt',
-  txt_results: 'Results',
-  txt_upcoming_session: 'Upcoming Sessions',
-  txt_completed_session: 'Completed Sessions',
-  txt_expense_manager: 'Expense Manager',
-  txt_expenses: 'Expenses',
-  txt_documents: 'Documents',
-  txt_upcoming: 'Upcoming',
-  txt_attended: 'Attended',
-  txt_submit_feedback: 'Submit Feedback',
-  txt_text: 'Text',
-  txt_audio: 'Audio',
-  txt_video: 'Video',
-  txt_my_profile: 'My Profile',
-  txt_basic_info: 'Basic Info',
-  txt_more_info: 'More Info',
-  txt_update_info: 'Update Info',
-  txt_choose_language: 'Choose Language',
-  txt_english: 'English',
-  txt_choose_role: 'Choose Role',
-  txt_adhar_card_no: 'Aadhar Card No*',
-  txt_referral_code: 'Referral Code',
-  txt_pay_and_subscribe: 'Pay and Subscribe %s',
-  txt_next_question: 'Next Question',
-  txt_yes_want_to_exit: 'Yes, I want to exit',
-  txt_congratulations: 'Congrats!',
-  txt_succesfully_completed_course:
-    'Well done.You have successfully completed this section of the course %s.',
-  txt_write_your_feedback_here: 'Please share your feedback here.',
-  txt_search_expense: 'Search Expense',
-  txt_export: 'Export',
-  txt_add_new_expense: 'Add new Expense',
-  txt_expense_will_be_verified: 'Expense added is yet to be verified.',
-  txt_expense_title_com: 'Expense Title *',
-  txt_date_time_com: 'Date and Time *',
-  txt_amount_com: 'Amount *',
-  txt_expense_category_com: 'Expense Category',
-  txt_add_expense: 'Add Expense',
-  txt_pending: 'Pending',
-  txt_verified_shishya: 'Verified Shishya',
-  txt_upload: 'Upload',
-  txt_adhar_card: 'Aadhar Card',
-  txt_start_day: 'Start Day',
-  txt_end_day: 'End Day',
-  txt_chat_with_guru: 'Chat with Guru',
-  txt_guru_shishya_chat: 'Guru and Shishya Chat',
-  txt_my_attendance_log: 'My Attendance Log',
-  txt_refer_a_friend: 'Refer a Friend',
-  txt_font_size_settings: 'Font Settings',
-  txt_leaderboard: 'Leader Board',
-  txt_account: 'Account',
-  txt_got_it: 'Got It',
-  txt_verification_status: 'Verification Status',
-  txt_upload_bill: 'Upload Bill',
-  navigation_drawer_open: 'Open',
-  navigation_drawer_close: 'Close',
-  txt_view: 'View',
-  txt_download: 'Download',
-  txt_notification: 'Notifications',
-  txt_help: 'Help',
-  txt_queries_response: 'Queries and Responses',
-  txt_course_details: 'Course Details',
-  txt_start: 'Start',
-  txt_my_shishya: 'My Shishya',
-  txt_approved: 'Approved',
-  txt_sent_back: 'Sent Back',
-  txt_completed: 'Completed',
-  txt_session_detail: 'Session Detail',
-  txt_take_attendance: 'Take Attendance',
-  txt_feedback_desc:
-    'We would love to know what you think about us. Please write to us and share your feedback.',
-  txt_refer: 'Refer',
-  txt_copy: 'Copy',
-  txt_settings: 'Settings',
-  txt_select_district_wise: 'Select District Wise',
-  txt_search_queries: 'Search Queries',
-  txt_search_sessions: 'Search Sessions',
-  txt_search_by_date: 'Search by Date',
-  txt_shishy_list: 'Shishya List',
-  txt_expenses_total: 'Expenses Total',
-  txt_sent_back_expenses: 'Sent Back Expenses',
-  txt_sent_back_expenses_total: 'Sent Back Expenses Total',
-  txt_pending_expenses: 'Pending Expenses',
-  txt_pending_expenses_total: 'Pending Expenses Total',
-  txt_some_thing_wrong: 'Oops!Something went wrong. Please try again later.',
-  txt_unable_to_connect:
-    'Sorry, we are unable to connect with the server. Please try again later.',
-  txt_type_your_message_here: 'Type your message here...',
-  txt_contact_support: 'Contact Support',
-  txt_go_back: 'Go Back',
-  txt_account_deactivated: 'Account Deactivated',
-  txt_can_not_attempt_login: 'Cannot attempt Login.Please contact support.',
-  txt_failed_course_message:
-    'Unfortunately, you have failed to complete the course assessment. We urge you to re-attempting the assesment to get a certificate.',
-  txt_next_section: 'Go to Next Section',
-  txt_rate_exp: 'RATE YOUR EXPERIENCE',
-  txt_skip: 'Skip',
-  txt_result_congratulations: 'Congrats!',
-  txt_sample_text: 'Sample Text',
-  txt_sample_text_desc: 'The quick brown fox jumps over the lazy dog.',
-  txt_no_internet_connection: 'Please check you Internet Connection.',
-  txt_please_wait: 'Please wait...',
-  txt_save_settings: 'Save Settings',
-  txt_hindi: 'हिन्दी',
-  txt_marathi: 'मराठी',
-  txt_tamil: 'தமிழ்',
-  txt_save_font_settings: 'Save Font Size',
-  txt_setting_saved: 'Settings saved successfully.',
-  txt_ratings: 'Ratings',
-  txt_please_fill_all_details: '"Please fill all detail. "',
-  txt_sections: 'Sections',
-  txt_assessments: 'Assessments',
-  txt_section: 'Section',
-  txt_assessment: 'Assessment',
-  txt_courses_listed: 'Courses listed',
-  txt_articles_listed: 'Articles listed',
-  txt_videos_listed: 'Videos listed',
-  txt_course_listed: 'Course listed',
-  txt_article_listed: 'Article listed',
-  txt_video_listed: 'Video listed',
-  txt_user_details_not_found: 'User details not found. Please Login again.',
-  txt_sessions_listed: 'Sessions',
-  txt_session_listed: 'Session',
-  txt_shishya_going_to_attend_session:
-    'Shishya are going to attend this session',
-  txt_shishyas_going_to_attend_session:
-    'Shishyas are going to attend this session',
-  txt_roll_no: '"Roll No : "',
-  txt_attendance_logged_msg:
-    "Your attendance has been logged. Please click on \\'END DAY\\' after your day is over.",
-  txt_start_session_msg:
-    "You have started the session. Please click on \\'END SESSION\\' to save your attendance",
-  txt_please_grant_all_permission: 'Please grant permission.',
-  txt_gujrati: 'ગુજરાતી',
-  txt_malyalam: 'മലയാളം',
-  txt_choose_language_converted: 'Choose Language',
-  txt_language_settings: 'Language Settings',
-  media_picker_select_from: 'Select From',
-  media_picker_camera: 'Camera',
-  media_picker_gallery: 'Gallery',
-  media_picker_ok: 'Ok',
-  media_picker_cancel: 'Cancel',
-  media_picker_some_permission_is_denied: 'Please grant permission.',
-  media_picker_you_need_to_grant_access_to: 'You need to grant access to',
-  media_picker_read_Write_external_storage: 'Read and Write External Storage',
-  txt_choose_photo: 'Choose Photo',
-  txt_duration: '"Duration : "',
-  txt_guru_name: '"Guru name : "',
-  txt_course_duration: '"Duration : "',
-  txt_choose: 'Choose',
-  txt_from_gallery: 'From Gallery',
-  txt_from_camera: 'From Camera',
-  txt_update_language: 'Update Language',
-  txt_choose_language_convenience: 'Please choose your preffered language.',
-  txt_minutes: 'Minutes',
-  txt_questions: 'Questions',
-  txt_question: 'Question',
-  txt_please_give_answer: 'Please Choose Answer',
-  txt_time_left: '"Time Left : "',
-  txt_time_up: 'Time Up',
-  txt_mins: 'Mins',
-  txt_quit_quiz:
-    '"If you quit the exam, you won\'t be qualified to attempt the next section "',
-  title_activity_maps: 'Map',
-  txt_downloading_certificate: 'Downloading Certificate.',
-  txt_you_have_started_session:
-    'You have started the session, Click on END SESSION to save attendance',
-  txt_no_shishya_for_attendance: 'No Shishya selected for attendance.',
-  txt_no_shishya_available: 'No Shishya available.',
-  txt_choose_video: 'Choose Video',
-  txt_chat: 'Chat',
-  txt_curriculum_not_available: 'Curriculum not available.',
-  txt_shishya_not_available: 'Shishya not available.',
-  txt_rs: '"₹ "',
-  error_message_url_not_valid: 'Video URL is not valid.',
-  txt_this_content_is_downloaded: 'This is already downloaded.',
-  txt_unable_to_downloaded:
-    'Sorry, we are unable to download this file. Please try again later. ',
-  txt_download_success: 'File downloaded successfully!',
-  txt_downloading_media: 'Downloading Files.',
-  txt_approved_expenses: 'Approved Expenses',
-  txt_description: 'Description',
-  txt_date: 'Date',
-  txt_amount: 'Amount',
-  txt_total_amount: '"Total Amount "',
-  txt_details_saved_on_local_storage: 'Details are saved in your storage.',
-  txt_details_not_saved:
-    'Sorry, we are unable to save details in your storage.',
-  txt_sync_with_server: 'Sync Data',
-  txt_based_on_reviews: 'based on %s reviews.',
-  txt_based_on_review: 'based on %s review.',
-  txt_user_details_not_available: 'User details are not available.',
-  txt_data_not_available: 'No data available.',
-  txt_shishya_under_guidance: 'Shishya are enrolled under your guidance',
-  txt_shishyas_under_guidance: 'Shishyas are enrolled under your guidance',
-  txt_yes: 'Yes',
-  txt_logout_msg: 'Are you sure you want to logout?',
-  txt_copied_to_clipboard: 'Copied to clipboard.',
-  txt_refer_message:
-    '"Hey there, here\'s an extremely educative APP that will be useful to you. Please install it and use this referral code : "',
-  txt_share_message:
-    '"Hey there, here\'s an extremely educative APP that will be useful to you. Please install it."',
-  txt_course_completed: 'Course Completed.',
-  txt_please_record_audio: 'Please record audio.',
-  txt_please_record_video: 'Please select or record a video.',
-  txt_revie_submitted: 'Review Submitted.',
-  txt_this_content_is_updated: 'Content updated successfully.',
-  default_notification_channel_id: 'bimapaathshala_channel',
-  fcm_message: 'New Message',
-  txt_search_guru: 'Search Guru',
-  txt_guru_list: 'Guru List',
-  txt_guru_under_guidance: 'Guru',
-  txt_gurus_under_guidance: 'Gurus',
-  txt_my_guru: 'My Guru',
-  txt_please_enter_mobile_number: 'Please enter your mobile number.',
-  txt_please_enter_valid_mobile_number:
-    'Please enter your valid mobile number.',
-  txt_please_enter_firstname: 'Please enter your first name.',
-  txt_please_enter_last_name: 'Please enter your last name.',
-  txt_please_enter_adharcard_no: 'Please enter Aadhar Card no.',
-  txt_please_enter_valid_adharcard_no: 'Please enter valid Aadhar Card no.',
-  txt_please_enter_email_address: 'Please enter email address.',
-  txt_please_enter_valid_email_address: 'Please enter valid email address.',
-  txt_please_enter_occupation: 'Please enter Occupation.',
-  txt_please_enter_date_of_birth: 'Please enter Date of Birth.',
-  txt_please_enter_age: 'Please enter your Age.',
-  txt_please_enter_marital_status: 'Please enter your Marital status.',
-  txt_enter_otp: 'Please enter OTP.',
-  txt_enter_digit_otp: 'Please enter OTP.',
-  txt_resend: 'Resend Code',
-  txt_choose_profile_pic: 'Choose a Profile Picture.',
-  txt_choose_adhar_card: 'Choose a Aadhar Card Photo',
-  txt_till_: 'Till %s',
-  txt_no_internet_exam_msg:
-    'You will need to have an active internet connection in order to give the  examination.',
-  txt_please_enter_title: 'Please enter title.',
-  txt_please_enter_date_time: 'Please enter Date and Time.',
-  txt_please_enter_amount: 'Please enter amount.',
-  txt_please_enter_category: 'Please enter Expense Category.',
-  txt_choose_bill: 'Please choose bill.',
-  txt_please_enter_valid_adharcard: 'Please enter Aadhar Card.',
-  txt_no_viewer_to_view_file: 'There is no viewer to view this file.',
-  txt_unable_to_create_channel: 'Unable to create channel.',
-  txt_shishya_list: 'Shishya List',
-  no_notifications: 'No notification data available.',
-  no_notifications_msg: 'No notification available.',
-  no_upcoming_session: 'No Upcoming Session',
-  no_completed_session: 'No Completed Session.',
-  no_certificate_message:
-    'You have no certificates yet. Please complete a course in order to get a certificate.',
-  no_expense_data: 'Expense data not available.',
-  no_attendance_log: 'Attendance log not available.',
-  txt_new_message: 'New Message From',
-  txt_welcome: 'Welcome',
-  txt_data_not_available_leaderboard:
-    'You could be the first one on the leaderboard, hurry up and pass our assessments now!',
-  txt_please_wait_for_internet_to_upload_bill:
-    'You cannot upload a bill when you are offline. Try again later.',
-  txt_ok: 'OK',
-  txt_time_over_message: 'Time is up. Good try.',
-  txt_record: 'Record',
-  txt_stop_record: 'Stop Recording',
-  txt_play: 'Play',
-  txt_stop: 'Stop',
-  txt_review_submitted: 'Review Submitted.',
-  txt_view_courses: 'View Courses',
-  txt_choose_country: 'Choose Country',
-  txt_india: 'India',
-  txt_south_africa: 'South Africa',
-  txt_sri_lanka: 'Sri Lanka',
-  txt_bangladesh: 'Bangladesh',
-  txt_indonesia: 'Indonesia',
-  txt_session_detail_updated: 'Session details updated successfully.',
-  txt_session_download_success: 'Session details downloaded successfully.',
-  txt_article_updated: 'Article details updated successfully.',
-  txt_article_download: 'Article details downloaded successfully.',
-  txt_video_updated: 'Video details updated successfully.',
-  txt_video_download: 'Video details downloaded successfully.',
-  txt_course_updated: 'Course details updated successfully.',
-  txt_course_download: 'Course details downloaded successfully.',
-  txt_no_expense_data_available_to_export:
-    'There is no expense data to export.',
-  txt_no_attendance_to_export: 'There is no attendance data to export.',
-  txt_sync_started_with_server: 'Sync started with server.',
-  txt_recording: 'Recording Playing.',
-  txt_recording_stopped: 'Recording stopped.',
-  txt_recording_started: 'Recording started.',
-  txt_please_complete_section:
-    'Please complete section to unlock the next one.',
-  txt_pending_assessment: 'Pending Assessment',
-  txt_otp_retry_failed: 'OTP sending failed.',
-  txt_otp_retry_success: 'OTP sent successfully.',
-  txt_invalid_otp: 'Please enter a valid OTP.',
-  txt_unable_to_send_review: 'Unable to submit review.',
-  txt_unable_to_submit_quiz: 'Unable to submit quiz.',
-  txt_no_assessment: 'We are unable to fetch assessment details.',
-  txt_no_data_available: 'No data available.',
-  txt_unable_to_register: 'Sorry we are unable to register your account.',
-  txt_unable_to_update_account: 'Sorry we are unable to update your details.',
-  txt_shishyas_course_watch_counter: '%s shishyas have watched this course.',
-  txt_shishya_course_watch_counter: '%s shishya have watched this course.',
-  txt_shishya_are_attending_session: '%s shishya are attending session.',
-  txt_shishyas_are_attending_session: '%s shishyas are attending session.',
-  txt_profile_updated: 'Profile updated successfully.',
-  txt_data_not_available_session: 'Session data not available',
-  no_article_message: 'No article available.',
-  no_course_message: 'No course available.',
-  no_video_message: 'No video available',
-  txt_session_end_successfully: 'Session ended successfully.',
-  txt_session_end_failed: 'Unable to end session.',
-  txt_to_be_launched_soon: 'To be Launched Soon',
-  txt_you_can_not_start_day_again: "You can not \\'Start Day\\' again.",
-  txt_view_more: 'View More',
-  txt_view_less: 'View Less',
-  txt_difficult_to_understand: 'Difficult to understand.',
-  txt_too_fast: 'Too fast.',
-  txt_other: 'Other',
-  txt_shishya_already_added_session:
-    'This shishya is already added to session.',
-  txt_no_match_found: 'No match found.',
-  txt_expenses_added_success: 'Expense added successfully.',
-  txt_expenses_added_failed: 'Unable to add expense.',
-  txt_shishya_already_added: 'Shishya is already added.',
-  txt_shishya_have_attend_session: 'Shishya have attended this session',
-  txt_shishyas_have_attend_session: 'Shishyas have attended this session',
-  txt_can_not_start_session_zero_shishya:
-    'There is no shishya added to this session so you can not start session.',
-  txt_pending_assessment_message: 'To unlock next %s Please watch %s.',
-  txt_it_seems_sanchalak:
-    'It seems that your details are registered as sanchalak. Please contact admin.',
-  no_attended_session: 'No attended session.',
-  txt_add_more_details: 'Add more details',
-  txt_please_enter_valid_pincode: 'Please enter valid pincode.',
-  txt_please_enter_pincode: 'Please enter pincode.',
-  txt_can_not_start_session_before_date:
-    'You can not start session before session date.',
-  txt_video_not_available: 'Video not available.',
-  txt_audio_not_available: 'Audio not available.',
-  txt_file_not_available: 'File not available.',
-  font_size: ['Small', 'Medium', 'Large', 'Extra Large'],
-  occupation: [
-    'Farmer',
-    'Accountant',
-    'Driver',
-    'Cleaner',
-    'Construction labour',
-    'Student',
-    'Fisherman',
-    'Nurse',
-    'Office clerk',
-    'Salesperson',
-    'Sewing machine operator',
-    'Shopkeeper',
-    'Tailor',
-    'Teacher',
-    'Vegetable harvester',
-    'Vegetable picker',
-    'Waiter',
-    'Other',
+  string: [
+    {
+      _name: 'app_name',
+      __text: 'Bima Paathshala',
+    },
+    {
+      _name: 'txt_submit',
+      __text: 'Submit',
+    },
+    {
+      _name: 'txt_education_made_easy',
+      __text: 'Education Made Easy',
+    },
+    {
+      _name: 'txt_company_name_copy',
+      __text: 'Company Name. All Rights Reserved.',
+    },
+    {
+      _name: 'txt_select_role',
+      __text: 'Select Role',
+    },
+    {
+      _name: 'txt_guru',
+      __text: 'Guru',
+    },
+    {
+      _name: 'txt_shishya',
+      __text: 'Shishya',
+    },
+    {
+      _name: 'txt_login',
+      __text: 'Login',
+    },
+    {
+      _name: 'txt_register',
+      __text: 'Register',
+    },
+    {
+      _name: 'txt_access_your_account',
+      __text: 'Access Your Account',
+    },
+    {
+      _name: 'txt_start_learning_marketing',
+      __text: 'Start Exploring Bima Paathshala',
+    },
+    {
+      _name: 'txt_phone_number_comp',
+      __text: 'Phone Number *',
+    },
+    {
+      _name: 'txt_password_comp',
+      __text: 'Password *',
+    },
+    {
+      _name: 'txt_dont_have_account',
+      __text: "Don\\'t have an account?",
+    },
+    {
+      _name: 'txt_create_account',
+      __text: 'Create Account',
+    },
+    {
+      _name: 'txt_firstname_comp',
+      __text: 'First Name *',
+    },
+    {
+      _name: 'txt_lastname_comp',
+      __text: 'Last Name *',
+    },
+    {
+      _name: 'txt_email_address_comp',
+      __text: 'Email Address',
+    },
+    {
+      _name: 'txt_proceed',
+      __text: 'Proceed',
+    },
+    {
+      _name: 'txt_already_have_account',
+      __text: 'Already have an account?',
+    },
+    {
+      _name: 'txt_authentication_code',
+      __text: 'Authentication Code',
+    },
+    {
+      _name: 'txt_verifying_mobile_number',
+      __text: 'Verifying your mobile number',
+    },
+    {
+      _name: 'txt_resend_code',
+      __text: 'Resend Code in %s minute',
+    },
+    {
+      _name: 'txt_continue_registeration',
+      __text: 'Continue Registration',
+    },
+    {
+      _name: 'txt_pending_details',
+      __text: 'Pending Details',
+    },
+    {
+      _name: 'txt_gender',
+      __text: 'Gender',
+    },
+    {
+      _name: 'txt_male',
+      __text: 'Male',
+    },
+    {
+      _name: 'txt_female',
+      __text: 'Female',
+    },
+    {
+      _name: 'txt_occupation_comp',
+      __text: 'Occupation',
+    },
+    {
+      _name: 'txt_date_of_birth_comp',
+      __text: 'Date of Birth',
+    },
+    {
+      _name: 'txt_age_comp',
+      __text: 'Age',
+    },
+    {
+      _name: 'txt_mother_tongue_comp',
+      __text: 'Mother Tongue',
+    },
+    {
+      _name: 'txt_marital_status_comp',
+      __text: 'Marital Status',
+    },
+    {
+      _name: 'txt_dependent',
+      __text: 'Dependant',
+    },
+    {
+      _name: 'txt_address',
+      __text: 'Address',
+    },
+    {
+      _name: 'txt_locality',
+      __text: 'Locality/Post Office',
+    },
+    {
+      _name: 'txt_city',
+      __text: 'City/District/Region',
+    },
+    {
+      _name: 'txt_pin_code',
+      __text: 'Pin code *',
+    },
+    {
+      _name: 'txt_state',
+      __text: 'State',
+    },
+    {
+      _name: 'txt_search_learning_content',
+      __text: 'Search',
+    },
+    {
+      _name: 'txt_courses',
+      __text: 'Courses',
+    },
+    {
+      _name: 'txt_see_all',
+      __text: 'See All',
+    },
+    {
+      _name: 'txt_videos',
+      __text: 'Videos',
+    },
+    {
+      _name: 'txt_articles',
+      __text: 'Articles',
+    },
+    {
+      _name: 'txt_home',
+      __text: 'Home',
+    },
+    {
+      _name: 'txt_upcoming_sessions',
+      __text: 'Upcoming Sessions',
+    },
+    {
+      _name: 'txt_attended_sessions',
+      __text: 'Attended Sessions',
+    },
+    {
+      _name: 'txt_certificates',
+      __text: 'Certificates',
+    },
+    {
+      _name: 'txt_refer_friend',
+      __text: 'Refer a Friend',
+    },
+    {
+      _name: 'txt_feedback',
+      __text: 'Feedback',
+    },
+    {
+      _name: 'txt_share',
+      __text: 'Share',
+    },
+    {
+      _name: 'txt_logout',
+      __text: 'Logout',
+    },
+    {
+      _name: 'txt_reviews',
+      __text: 'Reviews',
+    },
+    {
+      _name: 'txt_review',
+      __text: 'Review',
+    },
+    {
+      _name: 'txt_comments',
+      __text: 'Comments',
+    },
+    {
+      _name: 'txt_comment',
+      __text: 'Comment',
+    },
+    {
+      _name: 'txt_sessions',
+      __text: 'Sessions',
+    },
+    {
+      _name: 'txt_session',
+      __text: 'Session',
+    },
+    {
+      _name: 'txt_detail',
+      __text: 'Detail',
+    },
+    {
+      _name: 'txt_curriculum',
+      __text: 'Curriculum',
+    },
+    {
+      _name: 'txt_start_session',
+      __text: 'Start Session',
+    },
+    {
+      _name: 'txt_end_session',
+      __text: 'End Session',
+    },
+    {
+      _name: 'txt_search_shishya',
+      __text: 'Search Shishya',
+    },
+    {
+      _name: 'txt_add_new_shishya',
+      __text: 'Add New Shishya',
+    },
+    {
+      _name: 'txt_add_shishya',
+      __text: 'Add Shishya',
+    },
+    {
+      _name: 'txt_cancel',
+      __text: 'Cancel',
+    },
+    {
+      _name: 'txt_shishya_will_be_joining',
+      __text: 'Shishya will be joining the session',
+    },
+    {
+      _name: 'txt_brief',
+      __text: 'Brief',
+    },
+    {
+      _name: 'txt_quiz',
+      __text: 'Quiz',
+    },
+    {
+      _name: 'txt_certificate',
+      __text: 'Certificate',
+    },
+    {
+      _name: 'txt_add_new_comment',
+      __text: 'Comment',
+    },
+    {
+      _name: 'txt_close',
+      __text: 'Close',
+    },
+    {
+      _name: 'txt_download_certificate',
+      __text: 'Download Certificate',
+    },
+    {
+      _name: 'txt_next_que',
+      __text: 'Next Question',
+    },
+    {
+      _name: 'txt_submit_answer',
+      __text: 'Submit Answers',
+    },
+    {
+      _name: 'txt_try_again',
+      __text: "Try Again, you\\'ll probably get it right next time.",
+    },
+    {
+      _name: 'txt_another_attempt',
+      __text: 'Another Attempt',
+    },
+    {
+      _name: 'txt_results',
+      __text: 'Results',
+    },
+    {
+      _name: 'txt_upcoming_session',
+      __text: 'Upcoming Sessions',
+    },
+    {
+      _name: 'txt_completed_session',
+      __text: 'Completed Sessions',
+    },
+    {
+      _name: 'txt_expense_manager',
+      __text: 'Expense Manager',
+    },
+    {
+      _name: 'txt_expenses',
+      __text: 'Expenses',
+    },
+    {
+      _name: 'txt_documents',
+      __text: 'Documents',
+    },
+    {
+      _name: 'txt_upcoming',
+      __text: 'Upcoming',
+    },
+    {
+      _name: 'txt_attended',
+      __text: 'Attended',
+    },
+    {
+      _name: 'txt_submit_feedback',
+      __text: 'Submit Feedback',
+    },
+    {
+      _name: 'txt_text',
+      __text: 'Text',
+    },
+    {
+      _name: 'txt_audio',
+      __text: 'Audio',
+    },
+    {
+      _name: 'txt_video',
+      __text: 'Video',
+    },
+    {
+      _name: 'txt_my_profile',
+      __text: 'My Profile',
+    },
+    {
+      _name: 'txt_basic_info',
+      __text: 'Basic Info',
+    },
+    {
+      _name: 'txt_more_info',
+      __text: 'More Info',
+    },
+    {
+      _name: 'txt_update_info',
+      __text: 'Update Info',
+    },
+    {
+      _name: 'txt_choose_language',
+      __text: 'Choose Language',
+    },
+    {
+      _name: 'txt_english',
+      __text: 'English',
+    },
+    {
+      _name: 'txt_choose_role',
+      __text: 'Choose Role',
+    },
+    {
+      _name: 'txt_adhar_card_no',
+      __text: 'Aadhar Card No',
+    },
+    {
+      _name: 'txt_referral_code',
+      __text: 'Referral Code',
+    },
+    {
+      _name: 'txt_pay_and_subscribe',
+      __text: 'Pay and Subscribe %s',
+    },
+    {
+      _name: 'txt_next_question',
+      __text: 'Next Question',
+    },
+    {
+      _name: 'txt_yes_want_to_exit',
+      __text: 'Yes, I want to exit',
+    },
+    {
+      _name: 'txt_congratulations',
+      __text: 'Congrats!',
+    },
+    {
+      _name: 'txt_succesfully_completed_course',
+      __text:
+        'Well done.You have successfully completed this section of the course %s.',
+    },
+    {
+      _name: 'txt_write_your_feedback_here',
+      __text: 'Please share your feedback here.',
+    },
+    {
+      _name: 'txt_search_expense',
+      __text: 'Search Expense',
+    },
+    {
+      _name: 'txt_export',
+      __text: 'Export',
+    },
+    {
+      _name: 'txt_add_new_expense',
+      __text: 'Add new Expense',
+    },
+    {
+      _name: 'txt_expense_will_be_verified',
+      __text: 'Expense added is yet to be verified.',
+    },
+    {
+      _name: 'txt_expense_title_com',
+      __text: 'Expense Title *',
+    },
+    {
+      _name: 'txt_date_time_com',
+      __text: 'Date and Time *',
+    },
+    {
+      _name: 'txt_amount_com',
+      __text: 'Amount *',
+    },
+    {
+      _name: 'txt_expense_category_com',
+      __text: 'Expense Category',
+    },
+    {
+      _name: 'txt_add_expense',
+      __text: 'Add Expense',
+    },
+    {
+      _name: 'txt_pending',
+      __text: 'Pending',
+    },
+    {
+      _name: 'txt_verified_shishya',
+      __text: 'Verified Shishya',
+    },
+    {
+      _name: 'txt_upload',
+      __text: 'Upload',
+    },
+    {
+      _name: 'txt_adhar_card',
+      __text: 'Aadhar Card',
+    },
+    {
+      _name: 'txt_start_day',
+      __text: 'Start Day',
+    },
+    {
+      _name: 'txt_end_day',
+      __text: 'End Day',
+    },
+    {
+      _name: 'txt_chat_with_guru',
+      __text: 'Chat with Guru',
+    },
+    {
+      _name: 'txt_guru_shishya_chat',
+      __text: 'Guru and Shishya Chat',
+    },
+    {
+      _name: 'txt_my_attendance_log',
+      __text: 'My Attendance Log',
+    },
+    {
+      _name: 'txt_refer_a_friend',
+      __text: 'Refer a Friend',
+    },
+    {
+      _name: 'txt_font_size_settings',
+      __text: 'Font Settings',
+    },
+    {
+      _name: 'txt_leaderboard',
+      __text: 'Leader Board',
+    },
+    {
+      _name: 'txt_account',
+      __text: 'Account',
+    },
+    {
+      _name: 'txt_got_it',
+      __text: 'Got It',
+    },
+    {
+      _name: 'txt_verification_status',
+      __text: 'Verification Status',
+    },
+    {
+      _name: 'txt_upload_bill',
+      __text: 'Upload Bill',
+    },
+    {
+      _name: 'navigation_drawer_open',
+      __text: 'Open',
+    },
+    {
+      _name: 'navigation_drawer_close',
+      __text: 'Close',
+    },
+    {
+      _name: 'txt_view',
+      __text: 'View',
+    },
+    {
+      _name: 'txt_download',
+      __text: 'Download',
+    },
+    {
+      _name: 'txt_notification',
+      __text: 'Notifications',
+    },
+    {
+      _name: 'txt_help',
+      __text: 'Help',
+    },
+    {
+      _name: 'txt_queries_response',
+      __text: 'Queries and Responses',
+    },
+    {
+      _name: 'txt_course_details',
+      __text: 'Course Details',
+    },
+    {
+      _name: 'txt_start',
+      __text: 'Start',
+    },
+    {
+      _name: 'txt_my_shishya',
+      __text: 'My Shishya',
+    },
+    {
+      _name: 'txt_approved',
+      __text: 'Approved',
+    },
+    {
+      _name: 'txt_sent_back',
+      __text: 'Sent Back',
+    },
+    {
+      _name: 'txt_completed',
+      __text: 'Completed',
+    },
+    {
+      _name: 'txt_session_detail',
+      __text: 'Session Detail',
+    },
+    {
+      _name: 'txt_take_attendance',
+      __text: 'Take Attendance',
+    },
+    {
+      _name: 'txt_feedback_desc',
+      __text:
+        'We would love to know what you think about us. Please write to us and share your feedback.',
+    },
+    {
+      _name: 'txt_refer',
+      __text: 'Refer',
+    },
+    {
+      _name: 'txt_copy',
+      __text: 'Copy',
+    },
+    {
+      _name: 'txt_settings',
+      __text: 'Settings',
+    },
+    {
+      _name: 'txt_select_district_wise',
+      __text: 'Select District Wise',
+    },
+    {
+      _name: 'txt_search_queries',
+      __text: 'Search Queries',
+    },
+    {
+      _name: 'txt_search_sessions',
+      __text: 'Search Sessions',
+    },
+    {
+      _name: 'txt_search_by_date',
+      __text: 'Search by Date',
+    },
+    {
+      _name: 'txt_shishy_list',
+      __text: 'Shishya List',
+    },
+    {
+      _name: 'txt_expenses_total',
+      __text: 'Expenses Total',
+    },
+    {
+      _name: 'txt_sent_back_expenses',
+      __text: 'Sent Back Expenses',
+    },
+    {
+      _name: 'txt_sent_back_expenses_total',
+      __text: 'Sent Back Expenses Total',
+    },
+    {
+      _name: 'txt_pending_expenses',
+      __text: 'Pending Expenses',
+    },
+    {
+      _name: 'txt_pending_expenses_total',
+      __text: 'Pending Expenses Total',
+    },
+    {
+      _name: 'txt_some_thing_wrong',
+      __text: 'Oops!Something went wrong. Please try again later.',
+    },
+    {
+      _name: 'txt_unable_to_connect',
+      __text:
+        'Sorry, we are unable to connect with the server. Please try again later.',
+    },
+    {
+      _name: 'txt_type_your_message_here',
+      __text: 'Type your message here...',
+    },
+    {
+      _name: 'txt_contact_support',
+      __text: 'Contact Support',
+    },
+    {
+      _name: 'txt_go_back',
+      __text: 'Go Back',
+    },
+    {
+      _name: 'txt_account_deactivated',
+      __text: 'Account Deactivated',
+    },
+    {
+      _name: 'txt_can_not_attempt_login',
+      __text: 'Cannot attempt Login.Please contact support.',
+    },
+    {
+      _name: 'txt_failed_course_message',
+      __text:
+        'Unfortunately, you have failed to complete the course assessment. We urge you to re-attempting the assesment to get a certificate.',
+    },
+    {
+      _name: 'txt_next_section',
+      __text: 'Go to Next Section',
+    },
+    {
+      _name: 'txt_rate_exp',
+      __text: 'RATE YOUR EXPERIENCE',
+    },
+    {
+      _name: 'txt_skip',
+      __text: 'Skip',
+    },
+    {
+      _name: 'txt_result_congratulations',
+      __text: 'Congrats!',
+    },
+    {
+      _name: 'txt_sample_text',
+      __text: 'Sample Text',
+    },
+    {
+      _name: 'txt_sample_text_desc',
+      __text: 'The quick brown fox jumps over the lazy dog.',
+    },
+    {
+      _name: 'txt_no_internet_connection',
+      __text: 'Please check you Internet Connection.',
+    },
+    {
+      _name: 'txt_please_wait',
+      __text: 'Please wait...',
+    },
+    {
+      _name: 'txt_save_settings',
+      __text: 'Save Settings',
+    },
+    {
+      _name: 'txt_hindi',
+      __text: 'हिन्दी',
+    },
+    {
+      _name: 'txt_marathi',
+      __text: 'मराठी',
+    },
+    {
+      _name: 'txt_tamil',
+      __text: 'தமிழ்',
+    },
+    {
+      _name: 'txt_save_font_settings',
+      __text: 'Save Font Size',
+    },
+    {
+      _name: 'txt_setting_saved',
+      __text: 'Settings saved successfully.',
+    },
+    {
+      _name: 'txt_ratings',
+      __text: 'Ratings',
+    },
+    {
+      _name: 'txt_please_fill_all_details',
+      __text: '"Please fill all detail. "',
+    },
+    {
+      _name: 'txt_sections',
+      __text: 'Sections',
+    },
+    {
+      _name: 'txt_assessments',
+      __text: 'Assessments',
+    },
+    {
+      _name: 'txt_section',
+      __text: 'Section',
+    },
+    {
+      _name: 'txt_assessment',
+      __text: 'Assessment',
+    },
+    {
+      _name: 'txt_courses_listed',
+      __text: 'Courses listed',
+    },
+    {
+      _name: 'txt_articles_listed',
+      __text: 'Articles listed',
+    },
+    {
+      _name: 'txt_videos_listed',
+      __text: 'Videos listed',
+    },
+    {
+      _name: 'txt_course_listed',
+      __text: 'Course listed',
+    },
+    {
+      _name: 'txt_article_listed',
+      __text: 'Article listed',
+    },
+    {
+      _name: 'txt_video_listed',
+      __text: 'Video listed',
+    },
+    {
+      _name: 'txt_user_details_not_found',
+      __text: 'User details not found. Please Login again.',
+    },
+    {
+      _name: 'txt_sessions_listed',
+      __text: 'Sessions',
+    },
+    {
+      _name: 'txt_session_listed',
+      __text: 'Session',
+    },
+    {
+      _name: 'txt_shishya_going_to_attend_session',
+      __text: 'Shishya are going to attend this session',
+    },
+    {
+      _name: 'txt_shishyas_going_to_attend_session',
+      __text: 'Shishyas are going to attend this session',
+    },
+    {
+      _name: 'txt_roll_no',
+      __text: '"Roll No : "',
+    },
+    {
+      _name: 'txt_attendance_logged_msg',
+      __text:
+        "Your attendance has been logged. Please click on \\'END DAY\\' after your day is over.",
+    },
+    {
+      _name: 'txt_start_session_msg',
+      __text:
+        "You have started the session. Please click on \\'END SESSION\\' to save your attendance",
+    },
+    {
+      _name: 'txt_please_grant_all_permission',
+      __text: 'Please grant permission.',
+    },
+    {
+      _name: 'txt_gujrati',
+      __text: 'ગુજરાતી',
+    },
+    {
+      _name: 'txt_malyalam',
+      __text: 'മലയാളം',
+    },
+    {
+      _name: 'txt_choose_language_converted',
+      __text: 'Choose Language',
+    },
+    {
+      _name: 'txt_language_settings',
+      __text: 'Language Settings',
+    },
+    {
+      _name: 'media_picker_select_from',
+      __text: 'Select From',
+    },
+    {
+      _name: 'media_picker_camera',
+      __text: 'Camera',
+    },
+    {
+      _name: 'media_picker_gallery',
+      __text: 'Gallery',
+    },
+    {
+      _name: 'media_picker_ok',
+      __text: 'Ok',
+    },
+    {
+      _name: 'media_picker_cancel',
+      __text: 'Cancel',
+    },
+    {
+      _name: 'media_picker_some_permission_is_denied',
+      __text: 'Please grant permission.',
+    },
+    {
+      _name: 'media_picker_you_need_to_grant_access_to',
+      __text: 'You need to grant access to',
+    },
+    {
+      _name: 'media_picker_read_Write_external_storage',
+      __text: 'Read and Write External Storage',
+    },
+    {
+      _name: 'txt_choose_photo',
+      __text: 'Choose Photo',
+    },
+    {
+      _name: 'txt_duration',
+      __text: '"Duration : "',
+    },
+    {
+      _name: 'txt_guru_name',
+      __text: '"Guru name : "',
+    },
+    {
+      _name: 'txt_course_duration',
+      __text: '"Duration : "',
+    },
+    {
+      _name: 'txt_choose',
+      __text: 'Choose',
+    },
+    {
+      _name: 'txt_from_gallery',
+      __text: 'From Gallery',
+    },
+    {
+      _name: 'txt_from_camera',
+      __text: 'From Camera',
+    },
+    {
+      _name: 'txt_update_language',
+      __text: 'Update Language',
+    },
+    {
+      _name: 'txt_choose_language_convenience',
+      __text: 'Please choose your preffered language.',
+    },
+    {
+      _name: 'txt_minutes',
+      __text: 'Minutes',
+    },
+    {
+      _name: 'txt_questions',
+      __text: 'Questions',
+    },
+    {
+      _name: 'txt_question',
+      __text: 'Question',
+    },
+    {
+      _name: 'txt_please_give_answer',
+      __text: 'Please Choose Answer',
+    },
+    {
+      _name: 'txt_time_left',
+      __text: '"Time Left : "',
+    },
+    {
+      _name: 'txt_time_up',
+      __text: 'Time Up',
+    },
+    {
+      _name: 'txt_mins',
+      __text: 'Mins',
+    },
+    {
+      _name: 'txt_quit_quiz',
+      __text:
+        '"If you quit the exam, you won\'t be qualified to attempt the next section "',
+    },
+    {
+      _name: 'title_activity_maps',
+      __text: 'Map',
+    },
+    {
+      _name: 'txt_downloading_certificate',
+      __text: 'Downloading Certificate.',
+    },
+    {
+      _name: 'txt_you_have_started_session',
+      __text:
+        'You have started the session, Click on END SESSION to save attendance',
+    },
+    {
+      _name: 'txt_no_shishya_for_attendance',
+      __text: 'No Shishya selected for attendance.',
+    },
+    {
+      _name: 'txt_no_shishya_available',
+      __text: 'No Shishya available.',
+    },
+    {
+      _name: 'txt_choose_video',
+      __text: 'Choose Video',
+    },
+    {
+      _name: 'txt_chat',
+      __text: 'Chat',
+    },
+    {
+      _name: 'txt_curriculum_not_available',
+      __text: 'Curriculum not available.',
+    },
+    {
+      _name: 'txt_shishya_not_available',
+      __text: 'Shishya not available.',
+    },
+    {
+      _name: 'txt_rs',
+      __text: '"₹ "',
+    },
+    {
+      _name: 'error_message_url_not_valid',
+      __text: 'Video URL is not valid.',
+    },
+    {
+      _name: 'txt_this_content_is_downloaded',
+      __text: 'This is already downloaded.',
+    },
+    {
+      _name: 'txt_unable_to_downloaded',
+      __text:
+        'Sorry, we are unable to download this file. Please try again later.',
+    },
+    {
+      _name: 'txt_download_success',
+      __text: 'File downloaded successfully!',
+    },
+    {
+      _name: 'txt_downloading_media',
+      __text: 'Downloading Files.',
+    },
+    {
+      _name: 'txt_approved_expenses',
+      __text: 'Approved Expenses',
+    },
+    {
+      _name: 'txt_description',
+      __text: 'Description',
+    },
+    {
+      _name: 'txt_date',
+      __text: 'Date',
+    },
+    {
+      _name: 'txt_amount',
+      __text: 'Amount',
+    },
+    {
+      _name: 'txt_total_amount',
+      __text: '"Total Amount "',
+    },
+    {
+      _name: 'txt_details_saved_on_local_storage',
+      __text: 'Details are saved in your storage.',
+    },
+    {
+      _name: 'txt_details_not_saved',
+      __text: 'Sorry, we are unable to save details in your storage.',
+    },
+    {
+      _name: 'txt_sync_with_server',
+      __text: 'Sync Data',
+    },
+    {
+      _name: 'txt_based_on_reviews',
+      __text: 'based on %s reviews.',
+    },
+    {
+      _name: 'txt_based_on_review',
+      __text: 'based on %s review.',
+    },
+    {
+      _name: 'txt_user_details_not_available',
+      __text: 'User details are not available.',
+    },
+    {
+      _name: 'txt_data_not_available',
+      __text: 'No data available.',
+    },
+    {
+      _name: 'txt_shishya_under_guidance',
+      __text: 'Shishya are enrolled under your guidance',
+    },
+    {
+      _name: 'txt_shishyas_under_guidance',
+      __text: 'Shishyas are enrolled under your guidance',
+    },
+    {
+      _name: 'txt_yes',
+      __text: 'Yes',
+    },
+    {
+      _name: 'txt_logout_msg',
+      __text: 'Are you sure you want to logout?',
+    },
+    {
+      _name: 'txt_copied_to_clipboard',
+      __text: 'Copied to clipboard.',
+    },
+    {
+      _name: 'txt_refer_message',
+      __text:
+        '"Hey there, here\'s an extremely educative APP that will be useful to you. Please install it and use this referral code : "',
+    },
+    {
+      _name: 'txt_share_message',
+      __text:
+        '"Hey there, here\'s an extremely educative APP that will be useful to you. Please install it."',
+    },
+    {
+      _name: 'txt_course_completed',
+      __text: 'Course Completed.',
+    },
+    {
+      _name: 'txt_please_record_audio',
+      __text: 'Please record audio.',
+    },
+    {
+      _name: 'txt_please_record_video',
+      __text: 'Please select or record a video.',
+    },
+    {
+      _name: 'txt_revie_submitted',
+      __text: 'Review Submitted.',
+    },
+    {
+      _name: 'txt_this_content_is_updated',
+      __text: 'Content updated successfully.',
+    },
+    {
+      _name: 'default_notification_channel_id',
+      __text: 'bimapaathshala_channel',
+    },
+    {
+      _name: 'fcm_message',
+      __text: 'New Message',
+    },
+    {
+      _name: 'txt_search_guru',
+      __text: 'Search Guru',
+    },
+    {
+      _name: 'txt_guru_list',
+      __text: 'Guru List',
+    },
+    {
+      _name: 'txt_guru_under_guidance',
+      __text: 'Guru',
+    },
+    {
+      _name: 'txt_gurus_under_guidance',
+      __text: 'Gurus',
+    },
+    {
+      _name: 'txt_my_guru',
+      __text: 'My Guru',
+    },
+    {
+      _name: 'txt_please_enter_mobile_number',
+      __text: 'Please enter your mobile number.',
+    },
+    {
+      _name: 'txt_please_enter_valid_mobile_number',
+      __text: 'Please enter your valid mobile number.',
+    },
+    {
+      _name: 'txt_please_enter_firstname',
+      __text: 'Please enter your first name.',
+    },
+    {
+      _name: 'txt_please_enter_last_name',
+      __text: 'Please enter your last name.',
+    },
+    {
+      _name: 'txt_please_enter_adharcard_no',
+      __text: 'Please enter Aadhar Card no.',
+    },
+    {
+      _name: 'txt_please_enter_valid_adharcard_no',
+      __text: 'Please enter valid Aadhar Card no.',
+    },
+    {
+      _name: 'txt_please_enter_email_address',
+      __text: 'Please enter email address.',
+    },
+    {
+      _name: 'txt_please_enter_valid_email_address',
+      __text: 'Please enter valid email address.',
+    },
+    {
+      _name: 'txt_please_enter_occupation',
+      __text: 'Please enter Occupation.',
+    },
+    {
+      _name: 'txt_please_enter_date_of_birth',
+      __text: 'Please enter Date of Birth.',
+    },
+    {
+      _name: 'txt_please_enter_age',
+      __text: 'Please enter your Age.',
+    },
+    {
+      _name: 'txt_please_enter_marital_status',
+      __text: 'Please enter your Marital status.',
+    },
+    {
+      _name: 'txt_enter_otp',
+      __text: 'Please enter OTP.',
+    },
+    {
+      _name: 'txt_enter_digit_otp',
+      __text: 'Please enter OTP.',
+    },
+    {
+      _name: 'txt_resend',
+      __text: 'Resend Code',
+    },
+    {
+      _name: 'txt_choose_profile_pic',
+      __text: 'Choose a Profile Picture.',
+    },
+    {
+      _name: 'txt_choose_adhar_card',
+      __text: 'Choose a Aadhar Card Photo',
+    },
+    {
+      _name: 'txt_till_',
+      __text: 'Till %s',
+    },
+    {
+      _name: 'txt_no_internet_exam_msg',
+      __text:
+        'You will need to have an active internet connection in order to give the  examination.',
+    },
+    {
+      _name: 'txt_please_enter_title',
+      __text: 'Please enter title.',
+    },
+    {
+      _name: 'txt_please_enter_date_time',
+      __text: 'Please enter Date and Time.',
+    },
+    {
+      _name: 'txt_please_enter_amount',
+      __text: 'Please enter amount.',
+    },
+    {
+      _name: 'txt_please_enter_category',
+      __text: 'Please enter Expense Category.',
+    },
+    {
+      _name: 'txt_choose_bill',
+      __text: 'Please choose bill.',
+    },
+    {
+      _name: 'txt_please_enter_valid_adharcard',
+      __text: 'Please enter Aadhar Card.',
+    },
+    {
+      _name: 'txt_no_viewer_to_view_file',
+      __text: 'There is no viewer to view this file.',
+    },
+    {
+      _name: 'txt_unable_to_create_channel',
+      __text: 'Unable to create channel.',
+    },
+    {
+      _name: 'txt_shishya_list',
+      __text: 'Shishya List',
+    },
+    {
+      _name: 'no_notifications',
+      __text: 'No notification data available.',
+    },
+    {
+      _name: 'no_notifications_msg',
+      __text: 'No notification available.',
+    },
+    {
+      _name: 'no_upcoming_session',
+      __text: 'No Upcoming Session',
+    },
+    {
+      _name: 'no_completed_session',
+      __text: 'No Completed Session.',
+    },
+    {
+      _name: 'no_certificate_message',
+      __text:
+        'You have no certificates yet. Please complete a course in order to get a certificate.',
+    },
+    {
+      _name: 'no_expense_data',
+      __text: 'Expense data not available.',
+    },
+    {
+      _name: 'no_attendance_log',
+      __text: 'Attendance log not available.',
+    },
+    {
+      _name: 'txt_new_message',
+      __text: 'New Message From',
+    },
+    {
+      _name: 'txt_welcome',
+      __text: 'Welcome',
+    },
+    {
+      _name: 'txt_data_not_available_leaderboard',
+      __text:
+        'You could be the first one on the leaderboard, hurry up and pass our assessments now!',
+    },
+    {
+      _name: 'txt_please_wait_for_internet_to_upload_bill',
+      __text: 'You cannot upload a bill when you are offline. Try again later.',
+    },
+    {
+      _name: 'txt_ok',
+      __text: 'OK',
+    },
+    {
+      _name: 'txt_time_over_message',
+      __text: 'Time is up. Good try.',
+    },
+    {
+      _name: 'txt_record',
+      __text: 'Record',
+    },
+    {
+      _name: 'txt_stop_record',
+      __text: 'Stop Recording',
+    },
+    {
+      _name: 'txt_play',
+      __text: 'Play',
+    },
+    {
+      _name: 'txt_stop',
+      __text: 'Stop',
+    },
+    {
+      _name: 'txt_review_submitted',
+      __text: 'Review Submitted.',
+    },
+    {
+      _name: 'txt_view_courses',
+      __text: 'View Courses',
+    },
+    {
+      _name: 'txt_choose_country',
+      __text: 'Choose Country',
+    },
+    {
+      _name: 'txt_india',
+      __text: 'India/भारत',
+    },
+    {
+      _name: 'txt_south_africa',
+      __text: 'South Africa',
+    },
+    {
+      _name: 'txt_sri_lanka',
+      __text: 'Sri Lanka',
+    },
+    {
+      _name: 'txt_bangladesh',
+      __text: 'Bangladesh',
+    },
+    {
+      _name: 'txt_indonesia',
+      __text: 'Indonesia',
+    },
+    {
+      _name: 'txt_session_detail_updated',
+      __text: 'Session details updated successfully.',
+    },
+    {
+      _name: 'txt_session_download_success',
+      __text: 'Session details downloaded successfully.',
+    },
+    {
+      _name: 'txt_article_updated',
+      __text: 'Article details updated successfully.',
+    },
+    {
+      _name: 'txt_article_download',
+      __text: 'Article details downloaded successfully.',
+    },
+    {
+      _name: 'txt_video_updated',
+      __text: 'Video details updated successfully.',
+    },
+    {
+      _name: 'txt_video_download',
+      __text: 'Video details downloaded successfully.',
+    },
+    {
+      _name: 'txt_course_updated',
+      __text: 'Course details updated successfully.',
+    },
+    {
+      _name: 'txt_course_download',
+      __text: 'Course details downloaded successfully.',
+    },
+    {
+      _name: 'txt_no_expense_data_available_to_export',
+      __text: 'There is no expense data to export.',
+    },
+    {
+      _name: 'txt_no_attendance_to_export',
+      __text: 'There is no attendance data to export.',
+    },
+    {
+      _name: 'txt_sync_started_with_server',
+      __text: 'Sync started with server.',
+    },
+    {
+      _name: 'txt_recording',
+      __text: 'Recording Playing.',
+    },
+    {
+      _name: 'txt_recording_stopped',
+      __text: 'Recording stopped.',
+    },
+    {
+      _name: 'txt_recording_started',
+      __text: 'Recording started.',
+    },
+    {
+      _name: 'txt_please_complete_section',
+      __text: 'Please complete section to unlock the next one.',
+    },
+    {
+      _name: 'txt_pending_assessment',
+      __text: 'Pending Assessment',
+    },
+    {
+      _name: 'txt_otp_retry_failed',
+      __text: 'OTP sending failed.',
+    },
+    {
+      _name: 'txt_otp_retry_success',
+      __text: 'OTP sent successfully.',
+    },
+    {
+      _name: 'txt_invalid_otp',
+      __text: 'Please enter a valid OTP.',
+    },
+    {
+      _name: 'txt_unable_to_send_review',
+      __text: 'Unable to submit review.',
+    },
+    {
+      _name: 'txt_unable_to_submit_quiz',
+      __text: 'Unable to submit quiz.',
+    },
+    {
+      _name: 'txt_no_assessment',
+      __text: 'We are unable to fetch assessment details.',
+    },
+    {
+      _name: 'txt_no_data_available',
+      __text: 'No data available.',
+    },
+    {
+      _name: 'txt_unable_to_register',
+      __text: 'Sorry we are unable to register your account.',
+    },
+    {
+      _name: 'txt_unable_to_update_account',
+      __text: 'Sorry we are unable to update your details.',
+    },
+    {
+      _name: 'txt_shishyas_course_watch_counter',
+      __text: '%s shishyas have watched this course.',
+    },
+    {
+      _name: 'txt_shishya_course_watch_counter',
+      __text: '%s shishya have watched this course.',
+    },
+    {
+      _name: 'txt_shishya_are_attending_session',
+      __text: '%s shishya are attending session.',
+    },
+    {
+      _name: 'txt_shishyas_are_attending_session',
+      __text: '%s shishyas are attending session.',
+    },
+    {
+      _name: 'txt_profile_updated',
+      __text: 'Profile updated successfully.',
+    },
+    {
+      _name: 'txt_data_not_available_session',
+      __text: 'Session data not available',
+    },
+    {
+      _name: 'no_article_message',
+      __text: 'No article available.',
+    },
+    {
+      _name: 'no_course_message',
+      __text: 'No course available.',
+    },
+    {
+      _name: 'no_video_message',
+      __text: 'No video available',
+    },
+    {
+      _name: 'txt_session_end_successfully',
+      __text: 'Session ended successfully.',
+    },
+    {
+      _name: 'txt_session_end_failed',
+      __text: 'Unable to end session.',
+    },
+    {
+      _name: 'txt_to_be_launched_soon',
+      __text: 'To be Launched Soon',
+    },
+    {
+      _name: 'txt_you_can_not_start_day_again',
+      __text: "You can not \\'Start Day\\' again.",
+    },
+    {
+      _name: 'txt_view_more',
+      __text: 'View More',
+    },
+    {
+      _name: 'txt_view_less',
+      __text: 'View Less',
+    },
+    {
+      _name: 'txt_difficult_to_understand',
+      __text: 'Difficult to understand.',
+    },
+    {
+      _name: 'txt_too_fast',
+      __text: 'Too fast.',
+    },
+    {
+      _name: 'txt_other',
+      __text: 'Other',
+    },
+    {
+      _name: 'txt_shishya_already_added_session',
+      __text: 'This shishya is already added to session.',
+    },
+    {
+      _name: 'txt_no_match_found',
+      __text: 'No match found.',
+    },
+    {
+      _name: 'txt_expenses_added_success',
+      __text: 'Expense added successfully.',
+    },
+    {
+      _name: 'txt_expenses_added_failed',
+      __text: 'Unable to add expense.',
+    },
+    {
+      _name: 'txt_shishya_already_added',
+      __text: 'Shishya is already added.',
+    },
+    {
+      _name: 'txt_shishya_have_attend_session',
+      __text: 'Shishya have attended this session',
+    },
+    {
+      _name: 'txt_shishyas_have_attend_session',
+      __text: 'Shishyas have attended this session',
+    },
+    {
+      _name: 'txt_can_not_start_session_zero_shishya',
+      __text:
+        'There is no shishya added to this session so you can not start session.',
+    },
+    {
+      _name: 'txt_pending_assessment_message',
+      __text: 'To unlock next %s Please watch %s.',
+    },
+    {
+      _name: 'txt_it_seems_sanchalak',
+      __text:
+        'It seems that your details are registered as sanchalak. Please contact admin.',
+    },
+    {
+      _name: 'no_attended_session',
+      __text: 'No attended session.',
+    },
+    {
+      _name: 'txt_add_more_details',
+      __text: 'Add more details',
+    },
+    {
+      _name: 'txt_please_enter_valid_pincode',
+      __text: 'Please enter valid pincode.',
+    },
+    {
+      _name: 'txt_please_enter_pincode',
+      __text: 'Please enter pincode.',
+    },
+    {
+      _name: 'txt_can_not_start_session_before_date',
+      __text: 'You can not start session before session date.',
+    },
+    {
+      _name: 'txt_video_not_available',
+      __text: 'Video not available.',
+    },
+    {
+      _name: 'txt_audio_not_available',
+      __text: 'Audio not available.',
+    },
+    {
+      _name: 'txt_file_not_available',
+      __text: 'File not available.',
+    },
+    {
+      _name: 'txt_share_course_heading',
+      __text: '"Hey, Check out the following course on "',
+    },
+    {
+      _name: 'txt_share_session_heading',
+      __text: '"Hey, Check out the following session on "',
+    },
+    {
+      _name: 'txt_share_article_heading',
+      __text: '"Hey, Check out the following article on "',
+    },
+    {
+      _name: 'txt_share_video_heading',
+      __text: '"Hey, Check out the following video on "',
+    },
+    {
+      _name: 'txt_start_course',
+      __text: 'Start Course',
+    },
+    {
+      _name: 'txt_next',
+      __text: 'Next',
+    },
+    {
+      _name: 'txt_admission',
+      __text: 'Take Admission',
+    },
+    {
+      _name: 'txt_welcome_to_bima',
+      __text: 'SURAKSHA KI SHIKSHA\\nBIMA PAATHSHALA',
+    },
+    {
+      _name: 'txt_welcome_to_bima_desc',
+      __cdata:
+        'Bima Paathshala aims to distribute free financial literacy & educate the individuals to have a protected financial future.',
+    },
+    {
+      _name: 'txt_learn_in_lang',
+      __text: '"Learn in your own language"',
+    },
+    {
+      _name: 'txt_learn_in_lang_desc',
+      __cdata:
+        'Bima Paathshala is a multilingual platform that serves courses in form of Videos Lectures, Audio Books & E-Notes.',
+    },
+    {
+      _name: 'txt_admission_process',
+      __cdata: '"Our free & quick admission process"',
+    },
+    {
+      _name: 'txt_admission_process_desc',
+      __cdata:
+        'Make yourself and your family admitted in paathshala to get access to our courses. Enter Name, Number & Pincode to start learning. No credit card / payments required.',
+    },
+    {
+      _name: 'txt_showcase_download_title',
+      __text: 'Download Course',
+    },
+    {
+      _name: 'txt_showcase_download_desc',
+      __text:
+        'Click on download button to download course and view it when there is no internet connection.',
+    },
+    {
+      _name: 'txt_showcase_section_title',
+      __text: 'Sections',
+    },
+    {
+      _name: 'txt_showcase_section_desc',
+      __text: 'View Different Section/Curriculum for course.',
+    },
+    {
+      _name: 'txt_showcase_start_title',
+      __text: 'Start Course',
+    },
+    {
+      _name: 'txt_showcase_start_desc',
+      __text: 'Click on start course to view course content.',
+    },
+    {
+      _name: 'txt_showcase_certificate_title',
+      __text: 'Certificate',
+    },
+    {
+      _name: 'txt_showcase_certificate_desc',
+      __text: 'Click here to view certificate and different assessments.',
+    },
+    {
+      _name: 'txt_showcase_section_curriculum_desc',
+      __text:
+        'Expand and collapse different section to view videos and audios.',
+    },
+    {
+      _name: 'txt_showcase_section_curriculum_title',
+      __text: 'Curriculum',
+    },
+    {
+      _name: 'txt_showcase_assessment_title',
+      __text: 'Quiz',
+    },
+    {
+      _name: 'txt_showcase_assessment_desc',
+      __text: 'Give different assessment to get certificate for course.',
+    },
+    {
+      _name: 'txt_showcase_video_title',
+      __text: 'Learn from our video lectures',
+    },
+    {
+      _name: 'txt_showcase_chat_title',
+      __text: 'Chat with guru',
+    },
+    {
+      _name: 'txt_showcase_chat_desc',
+      __text: 'Tap here to start chat with guru.',
+    },
+    {
+      _name: 'txt_and',
+      __text: 'and',
+    },
+    {
+      _name: 'txt_by_signing_up',
+      __text: 'By signing up, you agree to our',
+    },
+    {
+      _name: 'txt_terms',
+      __text: 'Terms',
+    },
+    {
+      _name: 'txt_privacy_policy',
+      __text: 'Privacy Policy',
+    },
+    {
+      _name: 'txt_token_expired_please_relogin',
+      __text: 'Please relogin.',
+    },
+    {
+      _name: 'txt_agree',
+    },
+    {
+      _name: 'txt_change_language_message',
+      __text: 'You can change language from settings.',
+    },
+    {
+      _name: 'txt_go_to_settings',
+      __text: 'Go to Settings',
+    },
+    {
+      _name: 'txt_telugu',
+      __text: 'Telugu',
+    },
+    {
+      _name: 'txt_oriya',
+      __text: 'Oriya',
+    },
+    {
+      _name: 'txt_assamese',
+      __text: 'Assamese',
+    },
+    {
+      _name: 'txt_assessment_quiz',
+      __text: 'Assessment',
+    },
+    {
+      _name: 'txt_restart_quiz',
+      __text:
+        'You have already passed this quiz. Do you want to attempt it again?',
+    },
   ],
-  dependent: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-  maritalstatus: ['Married', 'Unmarried'],
-  mothertonge: ['Hindi', 'English', 'Gujarati', 'Marathi', 'Others'],
-  expense_category: ['Travel', 'Food', 'Others'],
+  stringArray: [
+    {
+      item: ['Small', 'Medium', 'Large', 'Extra Large'],
+      _name: 'font_size',
+    },
+    {
+      item: [
+        'Farmer',
+        'Accountant',
+        'Driver',
+        'Cleaner',
+        'Construction labour',
+        'Student',
+        'Fisherman',
+        'Nurse',
+        'Office clerk',
+        'Salesperson',
+        'Sewing machine operator',
+        'Shopkeeper',
+        'Tailor',
+        'Teacher',
+        'Vegetable harvester',
+        'Vegetable picker',
+        'Waiter',
+        'Other',
+      ],
+      _name: 'occupation',
+    },
+    {
+      item: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      _name: 'dependent',
+    },
+    {
+      item: ['Married', 'Unmarried'],
+      _name: 'maritalstatus',
+    },
+    {
+      item: ['Hindi', 'English', 'Gujarati', 'Marathi', 'Others'],
+      _name: 'mothertonge',
+    },
+    {
+      item: ['Travel', 'Food', 'Others'],
+      _name: 'expense_category',
+    },
+  ],
 };

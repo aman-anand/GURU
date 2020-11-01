@@ -45,7 +45,10 @@ import {
 import Header from '../../components/Header/Loadable';
 import reducer from '../Course/reducer';
 import makeSelectCourseDetails from './selectors';
-import { getFromLocalStore } from '../../services/CommonSetterGetter';
+import {
+  getFromLocalStore,
+  languageString,
+} from '../../services/CommonSetterGetter';
 // NOTE: Material
 
 import SessionCard from '../../components/SessionCard/Loadable';
@@ -406,9 +409,18 @@ export class CourseDetails extends React.PureComponent {
                       variant="fullWidth"
                       className="tabBlock"
                     >
-                      <Tab className="tabButton" label="BRIEF" />
-                      <Tab className="tabButton" label="CURRICULUM" />
-                      <Tab className="tabButton" label="QUIZ" />
+                      <Tab
+                        className="tabButton"
+                        label={languageString('txt_brief').toUpperCase()}
+                      />
+                      <Tab
+                        className="tabButton"
+                        label={languageString('txt_curriculum').toUpperCase()}
+                      />
+                      <Tab
+                        className="tabButton"
+                        label={languageString('txt_quiz').toUpperCase()}
+                      />
                     </Tabs>
                   </AppBar>
                   <SwipeableViews

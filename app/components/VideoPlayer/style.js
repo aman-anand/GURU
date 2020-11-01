@@ -11,7 +11,7 @@ export const VideoPlayerContainer = styled.div`
   }
   .playerBox {
     @media (min-width: ${globalStyle.small}) {
-      /* max-height: 455px; */
+      max-height: 455px;
       overflow: hidden;
     }
     img {

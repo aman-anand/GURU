@@ -25,7 +25,7 @@ import SectionHeading from '../../components/SectionHeading/Loadable';
 import CetificateBlock from '../../components/CetificateBlock/Loadable';
 import { certificateAction, courseAction } from './actions';
 import certificateIllustration from '../../images/certificate_illustration.png';
-import { language } from '../../services/CommonSetterGetter';
+import { languageString } from '../../services/CommonSetterGetter';
 
 // NOTE: Style
 import { CertificatesContainer } from './style';
@@ -94,9 +94,11 @@ export class Certificates extends React.PureComponent {
                 <i>
                   <img src={certificateIllustration} title="" alt="" />
                 </i>
-                <p className="paraMsg">{language().no_certificate_message}</p>
+                <p className="paraMsg">
+                  {languageString('no_certificate_message')}
+                </p>
                 <Button href="/course" variant="contained" color="primary">
-                  {language().txt_view_courses}
+                  {languageString('txt_view_courses')}
                 </Button>
               </div>
             )}

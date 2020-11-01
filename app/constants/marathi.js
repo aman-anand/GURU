@@ -1,460 +1,1795 @@
 export const MHA = {
-  app_name: ' बिमा पाठशाला ',
-  txt_submit: ' सादर करा ',
-  txt_education_made_easy: ' शिक्षण केली सोपे ',
-  txt_company_name_copy: ' कंपनीचे नाव  सर्व हक्क राखीव ',
-  txt_select_role: ' भूमिका ',
-  txt_guru: ' गुरू ',
-  txt_shishya: ' शिष्य ',
-  txt_login: ' लॉगिन ',
-  txt_register: ' नोंदणी करा ',
-  txt_access_your_account: ' आपल्या खात्यात प्रवेश करा ',
-  txt_start_learning_marketing: ' वित्त कोर्सेस शिकणे प्रारंभ करा ',
-  txt_phone_number_comp: ' फोन नंबर * ',
-  txt_password_comp: ' संकेतशब्द * ',
-  txt_dont_have_account: ' अद्याप खाते नाही? ',
-  txt_create_account: ' खाते तयार करा ',
-  txt_firstname_comp: ' पहिले नाव * ',
-  txt_lastname_comp: ' आडनाव * ',
-  txt_email_address_comp: ' ईमेल पत्ता ',
-  txt_proceed: ' पुढे जा ',
-  txt_already_have_account: ' आधीपासूनच एक खाते आहे ',
-  txt_authentication_code: ' प्रमाणीकरण कोड ',
-  txt_verifying_mobile_number: ' आपला मोबाइल नंबर सत्यापित करणे ',
-  txt_resend_code: ' कोड पुन्हा पाठवा %s मिनिट ',
-  txt_continue_registeration: ' नोंदणी सुरू ठेवा ',
-  txt_pending_details: ' प्रलंबित तपशील ',
-  txt_gender: ' लिंग ',
-  txt_male: ' पुरुष ',
-  txt_female: ' महिला ',
-  txt_occupation_comp: ' व्यवसाय ',
-  txt_date_of_birth_comp: 'जन्म तारीख ',
-  txt_age_comp: ' वय ',
-  txt_mother_tongue_comp: ' मातृभाषा ',
-  txt_marital_status_comp: ' वैवाहिक स्थिती ',
-  txt_dependent: ' अवलंबित ',
-  txt_address: ' पत्ता ',
-  txt_locality: ' परिसर / पोस्ट ऑफिस ',
-  txt_city: ' शहर / जिल्हा / प्रदेश ',
-  txt_pin_code: ' पिन कोड *',
-  txt_state: ' राज्य ',
-  txt_search_learning_content: ' शोध अभ्यासक्रम ',
-  txt_courses: ' अभ्यासक्रम ',
-  txt_see_all: ' सर्व ',
-  txt_videos: ' व्हिडिओ ',
-  txt_articles: ' लेख ',
-  txt_home: ' मुख्यपृष्ठ ',
-  txt_upcoming_sessions: ' आगामी सत्रे ',
-  txt_attended_sessions: ' सत्रे उपस्थित ',
-  txt_certificates: ' प्रमाणपत्रे ',
-  txt_refer_friend: ' मित्रालासूचव ',
-  txt_feedback: ' अभिप्राय ',
-  txt_share: ' सामायिक करा ',
-  txt_logout: ' लॉगआउट ',
-  txt_reviews: ' पुनरावलोकने ',
-  txt_review: ' पुनरावलोकन ',
-  txt_comments: ' टिप्पण्या ',
-  txt_comment: ' टिप्पणी ',
-  txt_sessions: ' सत्रे ',
-  txt_session: ' सत्र ',
-  txt_detail: ' तपशील ',
-  txt_curriculum: ' अभ्यासक्रम ',
-  txt_start_session: ' सत्र प्रारंभ करा ',
-  txt_end_session: ' सत्र समाप्त करा ',
-  txt_search_shishya: ' शोध शिष्य ',
-  txt_add_new_shishya: ' नवीन शिष्य जोडा ',
-  txt_add_shishya: ' शिष्य जोडा  ',
-  txt_cancel: ' रद्द करा ',
-  txt_shishya_will_be_joining: ' शिष्य सामील होईल ',
-  txt_brief: ' संक्षिप्त ',
-  txt_quiz: ' प्रश्नोत्तरी ',
-  txt_certificate: ' प्रमाणपत्र ',
-  txt_add_new_comment: ' नवीन टिप्पणी जोडा ',
-  txt_close: ' बंद करा ',
-  txt_download_certificate: ' प्रमाणपत्र डाउनलोड करा  ',
-  txt_next_que: ' पुढील प्रश्न ',
-  txt_submit_answer: ' उत्तरे सबमिट करा ',
-  txt_try_again: ' पुन्हा प्रयत्न करा तुम्हाला कदाचित पुढच्या वेळी मिळेल ',
-  txt_another_attempt: ' आणखी एक प्रयत्न ',
-  txt_results: ' परिणाम ',
-  txt_upcoming_session: ' आगामी सत्रे ',
-  txt_completed_session: ' पूर्ण सत्रे ',
-  txt_expense_manager: ' खर्च व्यवस्थापक ',
-  txt_expenses: ' खर्च ',
-  txt_documents: ' दस्तऐवज ',
-  txt_upcoming: ' आगामी ',
-  txt_attended: ' उपस्थित ',
-  txt_submit_feedback: ' अभिप्राय सामायिक करा ',
-  txt_text: ' मजकूर ',
-  txt_audio: ' ऑडिओ ',
-  txt_video: ' व्हिडिओ ',
-  txt_my_profile: ' माझे प्रोफाइल ',
-  txt_basic_info: ' मूलभूत माहिती ',
-  txt_more_info: ' अधिक माहिती ',
-  txt_update_info: ' माहिती अद्यतनित करा ',
-  txt_choose_language: ' Choose Language ',
-  txt_english: ' इंग्रजी ',
-  txt_choose_role: ' भूमिका निवडा ',
-  txt_adhar_card_no: ' आधार कार्ड क्रमांक * ',
-  txt_referral_code: ' संदर्भ कोड ',
-  txt_pay_and_subscribe: ' पैसे द्या आणि सदस्यता घ्या %s  ',
-  txt_next_question: ' पुढील प्रश्न ',
-  txt_yes_want_to_exit: ' होय, मी इच्छित करण्यासाठी बाहेर पडा ',
-  txt_congratulations: ' अभिनंदन ! ',
-  txt_succesfully_completed_course:
-    ' पण आहे यशस्वीरित्या पूर्ण या विभागात च्या अर्थातच %s. ',
-  txt_write_your_feedback_here: ' कृपया आपला अभिप्राय येथे सामायिक करा . ',
-  txt_search_expense: ' शोध खर्च ',
-  txt_export: ' निर्यात ',
-  txt_add_new_expense: ' नवीन खर्च जोडा ',
-  txt_expense_will_be_verified: ' जोडलेला खर्च अद्याप सत्यापित केलेला नाही . ',
-  txt_expense_title_com: ' खर्चाचे शीर्षक * ',
-  txt_date_time_com: ' तारीख आणि वेळ * ',
-  txt_amount_com: ' रक्कम * ',
-  txt_expense_category_com: ' खर्च वर्ग ',
-  txt_add_expense: ' खर्च जोडा ',
-  txt_pending: ' प्रलंबित ',
-  txt_verified_shishya: ' सत्यापित शिष्य ',
-  txt_upload: ' अपलोड ',
-  txt_adhar_card: ' आधार कार्ड ',
-  txt_start_day: ' प्रारंभ दिवस ',
-  txt_end_day: ' समाप्ती दिवस ',
-  txt_chat_with_guru: ' गुरूशी गप्पा मारा ',
-  txt_guru_shishya_chat: ' गुरु आणि शिष्य गप्पा ',
-  txt_my_attendance_log: ' माझा उपस्थिती लॉग ',
-  txt_refer_a_friend: 'मित्रालासूचव ',
-  txt_font_size_settings: ' फॉन्ट सेटिंग्ज ',
-  txt_leaderboard: ' लीडर बोर्ड ',
-  txt_account: ' खाते ',
-  txt_got_it: ' समजले ',
-  txt_verification_status: ' सत्यापन स्थिती ',
-  txt_upload_bill: ' बिल अपलोड करा ',
-  navigation_drawer_open: 'उघडा ',
-  navigation_drawer_close: 'बंद करा ',
-  txt_view: ' पहा ',
-  txt_download: ' डाउनलोड करा ',
-  txt_notification: ' सूचना ',
-  txt_help: ' मदत ',
-  txt_queries_response: ' शंका आणि प्रतिसाद ',
-  txt_course_details: ' कोर्स तपशील ',
-  txt_start: ' प्रारंभ करा ',
-  txt_my_shishya: ' माझे शिष्य ',
-  txt_approved: ' मंजूर ',
-  txt_sent_back: ' परत पाठवलं ',
-  txt_completed: ' पूर्ण ',
-  txt_session_detail: ' सत्राचा तपशील ',
-  txt_take_attendance: ' उपस्थिती घ्या ',
-  txt_feedback_desc:
-    ' आपण आमच्याबद्दल काय विचार करता हे आम्हाला जाणून घेण्यास आवडेल. कृपया आम्हाला लिहा आणि आपला अभिप्राय सामायिक करा . ',
-  txt_refer: 'पहा  ',
-  txt_copy: ' कॉपी ',
-  txt_settings: ' सेटिंग्ज ',
-  txt_select_district_wise: ' जिल्हा वार निवडा ',
-  txt_search_queries: ' शोध क्वेरी ',
-  txt_search_sessions: ' शोध सत्रे ',
-  txt_search_by_date: ' तारखेनुसार शोध ',
-  txt_shishy_list: ' शिष्य सूची ',
-  txt_expenses_total: ' खर्च एकूण ',
-  txt_sent_back_expenses: 'परत खर्च पाठविला ',
-  txt_sent_back_expenses_total: ' एकूण खर्च परत पाठविला ',
-  txt_pending_expenses: ' प्रलंबित खर्च ',
-  txt_pending_expenses_total: ' प्रलंबित खर्च एकूण ',
-  txt_some_thing_wrong:
-    ' काहीतरी चुकीचे घडले आहे, कृपया थोड्यावेळाने प्रयत्न करा . ',
-  txt_unable_to_connect:
-    ' क्षमस्व आम्ही सर्व्हरशी कनेक्ट करण्यात अक्षम आहोत. पुन्हा प्रयत्न करा . ',
-  txt_type_your_message_here: ' आपला संदेश येथे टाइप करा ... ',
-  txt_contact_support: ' संपर्क समर्थन ',
-  txt_go_back: ' परत जा ',
-  txt_account_deactivated: ' खाते निष्क्रिय ',
-  txt_can_not_attempt_login:
-    ' लॉगिन प्रयत्न करू शकत नाही. कृपया समर्थनाशी संपर्क साधा. ',
-  txt_failed_course_message:
-    ' आपण कोर्स असाइनमेंट पूर्ण करण्यात अयशस्वी झाला प्रमाणपत्र घेण्यासाठी पुन्हा प्रयत्न करा . ',
-  txt_next_section: ' पुढील विभागात जा ',
-  txt_rate_exp: ' आपला अनुभव ला रेट करा ',
-  txt_skip: ' वगळा ',
-  txt_result_congratulations: ' अभिनंदन ! ',
-  txt_sample_text: ' नमुना मजकूर ',
-  txt_sample_text_desc: ' जलद तपकिरी कोल्हा बदलानुसार प्रती आळशी कुत्रा . ',
-  txt_no_internet_connection: 'इंटरनेट कनेक्शन नाही . ',
-  txt_please_wait: ' कृपया प्रतीक्षा करा . ',
-  txt_save_settings: ' सेव्ह सेटिंग्ज ',
-  txt_hindi: ' हिंदी ',
-  txt_marathi: ' मराठी ',
-  txt_tamil: ' தமிழ் ',
-  txt_save_font_settings: ' फॉन्ट आकार जतन करा ',
-  txt_setting_saved: ' सेटिंग्ज यशस्वीरित्या जतन केल्या . ',
-  txt_ratings: ' रेटिंग ',
-  txt_please_fill_all_details: ' "कृपया सर्व तपशील भरा . " ',
-  txt_sections: ' विभाग ',
-  txt_assessments: ' आकलन ',
-  txt_section: ' विभाग ',
-  txt_assessment: ' मूल्यांकन ',
-  txt_courses_listed: ' अभ्यासक्रम सूचीबद्ध ',
-  txt_articles_listed: ' लेख सूचीबद्ध ',
-  txt_videos_listed: ' व्हिडिओ सूचीबद्ध  ',
-  txt_course_listed: ' कोर्स सूचीबद्ध ',
-  txt_article_listed: ' लेख सूचीबद्ध ',
-  txt_video_listed: ' व्हिडिओ सूचीबद्ध ',
-  txt_user_details_not_found:
-    ' वापरकर्ता तपशील आढळला नाही . कृपया लॉगिन करा . ',
-  txt_sessions_listed: ' सत्रे ',
-  txt_session_listed: ' सत्र ',
-  txt_shishya_going_to_attend_session: 'शिष्य या अधिवेशनात सहभागी होणार आहेत ',
-  txt_shishyas_going_to_attend_session: 'शिष्य या अधिवेशनात सहभागी होणार आहेत',
-  txt_roll_no: ' "रोल नंबर : " ',
-  txt_attendance_logged_msg:
-    'तुमची उपस्थिती लॉग  झाली आहे. कृपया आपला दिवस संपल्यानंतर  एंड दिवशी क्लिक करा . ',
-  txt_start_session_msg:
-    ' आपण सत्र सुरू केले आहे. कृपया आपली उपस्थिती वाचवण्यासाठी एंड सेशनवर क्लिक करा ',
-  txt_please_grant_all_permission: 'कृपया परवानगी द्या . ',
-  txt_gujrati: 'ગુજરાતી ',
-  txt_malyalam: ' മലയാളം ',
-  txt_choose_language_converted: ' भाषा निवडा ',
-  txt_language_settings: ' भाषा सेटिंग्ज ',
-  media_picker_select_from: 'पासून निवडा ',
-  media_picker_camera: ' कॅमेरा ',
-  media_picker_gallery: ' गॅलरी ',
-  media_picker_ok: ' ओके ',
-  media_picker_cancel: ' रद्द करा ',
-  media_picker_some_permission_is_denied: ' कृपया परवानगी द्या . ',
-  media_picker_you_need_to_grant_access_to:
-    'आपल्याला प्रवेश मंजूर करण्याची आवश्यकता आहे ',
-  media_picker_read_Write_external_storage: ' बाह्य स्टोरेज वाचा आणि लिहा ',
-  txt_choose_photo: ' फोटो  निवडा  ',
-  txt_duration: ' " कालावधी : " ',
-  txt_guru_name: ' "गुरूचे नाव : " ',
-  txt_course_duration: ' " कालावधी : " ',
-  txt_choose: 'निवडा ',
-  txt_from_gallery: ' गॅलरी पासून ',
-  txt_from_camera: ' कॅमेरा पासून ',
-  txt_update_language: ' भाषा अद्यतनित करा ',
-  txt_choose_language_convenience: 'कृपया आपली पसंतीची भाषा निवडा. ',
-  txt_minutes: ' मिनिटे ',
-  txt_questions: ' प्रश्न ',
-  txt_question: ' प्रश्न ',
-  txt_please_give_answer: ' कृपया उत्तर निवडा ',
-  txt_time_left: ' "उर्वरित वेळ : " ',
-  txt_time_up: ' टाइम अप ',
-  txt_mins: ' मिनिटे ',
-  txt_quit_quiz:
-    ' "आपण परीक्षा सोडल्यास आपण पुढील विभागात प्रयत्न करण्यास पात्र नाही" ',
-  title_activity_maps: ' नकाशा ',
-  txt_downloading_certificate: ' प्रमाणपत्र डाउनलोड करीत आहे . ',
-  txt_you_have_started_session:
-    " आआपण सत्र प्रारंभ केले आहे, उपस्थिती वाचविण्यासाठी \\'एंड ससेशन\\' वर क्लिक करा ",
-  txt_no_shishya_for_attendance: ' उपस्थितीसाठी शिष्यची निवड झाली नाही . ',
-  txt_no_shishya_available: ' कोणत्याही शिष्य उपलब्ध नाही . ',
-  txt_choose_video: ' व्हिडिओ निवडा ',
-  txt_chat: ' गप्पा ',
-  txt_curriculum_not_available: ' अभ्यासक्रम उपलब्ध नाही . ',
-  txt_shishya_not_available: ' शिष्य उपलब्ध नाही . ',
-  txt_rs: ' "₹ " ',
-  error_message_url_not_valid: ' व्हिडिओ यूआरएल वैध नाही . ',
-  txt_this_content_is_downloaded: 'हे आधीपासून डाउनलोड केलेले आहे . ',
-  txt_unable_to_downloaded:
-    'क्षमस्व, आम्ही ही फाईल डाउनलोड करण्यात अक्षम आहोत. कृपया पुन्हा प्रयत्न करा . ',
-  txt_download_success: ' फाईल यशस्वीरित्या डाउनलोड झाली ! ',
-  txt_downloading_media: ' फायली डाउनलोड करीत आहे . ',
-  txt_approved_expenses: ' मंजूर खर्च ',
-  txt_description: ' वर्णन ',
-  txt_date: ' तारीख ',
-  txt_amount: ' रक्कम ',
-  txt_total_amount: ' "एकूण रक्कम " ',
-  txt_details_saved_on_local_storage:
-    'तपशील आपल्या स्टोरेजमध्ये जतन केले आहेत . ',
-  txt_details_not_saved:
-    ' क्षमस्व, आम्ही आपल्या संग्रहात तपशील जतन करण्यात अक्षम आहोत. ',
-  txt_sync_with_server: ' डेटा समक्रमित करा ',
-  txt_based_on_reviews: ' आधारित वर %s आढावा . ',
-  txt_based_on_review: ' आधारित वर %s पुनरावलोकन . ',
-  txt_user_details_not_available: ' वापरकर्ता तपशील आहेत नाही उपलब्ध . ',
-  txt_data_not_available: ' कोणताही डेटा उपलब्ध नाही . ',
-  txt_shishya_under_guidance: ' शिष्य आपल्या मार्गदर्शनाखाली नोंदणीकृत आहे',
-  txt_shishyas_under_guidance: 'शिष्य आपल्या मार्गदर्शनाखाली नोंदणीकृत आहे ',
-  txt_yes: ' होय ',
-  txt_logout_msg: ' आपली खात्री आहे की आपण लॉगआउट करू इच्छिता ? ',
-  txt_copied_to_clipboard: 'क्लिपबोर्डवर कॉपी केले. ',
-  txt_refer_message:
-    ' "अहो, येथे एक अत्यंत शैक्षणिक अ‍ॅप आहे जे आपल्यासाठी उपयुक्त ठरेल. कृपया ते स्थापित करा आणि हा रेफरल कोड वापरा: " ',
-  txt_share_message:
-    ' "अहो, येथे एक अत्यंत शैक्षणिक अ‍ॅप आहे जे आपल्यासाठी उपयुक्त ठरेल. कृपया ते स्थापित करा." ',
-  txt_course_completed: ' अभ्यासक्रम पूर्ण . ',
-  txt_please_record_audio: ' कृपया ऑडिओ रेकॉर्ड करा . ',
-  txt_please_record_video: ' कृपया एखादा व्हिडिओ निवडा किंवा रेकॉर्ड करा . ',
-  txt_revie_submitted: ' पुनरावलोकन सबमिट केले . ',
-  txt_this_content_is_updated: ' सामग्री यशस्वीरित्या अद्यतनित केली . ',
-  default_notification_channel_id: 'bimapaathshala_channel',
-  fcm_message: ' नवीन संदेश ',
-  txt_search_guru: ' शोध गुरू ',
-  txt_guru_list: ' गुरु यादी ',
-  txt_guru_under_guidance: ' गुरू ',
-  txt_gurus_under_guidance: ' गुरु ',
-  txt_my_guru: ' माझे गुरु ',
-  txt_please_enter_mobile_number: ' कृपया आपला मोबाइल नंबर प्रविष्ट करा . ',
-  txt_please_enter_valid_mobile_number:
-    ' कृपया आपला वैध मोबाइल नंबर प्रविष्ट करा . ',
-  txt_please_enter_firstname: ' कृपया प्रथम नाव प्रविष्ट करा . ',
-  txt_please_enter_last_name: 'कृपया आडनाव प्रविष्ट करा . ',
-  txt_please_enter_adharcard_no: ' कृपया आधार कार्ड क्रमांक प्रविष्ट करा . ',
-  txt_please_enter_valid_adharcard_no:
-    ' कृपया वैध आधार कार्ड क्रमांक प्रविष्ट करा . ',
-  txt_please_enter_email_address: ' कृपया ईमेल पत्ता प्रविष्ट करा . ',
-  txt_please_enter_valid_email_address: ' कृपया वैध ईमेल पत्ता प्रविष्ट करा . ',
-  txt_please_enter_occupation: ' कृपया व्यवसाय प्रविष्ट करा . ',
-  txt_please_enter_date_of_birth: 'कृपया जन्मतारीख प्रविष्ट करा . ',
-  txt_please_enter_age: ' कृपया आपले वय प्रविष्ट करा . ',
-  txt_please_enter_marital_status: ' कृपया आपली वैवाहिक स्थिती प्रविष्ट करा . ',
-  txt_enter_otp: ' कृपया ओटीपी प्रविष्ट करा . ',
-  txt_enter_digit_otp: ' कृपया ओटीपी प्रविष्ट करा . ',
-  txt_resend: ' कोड पुन्हा पाठवा ',
-  txt_choose_profile_pic: ' निवडा एक प्रोफाइल चित्र . ',
-  txt_choose_adhar_card: ' निवडा एक आधार कार्ड फोटो ',
-  txt_till_: ' पर्यंत %s ',
-  txt_no_internet_exam_msg:
-    'परीक्षा देण्यासाठी आपल्याकडे सक्रिय इंटरनेट कनेक्शन असणे आवश्यक आहे . ',
-  txt_please_enter_title: ' कृपया शीर्षक प्रविष्ट करा . ',
-  txt_please_enter_date_time: ' कृपया तारीख आणि वेळ प्रविष्ट करा . ',
-  txt_please_enter_amount: ' कृपया रक्कम प्रविष्ट करा . ',
-  txt_please_enter_category: ' कृपया खर्च श्रेणी प्रविष्ट करा . ',
-  txt_choose_bill: ' कृपया बिल निवडा . ',
-  txt_please_enter_valid_adharcard: ' कृपया आधार कार्ड प्रविष्ट करा . ',
-  txt_no_viewer_to_view_file: ' ही फाईल पाहणार्‍यांकडे नाही . ',
-  txt_unable_to_create_channel: ' चॅनेल तयार करण्यात अक्षम . ',
-  txt_shishya_list: ' शिष्य सूची ',
-  no_notifications: 'सूचना डेटा उपलब्ध नाही . ',
-  no_notifications_msg: 'सूचना डेटा उपलब्ध नाही . ',
-  no_upcoming_session: ' कोणत्याही आगामी सत्र  नाही ',
-  no_completed_session: ' कोणत्याही पूर्ण सत्र  नाही. ',
-  no_certificate_message:
-    'आपल्याकडे अद्याप प्रमाणपत्रे नाहीत. कृपया प्रमाणपत्र मिळविण्यासाठी एक कोर्स पूर्ण करा . ',
-  no_expense_data: ' खर्चाचा डेटा उपलब्ध नाही . ',
-  no_attendance_log: ' उपस्थिती लॉग उपलब्ध नाही . ',
-  txt_new_message: ' कडून नवीन संदेश ',
-  txt_welcome: ' आपले स्वागत आहे ',
-  txt_data_not_available_leaderboard:
-    'आपण लीडरबोर्डवरील पहिलेच आहात, त्वरा करा आणि आमची मूल्यांकन आता पास करा! ',
-  txt_please_wait_for_internet_to_upload_bill:
-    'आपण ऑफलाइन असता तेव्हा आपण बिल अपलोड करू शकत नाही. पुन्हा प्रयत्न करा . ',
-  txt_ok: ' ठीक ',
-  txt_time_over_message: ' वेळ संपला आहे . चांगले प्रयत्न . ',
-  txt_record: ' रेकॉर्ड ',
-  txt_stop_record: ' रेकॉर्डिंग थांबवा ',
-  txt_play: ' प्ले ',
-  txt_stop: ' थांबा ',
-  txt_review_submitted: ' पुनरावलोकन सबमिट केले . ',
-  txt_view_courses: ' पहा कोर्सेस ',
-  txt_choose_country: 'देश  निवडा  ',
-  txt_india: ' भारत ',
-  txt_south_africa: ' दक्षिण आफ्रिका ',
-  txt_sri_lanka: ' श्री लंका ',
-  txt_bangladesh: ' बांगलादेश ',
-  txt_indonesia: ' इंडोनेशिया ',
-  txt_session_detail_updated: ' सत्राचे तपशील यशस्वीरित्या अद्यतनित केले . ',
-  txt_session_download_success: ' सत्राचा तपशील यशस्वीरित्या डाउनलोड झाला . ',
-  txt_article_updated: ' लेख तपशील यशस्वीरित्या अद्यतनित केला . ',
-  txt_article_download: ' लेख तपशील यशस्वीरित्या डाउनलोड झाला . ',
-  txt_video_updated: ' व्हिडिओ तपशील यशस्वीरित्या अद्यतनित केला . ',
-  txt_video_download: ' व्हिडिओ तपशील यशस्वीरित्या डाउनलोड झाला . ',
-  txt_course_updated: ' कोर्स तपशील यशस्वीरित्या अद्यतनित केला . ',
-  txt_course_download: ' कोर्स तपशील यशस्वीरित्या डाउनलोड झाला . ',
-  txt_no_expense_data_available_to_export:
-    ' निर्यात करण्यासाठी कोणताही खर्च डेटा नाही . ',
-  txt_no_attendance_to_export: 'निर्यात करण्यासाठी उपस्थिती डेटा नाही . ',
-  txt_sync_started_with_server: ' सर्व्हरसह समक्रमण प्रारंभ झाले . ',
-  txt_recording: ' रेकॉर्डिंग प्ले होत आहे . ',
-  txt_recording_stopped: ' रेकॉर्डिंग थांबले . ',
-  txt_recording_started: ' रेकॉर्डिंग प्रारंभ झाले . ',
-  txt_please_complete_section:
-    'कृपया पुढील अनलॉक करण्यासाठी विभाग पूर्ण करा . ',
-  txt_pending_assessment: ' प्रलंबित मूल्यमापन ',
-  txt_otp_retry_failed: 'ओटीपी पाठविणे अयशस्वी . ',
-  txt_otp_retry_success: 'ओटीपी यशस्वीरित्या पाठविला . ',
-  txt_invalid_otp: ' कृपया एक वैध ओटीपी प्रविष्ट करा . ',
-  txt_unable_to_send_review: 'पुनरावलोकन सादर करण्यात अक्षम . ',
-  txt_unable_to_submit_quiz: ' प्रश्न सबमिट करण्यात अक्षम . ',
-  txt_no_assessment: 'आम्ही मूल्यांकन तपशील आणण्यात अक्षम आहोत . ',
-  txt_no_data_available: ' कोणताही डेटा उपलब्ध नाही . ',
-  txt_unable_to_register:
-    'क्षमस्व आम्ही आपले खाते नोंदणी करण्यात अक्षम आहोत . ',
-  txt_unable_to_update_account:
-    'क्षमस्व आम्ही आपले तपशील अद्यतनित करण्यात अक्षम आहोत . ',
-  txt_shishyas_course_watch_counter: ' %s शिष्यांनी हा कोर्स पाहिला आहे . ',
-  txt_shishya_course_watch_counter: ' %s शिष्यांनी हा कोर्स पाहिला आहेच . ',
-  txt_shishya_are_attending_session: ' %s शिष्य अधिवेशनात हजेरी लावत आहेत . ',
-  txt_shishyas_are_attending_session: ' %s शिष्य अधिवेशनात हजेरी लावत आहेत . ',
-  txt_profile_updated: ' प्रोफाइल यशस्वीरित्या अद्यतनित केले . ',
-  txt_data_not_available_session: ' सत्र डेटा उपलब्ध नाही ',
-  no_article_message: ' कोणताही लेख उपलब्ध नाही . ',
-  no_course_message: ' कोणत्याही कोर्स उपलब्ध नाही . ',
-  no_video_message: ' कोणत्याही व्हिडिओ उपलब्ध नाही ',
-  txt_session_end_successfully: ' सत्र यशस्वीरित्या समाप्त झाले . ',
-  txt_session_end_failed: 'सत्र समाप्त करण्यात अक्षम . ',
-  txt_to_be_launched_soon: 'लवकरच सुरू होईल ',
-  txt_you_can_not_start_day_again:
-    " आपण पुन्हा \\'प्रारंभ दिवस\\' करू शकत नाही . ",
-  txt_view_more: ' अधिक पहा ',
-  txt_view_less: ' कमी पहा   ',
-  txt_difficult_to_understand: 'समजण्यास अवघड.',
-  txt_too_fast: 'खूप वेगवान.',
-  txt_other: 'इतर',
-  txt_shishya_already_added_session: 'हे शिष्य आधीच अधिवेशनात जोडले गेले आहे.',
-  txt_no_match_found: 'कोणतीही जुळणी आढळली नाही.',
-  txt_expenses_added_success: 'खर्च यशस्वीरित्या जोडला.',
-  txt_expenses_added_failed: 'खर्च जोडण्यात अक्षम.',
-  txt_shishya_already_added: 'शिष्य आधीच जोडले गेले आहे.',
-  txt_shishya_have_attend_session: 'शिश्या या अधिवेशनात सहभागी झाली आहेत',
-  txt_shishyas_have_attend_session: 'शिश्यानी या अधिवेशनात हजेरी लावली',
-  txt_can_not_start_session_zero_shishya:
-    'या सत्रामध्ये कोणतेही शिष्य जोडलेले नाही त्यामुळे आपण सत्र प्रारंभ करू शकत नाही.',
-  txt_pending_assessment_message: 'कृपया पुढील %s अनलॉक करण्यासाठी %s पहा.',
-  txt_it_seems_sanchalak:
-    'असे दिसते आहे की आपले तपशील संचालक म्हणून नोंदणीकृत आहेत. कृपया प्रशासकाशी संपर्क साधा.',
-  no_attended_session: 'उपस्थिती सत्र नाही.',
-  txt_add_more_details: 'अधिक तपशील जोडा',
-  txt_please_enter_valid_pincode: 'कृपया वैध पिन कोड प्रविष्ट करा',
-  txt_please_enter_pincode: 'कृपया पिन कोड प्रविष्ट करा',
-  txt_can_not_start_session_before_date:
-    'आपण सत्राच्या तारखेपूर्वी सत्र प्रारंभ करू शकत नाही.',
-  txt_video_not_available: 'व्हिडिओ उपलब्ध नाही.',
-  txt_audio_not_available: 'ऑडिओ उपलब्ध नाही.',
-  txt_file_not_available: 'फाईल उपलब्ध नाही.',
-  font_size: [' लहान ', ' मध्यम ', ' मोठा ', ' अतिरिक्त मोठा '],
-  occupation: [
-    ' शेतकरी ',
-    ' अकाउंटंट ',
-    ' चालक ',
-    ' क्लिनर ',
-    ' बांधकाम मजूर ',
-    ' विद्यार्थी ',
-    'मच्छीमार',
-    ' नर्स ',
-    ' कार्यालयीन लिपिक ',
-    ' विक्रेता ',
-    ' शिवणकामाचे यंत्र ऑपरेटर ',
-    ' दुकानदार ',
-    ' टेलर ',
-    ' शिक्षक ',
-    ' भाजीपाला तोडणी करणारा ',
-    ' भाजी निवडक ',
-    ' वेटर ',
-    ' इतर ',
+  string: [
+    {
+      _name: 'app_name',
+      __text: 'बीमा पाठशाला',
+    },
+    {
+      _name: 'txt_submit',
+      __text: 'सबमिट',
+    },
+    {
+      _name: 'txt_education_made_easy',
+      __text: 'शिक्षण झाले सोपे',
+    },
+    {
+      _name: 'txt_company_name_copy',
+      __text: 'कंपनीचे नाव. सर्व हक्क राखीव.',
+    },
+    {
+      _name: 'txt_select_role',
+      __text: 'रोल निवडा',
+    },
+    {
+      _name: 'txt_guru',
+      __text: 'गुरु',
+    },
+    {
+      _name: 'txt_shishya',
+      __text: 'शिष्य',
+    },
+    {
+      _name: 'txt_login',
+      __text: 'लॉग-इन',
+    },
+    {
+      _name: 'txt_register',
+      __text: 'रजिस्टर',
+    },
+    {
+      _name: 'txt_access_your_account',
+      __text: 'तुमचे अकाउंट ॲक्सेस करा',
+    },
+    {
+      _name: 'txt_start_learning_marketing',
+      __text: 'फायनान्स कोर्स शिकण्यास सुरू करा',
+    },
+    {
+      _name: 'txt_phone_number_comp',
+      __text: 'फोन नंबर *',
+    },
+    {
+      _name: 'txt_password_comp',
+      __text: 'पासवर्ड *',
+    },
+    {
+      _name: 'txt_dont_have_account',
+      __text: 'काय म्हणता, अकाउंट नाही?',
+    },
+    {
+      _name: 'txt_create_account',
+      __text: 'आत्ताच अकाउंट तयार करा',
+    },
+    {
+      _name: 'txt_firstname_comp',
+      __text: 'पहिले नाव *',
+    },
+    {
+      _name: 'txt_lastname_comp',
+      __text: 'आडनाव *',
+    },
+    {
+      _name: 'txt_email_address_comp',
+      __text: 'ईमेल ॲड्रेस',
+    },
+    {
+      _name: 'txt_proceed',
+      __text: 'पुढे सुरू ठेवा',
+    },
+    {
+      _name: 'txt_already_have_account',
+      __text: 'यापूर्वीच अकाउंट आहे का?',
+    },
+    {
+      _name: 'txt_authentication_code',
+      __text: 'प्रमाणीकरण कोड',
+    },
+    {
+      _name: 'txt_verifying_mobile_number',
+      __text: 'तुमचा मोबाईल नंबर व्हेरिफाय होत आहे',
+    },
+    {
+      _name: 'txt_resend_code',
+      __text: '%s मिनिटामध्ये कोड पुन्हा पाठवा',
+    },
+    {
+      _name: 'txt_continue_registeration',
+      __text: 'रजिस्ट्रेशन सुरू ठेवा',
+    },
+    {
+      _name: 'txt_pending_details',
+      __text: 'प्रलंबित तपशील',
+    },
+    {
+      _name: 'txt_gender',
+      __text: 'लिंग',
+    },
+    {
+      _name: 'txt_male',
+      __text: 'पुरुष',
+    },
+    {
+      _name: 'txt_female',
+      __text: 'महिला',
+    },
+    {
+      _name: 'txt_occupation_comp',
+      __text: 'व्यवसाय',
+    },
+    {
+      _name: 'txt_date_of_birth_comp',
+      __text: 'जन्मतारीख',
+    },
+    {
+      _name: 'txt_age_comp',
+      __text: 'वय',
+    },
+    {
+      _name: 'txt_mother_tongue_comp',
+      __text: 'मातृभाषा',
+    },
+    {
+      _name: 'txt_marital_status_comp',
+      __text: 'वैवाहिक स्थिती',
+    },
+    {
+      _name: 'txt_dependent',
+      __text: 'अवलंबून',
+    },
+    {
+      _name: 'txt_address',
+      __text: 'ॲड्रेस',
+    },
+    {
+      _name: 'txt_locality',
+      __text: 'लोकेशन/पोस्ट ऑफिस',
+    },
+    {
+      _name: 'txt_city',
+      __text: 'शहर/जिल्हा/प्रदेश',
+    },
+    {
+      _name: 'txt_pin_code',
+      __text: 'पिनकोड *',
+    },
+    {
+      _name: 'txt_state',
+      __text: 'राज्य',
+    },
+    {
+      _name: 'txt_search_learning_content',
+      __text: 'शोधा',
+    },
+    {
+      _name: 'txt_courses',
+      __text: 'कोर्सेस',
+    },
+    {
+      _name: 'txt_see_all',
+      __text: 'सर्व पाहा',
+    },
+    {
+      _name: 'txt_videos',
+      __text: 'व्हिडिओज',
+    },
+    {
+      _name: 'txt_articles',
+      __text: 'आर्टिकल्स',
+    },
+    {
+      _name: 'txt_home',
+      __text: 'होम',
+    },
+    {
+      _name: 'txt_upcoming_sessions',
+      __text: 'आगामी सेशन्स',
+    },
+    {
+      _name: 'txt_attended_sessions',
+      __text: 'अटेंड केलेले सेशन्स',
+    },
+    {
+      _name: 'txt_certificates',
+      __text: 'सर्टिफिकेट्स',
+    },
+    {
+      _name: 'txt_refer_friend',
+      __text: 'मित्राला रेफर करा',
+    },
+    {
+      _name: 'txt_feedback',
+      __text: 'अभिप्राय',
+    },
+    {
+      _name: 'txt_share',
+      __text: 'शेअर',
+    },
+    {
+      _name: 'txt_logout',
+      __text: 'लॉग-आऊट',
+    },
+    {
+      _name: 'txt_reviews',
+      __text: 'रिव्ह्यूज',
+    },
+    {
+      _name: 'txt_review',
+      __text: 'रिव्ह्यू',
+    },
+    {
+      _name: 'txt_comments',
+      __text: 'कमेंट्स',
+    },
+    {
+      _name: 'txt_comment',
+      __text: 'कमेंट',
+    },
+    {
+      _name: 'txt_sessions',
+      __text: 'सेशन्स',
+    },
+    {
+      _name: 'txt_session',
+      __text: 'सेशन',
+    },
+    {
+      _name: 'txt_detail',
+      __text: 'तपशील',
+    },
+    {
+      _name: 'txt_curriculum',
+      __text: 'अभ्यासक्रम',
+    },
+    {
+      _name: 'txt_start_session',
+      __text: 'सेशन सुरू करा',
+    },
+    {
+      _name: 'txt_end_session',
+      __text: 'सेशन समाप्त करा',
+    },
+    {
+      _name: 'txt_search_shishya',
+      __text: 'शिष्य शोधा',
+    },
+    {
+      _name: 'txt_add_new_shishya',
+      __text: 'नवीन शिष्य ॲड करा',
+    },
+    {
+      _name: 'txt_add_shishya',
+      __text: 'शिष्य ॲड करा',
+    },
+    {
+      _name: 'txt_cancel',
+      __text: 'कॅन्सल',
+    },
+    {
+      _name: 'txt_shishya_will_be_joining',
+      __text: 'शिष्य सेशन जॉईन करेल',
+    },
+    {
+      _name: 'txt_brief',
+      __text: 'थोडक्यात',
+    },
+    {
+      _name: 'txt_quiz',
+      __text: 'क्विझ',
+    },
+    {
+      _name: 'txt_certificate',
+      __text: 'सर्टिफिकेट',
+    },
+    {
+      _name: 'txt_add_new_comment',
+      __text: 'कमेंट',
+    },
+    {
+      _name: 'txt_close',
+      __text: 'बंद',
+    },
+    {
+      _name: 'txt_download_certificate',
+      __text: 'सर्टिफिकेट डाउनलोड करा',
+    },
+    {
+      _name: 'txt_next_que',
+      __text: 'पुढील प्रश्न',
+    },
+    {
+      _name: 'txt_submit_answer',
+      __text: 'उत्तर सबमिट करा',
+    },
+    {
+      _name: 'txt_try_again',
+      __text: 'पुन्हा प्रयत्न करा, नक्कीच तुम्हाला यश मिळेल.',
+    },
+    {
+      _name: 'txt_another_attempt',
+      __text: 'दुसरा प्रयत्न',
+    },
+    {
+      _name: 'txt_results',
+      __text: 'परिणाम',
+    },
+    {
+      _name: 'txt_upcoming_session',
+      __text: 'आगामी सेशन्स',
+    },
+    {
+      _name: 'txt_completed_session',
+      __text: 'पूर्ण केलेले सेशन्स',
+    },
+    {
+      _name: 'txt_expense_manager',
+      __text: 'एक्सपेन्स मॅनेजर',
+    },
+    {
+      _name: 'txt_expenses',
+      __text: 'एक्सपेन्सेस',
+    },
+    {
+      _name: 'txt_documents',
+      __text: 'डॉक्युमेंट्स',
+    },
+    {
+      _name: 'txt_upcoming',
+      __text: 'आगामी',
+    },
+    {
+      _name: 'txt_attended',
+      __text: 'अटेंड केलेले',
+    },
+    {
+      _name: 'txt_submit_feedback',
+      __text: 'अभिप्राय सबमिट करा',
+    },
+    {
+      _name: 'txt_text',
+      __text: 'टेक्स्ट',
+    },
+    {
+      _name: 'txt_audio',
+      __text: 'ऑडिओ',
+    },
+    {
+      _name: 'txt_video',
+      __text: 'व्हिडिओ',
+    },
+    {
+      _name: 'txt_my_profile',
+      __text: 'माझे प्रोफाईल',
+    },
+    {
+      _name: 'txt_basic_info',
+      __text: 'मूलभूत माहिती',
+    },
+    {
+      _name: 'txt_more_info',
+      __text: 'अधिक माहिती',
+    },
+    {
+      _name: 'txt_update_info',
+      __text: 'माहिती अपडेट करा',
+    },
+    {
+      _name: 'txt_choose_language',
+      __text: 'भाषा निवडा',
+    },
+    {
+      _name: 'txt_english',
+      __text: 'इंग्रजी',
+    },
+    {
+      _name: 'txt_choose_role',
+      __text: 'रोल निवडा',
+    },
+    {
+      _name: 'txt_adhar_card_no',
+      __text: 'आधार कार्ड नं',
+    },
+    {
+      _name: 'txt_referral_code',
+      __text: 'रेफरल कोड',
+    },
+    {
+      _name: 'txt_pay_and_subscribe',
+      __text: 'पेमेंट करा आणि सबस्क्राईब करा %s',
+    },
+    {
+      _name: 'txt_next_question',
+      __text: 'पुढील प्रश्न',
+    },
+    {
+      _name: 'txt_yes_want_to_exit',
+      __text: 'होय, मला बाहेर पडायचे आहे',
+    },
+    {
+      _name: 'txt_congratulations',
+      __text: 'अभिनंदन!',
+    },
+    {
+      _name: 'txt_succesfully_completed_course',
+      __text:
+        'खूप छान. तुम्ही कोर्स %s चे हे सेक्शन यशस्वीरित्या पूर्ण केले आहे.',
+    },
+    {
+      _name: 'txt_write_your_feedback_here',
+      __text: 'कृपया तुमचा अभिप्राय येथे शेअर करा.',
+    },
+    {
+      _name: 'txt_search_expense',
+      __text: 'एक्सपेन्स शोधा',
+    },
+    {
+      _name: 'txt_export',
+      __text: 'एक्स्पोर्ट',
+    },
+    {
+      _name: 'txt_add_new_expense',
+      __text: 'नवीन एक्सपेन्स ॲड करा',
+    },
+    {
+      _name: 'txt_expense_will_be_verified',
+      __text: 'ॲड केलेले एक्सपेन्स अद्याप व्हेरिफाय झालेले नाही.',
+    },
+    {
+      _name: 'txt_expense_title_com',
+      __text: 'एक्सपेन्स शीर्षक *',
+    },
+    {
+      _name: 'txt_date_time_com',
+      __text: 'तारीख आणि वेळ *',
+    },
+    {
+      _name: 'txt_amount_com',
+      __text: 'रक्कम *',
+    },
+    {
+      _name: 'txt_expense_category_com',
+      __text: 'एक्सपेन्स कॅटेगरी',
+    },
+    {
+      _name: 'txt_add_expense',
+      __text: 'एक्सपेन्स ॲड करा',
+    },
+    {
+      _name: 'txt_pending',
+      __text: 'प्रलंबित',
+    },
+    {
+      _name: 'txt_verified_shishya',
+      __text: 'व्हेरिफाईड शिष्य',
+    },
+    {
+      _name: 'txt_upload',
+      __text: 'अपलोड करा',
+    },
+    {
+      _name: 'txt_adhar_card',
+      __text: 'आधार कार्ड',
+    },
+    {
+      _name: 'txt_start_day',
+      __text: 'दिवस सुरू करा',
+    },
+    {
+      _name: 'txt_end_day',
+      __text: 'दिवस समाप्त करा',
+    },
+    {
+      _name: 'txt_chat_with_guru',
+      __text: 'गुरुसह चॅट करा',
+    },
+    {
+      _name: 'txt_guru_shishya_chat',
+      __text: 'गुरु आणि शिष्य चॅट',
+    },
+    {
+      _name: 'txt_my_attendance_log',
+      __text: 'माझा अटेंडन्स लॉग',
+    },
+    {
+      _name: 'txt_refer_a_friend',
+      __text: 'मित्राला रेफर करा',
+    },
+    {
+      _name: 'txt_font_size_settings',
+      __text: 'फाँट सेटिंग्स',
+    },
+    {
+      _name: 'txt_leaderboard',
+      __text: 'लीडर बोर्ड',
+    },
+    {
+      _name: 'txt_account',
+      __text: 'अकाउंट',
+    },
+    {
+      _name: 'txt_got_it',
+      __text: 'समजले',
+    },
+    {
+      _name: 'txt_verification_status',
+      __text: 'व्हेरिफिकेशन स्थिती',
+    },
+    {
+      _name: 'txt_upload_bill',
+      __text: 'बिल अपलोड करा',
+    },
+    {
+      _name: 'navigation_drawer_open',
+      __text: 'उघडा',
+    },
+    {
+      _name: 'navigation_drawer_close',
+      __text: 'बंद करा',
+    },
+    {
+      _name: 'txt_view',
+      __text: 'पाहा',
+    },
+    {
+      _name: 'txt_download',
+      __text: 'डाउनलोड',
+    },
+    {
+      _name: 'txt_notification',
+      __text: 'नोटिफिकेशन्स',
+    },
+    {
+      _name: 'txt_help',
+      __text: 'मदत',
+    },
+    {
+      _name: 'txt_queries_response',
+      __text: 'प्रश्न आणि उत्तर',
+    },
+    {
+      _name: 'txt_course_details',
+      __text: 'कोर्स तपशील',
+    },
+    {
+      _name: 'txt_start',
+      __text: 'सुरू करा',
+    },
+    {
+      _name: 'txt_my_shishya',
+      __text: 'माझे शिष्य',
+    },
+    {
+      _name: 'txt_approved',
+      __text: 'मंजूर केले',
+    },
+    {
+      _name: 'txt_sent_back',
+      __text: 'परत पाठविले',
+    },
+    {
+      _name: 'txt_completed',
+      __text: 'पूर्ण केले',
+    },
+    {
+      _name: 'txt_session_detail',
+      __text: 'सेशन तपशील',
+    },
+    {
+      _name: 'txt_take_attendance',
+      __text: 'अटेंडन्स घ्या',
+    },
+    {
+      _name: 'txt_feedback_desc',
+      __text:
+        'तुम्हाला आमच्याबद्दल काय वाटते, हे आम्हाला जाणून घ्यायला आवडेल. कृपया तुमचा अभिप्राय आम्हाला कळवा.',
+    },
+    {
+      _name: 'txt_refer',
+      __text: 'रेफर',
+    },
+    {
+      _name: 'txt_copy',
+      __text: 'कॉपी',
+    },
+    {
+      _name: 'txt_settings',
+      __text: 'सेटिंग्स',
+    },
+    {
+      _name: 'txt_select_district_wise',
+      __text: 'जिल्हानिहाय निवडा',
+    },
+    {
+      _name: 'txt_search_queries',
+      __text: 'शंका शोधा',
+    },
+    {
+      _name: 'txt_search_sessions',
+      __text: 'सेशन्स शोधा',
+    },
+    {
+      _name: 'txt_search_by_date',
+      __text: 'तारखेद्वारे शोधा',
+    },
+    {
+      _name: 'txt_shishy_list',
+      __text: 'शिष्य लिस्ट',
+    },
+    {
+      _name: 'txt_expenses_total',
+      __text: 'एकूण एक्सपेन्सेस',
+    },
+    {
+      _name: 'txt_sent_back_expenses',
+      __text: 'परत पाठविलेला एक्सपेन्सेस',
+    },
+    {
+      _name: 'txt_sent_back_expenses_total',
+      __text: 'परत पाठविलेला एकूण एक्सपेन्सेस',
+    },
+    {
+      _name: 'txt_pending_expenses',
+      __text: 'प्रलंबित एक्सपेन्सेस',
+    },
+    {
+      _name: 'txt_pending_expenses_total',
+      __text: 'एकूण प्रलंबित एक्सपेन्सेस',
+    },
+    {
+      _name: 'txt_some_thing_wrong',
+      __text: 'अरेरे! काहीतरी चुकीचे घडले आहे. कृपया नंतर पुन्हा प्रयत्न करा.',
+    },
+    {
+      _name: 'txt_unable_to_connect',
+      __text:
+        'क्षमा करा, आम्ही सर्वरसह कनेक्ट करण्यास असमर्थ आहोत. कृपया नंतर पुन्हा प्रयत्न करा.',
+    },
+    {
+      _name: 'txt_type_your_message_here',
+      __text: 'तुमचा मेसेज येथे टाईप करा...',
+    },
+    {
+      _name: 'txt_contact_support',
+      __text: 'सपोर्ट टीमशी संपर्क साधा',
+    },
+    {
+      _name: 'txt_go_back',
+      __text: 'मागे जा',
+    },
+    {
+      _name: 'txt_account_deactivated',
+      __text: 'अकाउंट डीॲक्टिव्हेट केले आहे',
+    },
+    {
+      _name: 'txt_can_not_attempt_login',
+      __text: 'लॉग-इन होऊ शकत नाही. कृपया सपोर्ट टीमशी संपर्क साधा.',
+    },
+    {
+      _name: 'txt_failed_course_message',
+      __text:
+        'दुर्दैवाने, तुम्ही कोर्स असेसमेंट पूर्ण करण्यास अयशस्वी झाला आहात. आम्ही तुम्हाला विनंती करतो की सर्टिफिकेट मिळवण्यासाठी असेसमेंटसाठी पुन्हा प्रयत्न करा.',
+    },
+    {
+      _name: 'txt_next_section',
+      __text: 'पुढील सेक्शनवर जा',
+    },
+    {
+      _name: 'txt_rate_exp',
+      __text: 'तुमच्या अनुभवाला रेटिंग द्या',
+    },
+    {
+      _name: 'txt_skip',
+      __text: 'वगळा',
+    },
+    {
+      _name: 'txt_result_congratulations',
+      __text: 'अभिनंदन!',
+    },
+    {
+      _name: 'txt_sample_text',
+      __text: 'सॅम्पल टेक्स्ट',
+    },
+    {
+      _name: 'txt_sample_text_desc',
+      __text: 'हा एक नमुना आहे.',
+    },
+    {
+      _name: 'txt_no_internet_connection',
+      __text: 'कृपया तुमचे इंटरनेट कनेक्शन तपासा.',
+    },
+    {
+      _name: 'txt_please_wait',
+      __text: 'कृपया प्रतीक्षा करा...',
+    },
+    {
+      _name: 'txt_save_settings',
+      __text: 'सेटिंग्स सेव्ह करा',
+    },
+    {
+      _name: 'txt_hindi',
+      __text: 'हिन्दी',
+    },
+    {
+      _name: 'txt_marathi',
+      __text: 'मराठी',
+    },
+    {
+      _name: 'txt_tamil',
+      __text: 'தமிழ்',
+    },
+    {
+      _name: 'txt_save_font_settings',
+      __text: 'फाँट साईझ सेव्ह करा',
+    },
+    {
+      _name: 'txt_setting_saved',
+      __text: 'सेटिंग्स यशस्वीरित्या सेव्ह केली आहे.',
+    },
+    {
+      _name: 'txt_ratings',
+      __text: 'रेटिंग्स',
+    },
+    {
+      _name: 'txt_please_fill_all_details',
+      __text: '"कृपया सर्व तपशील भरा. "',
+    },
+    {
+      _name: 'txt_sections',
+      __text: 'सेक्शन्स',
+    },
+    {
+      _name: 'txt_assessments',
+      __text: 'असेसमेंट्स',
+    },
+    {
+      _name: 'txt_section',
+      __text: 'सेक्शन',
+    },
+    {
+      _name: 'txt_assessment',
+      __text: 'असेसमेंट',
+    },
+    {
+      _name: 'txt_courses_listed',
+      __text: 'कोर्सेस उपलब्ध',
+    },
+    {
+      _name: 'txt_articles_listed',
+      __text: 'आर्टिकल्स उपलब्ध',
+    },
+    {
+      _name: 'txt_videos_listed',
+      __text: 'व्हिडिओज उपलब्ध',
+    },
+    {
+      _name: 'txt_course_listed',
+      __text: 'कोर्स उपलब्ध',
+    },
+    {
+      _name: 'txt_article_listed',
+      __text: 'आर्टिकल उपलब्ध',
+    },
+    {
+      _name: 'txt_video_listed',
+      __text: 'व्हिडिओ उपलब्ध',
+    },
+    {
+      _name: 'txt_user_details_not_found',
+      __text: 'यूजर तपशील आढळला नाही. कृपया पुन्हा लॉग-इन करा.',
+    },
+    {
+      _name: 'txt_sessions_listed',
+      __text: 'सेशन्स',
+    },
+    {
+      _name: 'txt_session_listed',
+      __text: 'सेशन',
+    },
+    {
+      _name: 'txt_shishya_going_to_attend_session',
+      __text: 'शिष्य हे सेशन अटेंड करणार आहे',
+    },
+    {
+      _name: 'txt_shishyas_going_to_attend_session',
+      __text: 'शिष्य हे सेशन अटेंड करणार आहेत',
+    },
+    {
+      _name: 'txt_roll_no',
+      __text: '"रोल नं : "',
+    },
+    {
+      _name: 'txt_attendance_logged_msg',
+      __text:
+        "तुमची अटेंडन्स लॉग करण्यात आली आहे. कृपया तुमचा दिवस समाप्त झाल्यानंतर \\'दिवस समाप्त करा\\' वर क्लिक करा.",
+    },
+    {
+      _name: 'txt_start_session_msg',
+      __text:
+        "तुम्ही सेशन सुरू केले आहे. कृपया तुमची अटेंडन्स सेव्ह करण्यासाठी \\'सेशन समाप्त करा\\' वर क्लिक करा",
+    },
+    {
+      _name: 'txt_please_grant_all_permission',
+      __text: 'कृपया परवानगी द्या.',
+    },
+    {
+      _name: 'txt_gujrati',
+      __text: 'ગુજરાતી',
+    },
+    {
+      _name: 'txt_malyalam',
+      __text: 'മലയാളം',
+    },
+    {
+      _name: 'txt_choose_language_converted',
+      __text: 'भाषा निवडा',
+    },
+    {
+      _name: 'txt_language_settings',
+      __text: 'भाषा सेटिंग्स',
+    },
+    {
+      _name: 'media_picker_select_from',
+      __text: 'सोर्स निवडा',
+    },
+    {
+      _name: 'media_picker_camera',
+      __text: 'कॅमेरा',
+    },
+    {
+      _name: 'media_picker_gallery',
+      __text: 'गॅलरी',
+    },
+    {
+      _name: 'media_picker_ok',
+      __text: 'ओके',
+    },
+    {
+      _name: 'media_picker_cancel',
+      __text: 'कॅन्सल',
+    },
+    {
+      _name: 'media_picker_some_permission_is_denied',
+      __text: 'कृपया परवानगी द्या.',
+    },
+    {
+      _name: 'media_picker_you_need_to_grant_access_to',
+      __text: 'तुम्हाला एक्स्टर्नल स्टोरेज रीड आणि राईट',
+    },
+    {
+      _name: 'media_picker_read_Write_external_storage',
+      __text: 'करण्याचा ॲक्सेस द्यावा लागेल',
+    },
+    {
+      _name: 'txt_choose_photo',
+      __text: 'फोटो निवडा',
+    },
+    {
+      _name: 'txt_duration',
+      __text: '"कालावधी : "',
+    },
+    {
+      _name: 'txt_guru_name',
+      __text: '"गुरुचे नाव : "',
+    },
+    {
+      _name: 'txt_course_duration',
+      __text: '"कालावधी : "',
+    },
+    {
+      _name: 'txt_choose',
+      __text: 'निवडा',
+    },
+    {
+      _name: 'txt_from_gallery',
+      __text: 'गॅलरीमधून',
+    },
+    {
+      _name: 'txt_from_camera',
+      __text: 'कॅमेरामधून',
+    },
+    {
+      _name: 'txt_update_language',
+      __text: 'भाषा अपडेट करा',
+    },
+    {
+      _name: 'txt_choose_language_convenience',
+      __text: 'कृपया तुमच्या आवडीची भाषा निवडा.',
+    },
+    {
+      _name: 'txt_minutes',
+      __text: 'मिनिटे',
+    },
+    {
+      _name: 'txt_questions',
+      __text: 'प्रश्न',
+    },
+    {
+      _name: 'txt_question',
+      __text: 'प्रश्न',
+    },
+    {
+      _name: 'txt_please_give_answer',
+      __text: 'कृपया उत्तर निवडा',
+    },
+    {
+      _name: 'txt_time_left',
+      __text: '"शिल्लक वेळ : "',
+    },
+    {
+      _name: 'txt_time_up',
+      __text: 'समयसमाप्त',
+    },
+    {
+      _name: 'txt_mins',
+      __text: 'मिनिटे',
+    },
+    {
+      _name: 'txt_quit_quiz',
+      __text:
+        '"जर तुम्ही परीक्षा सोडली तर तुम्ही पुढील सेक्शनसाठी पात्र ठरणार नाहीत "',
+    },
+    {
+      _name: 'title_activity_maps',
+      __text: 'मॅप',
+    },
+    {
+      _name: 'txt_downloading_certificate',
+      __text: 'सर्टिफिकेट डाउनलोड होत आहे.',
+    },
+    {
+      _name: 'txt_you_have_started_session',
+      __text:
+        "तुम्ही सेशन सुरू केले आहे, अटेंडन्स सेव्ह करण्यासाठी \\'सेशन समाप्त करा\\' वर क्लिक करा",
+    },
+    {
+      _name: 'txt_no_shishya_for_attendance',
+      __text: 'अटेंडन्ससाठी कोणताही शिष्य निवडला नाही.',
+    },
+    {
+      _name: 'txt_no_shishya_available',
+      __text: 'कोणताही शिष्य उपलब्ध नाही.',
+    },
+    {
+      _name: 'txt_choose_video',
+      __text: 'व्हिडिओ निवडा',
+    },
+    {
+      _name: 'txt_chat',
+      __text: 'चॅट',
+    },
+    {
+      _name: 'txt_curriculum_not_available',
+      __text: 'अभ्यासक्रम उपलब्ध नाही.',
+    },
+    {
+      _name: 'txt_shishya_not_available',
+      __text: 'शिष्य उपलब्ध नाही.',
+    },
+    {
+      _name: 'txt_rs',
+      __text: '"₹ "',
+    },
+    {
+      _name: 'error_message_url_not_valid',
+      __text: 'व्हिडिओ URL वैध नाही.',
+    },
+    {
+      _name: 'txt_this_content_is_downloaded',
+      __text: 'हे आधीच डाउनलोड केले आहे.',
+    },
+    {
+      _name: 'txt_unable_to_downloaded',
+      __text:
+        'क्षमा करा, आम्ही ही फाईल डाउनलोड करण्यास असमर्थ आहोत. कृपया नंतर पुन्हा प्रयत्न करा.',
+    },
+    {
+      _name: 'txt_download_success',
+      __text: 'फाईल यशस्वीरित्या डाउनलोड झाली आहे!',
+    },
+    {
+      _name: 'txt_downloading_media',
+      __text: 'फाईल्स डाउनलोड होत आहेत.',
+    },
+    {
+      _name: 'txt_approved_expenses',
+      __text: 'मंजूर एक्सपेन्सेस',
+    },
+    {
+      _name: 'txt_description',
+      __text: 'वर्णन',
+    },
+    {
+      _name: 'txt_date',
+      __text: 'तारीख',
+    },
+    {
+      _name: 'txt_amount',
+      __text: 'रक्कम',
+    },
+    {
+      _name: 'txt_total_amount',
+      __text: '"एकूण रक्कम "',
+    },
+    {
+      _name: 'txt_details_saved_on_local_storage',
+      __text: 'तपशील तुमच्या स्टोरेजमध्ये सेव्ह केला आहे.',
+    },
+    {
+      _name: 'txt_details_not_saved',
+      __text:
+        'क्षमा करा, आम्ही तुमच्या स्टोरेजमध्ये तपशील सेव्ह करण्यास असमर्थ आहोत.',
+    },
+    {
+      _name: 'txt_sync_with_server',
+      __text: 'डाटा सिंक करा',
+    },
+    {
+      _name: 'txt_based_on_reviews',
+      __text: '%s रिव्ह्यूजवर आधारित.',
+    },
+    {
+      _name: 'txt_based_on_review',
+      __text: '%s रिव्ह्यूवर आधारित.',
+    },
+    {
+      _name: 'txt_user_details_not_available',
+      __text: 'यूजर तपशील उपलब्ध नाही.',
+    },
+    {
+      _name: 'txt_data_not_available',
+      __text: 'कोणताही डाटा उपलब्ध नाही.',
+    },
+    {
+      _name: 'txt_shishya_under_guidance',
+      __text: 'शिष्याची तुमच्या मार्गदर्शनाखाली नोंदणी केली आहे',
+    },
+    {
+      _name: 'txt_shishyas_under_guidance',
+      __text: 'शिष्यांची तुमच्या मार्गदर्शनाखाली नोंदणी केली आहे',
+    },
+    {
+      _name: 'txt_yes',
+      __text: 'होय',
+    },
+    {
+      _name: 'txt_logout_msg',
+      __text: 'तुम्हाला लॉग-आऊट करण्याची खात्री आहे का?',
+    },
+    {
+      _name: 'txt_copied_to_clipboard',
+      __text: 'क्लिपबोर्डवर कॉपी केले.',
+    },
+    {
+      _name: 'txt_refer_message',
+      __text:
+        '"नमस्कार, सादर आहे महत्त्वपूर्ण शैक्षणिक ॲप जे तुमच्यासाठी उपयुक्त आहे. कृपया त्यास इंस्टॉल करा आणि हा रेफरल कोड वापरा : "',
+    },
+    {
+      _name: 'txt_share_message',
+      __text:
+        '"नमस्कार, सादर आहे महत्त्वपूर्ण शैक्षणिक ॲप जे तुमच्यासाठी उपयुक्त आहे. कृपया त्यास इंस्टॉल करा."',
+    },
+    {
+      _name: 'txt_course_completed',
+      __text: 'कोर्स पूर्ण.',
+    },
+    {
+      _name: 'txt_please_record_audio',
+      __text: 'कृपया ऑडिओ रेकॉर्ड करा.',
+    },
+    {
+      _name: 'txt_please_record_video',
+      __text: 'कृपया व्हिडिओ निवडा किंवा रेकॉर्ड करा.',
+    },
+    {
+      _name: 'txt_revie_submitted',
+      __text: 'रिव्ह्यू सबमिट केला.',
+    },
+    {
+      _name: 'txt_this_content_is_updated',
+      __text: 'कंटेंट यशस्वीरित्या अपडेट केले.',
+    },
+    {
+      _name: 'default_notification_channel_id',
+      __text: 'bimapaathshala_channel',
+    },
+    {
+      _name: 'fcm_message',
+      __text: 'नवीन मेसेज',
+    },
+    {
+      _name: 'txt_search_guru',
+      __text: 'गुरु शोधा',
+    },
+    {
+      _name: 'txt_guru_list',
+      __text: 'गुरु लिस्ट',
+    },
+    {
+      _name: 'txt_guru_under_guidance',
+      __text: 'गुरु',
+    },
+    {
+      _name: 'txt_gurus_under_guidance',
+      __text: 'गुरु',
+    },
+    {
+      _name: 'txt_my_guru',
+      __text: 'माझे गुरु',
+    },
+    {
+      _name: 'txt_please_enter_mobile_number',
+      __text: 'कृपया तुमचा मोबाईल नंबर एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_valid_mobile_number',
+      __text: 'कृपया तुमचा वैध मोबाईल नंबर एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_firstname',
+      __text: 'कृपया तुमचे पहिले नाव एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_last_name',
+      __text: 'कृपया तुमचे आडनाव एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_adharcard_no',
+      __text: 'कृपया आधार कार्ड नंबर एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_valid_adharcard_no',
+      __text: 'कृपया वैध आधार कार्ड नंबर एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_email_address',
+      __text: 'कृपया ईमेल ॲड्रेस एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_valid_email_address',
+      __text: 'कृपया वैध ईमेल ॲड्रेस एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_occupation',
+      __text: 'कृपया व्यवसाय एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_date_of_birth',
+      __text: 'कृपया जन्मतारीख एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_age',
+      __text: 'कृपया तुमचे वय एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_marital_status',
+      __text: 'कृपया तुमची वैवाहिक स्थिती एन्टर करा.',
+    },
+    {
+      _name: 'txt_enter_otp',
+      __text: 'कृपया OTP एन्टर करा.',
+    },
+    {
+      _name: 'txt_enter_digit_otp',
+      __text: 'कृपया OTP एन्टर करा.',
+    },
+    {
+      _name: 'txt_resend',
+      __text: 'कोड पुन्हा पाठवा',
+    },
+    {
+      _name: 'txt_choose_profile_pic',
+      __text: 'प्रोफाईल फोटो निवडा.',
+    },
+    {
+      _name: 'txt_choose_adhar_card',
+      __text: 'आधार कार्ड फोटो निवडा',
+    },
+    {
+      _name: 'txt_till_',
+      __text: '%s पर्यंत',
+    },
+    {
+      _name: 'txt_no_internet_exam_msg',
+      __text:
+        'परीक्षा देण्यासाठी तुमच्याकडे ॲक्टिव्ह इंटरनेट कनेक्शन असणे आवश्यक आहे.',
+    },
+    {
+      _name: 'txt_please_enter_title',
+      __text: 'कृपया शीर्षक एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_date_time',
+      __text: 'कृपया तारीख आणि वेळ एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_amount',
+      __text: 'कृपया रक्कम एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_category',
+      __text: 'कृपया एक्सपेन्स कॅटेगरी एन्टर करा.',
+    },
+    {
+      _name: 'txt_choose_bill',
+      __text: 'कृपया बिल निवडा.',
+    },
+    {
+      _name: 'txt_please_enter_valid_adharcard',
+      __text: 'कृपया आधार कार्ड एन्टर करा.',
+    },
+    {
+      _name: 'txt_no_viewer_to_view_file',
+      __text: 'ही फाईल पाहण्यासाठी कोणताही व्ह्यूवर नाही.',
+    },
+    {
+      _name: 'txt_unable_to_create_channel',
+      __text: 'चॅनेल तयार करण्यास असमर्थ.',
+    },
+    {
+      _name: 'txt_shishya_list',
+      __text: 'शिष्य लिस्ट',
+    },
+    {
+      _name: 'no_notifications',
+      __text: 'कोणताही नोटिफिकेशन डाटा उपलब्ध नाही.',
+    },
+    {
+      _name: 'no_notifications_msg',
+      __text: 'कोणतेही नोटिफिकेशन उपलब्ध नाही.',
+    },
+    {
+      _name: 'no_upcoming_session',
+      __text: 'कोणतेही आगामी सेशन नाही',
+    },
+    {
+      _name: 'no_completed_session',
+      __text: 'कोणतेही पूर्ण केलेले सेशन नाही.',
+    },
+    {
+      _name: 'no_certificate_message',
+      __text:
+        'तुमच्याकडे अद्याप कोणतेही सर्टिफिकेट नाही. कृपया सर्टिफिकेट मिळवण्यासाठी कोर्स पूर्ण करा.',
+    },
+    {
+      _name: 'no_expense_data',
+      __text: 'एक्सपेन्स डाटा उपलब्ध नाही.',
+    },
+    {
+      _name: 'no_attendance_log',
+      __text: 'अटेंडन्स लॉग उपलब्ध नाही.',
+    },
+    {
+      _name: 'txt_new_message',
+      __text: 'नवीन मेसेज, प्रेषक',
+    },
+    {
+      _name: 'txt_welcome',
+      __text: 'स्वागत आहे',
+    },
+    {
+      _name: 'txt_data_not_available_leaderboard',
+      __text:
+        'तुम्ही कदाचित लीडरबोर्डवर पहिले असाल, त्वरा करा आणि आत्ताच आमची असेसमेंट पास व्हा!',
+    },
+    {
+      _name: 'txt_please_wait_for_internet_to_upload_bill',
+      __text:
+        'तुम्ही ऑफलाईन असताना बिल अपलोड करू शकत नाही. नंतर पुन्हा प्रयत्न करा.',
+    },
+    {
+      _name: 'txt_ok',
+      __text: 'ओके',
+    },
+    {
+      _name: 'txt_time_over_message',
+      __text: 'समयसमाप्ती. चांगला प्रयत्न.',
+    },
+    {
+      _name: 'txt_record',
+      __text: 'रेकॉर्ड',
+    },
+    {
+      _name: 'txt_stop_record',
+      __text: 'रेकॉर्डिंग थांबवा',
+    },
+    {
+      _name: 'txt_play',
+      __text: 'प्ले',
+    },
+    {
+      _name: 'txt_stop',
+      __text: 'थांबवा',
+    },
+    {
+      _name: 'txt_review_submitted',
+      __text: 'रिव्ह्यू सबमिट केला.',
+    },
+    {
+      _name: 'txt_view_courses',
+      __text: 'कोर्सेस पाहा',
+    },
+    {
+      _name: 'txt_choose_country',
+      __text: 'देश निवडा',
+    },
+    {
+      _name: 'txt_india',
+      __text: 'भारत',
+    },
+    {
+      _name: 'txt_south_africa',
+      __text: 'दक्षिण आफ्रिका',
+    },
+    {
+      _name: 'txt_sri_lanka',
+      __text: 'श्रीलंका',
+    },
+    {
+      _name: 'txt_bangladesh',
+      __text: 'बांगलादेश',
+    },
+    {
+      _name: 'txt_indonesia',
+      __text: 'इंडोनेशिया',
+    },
+    {
+      _name: 'txt_session_detail_updated',
+      __text: 'सेशन तपशील यशस्वीरित्या अपडेट केला आहे.',
+    },
+    {
+      _name: 'txt_session_download_success',
+      __text: 'सेशन तपशील यशस्वीरित्या डाउनलोड केला आहे.',
+    },
+    {
+      _name: 'txt_article_updated',
+      __text: 'आर्टिकल तपशील यशस्वीरित्या अपडेट केला आहे.',
+    },
+    {
+      _name: 'txt_article_download',
+      __text: 'आर्टिकल तपशील यशस्वीरित्या डाउनलोड केला आहे.',
+    },
+    {
+      _name: 'txt_video_updated',
+      __text: 'व्हिडिओ तपशील यशस्वीरित्या अपडेट केला आहे.',
+    },
+    {
+      _name: 'txt_video_download',
+      __text: 'व्हिडिओ तपशील यशस्वीरित्या डाउनलोड केला आहे.',
+    },
+    {
+      _name: 'txt_course_updated',
+      __text: 'कोर्स तपशील यशस्वीरित्या अपडेट केला आहे.',
+    },
+    {
+      _name: 'txt_course_download',
+      __text: 'कोर्स तपशील यशस्वीरित्या डाउनलोड केला आहे.',
+    },
+    {
+      _name: 'txt_no_expense_data_available_to_export',
+      __text: 'एक्स्पोर्ट करण्यासाठी कोणताही एक्सपेन्स डाटा नाही.',
+    },
+    {
+      _name: 'txt_no_attendance_to_export',
+      __text: 'एक्स्पोर्ट करण्यासाठी कोणताही अटेंडन्स डाटा नाही.',
+    },
+    {
+      _name: 'txt_sync_started_with_server',
+      __text: 'सर्वरसह सिंक सुरू झाले आहे.',
+    },
+    {
+      _name: 'txt_recording',
+      __text: 'रेकॉर्डिंग प्ले होत आहे.',
+    },
+    {
+      _name: 'txt_recording_stopped',
+      __text: 'रेकॉर्डिंग थांबले आहे.',
+    },
+    {
+      _name: 'txt_recording_started',
+      __text: 'रेकॉर्डिंग सुरू झाले आहे.',
+    },
+    {
+      _name: 'txt_please_complete_section',
+      __text: 'कृपया पुढील सेक्शन अनलॉक करण्यासाठी हे सेक्शन पूर्ण करा.',
+    },
+    {
+      _name: 'txt_pending_assessment',
+      __text: 'प्रलंबित असेसमेंट',
+    },
+    {
+      _name: 'txt_otp_retry_failed',
+      __text: 'OTP पाठविणे अयशस्वी.',
+    },
+    {
+      _name: 'txt_otp_retry_success',
+      __text: 'OTP यशस्वीरित्या पाठविला आहे.',
+    },
+    {
+      _name: 'txt_invalid_otp',
+      __text: 'कृपया वैध OTP एन्टर करा.',
+    },
+    {
+      _name: 'txt_unable_to_send_review',
+      __text: 'रिव्ह्यू सबमिट करण्यास असमर्थ.',
+    },
+    {
+      _name: 'txt_unable_to_submit_quiz',
+      __text: 'क्विझ सबमिट करण्यास असमर्थ.',
+    },
+    {
+      _name: 'txt_no_assessment',
+      __text: 'आम्ही असेसमेंट तपशील प्राप्त करण्यास असमर्थ आहोत.',
+    },
+    {
+      _name: 'txt_no_data_available',
+      __text: 'कोणताही डाटा उपलब्ध नाही.',
+    },
+    {
+      _name: 'txt_unable_to_register',
+      __text: 'क्षमा करा, आम्ही तुमचे अकाउंट रजिस्टर करण्यास असमर्थ आहोत.',
+    },
+    {
+      _name: 'txt_unable_to_update_account',
+      __text: 'क्षमा करा, आम्ही तुमचे तपशील अपडेट करण्यास असमर्थ आहोत.',
+    },
+    {
+      _name: 'txt_shishyas_course_watch_counter',
+      __text: '%s शिष्यांनी हा कोर्स पाहिला आहे.',
+    },
+    {
+      _name: 'txt_shishya_course_watch_counter',
+      __text: '%s शिष्याने हा कोर्स पाहिला आहे.',
+    },
+    {
+      _name: 'txt_shishya_are_attending_session',
+      __text: '%s शिष्य सेशन अटेंड करीत आहे.',
+    },
+    {
+      _name: 'txt_shishyas_are_attending_session',
+      __text: '%s शिष्य सेशन अटेंड करीत आहेत.',
+    },
+    {
+      _name: 'txt_profile_updated',
+      __text: 'प्रोफाईल यशस्वीरित्या अपडेट केला.',
+    },
+    {
+      _name: 'txt_data_not_available_session',
+      __text: 'सेशन डाटा उपलब्ध नाही',
+    },
+    {
+      _name: 'no_article_message',
+      __text: 'कोणतेही आर्टिकल उपलब्ध नाही.',
+    },
+    {
+      _name: 'no_course_message',
+      __text: 'कोणताही कोर्स उपलब्ध नाही.',
+    },
+    {
+      _name: 'no_video_message',
+      __text: 'कोणताही व्हिडिओ उपलब्ध नाही',
+    },
+    {
+      _name: 'txt_session_end_successfully',
+      __text: 'सेशन यशस्वीरित्या संपले आहे.',
+    },
+    {
+      _name: 'txt_session_end_failed',
+      __text: 'सेशन समाप्त करण्यास असमर्थ.',
+    },
+    {
+      _name: 'txt_to_be_launched_soon',
+      __text: 'लवकरच येत आहे',
+    },
+    {
+      _name: 'txt_you_can_not_start_day_again',
+      __text: "तुम्ही \\'दिवस सुरू करा\\' कृती पुन्हा करू शकत नाही.",
+    },
+    {
+      _name: 'txt_view_more',
+      __text: 'अधिक पाहा',
+    },
+    {
+      _name: 'txt_view_less',
+      __text: 'कमी पाहा',
+    },
+    {
+      _name: 'txt_difficult_to_understand',
+      __text: 'समजण्यास कठीण.',
+    },
+    {
+      _name: 'txt_too_fast',
+      __text: 'खूपच जलद.',
+    },
+    {
+      _name: 'txt_other',
+      __text: 'अन्य',
+    },
+    {
+      _name: 'txt_shishya_already_added_session',
+      __text: 'हा शिष्य सेशनमध्ये यापूर्वीच ॲड केलेला आहे.',
+    },
+    {
+      _name: 'txt_no_match_found',
+      __text: 'कोणतेही जुळणारे आढळले नाही.',
+    },
+    {
+      _name: 'txt_expenses_added_success',
+      __text: 'एक्सपेन्स यशस्वीरित्या ॲड केला.',
+    },
+    {
+      _name: 'txt_expenses_added_failed',
+      __text: 'एक्सपेन्स ॲड करण्यास असमर्थ.',
+    },
+    {
+      _name: 'txt_shishya_already_added',
+      __text: 'शिष्य यापूर्वीच ॲड केला आहे.',
+    },
+    {
+      _name: 'txt_shishya_have_attend_session',
+      __text: 'शिष्याने हे सेशन अटेंड केले आहे',
+    },
+    {
+      _name: 'txt_shishyas_have_attend_session',
+      __text: 'शिष्यांनी हे सेशन अटेंड केले आहे',
+    },
+    {
+      _name: 'txt_can_not_start_session_zero_shishya',
+      __text:
+        'या सेशनमध्ये कोणताही शिष्य ॲड केलेला नाही त्यामुळे तुम्हाला सेशन सुरू करता येणार नाही.',
+    },
+    {
+      _name: 'txt_pending_assessment_message',
+      __text: 'पुढील %s अनलॉक करण्यासाठी, कृपया पाहा %s.',
+    },
+    {
+      _name: 'txt_it_seems_sanchalak',
+      __text:
+        'असे दिसून येत आहे की तुमचा तपशील संचालककडे रजिस्टर्ड आहे. कृपया ॲडमिनशी संपर्क साधा.',
+    },
+    {
+      _name: 'no_attended_session',
+      __text: 'कोणतेही अटेंड केलेले सेशन नाही.',
+    },
+    {
+      _name: 'txt_add_more_details',
+      __text: 'अधिक तपशील ॲड करा',
+    },
+    {
+      _name: 'txt_please_enter_valid_pincode',
+      __text: 'कृपया वैध पिनकोड एन्टर करा.',
+    },
+    {
+      _name: 'txt_please_enter_pincode',
+      __text: 'कृपया पिनकोड एन्टर करा.',
+    },
+    {
+      _name: 'txt_can_not_start_session_before_date',
+      __text: 'तुम्ही सेशन तारखेपूर्वी सेशन सुरू करू शकत नाही.',
+    },
+    {
+      _name: 'txt_video_not_available',
+      __text: 'व्हिडिओ उपलब्ध नाही.',
+    },
+    {
+      _name: 'txt_audio_not_available',
+      __text: 'ऑडिओ उपलब्ध नाही.',
+    },
+    {
+      _name: 'txt_file_not_available',
+      __text: 'फाईल उपलब्ध नाही.',
+    },
+    {
+      _name: 'txt_share_course_heading',
+      __text: '"नमस्कार, खालील कोर्स तपासण्यासाठी पाहा "',
+    },
+    {
+      _name: 'txt_share_session_heading',
+      __text: '"नमस्कार, खालील सेशन तपासण्यासाठी पाहा "',
+    },
+    {
+      _name: 'txt_share_article_heading',
+      __text: '"नमस्कार, खालील आर्टिकल तपासण्यासाठी पाहा "',
+    },
+    {
+      _name: 'txt_share_video_heading',
+      __text: '"नमस्कार, खालील व्हिडिओ तपासण्यासाठी पाहा "',
+    },
+    {
+      _name: 'txt_start_course',
+      __text: 'कोर्स सुरू करा',
+    },
+    {
+      _name: 'txt_next',
+      __text: 'पुढील',
+    },
+    {
+      _name: 'txt_admission',
+      __text: 'ॲडमिशन घ्या',
+    },
+    {
+      _name: 'txt_welcome_to_bima',
+      __text: 'सुरक्षेचे शिक्षण\\nबीमा पाठशाला',
+    },
+    {
+      _name: 'txt_welcome_to_bima_desc',
+      __cdata:
+        'बीमा पाठशाला संरक्षित आर्थिक भविष्य असावे यादृष्टीने गरजूंना मोफत आर्थिक साक्षरता आणि शिक्षण देण्याचे ध्येय बाळगून आहे.',
+    },
+    {
+      _name: 'txt_learn_in_lang',
+      __text: '"तुमच्या स्वतःच्या भाषेत शिका"',
+    },
+    {
+      _name: 'txt_learn_in_lang_desc',
+      __cdata:
+        'बीमा पाठशाला हा बहुभाषिक प्लॅटफॉर्म असून येथे व्हिडिओ लेक्चर्स, ऑडिओ बुक्स आणि ई-नोट्स स्वरुपात कोर्सेस उपलब्ध आहेत.',
+    },
+    {
+      _name: 'txt_admission_process',
+      __cdata: '"आमची मोफत आणि जलद ॲडमिशन प्रक्रिया"',
+    },
+    {
+      _name: 'txt_admission_process_desc',
+      __cdata:
+        'आमच्या कोर्सेसचा ॲक्सेस मिळवण्यासाठी पाठशालामध्ये तुमचे व तुमच्या कुटुंबाचे ॲडमिशन घ्या. अध्ययन सुरू करण्यासाठी नाव, नंबर आणि पिनकोड एन्टर करा. कोणतेही क्रेडिट कार्ड / पेमेंट्सची आवश्यकता नाही.',
+    },
+    {
+      _name: 'txt_showcase_download_title',
+      __text: 'कोर्स डाउनलोड करा',
+    },
+    {
+      _name: 'txt_showcase_download_desc',
+      __text:
+        "कोर्स डाउनलोड करण्यासाठी \\'डाउनलोड\\' बटनावर क्लिक करा आणि इंटरनेट कनेक्शन नसतानाही ते पाहा.",
+    },
+    {
+      _name: 'txt_showcase_section_title',
+      __text: 'सेक्शन्स',
+    },
+    {
+      _name: 'txt_showcase_section_desc',
+      __text: 'कोर्ससाठी विविध सेक्शन/अभ्यासक्रम पाहा.',
+    },
+    {
+      _name: 'txt_showcase_start_title',
+      __text: 'कोर्स सुरू करा',
+    },
+    {
+      _name: 'txt_showcase_start_desc',
+      __text: "कोर्स कंटेंट पाहण्यासाठी \\'कोर्स सुरू करा\\' वर क्लिक करा.",
+    },
+    {
+      _name: 'txt_showcase_certificate_title',
+      __text: 'सर्टिफिकेट',
+    },
+    {
+      _name: 'txt_showcase_certificate_desc',
+      __text: 'सर्टिफिकेट आणि विविध असेसमेंट्स पाहण्यासाठी येथे क्लिक करा.',
+    },
+    {
+      _name: 'txt_showcase_section_curriculum_desc',
+      __text:
+        'व्हिडिओ आणि ऑडिओ पाहण्यासाठी विविध सेक्शन विस्तृत करा आणि कोलॅप्स करा.',
+    },
+    {
+      _name: 'txt_showcase_section_curriculum_title',
+      __text: 'अभ्यासक्रम',
+    },
+    {
+      _name: 'txt_showcase_assessment_title',
+      __text: 'क्विझ',
+    },
+    {
+      _name: 'txt_showcase_assessment_desc',
+      __text: 'कोर्सचे सर्टिफिकेट मिळवण्यासाठी विविध असेसमेंट्स द्या.',
+    },
+    {
+      _name: 'txt_showcase_video_title',
+      __text: 'आमच्या व्हिडिओ लेक्चर्समधून शिका',
+    },
+    {
+      _name: 'txt_showcase_chat_title',
+      __text: 'गुरुसह चॅट करा',
+    },
+    {
+      _name: 'txt_showcase_chat_desc',
+      __text: 'गुरुसह चॅट सुरू करण्यास येथे टॅप करा.',
+    },
+    {
+      _name: 'txt_and',
+      __text: 'आणि',
+    },
+    {
+      _name: 'txt_by_signing_up',
+      __text: 'साईन-अप केल्यावर तुम्हाला मान्य असतील आमच्या',
+    },
+    {
+      _name: 'txt_terms',
+      __text: 'अटी',
+    },
+    {
+      _name: 'txt_privacy_policy',
+      __text: 'प्रायव्हसी पॉलिसी',
+    },
+    {
+      _name: 'txt_token_expired_please_relogin',
+      __text: 'कृपया पुन्हा लॉग-इन करा.',
+    },
+    {
+      _name: 'txt_agree',
+    },
+    {
+      _name: 'txt_change_language_message',
+      __text: 'आपण सेटिंग मधून भाषा बदलू शकता',
+    },
+    {
+      _name: 'txt_go_to_settings',
+      __text: 'सेटिंग्ज वर जा',
+    },
+    {
+      _name: 'txt_telugu',
+      __text: 'Telugu',
+    },
+    {
+      _name: 'txt_oriya',
+      __text: 'Oriya',
+    },
+    {
+      _name: 'txt_assamese',
+      __text: 'Assamese',
+    },
+    {
+      _name: 'txt_assessment_quiz',
+      __text: 'चाचणी',
+    },
+    {
+      _name: 'txt_restart_quiz',
+      __text: 'आपण ही चाचणी आधीच पास केली आहे. आपण पुन्हा प्रयत्न करू इच्छिता?',
+    },
   ],
-  dependent: [
-    ' 0 ',
-    ' 1 ',
-    ' 2 ',
-    ' 3 ',
-    ' 4 ',
-    ' 5 ',
-    ' 6 ',
-    ' 7 ',
-    ' 8 ',
-    ' 9 ',
-    '10 ',
+  stringArray: [
+    {
+      item: ['स्मॉल', 'मीडियम', 'लार्ज', 'एक्स्ट्रा लार्ज'],
+      _name: 'font_size',
+    },
+    {
+      item: [
+        'शेतकरी',
+        'अकाउंटंट',
+        'ड्रायव्हर',
+        'क्लीनर',
+        'बांधकाम मजूर',
+        'विद्यार्थी',
+        'मच्छीमार',
+        'नर्स',
+        'ऑफिस क्लर्क',
+        'सेल्सपर्सन',
+        'शिलाई मशीन ऑपरेटर',
+        'दुकानदार',
+        'टेलर',
+        'शिक्षक',
+        'भाजीपाला तोडणारा',
+        'भाजीपाला वेचक',
+        'वेटर',
+        'अन्य',
+      ],
+      _name: 'occupation',
+    },
+    {
+      item: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      _name: 'dependent',
+    },
+    {
+      item: ['विवाहित', 'अविवाहित'],
+      _name: 'maritalstatus',
+    },
+    {
+      item: ['हिंदी', 'इंग्रजी', 'गुजराती', 'मराठी', 'अन्य'],
+      _name: 'mothertonge',
+    },
+    {
+      item: ['ट्रॅव्हल', 'फूड', 'अन्य'],
+      _name: 'expense_category',
+    },
   ],
-  maritalstatus: ['विवाहित', 'अविवाहित'],
-  mothertonge: ['हिंदी', 'इंग्रजी', 'गुजराती', 'मराठी', 'इतर'],
-  expense_category: ['प्रवास', 'अन्न', 'इतर'],
 };

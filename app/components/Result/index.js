@@ -8,21 +8,12 @@
 import React, { memo, Fragment } from 'react';
 import Button from '@material-ui/core/Button';
 import { ResultContainer } from './style';
-import { language } from '../../services/CommonSetterGetter';
+import { languageString } from '../../services/CommonSetterGetter';
 import retryExam from '../../images/retryExam.svg';
 import congrats from '../../images/congrats.svg';
 
 function Result(props) {
   const { type, certificate } = props || {};
-  const {
-    txt_results,
-    txt_failed_course_message,
-    txt_another_attempt,
-    txt_next_section,
-    navigation_drawer_close,
-    txt_result_congratulations,
-    txt_succesfully_completed_course,
-  } = language() || {};
   return (
     <ResultContainer>
       <div className="TH">
@@ -40,7 +31,9 @@ function Result(props) {
             />
           </svg>
         </span>
-        <span className="text">{txt_results.toUpperCase()}</span>
+        <span className="text">
+          {languageString('txt_results').toUpperCase()}
+        </span>
       </div>
       <div className="BC">
         <div className="BC_content">
@@ -50,7 +43,7 @@ function Result(props) {
                 <img src={retryExam} alt="" title="" />
               </div>
               <h4>TRY AGAIN</h4>
-              <p>{txt_failed_course_message}</p>
+              <p>{languageString('txt_failed_course_message')}</p>
               <Button
                 variant="contained"
                 color="primary"
@@ -72,10 +65,12 @@ function Result(props) {
                     />
                   </svg>
                 </i>
-                <span>{txt_another_attempt}</span>
+                <span>{languageString('txt_another_attempt')}</span>
               </Button>
               <span className="closeText">
-                <a href="/home">{navigation_drawer_close.toUpperCase()}</a>
+                <a href="/home">
+                  {languageString('navigation_drawer_close').toUpperCase()}
+                </a>
               </span>
             </Fragment>
           ) : null}
@@ -85,7 +80,7 @@ function Result(props) {
                 <img src={congrats} alt="" title="" />
               </div>
               <h4>CONGRATS</h4>
-              <p>{txt_failed_course_message}</p>
+              <p>{languageString('txt_failed_course_message')}</p>
               <Button
                 variant="contained"
                 color="primary"
@@ -108,12 +103,18 @@ function Result(props) {
                   </svg>
                 </i>
                 <span>
-                  {['failed'].includes(type) ? txt_another_attempt : null}
-                  {['passed'].includes(type) ? txt_next_section : null}
+                  {['failed'].includes(type)
+                    ? languageString('txt_another_attempt')
+                    : null}
+                  {['passed'].includes(type)
+                    ? languageString('txt_next_section')
+                    : null}
                 </span>
               </Button>
               <span className="closeText">
-                <a href="/home">{navigation_drawer_close.toUpperCase()}</a>
+                <a href="/home">
+                  {languageString('navigation_drawer_close').toUpperCase()}
+                </a>
               </span>
             </Fragment>
           ) : null}
@@ -122,8 +123,8 @@ function Result(props) {
               <div className="shape">
                 <img src={congrats} alt="" title="" />
               </div>
-              <h4>{txt_result_congratulations}</h4>
-              <p>{txt_succesfully_completed_course}</p>
+              <h4>{languageString('txt_result_congratulations')}</h4>
+              <p>{languageString('txt_succesfully_completed_course')}</p>
               <Button
                 variant="contained"
                 color="primary"
@@ -146,12 +147,18 @@ function Result(props) {
                   </svg>
                 </i>
                 <span>
-                  {['failed'].includes(type) ? txt_another_attempt : null}
-                  {['passed'].includes(type) ? txt_next_section : null}
+                  {['failed'].includes(type)
+                    ? languageString('txt_another_attempt')
+                    : null}
+                  {['passed'].includes(type)
+                    ? languageString('txt_next_section')
+                    : null}
                 </span>
               </Button>
               <span className="closeText">
-                <a href="/home">{navigation_drawer_close.toUpperCase()}</a>
+                <a href="/home">
+                  {languageString('navigation_drawer_close').toUpperCase()}
+                </a>
               </span>
             </Fragment>
           ) : null}

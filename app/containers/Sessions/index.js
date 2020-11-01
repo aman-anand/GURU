@@ -26,7 +26,7 @@ import SessionBlock from '../../components/SessionBlock/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
 import certificateIllustration from '../../images/certificate_illustration.png';
 import { upcSessionAction, courseAction, attSessionAction } from './actions';
-import { language } from '../../services/CommonSetterGetter';
+import { languageString } from '../../services/CommonSetterGetter';
 // NOTE: Style
 import { SessionContainer } from './style';
 
@@ -141,8 +141,8 @@ export class Sessions extends React.PureComponent {
                     </i>
                     <p className="paraMsg">
                       {['attendsessions'].includes(sessionRadio)
-                        ? language().no_attended_session
-                        : language().no_upcoming_session}
+                        ? languageString('no_attended_session')
+                        : languageString('no_upcoming_session')}
                     </p>
                   </div>
                 ) : null}

@@ -16,14 +16,17 @@ import injectReducer from 'utils/injectReducer';
 import makeSelectSetting from './selectors';
 import reducer from './reducer';
 import Header from '../../components/Header/Loadable';
-import { language, setLoclStoreArry } from '../../services/CommonSetterGetter';
+import {
+  languageString,
+  setLoclStoreArry,
+} from '../../services/CommonSetterGetter';
 import { SettingContainer } from './style';
 
 export class Setting extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      language: 'ENG',
+      language: window.localStorage.getItem('lang') || 'EN',
     };
   }
 
@@ -32,6 +35,7 @@ export class Setting extends React.PureComponent {
       language: e.target.value,
     });
     setLoclStoreArry([{ lang: e.target.value || this.state.language }]);
+    window.location.reload();
   };
 
   render() {
@@ -66,16 +70,16 @@ export class Setting extends React.PureComponent {
             </div>
           </div>
           <p style={{ textAlign: 'center' }}>
-            {language().txt_choose_language_convenience}
+            {languageString('txt_choose_language_convenience')}
           </p>
           <div className="radioWrapper">
-            <label htmlFor="ENG">
+            <label htmlFor="EN">
               <input
                 type="radio"
                 name="language"
-                id="ENG"
-                value="ENG"
-                checked={['ENG'].includes(this.state.language)}
+                id="EN"
+                value="EN"
+                checked={['EN'].includes(this.state.language)}
                 onClick={e => this.languageChange(e)}
               />
               <div className="radioBox">
@@ -93,7 +97,7 @@ export class Setting extends React.PureComponent {
                 onClick={e => this.languageChange(e)}
               />
               <div className="radioBox">
-                <span className="title">{language().txt_hindi}</span>
+                <span className="title">{languageString('txt_hindi')}</span>
                 <span className="icon" />
               </div>
             </label>
@@ -107,7 +111,7 @@ export class Setting extends React.PureComponent {
                 checked={['MH'].includes(this.state.language)}
               />
               <div className="radioBox">
-                <span className="title">{language().txt_marathi}</span>
+                <span className="title">{languageString('txt_marathi')}</span>
                 <span className="icon" />
               </div>
             </label>
@@ -121,7 +125,7 @@ export class Setting extends React.PureComponent {
                 checked={['GU'].includes(this.state.language)}
               />
               <div className="radioBox">
-                <span className="title">{language().txt_gujrati}</span>
+                <span className="title">{languageString('txt_gujrati')}</span>
                 <span className="icon" />
               </div>
             </label>
@@ -132,7 +136,7 @@ export class Setting extends React.PureComponent {
               color="primary"
               className="updateButton"
             >
-              {language().txt_update_language}
+              {languageString('txt_update_language')}
             </Button>
           </div>
         </div>

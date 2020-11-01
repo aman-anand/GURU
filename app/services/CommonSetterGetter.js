@@ -25,17 +25,89 @@ export const getFromLocalStore = key => {
   return object;
 };
 
-export const language = () => {
+// export const language = () => {
+//   let intel;
+//   const lang = window.localStorage.getItem('lang') || 'EN';
+//   if (['EN'].includes(lang)) {
+//     intel = ENG;
+//   } else if (['HI'].includes(lang)) {
+//     intel = HIN;
+//   } else if (['GU'].includes(lang)) {
+//     intel = GUJ;
+//   } else if (['MH'].includes(lang)) {
+//     intel = MHA;
+//   } else {
+//     intel = ENG;
+//   }
+//   return intel;
+// };
+export const languageString = params => {
   let intel;
   const lang = window.localStorage.getItem('lang') || 'EN';
   if (['EN'].includes(lang)) {
-    intel = ENG;
+    const { string } = ENG || {};
+    const findValue = string.find(item => {
+      const { _name: name } = item || {};
+      return name === params;
+    });
+    intel = findValue.__text;
   } else if (['HI'].includes(lang)) {
-    intel = HIN;
+    const { string } = HIN || {};
+    const findValue = string.find(item => {
+      const { _name: name } = item || {};
+      return name === params;
+    });
+    intel = findValue.__text;
   } else if (['GU'].includes(lang)) {
-    intel = GUJ;
+    const { string } = GUJ || {};
+    const findValue = string.find(item => {
+      const { _name: name } = item || {};
+      return name === params;
+    });
+    intel = findValue.__text;
   } else if (['MH'].includes(lang)) {
-    intel = MHA;
+    const { string } = MHA || {};
+    const findValue = string.find(item => {
+      const { _name: name } = item || {};
+      return name === params;
+    });
+    intel = findValue.__text;
+  } else {
+    intel = ENG;
+  }
+  return intel;
+};
+export const languageConfig = params => {
+  let intel;
+  const lang = window.localStorage.getItem('lang') || 'EN';
+  if (['EN'].includes(lang)) {
+    const { stringArray } = ENG || {};
+    const findValue = stringArray.find(item => {
+      const { _name: name } = item || {};
+      return name === params;
+    });
+    intel = findValue.item;
+  } else if (['HI'].includes(lang)) {
+    const { stringArray } = HIN || {};
+    const findValue = stringArray.find(item => {
+      const { _name: name } = item || {};
+      return name === params;
+    });
+    intel = findValue.item;
+  } else if (['GU'].includes(lang)) {
+    const { stringArray } = GUJ || {};
+    const findValue = stringArray.find(item => {
+      const { _name: name } = item || {};
+      return name === params;
+    });
+    intel = findValue.item;
+  } else if (['MH'].includes(lang)) {
+    const { stringArray } = MHA || {};
+    const findValue = stringArray.find(item => {
+      const { _name: name } = item || {};
+      return name === params;
+    });
+    intel = findValue.item;
   } else {
     intel = ENG;
   }

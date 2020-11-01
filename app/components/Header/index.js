@@ -14,7 +14,10 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import { Link } from 'react-router-dom';
 import history from '../../utils/history';
 import { isUserAlreadyLogin } from '../../dataService/Login';
-import { getFromLocalStore } from '../../services/CommonSetterGetter';
+import {
+  getFromLocalStore,
+  languageString,
+} from '../../services/CommonSetterGetter';
 import Notification from '../Notification/Loadable';
 import logoIMG from '../../images/logo.png';
 import hemburger from '../../images/hemburger.png';
@@ -74,7 +77,7 @@ function Header(props) {
                 <path d="M8 0L16 6V18H11V11H5V18H0V6L8 0Z" fill="#403F3F" />
               </svg>
             </i>
-            <span>Home</span>
+            <span>{languageString('txt_home')}</span>
           </Link>
         </li>
         <li>
@@ -99,7 +102,7 @@ function Header(props) {
                 />
               </svg>
             </i>
-            <span>Courses</span>
+            <span>{languageString('txt_courses')}</span>
           </Link>
         </li>
         {isMobile ? (
@@ -126,7 +129,7 @@ function Header(props) {
                     />
                   </svg>
                 </i>
-                <span>Videos</span>
+                <span>{languageString('txt_videos')}</span>
               </Link>
             </li>
             <li>
@@ -151,7 +154,7 @@ function Header(props) {
                     />
                   </svg>
                 </i>
-                <span>Upcoming Sessions</span>
+                <span>{languageString('txt_upcoming_sessions')}</span>
               </Link>
             </li>
             <li>
@@ -176,7 +179,7 @@ function Header(props) {
                     />
                   </svg>
                 </i>
-                <span>Attend Sessions</span>
+                <span>{languageString('txt_attended_sessions')}</span>
               </Link>
             </li>
           </Fragment>
@@ -205,7 +208,7 @@ function Header(props) {
                   />
                 </svg>
               </i>
-              <span>Sessions</span>
+              <span>{languageString('txt_sessions')}</span>
             </Link>
           </li>
         )}
@@ -231,7 +234,7 @@ function Header(props) {
                 />
               </svg>
             </i>
-            <span>Certificate</span>
+            <span>{languageString('txt_certificate')}</span>
           </Link>
         </li>
         {isMobile ? (
@@ -258,7 +261,7 @@ function Header(props) {
                     />
                   </svg>
                 </i>
-                <span>LEADERBOARD</span>
+                <span>{languageString('txt_leaderboard')}</span>
               </Link>
             </li>
             <li>
@@ -277,7 +280,7 @@ function Header(props) {
                     />
                   </svg>
                 </i>
-                <span>CHAT WITH GURU</span>
+                <span>{languageString('txt_chat_with_guru')}</span>
               </Link>
             </li>
             <li>
@@ -296,7 +299,7 @@ function Header(props) {
                     />
                   </svg>
                 </i>
-                <span>FEEDBACK</span>
+                <span>{languageString('txt_feedback')}</span>
               </Link>
             </li>
             <li>
@@ -315,7 +318,7 @@ function Header(props) {
                     />
                   </svg>
                 </i>
-                <span>SHARE</span>
+                <span>{languageString('txt_share')}</span>
               </Link>
             </li>
             <li>
@@ -334,7 +337,7 @@ function Header(props) {
                     />
                   </svg>
                 </i>
-                <span>SETTINGS</span>
+                <span>{languageString('txt_settings')}</span>
               </Link>
             </li>
             <li>
@@ -353,7 +356,7 @@ function Header(props) {
                     />
                   </svg>
                 </i>
-                <span>LOGOUT</span>
+                <span>{languageString('txt_logout')}</span>
               </a>
             </li>
           </Fragment>
@@ -463,7 +466,7 @@ function Header(props) {
                           />
                         </svg>
                       </i>
-                      <span>Leaderboard</span>
+                      <span>{languageString('txt_leaderboard')}</span>
                     </Link>
                   </li>
                   <li>
@@ -520,7 +523,7 @@ function Header(props) {
                           />
                         </svg>
                       </i>
-                      <span>Language Setting</span>
+                      <span>{languageString('txt_language_settings')}</span>
                     </Link>
                   </li>
                   <li>
@@ -539,7 +542,7 @@ function Header(props) {
                           />
                         </svg>
                       </i>
-                      <span>Logout</span>
+                      <span>{languageString('txt_logout')}</span>
                     </a>
                   </li>
                 </ul>
@@ -563,12 +566,12 @@ function Header(props) {
       <Dialog open={open} onClose={handleClose}>
         <DialogContent className="sumanta">
           <DialogContentText className="logoutWrapp">
-            <span>Are you sure you want to logout ?</span>
+            <span>{languageString('txt_logout_msg')}</span>
             <Button onClick={handleSucess} variant="contained" color="primary">
-              YES
+              {languageString('txt_yes')}
             </Button>
             <Button onClick={handleClose} color="primary">
-              CANCEL
+              {languageString('txt_cancel')}
             </Button>
           </DialogContentText>
         </DialogContent>

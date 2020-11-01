@@ -12,7 +12,11 @@ import Button from '@material-ui/core/Button';
 import withSizes from 'react-sizes';
 import PropTypes from 'prop-types';
 import { RegistrationContainer } from './style';
-import { language, setLoclStoreArry } from '../../services/CommonSetterGetter';
+import {
+  languageString,
+  languageConfig,
+  setLoclStoreArry,
+} from '../../services/CommonSetterGetter';
 // import cameraIcon from '../../images/cameraIcon.svg';
 
 class Registration extends React.Component {
@@ -169,8 +173,8 @@ class Registration extends React.Component {
                 </div>
                 <div className="_twoRowWrapper">
                   <Field name="occupation" component="select">
-                    <option>{language().txt_occupation_comp}</option>
-                    {language().occupation.map(time => (
+                    <option>{languageString('txt_occupation_comp')}</option>
+                    {languageConfig('occupation').map(time => (
                       <option key={time} value={time}>
                         {time}
                       </option>
@@ -230,7 +234,7 @@ class Registration extends React.Component {
                 <div className="_rowWrapper">
                   <Field name="monthertounge" component="select">
                     <option>Mother Tongue</option>
-                    {language().mothertonge.map(time => (
+                    {languageConfig('mothertonge').map(time => (
                       <option key={time} value={time}>
                         {time}
                       </option>
@@ -242,7 +246,7 @@ class Registration extends React.Component {
                   <div className="fieldWrapper">
                     <Field name="martialstatus" component="select">
                       <option>Marital Status</option>
-                      {language().maritalstatus.map(time => (
+                      {languageConfig('maritalstatus').map(time => (
                         <option key={time} value={time}>
                           {time}
                         </option>
@@ -252,7 +256,7 @@ class Registration extends React.Component {
                   <div className="fieldWrapper">
                     <Field name="dependants" component="select">
                       <option>No. of Dependants</option>
-                      {language().dependent.map(time => (
+                      {languageConfig('dependent').map(time => (
                         <option key={time} value={time}>
                           {time}
                         </option>
@@ -327,7 +331,7 @@ class Registration extends React.Component {
                     disabled={submitting || pristine}
                     className="updateButton"
                   >
-                    {language().txt_update_info}
+                    {languageString('txt_update_info')}
                   </Button>
                 </div>
                 {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
