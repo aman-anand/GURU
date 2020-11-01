@@ -12,9 +12,21 @@ import { ListItemboxContainer } from './style';
 
 function ListItembox(props) {
   const { data, onMethod, arrow } = props || {};
-  const { type, title, durationTime, url, thumb } = data || {};
+  const { type, title, durationTime, url, thumb, youtubeId, blogId } =
+    data || {};
   return (
-    <ListItemboxContainer onClick={() => onMethod({ type, url })}>
+    <ListItemboxContainer
+      onClick={() =>
+        onMethod({
+          type,
+          title,
+          url,
+          thumb,
+          youtubeId,
+          blogId,
+        })
+      }
+    >
       {['video'].includes(type) ? (
         <div className="iconbox video">
           <img src={thumb} alt="" title="" />

@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { Player } from 'video-react';
+// import { Player } from 'video-react';
 import withSizes from 'react-sizes';
 
 import injectReducer from 'utils/injectReducer';
@@ -29,6 +29,7 @@ import Bredcrumb from '../../components/Bredcrumb/Loadable';
 import SectionHeading from '../../components/SectionHeading/Loadable';
 import OptionalHeader from '../../components/OptionalHeader';
 import ListItembox from '../../components/ListItembox';
+import VideoPlayer from '../../components/VideoPlayer/Loadable';
 import { courseAction, sessionDetailsAction } from '../Sessions/actions';
 // NOTE: Style
 import { SessionContainer } from '../Sessions/style';
@@ -151,7 +152,6 @@ export class SessionDetails extends React.PureComponent {
     const { data: detailsData } = details || {};
     const {
       name,
-      coverVideo,
       coverImage,
       description,
       displaySessionDate,
@@ -159,6 +159,7 @@ export class SessionDetails extends React.PureComponent {
       address,
       location,
       curriculum,
+      youtubeId,
     } = detailsData || {};
     const [first] = name ? name.split('') : [];
     const { locality, city, state, pincode } = address || {};
@@ -195,7 +196,13 @@ export class SessionDetails extends React.PureComponent {
             <div className="detailsSessionWrapper">
               {isMobile ? this.tabComponent() : null}
               <div className="imgWraper">
-                <Player playsInline poster={coverImage} src={coverVideo} />
+                {/* <Player playsInline poster={coverImage} src={coverVideo} /> */}
+                <VideoPlayer
+                  data={{
+                    coverImage,
+                    youtubeId,
+                  }}
+                />
               </div>
               {!isMobile ? this.tabComponent() : null}
               <div className="tabdata">

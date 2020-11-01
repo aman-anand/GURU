@@ -16,6 +16,7 @@ import { createStructuredSelector } from 'reselect';
 import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux';
 import withSizes from 'react-sizes';
+import ModalVideo from 'react-modal-video';
 import injectReducer from 'utils/injectReducer';
 
 import SwipeableViews from 'react-swipeable-views';
@@ -30,8 +31,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import Slide from '@material-ui/core/Slide';
+// import Slide from '@material-ui/core/Slide';
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 // import history from '../../utils/history';
 import {
   courseDetailsAction,
@@ -58,7 +61,9 @@ import Result from '../../components/Result/Loadable';
 import defoultProfileImg from '../../images/defoult_profile.png';
 // NOTE: Styles
 import { GuruCoursesDetailsContainer } from './style';
-
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 function TabContainer({ children, dir }) {
   return (
     <Typography className="tabsWrapper" component="div" dir={dir}>
@@ -76,9 +81,10 @@ const styles = theme => ({
     width: 500,
   },
 });
-function Transition(props) {
-  return <Slide direction="up" {...props} />;
-}
+// function Transition(props) {
+//   return <Slide direction="up" {...props} />;
+// }
+
 export class CourseDetails extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -92,6 +98,7 @@ export class CourseDetails extends React.PureComponent {
       congratulation: false,
       startAssesment: '',
       alert: false,
+      snake: false,
     };
     this.store = getFromLocalStore(['token', 'id', 'role', 'expires', 'phone']);
     this.color = Math.floor(Math.random() * 16777215).toString(16);
@@ -123,9 +130,7 @@ export class CourseDetails extends React.PureComponent {
     this.props.dispatch(courseDetailsAction(paramOBJ));
     const parms = {
       page: 1,
-      limit: 4,
-      status: 0,
-      all: true,
+      limit: 3,
     };
     this.props.dispatch(courseAction(parms));
   }
@@ -148,26 +153,48 @@ export class CourseDetails extends React.PureComponent {
     });
   };
 
+  setVideoOpen = () => {
+    this.setState({
+      videoModel: false,
+    });
+  };
+
+  snakeClose = () => {
+    this.setState({
+      snake: false,
+    });
+  };
+
   listOnClickBox = params => {
-    const { type, url } = params || {};
+    console.log('PARAMS', params);
+    const { type, url, youtubeId, blogId } = params || {};
     if (['video'].includes(type)) {
-      this.setState({
-        videoModel: true,
-        url,
-        type,
-      });
-    } else if (['File', 'blog', 'file'].includes(type)) {
-      window.open(url, '_blank');
+      if (youtubeId) {
+        this.setState({
+          videoModel: true,
+          youtubeId,
+          snake: true,
+        });
+      } else {
+        this.setState({
+          snake: true,
+          snakeMsg: 'Video is not avalable',
+        });
+      }
+    } else if (['File', 'blog', 'Blog', 'file'].includes(type)) {
+      if (blogId) {
+        window.open(url, '_blank');
+      }
     } else if (['audio'].includes(type)) {
       this.setState({
         videoModel: true,
-        url,
-        type,
+        // url,
+        // type,
       });
     }
   };
 
-  handleClose = () => {
+  videoModalClose = () => {
     this.setState({ videoModel: false });
   };
 
@@ -265,6 +292,7 @@ export class CourseDetails extends React.PureComponent {
       description,
       sections,
       id,
+      youtubeId,
     } = course || {};
     const {
       comment,
@@ -326,7 +354,13 @@ export class CourseDetails extends React.PureComponent {
               {/* NOTE: All data */}
               <div className="leftBox">
                 <VideoPlayer
-                  data={{ coverImage, coverVideo, courseName, duration }}
+                  data={{
+                    coverImage,
+                    coverVideo,
+                    courseName,
+                    duration,
+                    youtubeId,
+                  }}
                 />
                 <div className="tabsContainer">
                   <AppBar
@@ -513,7 +547,10 @@ export class CourseDetails extends React.PureComponent {
                                         type,
                                         url,
                                         thumb,
+                                        youtubeId: YOU_ID,
+                                        blogId,
                                       } = element || {};
+                                      console.log('element', element);
                                       return (
                                         <ListItembox
                                           data={{
@@ -522,6 +559,8 @@ export class CourseDetails extends React.PureComponent {
                                             durationTime,
                                             url,
                                             thumb,
+                                            youtubeId: YOU_ID,
+                                            blogId,
                                           }}
                                           onMethod={this.listOnClickBox}
                                         />
@@ -611,44 +650,19 @@ export class CourseDetails extends React.PureComponent {
             </div>
           </Fragment>
         ) : null}
-        {/* {isMobile ? <Footer /> : null} */}
-        <Dialog
-          open={this.state.videoModel}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={this.handleClose}
-          aria-labelledby="alert-dialog-slide-title"
-          aria-describedby="alert-dialog-slide-description"
-          className={`${
-            ['video'].includes(this.state.type)
-              ? 'dialogVideoWrapper'
-              : 'dialogAudioWrapper'
-          }`}
-        >
-          <DialogContent
-            className={`${
-              ['video'].includes(this.state.type) ? 'dWrapp' : 'audioWrapp'
-            }`}
-          >
-            {['video'].includes(this.state.type) ? (
-              <iframe
-                id="player"
-                type="text/html"
-                src={`https://www.youtube.com/embed/${
-                  this.state.url
-                }?autoplay=1`}
-                frameBorder="0"
-                title="iframe"
-              />
-            ) : null}
-            {['audio'].includes(this.state.type) ? (
-              <audio controls>
-                <source src={this.state.url} type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-            ) : null}
-          </DialogContent>
-        </Dialog>
+
+        {/* Video Model Start */}
+        {this.state.videoModel && this.state.youtubeId ? (
+          <ModalVideo
+            channel="youtube"
+            autoplay
+            isOpen={this.state.videoModel}
+            videoId={youtubeId}
+            onClose={() => this.setVideoOpen()}
+          />
+        ) : null}
+        {/* Video Model End */}
+
         {/* NOTE: Exam responce */}
         <Dialog open={this.state.alert}>
           <DialogContent className="sumanta">
@@ -664,6 +678,21 @@ export class CourseDetails extends React.PureComponent {
             </DialogContentText>
           </DialogContent>
         </Dialog>
+        {/* Snakebar */}
+        <Snackbar
+          open={this.state.snake}
+          autoHideDuration={2000}
+          onClose={this.snakeClose}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        >
+          <Alert
+            onClose={this.snakeClose}
+            severity="warning"
+            className="successAlert"
+          >
+            {this.state.snakeMsg}
+          </Alert>
+        </Snackbar>
       </GuruCoursesDetailsContainer>
     );
   }

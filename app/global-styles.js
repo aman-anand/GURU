@@ -453,6 +453,6 @@ const GlobalStyle = createGlobalStyle`
   }
   .successAlert {
     align-items: center;
-  }
+  }  
 `;
 export default GlobalStyle;

@@ -80,7 +80,7 @@ class SigninForm extends React.Component {
           <input
             type="number"
             value={mobileNo || number}
-            placeholder="Enter Your Mobile Number"
+            placeholder="Phone Number *"
             name="mobile"
             onChange={e => {
               this.mobileInputChange(e.target.value);

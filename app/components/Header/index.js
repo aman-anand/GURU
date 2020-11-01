@@ -28,9 +28,9 @@ const openNavigate = () => {
   element.classList.add('active');
 };
 
-const openChartBox = () => {
-  document.getElementById('chartBoard').style.visibility = 'visible';
-};
+// const openChartBox = () => {
+//   document.getElementById('chartBoard').style.visibility = 'visible';
+// };
 function Header(props) {
   const [open, setOpen] = useState(false);
   const listCompo = () => {
@@ -396,7 +396,7 @@ function Header(props) {
       <div className="navRight">
         {isUserAlreadyLogin() && !isMobile ? (
           <Fragment>
-            <div
+            {/* <div
               className="chart"
               onClick={() => openChartBox()}
               role="presentation"
@@ -415,7 +415,7 @@ function Header(props) {
                   />
                 </svg>
               </i>
-            </div>
+            </div> */}
             <Notification />
             <div className="myProfileNav">
               <div className="proIcon">

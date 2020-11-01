@@ -33,8 +33,6 @@ export class Course extends React.PureComponent {
     const paramOBJ = {
       page: 1,
       limit: 10,
-      status: 0,
-      all: true,
     };
     this.props.dispatch(courseAction(paramOBJ));
   }
