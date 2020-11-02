@@ -94,6 +94,7 @@ export class VideoDetails extends React.PureComponent {
       thumb: coverImage,
       videoUrl: coverVideo,
       duration,
+      youtubeId,
     } = video || {};
     const { comment } = this.state;
     return (
@@ -110,7 +111,7 @@ export class VideoDetails extends React.PureComponent {
         <div className="container">
           <div className="leftBox">
             <VideoPlayer
-              data={{ coverImage, coverVideo, courseName, duration }}
+              data={{ coverImage, coverVideo, courseName, duration, youtubeId }}
             />
             <div className="_descBox">
               <p className="_desc">{description}</p>
