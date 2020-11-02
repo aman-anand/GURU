@@ -48,7 +48,7 @@ export class LeaderBoard extends React.PureComponent {
     const { user: tUser } = thirdOBJ || {};
     const { profileImage: T_P_IMG, fName: TFN, lName: TLN } = tUser || {};
 
-    window.console.log('Leader board', leadOBJ, topThree);
+    // window.console.log('Leader board', leadOBJ, topThree);
     return (
       <LeaderBoardContainer>
         <Helmet>

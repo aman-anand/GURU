@@ -209,7 +209,7 @@ export class CourseDetails extends React.PureComponent {
         });
       }
     } else if (['audio'].includes(type)) {
-      console.log('URL', url);
+      // console.log('URL', url);
       if (url) {
         this.setState({
           audioModel: true,
@@ -667,7 +667,7 @@ export class CourseDetails extends React.PureComponent {
                           totalSections: sectionsOBJ ? sectionsOBJ.length : 0,
                           totalVideosOBJ,
                           durationOBJ,
-                          coverImageOBJ,
+                          coverImage: coverImageOBJ,
                           _id,
                         };
                         const sticyTwoData = {
@@ -698,7 +698,7 @@ export class CourseDetails extends React.PureComponent {
             channel="youtube"
             autoplay
             isOpen={this.state.videoModel}
-            videoId={youtubeId}
+            videoId={this.state.youtubeId}
             onClose={() => this.setVideoOpen()}
           />
         ) : null}

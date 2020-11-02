@@ -44,8 +44,6 @@ export class ArticleDetails extends React.PureComponent {
     const parms = {
       page: 1,
       limit: 4,
-      status: 0,
-      all: true,
     };
     const paramOBJ = {
       ARTICLE_ID,
@@ -101,7 +99,7 @@ export class ArticleDetails extends React.PureComponent {
                       totalSections: sectionsOBJ ? sectionsOBJ.length : 0,
                       totalVideosOBJ,
                       durationOBJ,
-                      coverImageOBJ,
+                      coverImage: coverImageOBJ,
                       _id,
                     };
                     const sticyTwoData = {

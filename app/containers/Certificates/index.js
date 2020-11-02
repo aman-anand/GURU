@@ -40,8 +40,6 @@ export class Certificates extends React.PureComponent {
     const parms = {
       page: 1,
       limit: 4,
-      status: 0,
-      all: true,
     };
     this.props.dispatch(courseAction(parms));
     this.props.dispatch(certificateAction());
@@ -114,7 +112,7 @@ export class Certificates extends React.PureComponent {
                       sections: sectionsOBJ,
                       duration: durationOBJ,
                       totalVideos: totalVideosOBJ,
-                      coverImage: coverImageOBJ,
+                      coverImage,
                       _id,
                     } = list || {};
                     const courseDataOBJ = {
@@ -122,7 +120,7 @@ export class Certificates extends React.PureComponent {
                       totalSections: sectionsOBJ ? sectionsOBJ.length : 0,
                       totalVideosOBJ,
                       durationOBJ,
-                      coverImageOBJ,
+                      coverImage,
                       _id,
                     };
                     const sticyTwoData = {

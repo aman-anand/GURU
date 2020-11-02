@@ -71,7 +71,7 @@ export class Videos extends React.PureComponent {
                     thumb,
                     _id,
                   };
-                  console.log('ITEM', dataOBJ);
+                  // console.log('ITEM', dataOBJ);
                   return <VideoCard key={_id} dataOBJ={dataOBJ} />;
                 })}
             </div>

@@ -63,7 +63,7 @@ export class Feedback extends React.PureComponent {
     this.setState({
       feedback: values,
     });
-    window.console.log('Value', values);
+    // window.console.log('Value', values);
   };
 
   render() {

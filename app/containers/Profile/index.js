@@ -80,7 +80,7 @@ export class Profile extends React.PureComponent {
   };
 
   submitRegistration = values => {
-    window.console.log('values', values);
+    // window.console.log('values', values);
     const localData = getFromLocalStore([
       'profileImage',
       'rollNumber',
@@ -103,7 +103,7 @@ export class Profile extends React.PureComponent {
     ]);
     const { city, pincode, locality, state } = localData || {};
 
-    console.log('localData', localData);
+    // console.log('localData', localData);
     const jsonObj = {
       ...localData,
       address: { city, pincode, locality, state },
@@ -130,7 +130,7 @@ export class Profile extends React.PureComponent {
     const { isMobile } = this.props || {};
     const { store, profileImage } = this.state;
     const { rollNumber } = store || {};
-    console.log('STORE', store, rollNumber);
+    // console.log('STORE', store, rollNumber);
     return (
       <ProfileContainer>
         <Helmet>

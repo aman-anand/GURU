@@ -86,8 +86,6 @@ export class SessionDetails extends React.PureComponent {
     const parms = {
       page: 1,
       limit: 4,
-      status: 0,
-      all: true,
     };
     this.props.dispatch(courseAction(parms));
   }
@@ -339,7 +337,7 @@ export class SessionDetails extends React.PureComponent {
                       totalSections: sectionsOBJ ? sectionsOBJ.length : 0,
                       totalVideosOBJ,
                       durationOBJ,
-                      coverImageOBJ,
+                      coverImage: coverImageOBJ,
                       _id,
                     };
                     const sticyTwoData = {

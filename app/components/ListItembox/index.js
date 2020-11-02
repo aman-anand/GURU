@@ -14,6 +14,7 @@ function ListItembox(props) {
   const { data, onMethod, arrow } = props || {};
   const { type, title, durationTime, url, thumb, youtubeId, blogId } =
     data || {};
+  // window.console.log('ListItembox', data);
   return (
     <ListItemboxContainer
       onClick={() =>

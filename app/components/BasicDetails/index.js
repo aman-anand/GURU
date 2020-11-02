@@ -89,8 +89,6 @@ class BasicDetails extends React.Component {
         undefined,
       );
     // NOTE: Validateor End
-
-    console.log('language', languageString('txt_update_info'));
     return (
       <BasicDetailsContainer>
         {!isMobile ? (

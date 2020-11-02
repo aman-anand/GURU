@@ -51,7 +51,7 @@ class RegistorFrom extends React.Component {
       phone: props_phone,
       aadharNumber: props_aadh,
     } = formData || {};
-    window.console.log('STATE', this.state);
+    // window.console.log('STATE', this.state);
     return (
       <RegistorFromContainer>
         <h4 className="_hText">Create AN Account</h4>

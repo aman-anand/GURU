@@ -75,7 +75,7 @@ function Exams(props) {
 
   const submitAnswar = () => {
     props.submitQuiz({ answarList, data, attemptID });
-    console.log('SUBMIT', answarList);
+    // console.log('SUBMIT', answarList);
   };
   // window.onbeforeunload = function(evt) {
   //   const message = 'Are you sure you want to leave?';
@@ -92,12 +92,12 @@ function Exams(props) {
   };
   const handleTimeUpSucess = () => {
     setTimeUp(false);
-    console.log('Time Up Modal are closed');
+    // console.log('Time Up Modal are closed');
   };
   const { _id: qusId } = questions[quesAttem] || {};
   window.console.log('DATA', data);
   const percentage = 100 / questions.length;
-  console.log('Percentage', percentage);
+  // console.log('Percentage', percentage);
   return (
     <ExamsContainer percentage={percentage}>
       <div className="topSec">

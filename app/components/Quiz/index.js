@@ -75,12 +75,12 @@ export class Quiz extends React.PureComponent {
         this.submitAnswar();
       }
       // submitAnswar();
-      window.console.log('window.answarList', answarList);
+      // window.console.log('window.answarList', answarList);
     } else {
       this.setState({
         open: true,
       });
-      window.console.log('Please select answar');
+      // window.console.log('Please select answar');
     }
   };
 
@@ -101,7 +101,7 @@ export class Quiz extends React.PureComponent {
     this.setState({
       timeup: false,
     });
-    window.console.log('Time Up Modal are closed');
+    // window.console.log('Time Up Modal are closed');
   };
 
   selectAnswar = params => {
@@ -124,7 +124,7 @@ export class Quiz extends React.PureComponent {
     const { time, title, questions } = startAssesment || {};
     const { _id: qusId } = questions[quesAttem] || {};
     const percentage = 100 / questions.length;
-    window.console.log('timeup', timeup);
+    // window.console.log('timeup', timeup);
     return (
       <QuizContainer percentage={percentage}>
         <div className="topSec">
