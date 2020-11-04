@@ -23,7 +23,9 @@ axios.interceptors.request.use(config => {
   const c = config;
   // const { Authorization } = c.headers;
   const token = window.localStorage.getItem('token');
+  const language = window.localStorage.getItem('lang');
   c.headers.Authorization = `Bearer ${token}`;
+  c.headers.language = language;
   return c;
 });
 axios.interceptors.response.use(response => response, function(error) {

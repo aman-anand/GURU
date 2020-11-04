@@ -103,7 +103,7 @@ class SigninForm extends React.Component {
           <p className="bottomText">
             <span>By signing up. you agree to our</span>
             <span>
-              <a href="/">Tearms</a> and <a href="/">Privacy Policy</a>
+              <a href="/">Terms</a> and <a href="/">Privacy Policy</a>
             </span>
           </p>
         </div>

@@ -287,13 +287,14 @@ class Registration extends React.Component {
                 </div>
 
                 <div className="_twoComumnWrapper">
-                  <Field name="city">
+                  <Field name="city" disabled>
                     {({ input, meta }) => (
                       <div className="fieldWrapper">
                         <input
                           {...input}
                           type="text"
                           placeholder="city"
+                          disabled
                           className={
                             meta.error && meta.touched ? 'error' : null
                           }
@@ -311,6 +312,7 @@ class Registration extends React.Component {
                           {...input}
                           type="text"
                           placeholder="state"
+                          disabled
                           className={
                             meta.error && meta.touched ? 'error' : null
                           }
