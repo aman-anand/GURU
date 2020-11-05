@@ -18,7 +18,7 @@ import reducer from './reducer';
 import Header from '../../components/Header/Loadable';
 import {
   languageString,
-  setLoclStoreArry,
+  setSessionStoreArry,
 } from '../../services/CommonSetterGetter';
 import { SettingContainer } from './style';
 
@@ -26,7 +26,7 @@ export class Setting extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      language: window.localStorage.getItem('lang') || 'EN',
+      language: window.sessionStorage.getItem('lang') || 'EN',
     };
   }
 
@@ -34,7 +34,13 @@ export class Setting extends React.PureComponent {
     this.setState({
       language: e.target.value,
     });
-    setLoclStoreArry([{ lang: e.target.value || this.state.language }]);
+    // setSessionStoreArry([{ lang: e.target.value || this.state.language }]);
+    // window.location.reload();
+  };
+
+  setLanguage = () => {
+    const { language } = this.state;
+    setSessionStoreArry([{ lang: language || 'EN' }]);
     window.location.reload();
   };
 
@@ -135,6 +141,7 @@ export class Setting extends React.PureComponent {
               variant="contained"
               color="primary"
               className="updateButton"
+              onClick={() => this.setLanguage()}
             >
               {languageString('txt_update_language')}
             </Button>

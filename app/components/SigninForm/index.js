@@ -7,7 +7,7 @@
 import React, { memo } from 'react';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-// import { language } from '../../services/CommonSetterGetter';
+import { languageString } from '../../services/CommonSetterGetter';
 import { SigninFormContainer } from './style';
 
 class SigninForm extends React.Component {
@@ -74,13 +74,17 @@ class SigninForm extends React.Component {
     const { number } = store || {};
     return (
       <SigninFormContainer>
-        <h4 className="_hText">ACCESS YOUR ACCOUNT</h4>
-        <span className="_decText">Start Exploring Bima Paathshala</span>
+        <h4 className="_hText">
+          {languageString('txt_access_your_account').toUpperCase()}
+        </h4>
+        <span className="_decText">
+          {languageString('txt_start_learning_marketing')}
+        </span>
         <div className="_wrapper">
           <input
             type="number"
             value={mobileNo || number}
-            placeholder="Phone Number *"
+            placeholder={languageString('txt_phone_number_comp')}
             name="mobile"
             onChange={e => {
               this.mobileInputChange(e.target.value);
@@ -98,12 +102,13 @@ class SigninForm extends React.Component {
             onClick={this.submitAction}
             onKeyPress={this.submitAction}
           >
-            SUBMIT
+            {languageString('txt_submit').toUpperCase()}
           </Button>
           <p className="bottomText">
-            <span>By signing up. you agree to our</span>
+            <span>{languageString('txt_by_signing_up')}</span>
             <span>
-              <a href="/">Terms</a> and <a href="/">Privacy Policy</a>
+              <a href="/">{languageString('txt_terms')}</a> and{' '}
+              <a href="/">{languageString('txt_privacy_policy')}</a>
             </span>
           </p>
         </div>

@@ -9,6 +9,12 @@ export const setLoclStoreArry = params => {
     return window.localStorage.setItem(_key, ele[_key]);
   });
 };
+export const setSessionStoreArry = params => {
+  params.map(ele => {
+    const _key = Object.keys(ele);
+    return window.sessionStorage.setItem(_key, ele[_key]);
+  });
+};
 
 export const getFromLocalStore = key => {
   const object = {};
@@ -43,7 +49,7 @@ export const getFromLocalStore = key => {
 // };
 export const languageString = params => {
   let intel;
-  const lang = window.localStorage.getItem('lang') || 'EN';
+  const lang = window.sessionStorage.getItem('lang') || 'EN';
   if (['EN'].includes(lang)) {
     const { string } = ENG || {};
     const findValue = string.find(item => {

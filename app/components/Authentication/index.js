@@ -9,6 +9,7 @@
 import React, { memo } from 'react';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+import { languageString } from '../../services/CommonSetterGetter';
 import { AuthenticationContainer } from './style';
 
 class Authentication extends React.Component {
@@ -170,8 +171,12 @@ class Authentication extends React.Component {
             />
           </svg>
         </div>
-        <h4 className="_hText">Authentication Code</h4>
-        <span className="_decText">Verifying your mobile number</span>
+        <h4 className="_hText">
+          {languageString('txt_authentication_code').toUpperCase()}
+        </h4>
+        <span className="_decText">
+          {languageString('txt_verifying_mobile_number')}
+        </span>
         <div className="_wrapper">
           <div className="otpWrapper">
             {[1, 2, 3, 4].map(ele => (
@@ -203,7 +208,7 @@ class Authentication extends React.Component {
             onKeyDown={this.submitOTP}
             disabled={!presentOTP}
           >
-            PROCEED
+            {languageString('txt_proceed').toUpperCase()}
           </Button>
           <span
             className="donthavetext"

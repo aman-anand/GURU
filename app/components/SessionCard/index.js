@@ -7,6 +7,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 // import MaskGroup from '../../images/MaskGroup.jpg';
+import { languageString } from '../../services/CommonSetterGetter';
 import { SessionCardContainer } from './style';
 
 function SessionCard(props) {
@@ -36,7 +37,8 @@ function SessionCard(props) {
             <p>
               <span>{courseName}</span>
               <span>
-                {totalSections} Sesssions | {totalVideos} Videos | {duration}
+                {totalSections} {languageString('txt_sessions')} | {totalVideos}{' '}
+                {languageString('txt_video')} | {duration}
               </span>
             </p>
           </div>

@@ -42,7 +42,7 @@ export const HIN = {
     },
     {
       _name: 'txt_start_learning_marketing',
-      __text: 'फाइनेंस कोर्स सीखना शुरू करें',
+      __text: 'बिमा पाठशाला में प्रवेश कीजिए',
     },
     {
       _name: 'txt_phone_number_comp',

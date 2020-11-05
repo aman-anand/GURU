@@ -42,7 +42,7 @@ export const GUJ = {
     },
     {
       _name: 'txt_start_learning_marketing',
-      __text: 'ફાઇનાન્સ કોર્સ શીખવાનું શરૂ કરો',
+      __text: 'બિમા પાઠશાળા મા પ્રવેશ કરો',
     },
     {
       _name: 'txt_phone_number_comp',

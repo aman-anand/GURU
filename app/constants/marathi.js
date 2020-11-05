@@ -42,7 +42,7 @@ export const MHA = {
     },
     {
       _name: 'txt_start_learning_marketing',
-      __text: 'फायनान्स कोर्स शिकण्यास सुरू करा',
+      __text: 'विमा पाठशाला मधे प्रवेश कारा',
     },
     {
       _name: 'txt_phone_number_comp',
