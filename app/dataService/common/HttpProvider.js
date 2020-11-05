@@ -23,7 +23,7 @@ axios.interceptors.request.use(config => {
   const c = config;
   // const { Authorization } = c.headers;
   const token = window.localStorage.getItem('token');
-  const language = window.sessionStorage.getItem('lang');
+  const language = window.sessionStorage.getItem('lang') || 'EN';
   c.headers.Authorization = `Bearer ${token}`;
   c.headers.language = language;
   return c;
