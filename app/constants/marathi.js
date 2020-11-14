@@ -1746,6 +1746,10 @@ export const MHA = {
       _name: 'txt_restart_quiz',
       __text: 'आपण ही चाचणी आधीच पास केली आहे. आपण पुन्हा प्रयत्न करू इच्छिता?',
     },
+    {
+      _name: 'text_welcome',
+      __text: 'विमा पाठशाला मधे आपला स्वगत आहे',
+    },
   ],
   stringArray: [
     {

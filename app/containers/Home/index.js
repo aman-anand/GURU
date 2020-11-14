@@ -14,12 +14,16 @@ import withSizes from 'react-sizes';
 
 import injectReducer from 'utils/injectReducer';
 import Slider from 'react-slick';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 import makeSelectHome from './selectors';
 import reducer from './reducer';
 import { homeAction } from './actions';
 import {
   getFromLocalStore,
   languageString,
+  setLoclStoreArry,
 } from '../../services/CommonSetterGetter';
 import Header from '../../components/Header/Loadable';
 import Footer from '../../components/Footer/Loadable';
@@ -29,6 +33,7 @@ import VideoCard from '../../components/VideoCard/Loadable';
 import ArticleCard from '../../components/ArticleCard/Loadable';
 import UpcommingSession from '../../components/UpcommingSession/Loadable';
 import ChartBord from '../../components/ChartBord/Loadable';
+import logoIMG from '../../images/logo.png';
 
 // NOTE: Styles
 import { HomeContainer } from './style';
@@ -38,8 +43,19 @@ import 'slick-carousel/slick/slick-theme.css';
 export class Home extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.store = getFromLocalStore(['token', 'id', 'role', 'expires', 'phone']);
+    this.state = {
+      open: window.localStorage.getItem('newUser')
+        ? ['true'].includes(window.localStorage.getItem('newUser'))
+        : false,
+    };
+    this.store = getFromLocalStore([
+      'token',
+      'id',
+      'role',
+      'expires',
+      'phone',
+      'newUser',
+    ]);
   }
 
   componentDidMount() {
@@ -48,6 +64,13 @@ export class Home extends React.PureComponent {
       this.props.dispatch(homeAction({ type: role }));
     }
   }
+
+  handleClose = () => {
+    this.setState({
+      open: false,
+    });
+    setLoclStoreArry([{ newUser: false }]);
+  };
 
   render() {
     const { isMobile, home } = this.props || {};
@@ -286,6 +309,21 @@ export class Home extends React.PureComponent {
         </div>
         <ChartBord />
         {isMobile ? <Footer /> : null}
+        <Dialog open={this.state.open} onClose={this.handleClose}>
+          <DialogContent className="newUserModel">
+            <DialogContentText className="newUserModelWrap">
+              <span
+                onClick={this.handleClose}
+                className="nUclose"
+                role="presentation"
+              >
+                X
+              </span>
+              <img width="150px" src={logoIMG} alt="" title="" />
+              <p>{languageString('text_welcome')}</p>
+            </DialogContentText>
+          </DialogContent>
+        </Dialog>
       </HomeContainer>
     );
   }

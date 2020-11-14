@@ -463,5 +463,27 @@ const GlobalStyle = createGlobalStyle`
   .successAlert {
     align-items: center;
   }  
+
+  .newUserModel {
+    width: 300px;
+  }
+  .newUserModelWrap {
+    text-align: center;
+    .nUclose {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: red;
+      cursor: pointer;
+    }
+    p {
+      margin: 20px 0px 0px 0px;
+      font-size: 26px;
+      color: #000000;
+      line-height: 35px;
+    }
+  }
 `;
 export default GlobalStyle;

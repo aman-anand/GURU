@@ -22,7 +22,10 @@ import BasicDetails from '../../components/BasicDetails/Loadable';
 import SigninForm from '../../components/SigninForm/Loadable';
 import Authentication from '../../components/Authentication/Loadable';
 import RegistorNav from '../../components/RegistorNav/Loadable';
-import { getFromLocalStore } from '../../services/CommonSetterGetter';
+import {
+  getFromLocalStore,
+  setLoclStoreArry,
+} from '../../services/CommonSetterGetter';
 
 import {
   sendOtpAction,
@@ -174,6 +177,7 @@ export class Signin extends React.PureComponent {
       _id: localData.id,
     };
     this.props.dispatch(profileUpdateAction(jsonObj)).then(() => {
+      setLoclStoreArry([{ newUser: true }]);
       history.push('/home');
     });
   };

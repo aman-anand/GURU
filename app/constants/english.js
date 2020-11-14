@@ -1745,6 +1745,10 @@ export const ENG = {
       __text:
         'You have already passed this quiz. Do you want to attempt it again?',
     },
+    {
+      _name: 'text_welcome',
+      __text: 'Welcome to Bima paathshal',
+    },
   ],
   stringArray: [
     {
