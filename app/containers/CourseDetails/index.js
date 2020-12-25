@@ -368,17 +368,17 @@ export class CourseDetails extends React.PureComponent {
         {tryAgain ? (
           <Fragment>
             {/* NOTE: Result */}
-            <Result type="failed" />
+            <Result type="failed" courseName={courseName} />
           </Fragment>
         ) : null}
         {sessionPpassed ? (
           <Fragment>
-            <Result type="passed" />
+            <Result type="passed" courseName={courseName} />
           </Fragment>
         ) : null}
         {congratulation ? (
           <Fragment>
-            <Result type="passed" certificate />
+            <Result type="passed" certificate courseName={courseName} />
           </Fragment>
         ) : null}
         {!startExam && !tryAgain && !sessionPpassed && !congratulation ? (

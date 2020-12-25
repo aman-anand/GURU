@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /**
  *
  * Home
@@ -178,19 +179,30 @@ export class Home extends React.PureComponent {
                       coverImage,
                       _id,
                     };
-                    const sticyTwoData = {
-                      name: `${totalSections} ${languageString(
-                        'txt_showcase_section_title',
-                      ).toUpperCase()}`,
-                      classname: 'expert',
+                    return <SessionCard courseData={courseData} />;
+                  })}
+              </div>
+            ) : courseList <= 5 ? (
+              <div className="cardWrapper">
+                {course &&
+                  course.map(item => {
+                    const {
+                      name,
+                      totalSections,
+                      duration,
+                      totalVideos,
+                      coverImage,
+                      _id,
+                    } = item || {};
+                    const courseData = {
+                      courseName: name,
+                      totalSections,
+                      totalVideos,
+                      duration,
+                      coverImage,
+                      _id,
                     };
-                    return (
-                      <SessionCard
-                        courseData={courseData}
-                        sticyTwo
-                        sticyTwoData={sticyTwoData}
-                      />
-                    );
+                    return <SessionCard courseData={courseData} />;
                   })}
               </div>
             ) : (
@@ -214,17 +226,7 @@ export class Home extends React.PureComponent {
                         coverImage,
                         _id,
                       };
-                      const sticyTwoData = {
-                        name: `${totalSections} SECTIONS`,
-                        classname: 'expert',
-                      };
-                      return (
-                        <SessionCard
-                          courseData={courseData}
-                          sticyTwo
-                          sticyTwoData={sticyTwoData}
-                        />
-                      );
+                      return <SessionCard courseData={courseData} />;
                     })}
                 </Slider>
               </div>
@@ -316,6 +318,7 @@ export class Home extends React.PureComponent {
                 <a href="https://bh.bimapaathshala.org" target="_blank">
                   <img src={icRedBg} alt="" title="" />
                   <img src={icHeart} alt="" title="" className="linkImg" />
+                  <span className="entatain">Bima Entertainment</span>
                 </a>
               </div>
               <div className="jewl_right">
@@ -327,6 +330,7 @@ export class Home extends React.PureComponent {
                     title=""
                     className="linkImg"
                   />
+                  <span className="textHealth">Bima Health</span>
                 </a>
               </div>
             </div>

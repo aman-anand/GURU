@@ -411,7 +411,7 @@ export const ENG = {
     {
       _name: 'txt_succesfully_completed_course',
       __text:
-        'Well done.You have successfully completed this section of the course %s.',
+        'Well done.You have successfully completed this section of the course',
     },
     {
       _name: 'txt_write_your_feedback_here',

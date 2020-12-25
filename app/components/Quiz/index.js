@@ -12,8 +12,8 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Snackbar from '@material-ui/core/Snackbar';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { QuizContainer } from './style';
-
 export class Quiz extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -23,8 +23,12 @@ export class Quiz extends React.PureComponent {
       answarList: [],
       open: false,
       timeup: false,
+      correctAns: false,
+      progress: 0,
     };
+    this.progress = 10;
     this.downloadTimer = null;
+    this.progressTimer = null;
   }
 
   componentDidMount() {
@@ -58,36 +62,61 @@ export class Quiz extends React.PureComponent {
   }
 
   nextQuestion = qusParms => {
-    const { answer } = qusParms || {};
     const { quesAttem, answarList, selectAnswar } = this.state;
-    console.log(
-      'answer',
-      answer,
-      '===',
-      qusParms.find(ele => ele === selectAnswar.answer),
-    );
+    const { answer: SELECT_ANSWAR } = selectAnswar || {};
+    const { answer } = qusParms[quesAttem] || {};
     const radios = document.querySelectorAll('input[type="radio"]:checked');
     const value = radios.length > 0 ? radios[0].value : null;
-    // console.log('NEXT', value);
+    const wrongAnswar = answer !== SELECT_ANSWAR;
+    clearInterval(this.progressTimer);
     if (value) {
-      const ele = document.querySelectorAll('input[type="radio"]');
-      for (let i = 0; i < ele.length; i += 1) ele[i].checked = false;
-      if (quesAttem + 1 < qusParms.length) {
+      // NOTE: Not Correct Answer
+      if (wrongAnswar) {
         this.setState({
-          quesAttem: quesAttem + 1,
-          answarList: [...answarList, selectAnswar],
+          correctAns: answer,
         });
+        this.progressTimer = setInterval(() => {
+          this.progress += 10;
+          this.setState({
+            progress: this.progress,
+          });
+          // console.log('dsddd', this.progress);
+          if (this.progress === 100) {
+            this.setState({
+              progress: 0,
+            });
+            this.progress = 0;
+            const ele = document.querySelectorAll('input[type="radio"]');
+            for (let i = 0; i < ele.length; i += 1) ele[i].checked = false;
+            if (quesAttem + 1 < qusParms.length) {
+              this.setState({
+                quesAttem: quesAttem + 1,
+                answarList: [...answarList, selectAnswar],
+              });
+            } else {
+              answarList.push(selectAnswar);
+              this.submitAnswar();
+            }
+            clearInterval(this.progressTimer);
+          }
+        }, 500);
       } else {
-        answarList.push(selectAnswar);
-        this.submitAnswar();
+        const ele = document.querySelectorAll('input[type="radio"]');
+        for (let i = 0; i < ele.length; i += 1) ele[i].checked = false;
+        if (quesAttem + 1 < qusParms.length) {
+          this.setState({
+            quesAttem: quesAttem + 1,
+            answarList: [...answarList, selectAnswar],
+          });
+        } else {
+          answarList.push(selectAnswar);
+          this.submitAnswar();
+        }
       }
-      // submitAnswar();
-      // window.console.log('window.answarList', answarList);
     } else {
       this.setState({
         open: true,
       });
-      // window.console.log('Please select answar');
     }
   };
 
@@ -126,12 +155,13 @@ export class Quiz extends React.PureComponent {
 
   render() {
     const { data } = this.props;
-    const { quesAttem, timeup, open } = this.state;
+    const { quesAttem, timeup, open, correctAns } = this.state;
     const { startAssesment, courseName } = data || {};
     const { time, title, questions } = startAssesment || {};
-    const { _id: qusId } = questions[quesAttem] || {};
+    const { _id: qusId, question: DISPLAY_QUES, answer } =
+      questions[quesAttem] || {};
     const percentage = 100 / questions.length;
-    // window.console.log('timeup', timeup);
+    console.log('answer', answer);
     return (
       <QuizContainer percentage={percentage}>
         <div className="topSec">
@@ -151,11 +181,22 @@ export class Quiz extends React.PureComponent {
           </div>
         </div>
         <div className="middleSec">
+          {this.state.progress >= 1 ? (
+            <div className="blockProgress">
+              <CircularProgress
+                thickness={15}
+                variant="determinate"
+                value={this.state.progress}
+              />
+            </div>
+          ) : null}
           <div className="quesWrapper">
-            <h5>{questions[quesAttem].question}</h5>
+            <h5>{DISPLAY_QUES}</h5>
             <div className="answarOpt">
               {questions[quesAttem].options.map((ele, idx) => (
-                <div className="ansBox">
+                <div
+                  className={`ansBox ${ele === correctAns ? 'rightAns' : null}`}
+                >
                   <input
                     type="radio"
                     id={`and_${idx}`}
@@ -180,7 +221,9 @@ export class Quiz extends React.PureComponent {
           </div>
           {quesAttem + 1 < questions.length ? (
             <div
-              className="next questionButton"
+              className={`next questionButton ${
+                this.state.progress >= 1 ? 'none' : null
+              }`}
               onClick={() => this.nextQuestion(questions)}
               role="presentation"
             >

@@ -5,7 +5,7 @@ export const ResultContainer = styled.div`
   ${globalStyle.flex};
   ${globalStyle.column};
   width: 100%;
-  background-color: #ffffff;
+  background-color: ${props => (props.green ? `#58B368` : '#ffffff')};
   align-self: center;
   @media (min-width: 1142px) {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
@@ -22,12 +22,13 @@ export const ResultContainer = styled.div`
   }
   .TH {
     ${globalStyle.flex};
-    color: #403f3f;
+    color: ${props => (props.green ? `#ffffff` : '#403f3f')};
     padding: 20px 0px;
     align-items: center;
     justify-content: center;
     @media (min-width: ${globalStyle.small}) {
-      border-bottom: 0.5px solid #727b87;
+      border-bottom: 0.5px solid
+        ${props => (props.green ? `#ffffff` : '#727b87')};
     }
     @media (max-width: ${globalStyle.small}) {
       padding: 20px;
@@ -57,7 +58,7 @@ export const ResultContainer = styled.div`
     padding-top: 40px;
     justify-content: center;
     @media (max-width: ${globalStyle.small}) {
-      background-color: #f7f7f7;
+      background-color: ${props => (props.green ? `#58B368` : '#f7f7f7')};
     }
     .BC_content {
       ${globalStyle.flex};
@@ -74,6 +75,7 @@ export const ResultContainer = styled.div`
       }
       h4 {
         margin: 0px;
+        color: ${props => (props.green ? `#ffffff` : '#000000')};
       }
       p {
         font-style: normal;
@@ -81,7 +83,7 @@ export const ResultContainer = styled.div`
         font-size: 14px;
         line-height: 17px;
         text-align: center;
-        color: #000000;
+        color: ${props => (props.green ? `#ffffff` : '#000000')};
       }
     }
     .tryAgainButton {
@@ -103,11 +105,11 @@ export const ResultContainer = styled.div`
     font-size: 12px;
     line-height: 14px;
     text-align: center;
-    color: #000000;
+    color: ${props => (props.green ? `#ffffff` : '#000000')};
     margin-top: 16px;
     a {
       text-decoration: none;
-      color: #000000;
+      color: ${props => (props.green ? `#ffffff` : '#000000')};
     }
   }
 `;

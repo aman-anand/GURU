@@ -14,7 +14,7 @@ function SessionCard(props) {
   const { sticyOne, sticyTwo, sticyOneData, sticyTwoData, courseData } = props;
   const { date, month } = sticyOneData || {};
   const { name, classname } = sticyTwoData || {};
-  const { courseName, totalSections, totalVideos, duration, coverImage, _id } =
+  const { courseName, totalSections, totalVideos, coverImage, _id } =
     courseData || {};
   return (
     <SessionCardContainer className="sessionCardWrapper" bg={coverImage}>
@@ -38,7 +38,7 @@ function SessionCard(props) {
               <span>{courseName}</span>
               <span>
                 {totalSections} {languageString('txt_sessions')} | {totalVideos}{' '}
-                {languageString('txt_video')} | {duration}
+                {languageString('txt_video')}
               </span>
             </p>
           </div>

@@ -75,11 +75,41 @@ export const HomeContainer = styled.section`
           &.linkImg {
             position: absolute;
             left: 0;
-            top: 0;
+            top: 15px;
             right: 0;
-            bottom: 0;
             margin: auto;
             width: 60px;
+            @media (min-width: ${globalStyle.small}) {
+              top: 30px;
+            }
+          }
+        }
+        span.textHealth {
+          position: absolute;
+          width: 84px;
+          left: 0;
+          right: 0;
+          margin: auto;
+          bottom: 27px;
+          height: 20px;
+          text-align: center;
+          color: #ffffff;
+          @media (min-width: ${globalStyle.small}) {
+            bottom: 40px;
+          }
+        }
+        span.entatain {
+          position: absolute;
+          width: 110px;
+          left: 0;
+          right: 0;
+          margin: auto;
+          bottom: 27px;
+          height: 20px;
+          text-align: center;
+          color: #ffffff;
+          @media (min-width: ${globalStyle.small}) {
+            bottom: 40px;
           }
         }
       }

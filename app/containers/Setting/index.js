@@ -191,7 +191,7 @@ export class Setting extends React.PureComponent {
                 <span className="icon" />
               </div>
             </label>
-            <label htmlFor="OD">
+            <label htmlFor="OR">
               <input
                 type="radio"
                 name="language"

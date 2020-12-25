@@ -112,7 +112,7 @@ export const languageString = params => {
       return name === params;
     });
     intel = findValue.__text;
-  } else if (['OD'].includes(lang)) {
+  } else if (['OR'].includes(lang)) {
     const { string } = ODI || {};
     const findValue = string.find(item => {
       const { _name: name } = item || {};
@@ -190,7 +190,7 @@ export const languageConfig = params => {
       return name === params;
     });
     intel = findValue.item;
-  } else if (['OD'].includes(lang)) {
+  } else if (['OR'].includes(lang)) {
     const { stringArray } = ODI || {};
     const findValue = stringArray.find(item => {
       const { _name: name } = item || {};

@@ -88,6 +88,7 @@ export const QuizContainer = styled.div`
     ${globalStyle.flex};
     padding: 15px 25px;
     flex: 1;
+    position: relative;
     .quesWrapper {
       ${globalStyle.flex};
       ${globalStyle.column};
@@ -139,6 +140,13 @@ export const QuizContainer = styled.div`
         background-color: #c4c4c4;
         border: solid 1px #ffffff
       }
+      &.rightAns {
+        label {
+          span {
+            color: green;
+          }
+        }
+      }
     }
   }
 
@@ -187,5 +195,18 @@ export const QuizContainer = styled.div`
         color: #000000;
       }
     }
+  }
+
+  .blockProgress {
+    ${globalStyle.row};
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
