@@ -730,7 +730,7 @@ export const ENG = {
     },
     {
       _name: 'txt_please_fill_all_details',
-      __text: '"Please fill all detail. "',
+      __text: 'Please fill all detail. ',
     },
     {
       _name: 'txt_sections',
@@ -794,7 +794,7 @@ export const ENG = {
     },
     {
       _name: 'txt_roll_no',
-      __text: '"Roll No : "',
+      __text: 'Roll No : ',
     },
     {
       _name: 'txt_attendance_logged_msg',
@@ -864,15 +864,15 @@ export const ENG = {
     },
     {
       _name: 'txt_duration',
-      __text: '"Duration : "',
+      __text: 'Duration : ',
     },
     {
       _name: 'txt_guru_name',
-      __text: '"Guru name : "',
+      __text: 'Guru name : ',
     },
     {
       _name: 'txt_course_duration',
-      __text: '"Duration : "',
+      __text: 'Duration : ',
     },
     {
       _name: 'txt_choose',
@@ -912,7 +912,7 @@ export const ENG = {
     },
     {
       _name: 'txt_time_left',
-      __text: '"Time Left : "',
+      __text: 'Time Left : ',
     },
     {
       _name: 'txt_time_up',
@@ -925,7 +925,7 @@ export const ENG = {
     {
       _name: 'txt_quit_quiz',
       __text:
-        '"If you quit the exam, you won\'t be qualified to attempt the next section "',
+        "If you quit the exam, you won't be qualified to attempt the next section ",
     },
     {
       _name: 'title_activity_maps',
@@ -966,7 +966,7 @@ export const ENG = {
     },
     {
       _name: 'txt_rs',
-      __text: '"₹ "',
+      __text: '₹ ',
     },
     {
       _name: 'error_message_url_not_valid',
@@ -1007,7 +1007,7 @@ export const ENG = {
     },
     {
       _name: 'txt_total_amount',
-      __text: '"Total Amount "',
+      __text: 'Total Amount ',
     },
     {
       _name: 'txt_details_saved_on_local_storage',
@@ -1060,12 +1060,12 @@ export const ENG = {
     {
       _name: 'txt_refer_message',
       __text:
-        '"Hey there, here\'s an extremely educative APP that will be useful to you. Please install it and use this referral code : "',
+        "Hey there, here's an extremely educative APP that will be useful to you. Please install it and use this referral code : ",
     },
     {
       _name: 'txt_share_message',
       __text:
-        '"Hey there, here\'s an extremely educative APP that will be useful to you. Please install it."',
+        "Hey there, here's an extremely educative APP that will be useful to you. Please install it.",
     },
     {
       _name: 'txt_course_completed',
@@ -1578,19 +1578,19 @@ export const ENG = {
     },
     {
       _name: 'txt_share_course_heading',
-      __text: '"Hey, Check out the following course on "',
+      __text: 'Hey, Check out the following course on ',
     },
     {
       _name: 'txt_share_session_heading',
-      __text: '"Hey, Check out the following session on "',
+      __text: 'Hey, Check out the following session on ',
     },
     {
       _name: 'txt_share_article_heading',
-      __text: '"Hey, Check out the following article on "',
+      __text: 'Hey, Check out the following article on ',
     },
     {
       _name: 'txt_share_video_heading',
-      __text: '"Hey, Check out the following video on "',
+      __text: 'Hey, Check out the following video on ',
     },
     {
       _name: 'txt_start_course',
@@ -1615,7 +1615,7 @@ export const ENG = {
     },
     {
       _name: 'txt_learn_in_lang',
-      __text: '"Learn in your own language"',
+      __text: 'Learn in your own language',
     },
     {
       _name: 'txt_learn_in_lang_desc',
@@ -1624,7 +1624,7 @@ export const ENG = {
     },
     {
       _name: 'txt_admission_process',
-      __cdata: '"Our free & quick admission process"',
+      __cdata: 'Our free & quick admission process',
     },
     {
       _name: 'txt_admission_process_desc',
@@ -1726,15 +1726,15 @@ export const ENG = {
     },
     {
       _name: 'txt_telugu',
-      __text: 'Telugu',
+      __text: 'తెలుగు',
     },
     {
       _name: 'txt_oriya',
-      __text: 'Oriya',
+      __text: 'ଓଡ଼ିଆ',
     },
     {
       _name: 'txt_assamese',
-      __text: 'Assamese',
+      __text: 'অসমীয়া',
     },
     {
       _name: 'txt_assessment_quiz',
@@ -1746,8 +1746,24 @@ export const ENG = {
         'You have already passed this quiz. Do you want to attempt it again?',
     },
     {
-      _name: 'text_welcome',
-      __text: 'Welcome to Bima paathshal',
+      _name: 'txt_welcome_to_bima_popup_message',
+      __text: 'Welcome to Bima Paathshala',
+    },
+    {
+      _name: 'txt_bima_jewels',
+      __text: 'Bima Paathshala Jewels',
+    },
+    {
+      _name: 'txt_bima_entertainment',
+      __text: 'Bima\\nEntertainment',
+    },
+    {
+      _name: 'txt_bima_health',
+      __text: 'Bima\\nHealth',
+    },
+    {
+      _name: 'txt_bangla',
+      __text: 'বাংলা',
     },
   ],
   stringArray: [

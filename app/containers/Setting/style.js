@@ -24,6 +24,7 @@ export const SettingContainer = styled.section`
     @media (max-width: ${globalStyle.small}) {
       overflow: auto;
       flex: 1;
+      padding: 15px;
     }
   }
 

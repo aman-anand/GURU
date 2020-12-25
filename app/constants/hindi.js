@@ -378,7 +378,7 @@ export const HIN = {
     },
     {
       _name: 'txt_english',
-      __text: 'अंग्रेजी',
+      __text: 'English',
     },
     {
       _name: 'txt_choose_role',
@@ -729,7 +729,7 @@ export const HIN = {
     },
     {
       _name: 'txt_please_fill_all_details',
-      __text: '"कृपया सभी जानकारी दें. "',
+      __text: 'कृपया सभी जानकारी दें. ',
     },
     {
       _name: 'txt_sections',
@@ -793,7 +793,7 @@ export const HIN = {
     },
     {
       _name: 'txt_roll_no',
-      __text: '"रोल नंबर"',
+      __text: 'रोल नंबर',
     },
     {
       _name: 'txt_attendance_logged_msg',
@@ -863,15 +863,15 @@ export const HIN = {
     },
     {
       _name: 'txt_duration',
-      __text: '"अवधि : "',
+      __text: 'अवधि : ',
     },
     {
       _name: 'txt_guru_name',
-      __text: '"गुरु का नाम : "',
+      __text: 'गुरु का नाम : ',
     },
     {
       _name: 'txt_course_duration',
-      __text: '"अवधि : "',
+      __text: 'अवधि : ',
     },
     {
       _name: 'txt_choose',
@@ -911,7 +911,7 @@ export const HIN = {
     },
     {
       _name: 'txt_time_left',
-      __text: '"समय बाकी: "',
+      __text: 'समय बाकी: ',
     },
     {
       _name: 'txt_time_up',
@@ -924,7 +924,7 @@ export const HIN = {
     {
       _name: 'txt_quit_quiz',
       __text:
-        '"यदि आप परिक्षा छोड़ते हैं तो आप अगले सेक्शन में भाग नहीं ले सकते. "',
+        'यदि आप परिक्षा छोड़ते हैं तो आप अगले सेक्शन में भाग नहीं ले सकते. ',
     },
     {
       _name: 'title_activity_maps',
@@ -965,7 +965,7 @@ export const HIN = {
     },
     {
       _name: 'txt_rs',
-      __text: '"₹ "',
+      __text: '₹ ',
     },
     {
       _name: 'error_message_url_not_valid',
@@ -1006,7 +1006,7 @@ export const HIN = {
     },
     {
       _name: 'txt_total_amount',
-      __text: '"कुल राशि "',
+      __text: 'कुल राशि ',
     },
     {
       _name: 'txt_details_saved_on_local_storage',
@@ -1059,12 +1059,12 @@ export const HIN = {
     {
       _name: 'txt_refer_message',
       __text:
-        '"हेलो, यह ऐप पढ़ाई के बहुत अच्छी है, और आपको बहुत पसंद आएगी. इसे इंस्टॉल करें और इस रेफरल कोड का उपयोग करें : "',
+        'हेलो, यह ऐप पढ़ाई के बहुत अच्छी है, और आपको बहुत पसंद आएगी. इसे इंस्टॉल करें और इस रेफरल कोड का उपयोग करें : ',
     },
     {
       _name: 'txt_share_message',
       __text:
-        '"हेलो, यह ऐप पढ़ाई के बहुत अच्छी है, और आपको बहुत पसंद आएगी. कृपया इसे इंस्टॉल करें."',
+        'हेलो, यह ऐप पढ़ाई के बहुत अच्छी है, और आपको बहुत पसंद आएगी. कृपया इसे इंस्टॉल करें.',
     },
     {
       _name: 'txt_course_completed',
@@ -1576,19 +1576,19 @@ export const HIN = {
     },
     {
       _name: 'txt_share_course_heading',
-      __text: '"हेलो, इस ऐप पर ये कोर्स देखें: "',
+      __text: 'हेलो, इस ऐप पर ये कोर्स देखें: ',
     },
     {
       _name: 'txt_share_session_heading',
-      __text: '"हेलो, इस ऐप पर ये सेशन देखें: "',
+      __text: 'हेलो, इस ऐप पर ये सेशन देखें: ',
     },
     {
       _name: 'txt_share_article_heading',
-      __text: '"हेलो, इस ऐप पर ये आर्टिकल देखें: "',
+      __text: 'हेलो, इस ऐप पर ये आर्टिकल देखें: ',
     },
     {
       _name: 'txt_share_video_heading',
-      __text: '"हेलो, इस ऐप पर ये वीडियो देखें: "',
+      __text: 'हेलो, इस ऐप पर ये वीडियो देखें: ',
     },
     {
       _name: 'txt_start_course',
@@ -1613,7 +1613,7 @@ export const HIN = {
     },
     {
       _name: 'txt_learn_in_lang',
-      __text: '"अपनी भाषा में सीखें"',
+      __text: 'अपनी भाषा में सीखें',
     },
     {
       _name: 'txt_learn_in_lang_desc',
@@ -1622,7 +1622,7 @@ export const HIN = {
     },
     {
       _name: 'txt_admission_process',
-      __cdata: '"हमारी मुफ्त व तेज़ एडमिशन प्रक्रिया"',
+      __cdata: 'हमारी मुफ्त व तेज़ एडमिशन प्रक्रिया',
     },
     {
       _name: 'txt_admission_process_desc',
@@ -1725,15 +1725,15 @@ export const HIN = {
     },
     {
       _name: 'txt_telugu',
-      __text: 'Telugu',
+      __text: 'తెలుగు',
     },
     {
       _name: 'txt_oriya',
-      __text: 'Oriya',
+      __text: 'ଓଡ଼ିଆ',
     },
     {
       _name: 'txt_assamese',
-      __text: 'Assamese',
+      __text: 'অসমীয়া',
     },
     {
       _name: 'txt_assessment_quiz',
@@ -1745,8 +1745,24 @@ export const HIN = {
         'आप पहले ही इस परिक्षा को पास कर चुके हैं। क्या आप इसे फिर से आज़माना चाहते हैं?',
     },
     {
-      _name: 'text_welcome',
-      __text: 'बिमा पाठशाला में आपका स्वागत है',
+      _name: 'txt_welcome_to_bima_popup_message',
+      __text: 'बिमा पाठशाला में आपका स्वागत है।',
+    },
+    {
+      _name: 'txt_bima_jewels',
+      __text: 'बीमा पाठशाला ज्वेल्स',
+    },
+    {
+      _name: 'txt_bima_entertainment',
+      __text: 'बीमा\\nएंटरटेनमेंट',
+    },
+    {
+      _name: 'txt_bima_health',
+      __text: 'बीमा\\nस्वास्थ्य',
+    },
+    {
+      _name: 'txt_bangla',
+      __text: 'বাংলা',
     },
   ],
   stringArray: [

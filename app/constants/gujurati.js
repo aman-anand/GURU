@@ -42,7 +42,7 @@ export const GUJ = {
     },
     {
       _name: 'txt_start_learning_marketing',
-      __text: 'બિમા પાઠશાળા મા પ્રવેશ કરો',
+      __text: 'બીમા પાઠશાળા મા પ્રવેશ કરો',
     },
     {
       _name: 'txt_phone_number_comp',
@@ -378,7 +378,7 @@ export const GUJ = {
     },
     {
       _name: 'txt_english',
-      __text: 'અંગ્રેજી',
+      __text: 'English',
     },
     {
       _name: 'txt_choose_role',
@@ -732,7 +732,7 @@ export const GUJ = {
     },
     {
       _name: 'txt_please_fill_all_details',
-      __text: '"કૃપા કરીને તમામ વિગતો ભરો. "',
+      __text: 'કૃપા કરીને તમામ વિગતો ભરો. ',
     },
     {
       _name: 'txt_sections',
@@ -796,7 +796,7 @@ export const GUJ = {
     },
     {
       _name: 'txt_roll_no',
-      __text: '"રોલ નંબર : "',
+      __text: 'રોલ નંબર : ',
     },
     {
       _name: 'txt_attendance_logged_msg',
@@ -866,15 +866,15 @@ export const GUJ = {
     },
     {
       _name: 'txt_duration',
-      __text: '"સમયગાળો : "',
+      __text: 'સમયગાળો : ',
     },
     {
       _name: 'txt_guru_name',
-      __text: '"ગુરુનું નામ : "',
+      __text: 'ગુરુનું નામ : ',
     },
     {
       _name: 'txt_course_duration',
-      __text: '"સમયગાળો : "',
+      __text: 'સમયગાળો : ',
     },
     {
       _name: 'txt_choose',
@@ -914,7 +914,7 @@ export const GUJ = {
     },
     {
       _name: 'txt_time_left',
-      __text: '"બાકી સમય : "',
+      __text: 'બાકી સમય : ',
     },
     {
       _name: 'txt_time_up',
@@ -927,7 +927,7 @@ export const GUJ = {
     {
       _name: 'txt_quit_quiz',
       __text:
-        '"જો તમે પરીક્ષા છોડી દો, તો તમે આગામી સેક્શનનો પ્રયત્ન કરવા માટે યોગ્ય ગણાશો નહીં "',
+        'જો તમે પરીક્ષા છોડી દો, તો તમે આગામી સેક્શનનો પ્રયત્ન કરવા માટે યોગ્ય ગણાશો નહીં ',
     },
     {
       _name: 'title_activity_maps',
@@ -968,7 +968,7 @@ export const GUJ = {
     },
     {
       _name: 'txt_rs',
-      __text: '"₹ "',
+      __text: '₹ ',
     },
     {
       _name: 'error_message_url_not_valid',
@@ -1009,7 +1009,7 @@ export const GUJ = {
     },
     {
       _name: 'txt_total_amount',
-      __text: '"કુલ રકમ "',
+      __text: 'કુલ રકમ ',
     },
     {
       _name: 'txt_details_saved_on_local_storage',
@@ -1062,12 +1062,12 @@ export const GUJ = {
     {
       _name: 'txt_refer_message',
       __text:
-        '"નમસ્તે, આ એપ શિક્ષણ મેળવવા માટે ખૂબ જ ઉપયોગી છે. કૃપા કરીને તેને ઇન્સ્ટૉલ કરો અને આ રેફરલ કોડનો ઉપયોગ કરો : "',
+        'નમસ્તે, આ એપ શિક્ષણ મેળવવા માટે ખૂબ જ ઉપયોગી છે. કૃપા કરીને તેને ઇન્સ્ટૉલ કરો અને આ રેફરલ કોડનો ઉપયોગ કરો : ',
     },
     {
       _name: 'txt_share_message',
       __text:
-        '"નમસ્તે, આ એપ શિક્ષણ મેળવવા માટે ખૂબ જ ઉપયોગી છે. કૃપા કરીને તેને ઇન્સ્ટૉલ કરો."',
+        'નમસ્તે, આ એપ શિક્ષણ મેળવવા માટે ખૂબ જ ઉપયોગી છે. કૃપા કરીને તેને ઇન્સ્ટૉલ કરો.',
     },
     {
       _name: 'txt_course_completed',
@@ -1580,19 +1580,19 @@ export const GUJ = {
     },
     {
       _name: 'txt_share_course_heading',
-      __text: '"નમસ્તે, નીચેનો કોર્સ અહીં ચેક કરો "',
+      __text: 'નમસ્તે, નીચેનો કોર્સ અહીં ચેક કરો ',
     },
     {
       _name: 'txt_share_session_heading',
-      __text: '"નમસ્તે, નીચેનું સેશન અહીં ચેક કરો "',
+      __text: 'નમસ્તે, નીચેનું સેશન અહીં ચેક કરો ',
     },
     {
       _name: 'txt_share_article_heading',
-      __text: '"નમસ્તે, નીચેનો આર્ટિકલ અહીં ચેક કરો "',
+      __text: 'નમસ્તે, નીચેનો આર્ટિકલ અહીં ચેક કરો ',
     },
     {
       _name: 'txt_share_video_heading',
-      __text: '"નમસ્તે, નીચેનો વિડિઓ અહીં ચેક કરો "',
+      __text: 'નમસ્તે, નીચેનો વિડિઓ અહીં ચેક કરો ',
     },
     {
       _name: 'txt_start_course',
@@ -1617,7 +1617,7 @@ export const GUJ = {
     },
     {
       _name: 'txt_learn_in_lang',
-      __text: '"તમારી પોતાની ભાષામાં શીખો"',
+      __text: 'તમારી પોતાની ભાષામાં શીખો',
     },
     {
       _name: 'txt_learn_in_lang_desc',
@@ -1626,7 +1626,7 @@ export const GUJ = {
     },
     {
       _name: 'txt_admission_process',
-      __cdata: '"અમારી મફત અને ઝડપી એડમિશન પ્રક્રિયા"',
+      __cdata: 'અમારી મફત અને ઝડપી એડમિશન પ્રક્રિયા',
     },
     {
       _name: 'txt_admission_process_desc',
@@ -1728,15 +1728,15 @@ export const GUJ = {
     },
     {
       _name: 'txt_telugu',
-      __text: 'Telugu',
+      __text: 'తెలుగు',
     },
     {
       _name: 'txt_oriya',
-      __text: 'Oriya',
+      __text: 'ଓଡ଼ିଆ',
     },
     {
       _name: 'txt_assamese',
-      __text: 'Assamese',
+      __text: 'অসমীয়া',
     },
     {
       _name: 'txt_assessment_quiz',
@@ -1748,8 +1748,24 @@ export const GUJ = {
         'તમે આ પરીક્ષણ પહેલાથી જ પસાર કરી ચૂક્યા છે. શું તમે ફરીથી પ્રયત્ન કરવા માંગો છો?',
     },
     {
-      _name: 'text_welcome',
-      __text: 'બિમા પાઠશાળામાં આપનું સ્વાગત છે',
+      _name: 'txt_welcome_to_bima_popup_message',
+      __text: 'બિમા પાઠશાળા માં આપનું સ્વાગત છે.',
+    },
+    {
+      _name: 'txt_bima_jewels',
+      __text: 'બીમા પાઠશાલા જ્વેલ્સ',
+    },
+    {
+      _name: 'txt_bima_entertainment',
+      __text: 'બીમા\\nમનોરંજન',
+    },
+    {
+      _name: 'txt_bima_health',
+      __text: 'બીમા\\nઆરોગ્ય',
+    },
+    {
+      _name: 'txt_bangla',
+      __text: 'বাংলা',
     },
   ],
   stringArray: [

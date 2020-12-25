@@ -58,7 +58,14 @@ export class Quiz extends React.PureComponent {
   }
 
   nextQuestion = qusParms => {
+    const { answer } = qusParms || {};
     const { quesAttem, answarList, selectAnswar } = this.state;
+    console.log(
+      'answer',
+      answer,
+      '===',
+      qusParms.find(ele => ele === selectAnswar.answer),
+    );
     const radios = document.querySelectorAll('input[type="radio"]:checked');
     const value = radios.length > 0 ? radios[0].value : null;
     // console.log('NEXT', value);

@@ -305,6 +305,8 @@ export class Home extends React.PureComponent {
                 </Slider>
               </div>
             )}
+            {/* NOTE: JWALE */}
+            <p>{languageString('txt_bima_jewels')}</p>
           </div>
         </div>
         <ChartBord />
@@ -320,7 +322,7 @@ export class Home extends React.PureComponent {
                 X
               </span>
               <img width="150px" src={logoIMG} alt="" title="" />
-              <p>{languageString('text_welcome')}</p>
+              <p>{languageString('txt_welcome_to_bima_popup_message')}</p>
             </DialogContentText>
           </DialogContent>
         </Dialog>

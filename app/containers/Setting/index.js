@@ -79,20 +79,6 @@ export class Setting extends React.PureComponent {
             {languageString('txt_choose_language_convenience')}
           </p>
           <div className="radioWrapper">
-            <label htmlFor="EN">
-              <input
-                type="radio"
-                name="language"
-                id="EN"
-                value="EN"
-                checked={['EN'].includes(this.state.language)}
-                onClick={e => this.languageChange(e)}
-              />
-              <div className="radioBox">
-                <span className="title">English</span>
-                <span className="icon" />
-              </div>
-            </label>
             <label htmlFor="HI">
               <input
                 type="radio"
@@ -104,6 +90,20 @@ export class Setting extends React.PureComponent {
               />
               <div className="radioBox">
                 <span className="title">{languageString('txt_hindi')}</span>
+                <span className="icon" />
+              </div>
+            </label>
+            <label htmlFor="EN">
+              <input
+                type="radio"
+                name="language"
+                id="EN"
+                value="EN"
+                checked={['EN'].includes(this.state.language)}
+                onClick={e => this.languageChange(e)}
+              />
+              <div className="radioBox">
+                <span className="title">English</span>
                 <span className="icon" />
               </div>
             </label>
@@ -132,6 +132,90 @@ export class Setting extends React.PureComponent {
               />
               <div className="radioBox">
                 <span className="title">{languageString('txt_gujrati')}</span>
+                <span className="icon" />
+              </div>
+            </label>
+            <label htmlFor="TA">
+              <input
+                type="radio"
+                name="language"
+                id="TA"
+                value="TA"
+                onClick={e => this.languageChange(e)}
+                checked={['TA'].includes(this.state.language)}
+              />
+              <div className="radioBox">
+                <span className="title">{languageString('txt_tamil')}</span>
+                <span className="icon" />
+              </div>
+            </label>
+            <label htmlFor="ML">
+              <input
+                type="radio"
+                name="language"
+                id="ML"
+                value="ML"
+                onClick={e => this.languageChange(e)}
+                checked={['ML'].includes(this.state.language)}
+              />
+              <div className="radioBox">
+                <span className="title">{languageString('txt_malyalam')}</span>
+                <span className="icon" />
+              </div>
+            </label>
+            <label htmlFor="TE">
+              <input
+                type="radio"
+                name="language"
+                id="TE"
+                value="TE"
+                onClick={e => this.languageChange(e)}
+                checked={['TE'].includes(this.state.language)}
+              />
+              <div className="radioBox">
+                <span className="title">{languageString('txt_telugu')}</span>
+                <span className="icon" />
+              </div>
+            </label>
+            <label htmlFor="BN">
+              <input
+                type="radio"
+                name="language"
+                id="BN"
+                value="BN"
+                onClick={e => this.languageChange(e)}
+                checked={['BN'].includes(this.state.language)}
+              />
+              <div className="radioBox">
+                <span className="title">{languageString('txt_bangla')}</span>
+                <span className="icon" />
+              </div>
+            </label>
+            <label htmlFor="OD">
+              <input
+                type="radio"
+                name="language"
+                id="OD"
+                value="OD"
+                onClick={e => this.languageChange(e)}
+                checked={['OD'].includes(this.state.language)}
+              />
+              <div className="radioBox">
+                <span className="title">{languageString('txt_oriya')}</span>
+                <span className="icon" />
+              </div>
+            </label>
+            <label htmlFor="AS">
+              <input
+                type="radio"
+                name="language"
+                id="AS"
+                value="AS"
+                onClick={e => this.languageChange(e)}
+                checked={['AS'].includes(this.state.language)}
+              />
+              <div className="radioBox">
+                <span className="title">{languageString('txt_assamese')}</span>
                 <span className="icon" />
               </div>
             </label>

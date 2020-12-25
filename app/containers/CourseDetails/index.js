@@ -182,7 +182,7 @@ export class CourseDetails extends React.PureComponent {
         this.setState({
           videoModel: true,
           youtubeId,
-          snake: true,
+          snake: false,
         });
       } else {
         this.setState({

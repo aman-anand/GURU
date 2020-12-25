@@ -378,7 +378,7 @@ export const MHA = {
     },
     {
       _name: 'txt_english',
-      __text: 'इंग्रजी',
+      __text: 'English',
     },
     {
       _name: 'txt_choose_role',
@@ -730,7 +730,7 @@ export const MHA = {
     },
     {
       _name: 'txt_please_fill_all_details',
-      __text: '"कृपया सर्व तपशील भरा. "',
+      __text: 'कृपया सर्व तपशील भरा. ',
     },
     {
       _name: 'txt_sections',
@@ -794,7 +794,7 @@ export const MHA = {
     },
     {
       _name: 'txt_roll_no',
-      __text: '"रोल नं : "',
+      __text: 'रोल नं : ',
     },
     {
       _name: 'txt_attendance_logged_msg',
@@ -864,15 +864,15 @@ export const MHA = {
     },
     {
       _name: 'txt_duration',
-      __text: '"कालावधी : "',
+      __text: 'कालावधी : ',
     },
     {
       _name: 'txt_guru_name',
-      __text: '"गुरुचे नाव : "',
+      __text: 'गुरुचे नाव : ',
     },
     {
       _name: 'txt_course_duration',
-      __text: '"कालावधी : "',
+      __text: 'कालावधी : ',
     },
     {
       _name: 'txt_choose',
@@ -912,7 +912,7 @@ export const MHA = {
     },
     {
       _name: 'txt_time_left',
-      __text: '"शिल्लक वेळ : "',
+      __text: 'शिल्लक वेळ : ',
     },
     {
       _name: 'txt_time_up',
@@ -925,7 +925,7 @@ export const MHA = {
     {
       _name: 'txt_quit_quiz',
       __text:
-        '"जर तुम्ही परीक्षा सोडली तर तुम्ही पुढील सेक्शनसाठी पात्र ठरणार नाहीत "',
+        'जर तुम्ही परीक्षा सोडली तर तुम्ही पुढील सेक्शनसाठी पात्र ठरणार नाहीत ',
     },
     {
       _name: 'title_activity_maps',
@@ -966,7 +966,7 @@ export const MHA = {
     },
     {
       _name: 'txt_rs',
-      __text: '"₹ "',
+      __text: '₹ ',
     },
     {
       _name: 'error_message_url_not_valid',
@@ -1007,7 +1007,7 @@ export const MHA = {
     },
     {
       _name: 'txt_total_amount',
-      __text: '"एकूण रक्कम "',
+      __text: 'एकूण रक्कम ',
     },
     {
       _name: 'txt_details_saved_on_local_storage',
@@ -1061,12 +1061,12 @@ export const MHA = {
     {
       _name: 'txt_refer_message',
       __text:
-        '"नमस्कार, सादर आहे महत्त्वपूर्ण शैक्षणिक ॲप जे तुमच्यासाठी उपयुक्त आहे. कृपया त्यास इंस्टॉल करा आणि हा रेफरल कोड वापरा : "',
+        'नमस्कार, सादर आहे महत्त्वपूर्ण शैक्षणिक ॲप जे तुमच्यासाठी उपयुक्त आहे. कृपया त्यास इंस्टॉल करा आणि हा रेफरल कोड वापरा : ',
     },
     {
       _name: 'txt_share_message',
       __text:
-        '"नमस्कार, सादर आहे महत्त्वपूर्ण शैक्षणिक ॲप जे तुमच्यासाठी उपयुक्त आहे. कृपया त्यास इंस्टॉल करा."',
+        'नमस्कार, सादर आहे महत्त्वपूर्ण शैक्षणिक ॲप जे तुमच्यासाठी उपयुक्त आहे. कृपया त्यास इंस्टॉल करा.',
     },
     {
       _name: 'txt_course_completed',
@@ -1580,19 +1580,19 @@ export const MHA = {
     },
     {
       _name: 'txt_share_course_heading',
-      __text: '"नमस्कार, खालील कोर्स तपासण्यासाठी पाहा "',
+      __text: 'नमस्कार, खालील कोर्स तपासण्यासाठी पाहा ',
     },
     {
       _name: 'txt_share_session_heading',
-      __text: '"नमस्कार, खालील सेशन तपासण्यासाठी पाहा "',
+      __text: 'नमस्कार, खालील सेशन तपासण्यासाठी पाहा ',
     },
     {
       _name: 'txt_share_article_heading',
-      __text: '"नमस्कार, खालील आर्टिकल तपासण्यासाठी पाहा "',
+      __text: 'नमस्कार, खालील आर्टिकल तपासण्यासाठी पाहा ',
     },
     {
       _name: 'txt_share_video_heading',
-      __text: '"नमस्कार, खालील व्हिडिओ तपासण्यासाठी पाहा "',
+      __text: 'नमस्कार, खालील व्हिडिओ तपासण्यासाठी पाहा ',
     },
     {
       _name: 'txt_start_course',
@@ -1617,7 +1617,7 @@ export const MHA = {
     },
     {
       _name: 'txt_learn_in_lang',
-      __text: '"तुमच्या स्वतःच्या भाषेत शिका"',
+      __text: 'तुमच्या स्वतःच्या भाषेत शिका',
     },
     {
       _name: 'txt_learn_in_lang_desc',
@@ -1626,7 +1626,7 @@ export const MHA = {
     },
     {
       _name: 'txt_admission_process',
-      __cdata: '"आमची मोफत आणि जलद ॲडमिशन प्रक्रिया"',
+      __cdata: 'आमची मोफत आणि जलद ॲडमिशन प्रक्रिया',
     },
     {
       _name: 'txt_admission_process_desc',
@@ -1728,15 +1728,15 @@ export const MHA = {
     },
     {
       _name: 'txt_telugu',
-      __text: 'Telugu',
+      __text: 'తెలుగు',
     },
     {
       _name: 'txt_oriya',
-      __text: 'Oriya',
+      __text: 'ଓଡ଼ିଆ',
     },
     {
       _name: 'txt_assamese',
-      __text: 'Assamese',
+      __text: 'অসমীয়া',
     },
     {
       _name: 'txt_assessment_quiz',
@@ -1747,8 +1747,24 @@ export const MHA = {
       __text: 'आपण ही चाचणी आधीच पास केली आहे. आपण पुन्हा प्रयत्न करू इच्छिता?',
     },
     {
-      _name: 'text_welcome',
-      __text: 'विमा पाठशाला मधे आपला स्वगत आहे',
+      _name: 'txt_welcome_to_bima_popup_message',
+      __text: 'विमा पाठशाळेमध्ये आपले स्वागत आहे',
+    },
+    {
+      _name: 'txt_bima_jewels',
+      __text: 'विमा पाठशाळा ज्वेल्स',
+    },
+    {
+      _name: 'txt_bima_entertainment',
+      __text: 'विमा\\nएंटरटेनमेंट',
+    },
+    {
+      _name: 'txt_bima_health',
+      __text: 'विमा\\nआरोग्य',
+    },
+    {
+      _name: 'txt_bangla',
+      __text: 'বাংলা',
     },
   ],
   stringArray: [
