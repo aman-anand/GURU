@@ -10,6 +10,7 @@ import withSizes from 'react-sizes';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Notification from '../Notification/Loadable';
+import Language from '../Language/Loadable';
 import { OptionalHeaderContainer } from './style';
 
 const changeAnimateFn = (goTo, props) => {
@@ -57,6 +58,7 @@ function OptionalHeader(props) {
             </Link>
           </div>
           <div className="pageTitle">{title || ''}</div>
+          <Language />
           <Notification />
         </OptionalHeaderContainer>
       ) : null}

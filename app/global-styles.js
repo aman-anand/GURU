@@ -485,5 +485,11 @@ const GlobalStyle = createGlobalStyle`
       line-height: 35px;
     }
   }
+  .goToSettingButton {
+    margin-bottom: 10px !important;
+		& > span {
+			text-transform: none;
+		}
+	}
 `;
 export default GlobalStyle;
