@@ -61,4 +61,24 @@ export const SigninContainer = styled.section`
       width: 100%;
     }
   }
+
+  .firstTimelang {
+    ${globalStyle.flex};
+    ${globalStyle.column};
+    width: 100%;
+    align-items: center;
+    flex: 1;
+    padding: 20px;
+    @media (min-width: ${globalStyle.small}) {
+      width: 380px;
+    }
+    .logo {
+      width: 150px;
+      margin-bottom: 40px;
+      img {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+    }
+  }
 `;

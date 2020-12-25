@@ -5,7 +5,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -22,9 +22,11 @@ import BasicDetails from '../../components/BasicDetails/Loadable';
 import SigninForm from '../../components/SigninForm/Loadable';
 import Authentication from '../../components/Authentication/Loadable';
 import RegistorNav from '../../components/RegistorNav/Loadable';
+import LanguageComponent from '../../components/LanguageComponent/Loadable';
 import {
   getFromLocalStore,
   setLoclStoreArry,
+  languageString,
 } from '../../services/CommonSetterGetter';
 
 import {
@@ -40,6 +42,7 @@ import makeSelectSignin from './selectors';
 import { SigninContainer } from './style';
 import splashIMG from '../../images/splash.png';
 import logoIMG from '../../images/logo.png';
+
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
@@ -199,7 +202,8 @@ export class Signin extends React.PureComponent {
   render() {
     const { isMobile } = this.props;
     const { stage, error, errorMsg, store } = this.state;
-    // window.console.log('STATE', this.state);
+    const lang = window.sessionStorage.getItem('lang');
+    // console.log('LANG', lang);
     return (
       <SigninContainer>
         <Helmet>
@@ -207,59 +211,71 @@ export class Signin extends React.PureComponent {
           <meta name="description" content="Description of Signin" />
         </Helmet>
         <div className="wrapper">
-          <div className="leftArticle">
-            <div className="navigation">
-              {!isMobile ? (
-                <div className="logo">
-                  <img src={logoIMG} alt="" title="" />
-                </div>
-              ) : (
-                <RegistorNav />
-              )}
-            </div>
-            <div className="content">
-              <div className="blackBox">
-                {['LOGIN'].includes(stage) ? (
-                  <SigninForm submitFun={this.submitMobile} store={store} />
-                ) : ['OTP'].includes(stage) && !isMobile ? (
-                  <Authentication
-                    submitFun={this.submitOtp}
-                    resendOtp={this.resendOtp}
-                    error={{ error, errorMsg }}
-                  />
-                ) : ['SIGNUP'].includes(stage) ? (
-                  <BasicDetails
-                    formData={store}
-                    // uploadAction={this.uploadActionFn}
-                    submitRegistration={this.submitRegistration}
-                  />
-                ) : null}
+          {!lang ? (
+            <div className="firstTimelang">
+              <div className="logo">
+                <img src={logoIMG} alt="" title="" />
+                <span>{languageString('txt_choose_language')}</span>
               </div>
+              <LanguageComponent />
             </div>
-          </div>
-          {!isMobile ? (
-            <div className="rightArticle">
-              <img src={splashIMG} alt="" title="" />
-            </div>
-          ) : null}
-          {isMobile && ['OTP'].includes(stage) ? (
-            <Dialog
-              open={this.state.open}
-              TransitionComponent={Transition}
-              keepMounted
-              aria-labelledby="alert-dialog-slide-title"
-              aria-describedby="alert-dialog-slide-description"
-              className="dialogWrapper"
-            >
-              <DialogContent className="sumanta">
-                <Authentication
-                  submitFun={this.submitOtp}
-                  resendOtp={this.resendOtp}
-                  error={{ error, errorMsg }}
-                />
-              </DialogContent>
-            </Dialog>
-          ) : null}
+          ) : (
+            <Fragment>
+              <div className="leftArticle">
+                <div className="navigation">
+                  {!isMobile ? (
+                    <div className="logo">
+                      <img src={logoIMG} alt="" title="" />
+                    </div>
+                  ) : (
+                    <RegistorNav />
+                  )}
+                </div>
+                <div className="content">
+                  <div className="blackBox">
+                    {['LOGIN'].includes(stage) ? (
+                      <SigninForm submitFun={this.submitMobile} store={store} />
+                    ) : ['OTP'].includes(stage) && !isMobile ? (
+                      <Authentication
+                        submitFun={this.submitOtp}
+                        resendOtp={this.resendOtp}
+                        error={{ error, errorMsg }}
+                      />
+                    ) : ['SIGNUP'].includes(stage) ? (
+                      <BasicDetails
+                        formData={store}
+                        // uploadAction={this.uploadActionFn}
+                        submitRegistration={this.submitRegistration}
+                      />
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+              {!isMobile ? (
+                <div className="rightArticle">
+                  <img src={splashIMG} alt="" title="" />
+                </div>
+              ) : null}
+              {isMobile && ['OTP'].includes(stage) ? (
+                <Dialog
+                  open={this.state.open}
+                  TransitionComponent={Transition}
+                  keepMounted
+                  aria-labelledby="alert-dialog-slide-title"
+                  aria-describedby="alert-dialog-slide-description"
+                  className="dialogWrapper"
+                >
+                  <DialogContent className="sumanta">
+                    <Authentication
+                      submitFun={this.submitOtp}
+                      resendOtp={this.resendOtp}
+                      error={{ error, errorMsg }}
+                    />
+                  </DialogContent>
+                </Dialog>
+              ) : null}
+            </Fragment>
+          )}
         </div>
       </SigninContainer>
     );
