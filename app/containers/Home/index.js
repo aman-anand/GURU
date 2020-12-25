@@ -34,6 +34,10 @@ import ArticleCard from '../../components/ArticleCard/Loadable';
 import UpcommingSession from '../../components/UpcommingSession/Loadable';
 import ChartBord from '../../components/ChartBord/Loadable';
 import logoIMG from '../../images/logo.png';
+import icRedBg from '../../images/ic_red_bg.png';
+import icHeart from '../../images/ic_heart.png';
+import icBlueBg from '../../images/ic_blue_bg.png';
+import icEntertainment from '../../images/ic_entertainment.png';
 
 // NOTE: Styles
 import { HomeContainer } from './style';
@@ -154,7 +158,7 @@ export class Home extends React.PureComponent {
               seeall={!!isMobile}
               seelLink="/course"
             />
-            {!isMobile && courseList <= 3 ? (
+            {!isMobile && courseList <= 15 ? (
               <div className="cardWrapper row">
                 {course &&
                   course.map(item => {
@@ -234,7 +238,7 @@ export class Home extends React.PureComponent {
                 seelLink="/videos"
               />
             ) : null}
-            {!isMobile && videoList <= 3 ? (
+            {!isMobile && videoList <= 15 ? (
               <div className="cardWrapper row">
                 {video &&
                   video.map(item => {
@@ -306,7 +310,26 @@ export class Home extends React.PureComponent {
               </div>
             )}
             {/* NOTE: JWALE */}
-            <p>{languageString('txt_bima_jewels')}</p>
+            <p className="jewalHeadding">{languageString('txt_bima_jewels')}</p>
+            <div className="jewalWrapper">
+              <div className="jewl_left">
+                <a href="https://bh.bimapaathshala.org" target="_blank">
+                  <img src={icRedBg} alt="" title="" />
+                  <img src={icHeart} alt="" title="" className="linkImg" />
+                </a>
+              </div>
+              <div className="jewl_right">
+                <a href="https://be.bimapaathshala.org" target="_blank">
+                  <img src={icBlueBg} alt="" title="" />
+                  <img
+                    src={icEntertainment}
+                    alt=""
+                    title=""
+                    className="linkImg"
+                  />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
         <ChartBord />

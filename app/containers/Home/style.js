@@ -48,4 +48,41 @@ export const HomeContainer = styled.section`
       }
     }
   }
+
+  .jewalHeadding {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  .jewalWrapper {
+    ${globalStyle.flex};
+    ${globalStyle.row};
+    margin: 0px -7.5px;
+    & > div {
+      ${globalStyle.flex};
+      flex: 1;
+      margin: 0px 7.5px;
+      border-radius: 5px;
+      position: relative;
+      @media (min-width: ${globalStyle.small}) {
+        max-width: 245px;
+      }
+      a {
+        img {
+          width: 100%;
+          &.linkImg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 60px;
+          }
+        }
+      }
+    }
+  }
 `;
