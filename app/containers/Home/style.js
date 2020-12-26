@@ -70,6 +70,8 @@ export const HomeContainer = styled.section`
         max-width: 245px;
       }
       a {
+        ${globalStyle.flex};
+        flex: 1;
         img {
           width: 100%;
           &.linkImg {
@@ -78,7 +80,7 @@ export const HomeContainer = styled.section`
             top: 15px;
             right: 0;
             margin: auto;
-            width: 60px;
+            width: 35px;
             @media (min-width: ${globalStyle.small}) {
               top: 30px;
             }

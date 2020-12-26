@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -71,8 +71,13 @@ export class Videos extends React.PureComponent {
                     thumb,
                     _id,
                   };
-                  // console.log('ITEM', dataOBJ);
-                  return <VideoCard key={_id} dataOBJ={dataOBJ} />;
+                  return (
+                    <Fragment>
+                      {name && name.length > 1 ? (
+                        <VideoCard key={_id} dataOBJ={dataOBJ} />
+                      ) : null}
+                    </Fragment>
+                  );
                 })}
             </div>
           </div>

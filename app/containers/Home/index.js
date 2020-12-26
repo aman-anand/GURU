@@ -315,13 +315,6 @@ export class Home extends React.PureComponent {
             <p className="jewalHeadding">{languageString('txt_bima_jewels')}</p>
             <div className="jewalWrapper">
               <div className="jewl_left">
-                <a href="https://bh.bimapaathshala.org" target="_blank">
-                  <img src={icRedBg} alt="" title="" />
-                  <img src={icHeart} alt="" title="" className="linkImg" />
-                  <span className="entatain">Bima Entertainment</span>
-                </a>
-              </div>
-              <div className="jewl_right">
                 <a href="https://be.bimapaathshala.org" target="_blank">
                   <img src={icBlueBg} alt="" title="" />
                   <img
@@ -330,6 +323,13 @@ export class Home extends React.PureComponent {
                     title=""
                     className="linkImg"
                   />
+                  <span className="entatain">Bima Entertainment</span>
+                </a>
+              </div>
+              <div className="jewl_right">
+                <a href="https://bh.bimapaathshala.org" target="_blank">
+                  <img src={icRedBg} alt="" title="" />
+                  <img src={icHeart} alt="" title="" className="linkImg" />
                   <span className="textHealth">Bima Health</span>
                 </a>
               </div>

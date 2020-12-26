@@ -37,8 +37,8 @@ function SessionCard(props) {
             <p>
               <span>{courseName}</span>
               <span>
-                {totalSections} {languageString('txt_sessions')} | {totalVideos}{' '}
-                {languageString('txt_video')}
+                {totalSections} {languageString('txt_sections')} | {totalVideos}{' '}
+                {languageString('txt_videos')}
               </span>
             </p>
           </div>
