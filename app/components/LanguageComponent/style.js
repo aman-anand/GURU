@@ -5,14 +5,11 @@ import right from '../../images/right.png';
 export const LanguageComponentContainer = styled.div`
     ${globalStyle.flex};
     ${globalStyle.column};
-    label {
-    ${globalStyle.flex};
-    ${globalStyle.column};
-    margin-bottom: 15px;
     width: 100%;
-    @media (min-width: ${globalStyle.small}) {
-      width: 350px;
-    }
+    label {
+      ${globalStyle.flex};
+      ${globalStyle.column};
+      margin-bottom: 15px;
     input {
       display: none;
       &:checked {
