@@ -24,6 +24,7 @@ import Search from '../../components/Search/Loadable';
 import UpcommingSession from '../../components/UpcommingSession/Loadable';
 import VideoCard from '../../components/VideoCard/Loadable';
 import OptionalHeader from '../../components/OptionalHeader';
+import { languageString } from '../../services/CommonSetterGetter';
 
 export class Videos extends React.PureComponent {
   constructor(props) {
@@ -51,16 +52,21 @@ export class Videos extends React.PureComponent {
           <meta name="description" content="Description of Videos" />
         </Helmet>
         {!isMobile ? (
-          <Header title="VIDEOS" />
+          <Header title={languageString('txt_videos').toUpperCase()} />
         ) : (
-          <OptionalHeader title="VIDEOS" goTo="/home" />
+          <OptionalHeader
+            title={languageString('txt_videos').toUpperCase()}
+            goTo="/home"
+          />
         )}
-        {isMobile ? <Search /> : null}
+        {isMobile ? (
+          <Search placeHolder={languageString('txt_search_sessions')} />
+        ) : null}
         <div className="container">
           <div className="leftBox">
             <UpcommingSession
-              title="VIDEOS"
-              subtitle={`${videoList} videos listed`}
+              title={languageString('txt_videos').toUpperCase()}
+              subtitle={`${videoList} ${languageString('txt_videos_listed')}`}
             />
             <div className="cardWrapper">
               {video &&

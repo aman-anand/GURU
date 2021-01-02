@@ -90,14 +90,16 @@ export class Sessions extends React.PureComponent {
               <Bredcrumb>
                 <div className="_bWrapper">
                   <span>
-                    <a href="/upcomingsessions">SESSIONS</a>
+                    <a href="/upcomingsessions">
+                      {languageString('txt_sessions').toUpperCase()}
+                    </a>
                   </span>
                   <span>{'>'}</span>
                   <span>
                     {['upcomingsessions'].includes(sessionRadio)
-                      ? 'upcoming'
-                      : 'attended'}{' '}
-                    SESSIONS
+                      ? `${languageString('txt_upcoming')}`
+                      : `${languageString('txt_attended')}`}{' '}
+                    {languageString('txt_sessions').toUpperCase()}
                   </span>
                 </div>
               </Bredcrumb>
@@ -114,7 +116,7 @@ export class Sessions extends React.PureComponent {
                         : null
                     }
                   >
-                    <span>UPCOMING</span>
+                    <span>{languageString('txt_upcoming').toUpperCase()}</span>
                   </label>
                 </div>
                 <div className="navList">
@@ -127,7 +129,7 @@ export class Sessions extends React.PureComponent {
                         : null
                     }
                   >
-                    <span>ATTENDED</span>
+                    <span>{languageString('txt_attended').toUpperCase()}</span>
                   </label>
                 </div>
               </div>
@@ -200,18 +202,7 @@ export class Sessions extends React.PureComponent {
                       coverImage,
                       _id,
                     };
-                    const sticyTwoData = {
-                      name: `${sectionsOBJ ? sectionsOBJ.length : 0} SECTIONS`,
-                      classname: 'expert',
-                    };
-                    return (
-                      <SessionCard
-                        key={_id}
-                        courseData={courseDataOBJ}
-                        sticyTwo
-                        sticyTwoData={sticyTwoData}
-                      />
-                    );
+                    return <SessionCard key={_id} courseData={courseDataOBJ} />;
                   })}
               </div>
             </div>

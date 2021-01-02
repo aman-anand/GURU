@@ -6,7 +6,7 @@
  */
 
 import React, { memo } from 'react';
-// import PropTypes from 'prop-types';
+import { languageString } from '../../services/CommonSetterGetter';
 import { AssessmentContainer } from './style';
 
 function Assessment(props) {
@@ -49,13 +49,18 @@ function Assessment(props) {
       </div>
       <div className="mContent">
         {completed ? (
-          <span className="complete">COMPLETED</span>
+          <span className="complete">
+            {languageString('txt_completed').toUpperCase()}
+          </span>
         ) : (
-          <span className="pending">PENDING</span>
+          <span className="pending">
+            {languageString('txt_pending').toUpperCase()}
+          </span>
         )}
         <span>{title}</span>
         <span>
-          {quLength} Questions | {time} Minutes
+          {quLength} {languageString('txt_questions')} | {time}{' '}
+          {languageString('txt_minutes')}
         </span>
       </div>
       <div className="mRight">
@@ -67,7 +72,7 @@ function Assessment(props) {
             onClick={() => onAction(data)}
             role="presentation"
           >
-            START
+            {languageString('txt_start').toUpperCase()}
           </span>
         )}
       </div>

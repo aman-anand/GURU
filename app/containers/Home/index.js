@@ -148,8 +148,10 @@ export class Home extends React.PureComponent {
           <title>Shishya Home</title>
           <meta name="description" content="Description of Home" />
         </Helmet>
-        <Header title="Home" />
-        {isMobile ? <Search /> : null}
+        <Header title={languageString('txt_home')} />
+        {isMobile ? (
+          <Search placeHolder={languageString('txt_search_sessions')} />
+        ) : null}
         <div className="container">
           <div className="leftBox">
             {/* NOTE: COURSE */}

@@ -55,7 +55,7 @@ export const getFromLocalStore = key => {
 // };
 export const languageString = params => {
   let intel;
-  const lang = window.sessionStorage.getItem('lang') || 'EN';
+  const lang = window.localStorage.getItem('lang') || 'EN';
   if (['EN'].includes(lang)) {
     const { string } = ENG || {};
     const findValue = string.find(item => {
@@ -77,7 +77,7 @@ export const languageString = params => {
       return name === params;
     });
     intel = findValue.__text;
-  } else if (['MH'].includes(lang)) {
+  } else if (['MR'].includes(lang)) {
     const { string } = MHA || {};
     const findValue = string.find(item => {
       const { _name: name } = item || {};

@@ -429,7 +429,9 @@ function Header(props) {
                   <span>
                     {fName} {lName}
                   </span>
-                  <span>Roll No: {rollNumber}</span>
+                  <span>
+                    {languageString('txt_roll_no')} {''} {rollNumber}
+                  </span>
                 </p>
               </div>
               <i className="arrow">

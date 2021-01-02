@@ -343,9 +343,12 @@ export class CourseDetails extends React.PureComponent {
           <meta name="description" content="Description of Home" />
         </Helmet>
         {!isMobile ? (
-          <Header title="COURSE DETAILS" />
+          <Header title={languageString('txt_course_details').toUpperCase()} />
         ) : (
-          <OptionalHeader title="COURSE DETAILS" goTo="/courses" />
+          <OptionalHeader
+            title={languageString('txt_course_details').toUpperCase()}
+            goTo="/courses"
+          />
         )}
         {startExam ? (
           <Fragment>
@@ -448,8 +451,12 @@ export class CourseDetails extends React.PureComponent {
                               </svg>
                             </i>
                             <div className="_content">
-                              <span>{totalSections} Sections</span>
-                              <span>{totalVideos} Videos</span>
+                              <span>
+                                {totalSections} {languageString('txt_sections')}
+                              </span>
+                              <span>
+                                {totalVideos} {languageString('txt_videos')}
+                              </span>
                             </div>
                           </div>
                           <div className="certificateItem">
@@ -468,8 +475,17 @@ export class CourseDetails extends React.PureComponent {
                               </svg>
                             </i>
                             <div className="_content">
-                              <span>CERTIFICATE</span>
-                              <span>{totalAssessments} ASSESSMENTS</span>
+                              <span>
+                                {languageString(
+                                  'txt_certificates',
+                                ).toUpperCase()}
+                              </span>
+                              <span>
+                                {totalAssessments}{' '}
+                                {languageString(
+                                  'txt_assessments',
+                                ).toUpperCase()}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -484,19 +500,23 @@ export class CourseDetails extends React.PureComponent {
                             });
                           }}
                         >
-                          START COURSE
+                          {languageString(
+                            'txt_showcase_start_title',
+                          ).toUpperCase()}
                         </Button>
                         {/* NOTE: start */}
                         {/* <p>{totalStudents} shishya have watched this course</p> */}
                         <div className="review_box">
-                          <span>REVIEWS</span>
+                          <span>
+                            {languageString('txt_reviews').toUpperCase()}
+                          </span>
                           <Ratings />
                           <span>
                             Based on {review ? review.length : 0} reviews
                           </span>
                         </div>
                         <div className="commentsWrapper">
-                          <p>COMMENTS</p>
+                          <p>{languageString('txt_comments').toUpperCase()}</p>
                           <div className="postCommentwrapper">
                             <div className="icon">
                               <img src={defoultProfileImg} alt="" title="" />
@@ -504,7 +524,9 @@ export class CourseDetails extends React.PureComponent {
                             <div className="postComment">
                               <div className="leftPostCom">
                                 <input
-                                  placeholder="write your feedback here"
+                                  placeholder={languageString(
+                                    'txt_write_your_feedback_here',
+                                  )}
                                   type="text"
                                   value={this.state.comment}
                                   onChange={e =>

@@ -12,6 +12,7 @@ import Dialog from '@material-ui/core/Dialog';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
+import { languageString } from '../../services/CommonSetterGetter';
 import { CetificateBlockContainer } from './style';
 
 function CetificateBlock(props) {
@@ -23,9 +24,6 @@ function CetificateBlock(props) {
   const download = url => {
     window.open(url, '_blank');
   };
-  // const viewUrl = () => {
-  //   setOpen(true);
-  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -67,7 +65,7 @@ function CetificateBlock(props) {
           type="button"
           onClick={() => download(certificateUrl)}
         >
-          DOWNLOAD
+          {languageString('txt_download').toUpperCase()}
         </Button>
       </div>
       <Dialog

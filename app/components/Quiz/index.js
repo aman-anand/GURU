@@ -13,6 +13,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Snackbar from '@material-ui/core/Snackbar';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { languageString } from '../../services/CommonSetterGetter';
 import { QuizContainer } from './style';
 export class Quiz extends React.PureComponent {
   constructor(props) {
@@ -46,14 +47,18 @@ export class Quiz extends React.PureComponent {
 
       minutes = minutes < 10 ? `0${minutes}` : minutes;
       seconds = seconds < 10 ? `0${seconds}` : seconds;
-      document.getElementById(
-        'countdown',
-      ).innerHTML = `TIME LEFT ${minutes} : ${seconds} MINS`;
+      document.getElementById('countdown').innerHTML = `${languageString(
+        'txt_time_left',
+      ).toUpperCase()} ${minutes} : ${seconds} ${languageString(
+        'txt_mins',
+      ).toUpperCase()}`;
 
       timer -= 1;
       if (timer <= 0) {
         clearInterval(this.downloadTimer);
-        document.getElementById('countdown').innerHTML = 'Time is up!';
+        document.getElementById('countdown').innerHTML = languageString(
+          'txt_time_up',
+        ).toUpperCase();
         document.getElementById('timeupPopup').click();
         window.console.log('THIS', this);
       }
@@ -161,7 +166,7 @@ export class Quiz extends React.PureComponent {
     const { _id: qusId, question: DISPLAY_QUES, answer } =
       questions[quesAttem] || {};
     const percentage = 100 / questions.length;
-    console.log('answer', answer);
+    window.console.log('answer', answer);
     return (
       <QuizContainer percentage={percentage}>
         <div className="topSec">
@@ -172,7 +177,8 @@ export class Quiz extends React.PureComponent {
             </div>
             <div className="trSect">
               <div className="examTimes" id="countdown">
-                TIME LEFT: {time} MINS
+                {languageString('txt_time_left').toUpperCase()}: {time}{' '}
+                {languageString('txt_mins').toUpperCase()}
               </div>
             </div>
           </div>
@@ -195,7 +201,9 @@ export class Quiz extends React.PureComponent {
             <div className="answarOpt">
               {questions[quesAttem].options.map((ele, idx) => (
                 <div
-                  className={`ansBox ${ele === correctAns ? 'rightAns' : null}`}
+                  className={`ansBox ${
+                    ele === correctAns ? 'rightAns' : 'resd'
+                  }`}
                 >
                   <input
                     type="radio"
@@ -242,7 +250,7 @@ export class Quiz extends React.PureComponent {
                 </svg>
               </i>
 
-              <span>NEXT QUESTION</span>
+              <span>{languageString('txt_next_que').toUpperCase()}</span>
             </div>
           ) : (
             <div
@@ -264,7 +272,7 @@ export class Quiz extends React.PureComponent {
                   />
                 </svg>
               </i>
-              <span>SUBMIT ANSWAR</span>
+              <span>{languageString('txt_submit_answer').toUpperCase()}</span>
             </div>
           )}
         </div>
@@ -279,13 +287,13 @@ export class Quiz extends React.PureComponent {
         <Dialog open={timeup}>
           <DialogContent className="sumanta">
             <DialogContentText className="logoutWrapp">
-              <span>Time is up. Good try.</span>
+              <span>{languageString('txt_time_over_message')}</span>
               <Button
                 onClick={() => this.handleTimeUpSucess()}
                 variant="contained"
                 color="primary"
               >
-                ok
+                {languageString('txt_ok')}
               </Button>
             </DialogContentText>
           </DialogContent>

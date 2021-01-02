@@ -79,7 +79,7 @@ export class Profile extends React.PureComponent {
     });
   };
 
-  submitRegistration = values => {
+  submitRegistration = () => {
     // window.console.log('values', values);
     const localData = getFromLocalStore([
       'profileImage',
@@ -129,8 +129,6 @@ export class Profile extends React.PureComponent {
   render() {
     const { isMobile } = this.props || {};
     const { store, profileImage } = this.state;
-    const { rollNumber } = store || {};
-    // console.log('STORE', store, rollNumber);
     return (
       <ProfileContainer>
         <Helmet>
@@ -138,9 +136,12 @@ export class Profile extends React.PureComponent {
           <meta name="description" content="Description of Profile" />
         </Helmet>
         {!isMobile ? (
-          <Header title="MY PROFILE" />
+          <Header title={languageString('txt_my_profile').toUpperCase()} />
         ) : (
-          <OptionalHeader title="MY PROFILE" goTo="/home" />
+          <OptionalHeader
+            title={languageString('txt_my_profile').toUpperCase()}
+            goTo="/home"
+          />
         )}
         <div className="profileContainer">
           <div className="tabsWraper">

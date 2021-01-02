@@ -28,6 +28,7 @@ import {
   videosDetailsAction,
   submitReviewAction,
 } from '../Videos/actions';
+import { languageString } from '../../services/CommonSetterGetter';
 import defoultProfileImg from '../../images/defoult_profile.png';
 
 // NOTE: Style
@@ -104,9 +105,12 @@ export class VideoDetails extends React.PureComponent {
           <meta name="description" content="Description of VideoDetails" />
         </Helmet>
         {!isMobile ? (
-          <Header title="VIDEO" />
+          <Header title={languageString('txt_videos').toUpperCase()} />
         ) : (
-          <OptionalHeader title="VIDEO" goTo="/videos" />
+          <OptionalHeader
+            title={languageString('txt_videos').toUpperCase()}
+            goTo="/videos"
+          />
         )}
         <div className="container">
           <div className="leftBox">
@@ -116,12 +120,12 @@ export class VideoDetails extends React.PureComponent {
             <div className="_descBox">
               <p className="_desc">{description}</p>
               <div className="review_box">
-                <span>REVIEWS</span>
+                <span>{languageString('txt_reviews').toUpperCase()}</span>
                 <Ratings />
                 <span>Based on {review ? review.length : 0} reviews</span>
               </div>
               <div className="commentsWrapper">
-                <p>COMMENTS</p>
+                <p>{languageString('txt_comments').toUpperCase()}</p>
                 <div className="postCommentwrapper">
                   <div className="icon">
                     <img src={defoultProfileImg} alt="" title="" />
@@ -129,7 +133,9 @@ export class VideoDetails extends React.PureComponent {
                   <div className="postComment">
                     <div className="leftPostCom">
                       <input
-                        placeholder="write your feedback here"
+                        placeholder={languageString(
+                          'txt_write_your_feedback_here',
+                        )}
                         type="text"
                         value={this.state.comment}
                         onChange={e => this.onChangeComment(e.target.value)}
@@ -192,7 +198,9 @@ export class VideoDetails extends React.PureComponent {
                       _id,
                     };
                     const sticyTwoData = {
-                      name: `${sectionsOBJ ? sectionsOBJ.length : 0} SECTIONS`,
+                      name: `${
+                        sectionsOBJ ? sectionsOBJ.length : 0
+                      } ${languageString('txt_sections').toUpperCase()}`,
                       classname: 'expert',
                     };
                     return (

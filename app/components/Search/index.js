@@ -5,11 +5,11 @@
  */
 
 import React, { memo } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 import { SearchContainer } from './style';
 
-function Search() {
+function Search(props) {
   return (
     <SearchContainer>
       <span>
@@ -26,11 +26,13 @@ function Search() {
           />
         </svg>
       </span>
-      <input type="text" placeholder="Search Sessions" />
+      <input type="text" placeholder={props.placeHolder} />
     </SearchContainer>
   );
 }
 
-Search.propTypes = {};
+Search.propTypes = {
+  placeHolder: PropTypes.string,
+};
 
 export default memo(Search);

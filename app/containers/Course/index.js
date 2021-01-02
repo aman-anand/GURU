@@ -20,6 +20,8 @@ import Header from '../../components/Header/Loadable';
 import Search from '../../components/Search/Loadable';
 import SessionCard from '../../components/SessionCard/Loadable';
 import UpcommingSession from '../../components/UpcommingSession/Loadable';
+import OptionalHeader from '../../components/OptionalHeader';
+import { languageString } from '../../services/CommonSetterGetter';
 // NOTE: Styles
 import { HomeContainer } from '../Home/style';
 
@@ -47,13 +49,22 @@ export class Course extends React.PureComponent {
           <title>Courses</title>
           <meta name="description" content="Description of Courses" />
         </Helmet>
-        <Header title="Courses" />
-        {isMobile ? <Search /> : null}
+        {!isMobile ? (
+          <Header title={languageString('txt_courses').toUpperCase()} />
+        ) : (
+          <OptionalHeader
+            title={languageString('txt_courses').toUpperCase()}
+            goTo="/home"
+          />
+        )}
+        {isMobile ? (
+          <Search placeHolder={languageString('txt_search_sessions')} />
+        ) : null}
         <div className="container">
           <div className="leftBox">
             <UpcommingSession
-              title="COURSES"
-              subtitle={`${total} courses listed`}
+              title={languageString('txt_courses').toUpperCase()}
+              subtitle={`${total} ${languageString('txt_courses_listed')}`}
             />
             <div className="cardWrapper">
               {data &&
@@ -74,18 +85,7 @@ export class Course extends React.PureComponent {
                     coverImage,
                     _id,
                   };
-                  const sticyTwoData = {
-                    name: `${sections ? sections.length : 0} SECTIONS`,
-                    classname: 'expert',
-                  };
-                  return (
-                    <SessionCard
-                      key={_id}
-                      courseData={courseData}
-                      sticyTwo
-                      sticyTwoData={sticyTwoData}
-                    />
-                  );
+                  return <SessionCard key={_id} courseData={courseData} />;
                 })}
             </div>
           </div>

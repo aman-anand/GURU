@@ -9,16 +9,16 @@ import Button from '@material-ui/core/Button';
 import history from 'utils/history';
 import {
   languageString,
-  setSessionStoreArry,
+  setLoclStoreArry,
 } from '../../services/CommonSetterGetter';
 import { LanguageComponentContainer } from './style';
 
 function LanguageComponent() {
-  const lang = window.sessionStorage.getItem('lang') || 'EN';
+  const lang = window.localStorage.getItem('lang') || 'EN';
   const [language, setLanguage] = useState(lang);
 
   const updateLanguage = () => {
-    setSessionStoreArry([{ lang: language || 'EN' }]);
+    setLoclStoreArry([{ lang: language || 'EN' }]);
     history.push('/home');
   };
 
@@ -53,14 +53,14 @@ function LanguageComponent() {
             <span className="icon" />
           </div>
         </label>
-        <label htmlFor="MH">
+        <label htmlFor="MR">
           <input
             type="radio"
             name="language"
-            id="MH"
-            value="MH"
+            id="MR"
+            value="MR"
             onClick={e => setLanguage(e.target.value)}
-            checked={['MH'].includes(language)}
+            checked={['MR'].includes(language)}
           />
           <div className="radioBox">
             <span className="title">{languageString('txt_marathi')}</span>

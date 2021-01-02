@@ -6,6 +6,7 @@
 
 import React, { memo } from 'react';
 import withSizes from 'react-sizes';
+import { languageString } from '../../services/CommonSetterGetter';
 import { UpcommingSessionContainer } from './style';
 
 function UpcommingSession(props) {
@@ -40,7 +41,7 @@ function UpcommingSession(props) {
                 PREVIOUS
               </span>
               <span>
-                NEXT
+                {languageString('txt_next').toUpperCase()}
                 <i>
                   <svg
                     width="6"
@@ -60,7 +61,9 @@ function UpcommingSession(props) {
           ) : null}
           {seeall ? (
             <span className="seeAll">
-              <a href={seelLink}>SEE ALL</a>
+              <a href={seelLink}>
+                {languageString('txt_see_all').toUpperCase()}
+              </a>
             </span>
           ) : null}
         </div>

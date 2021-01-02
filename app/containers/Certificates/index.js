@@ -57,14 +57,14 @@ export class Certificates extends React.PureComponent {
           <title>Certificates</title>
           <meta name="description" content="Description of Certificates" />
         </Helmet>
-        <Header title="CERTIFICATES" />
+        <Header title={languageString('txt_certificates').toUpperCase()} />
         <div className="container">
           <div className="leftBox">
             {certCount ? (
               <Fragment>
                 <UpcommingSession
-                  title="CERTIFICATES"
-                  subtitle={`${certCount} certificates earned`}
+                  title={languageString('txt_certificates').toUpperCase()}
+                  subtitle={`${certCount} {languageString('txt_certificates')} earned`}
                 />
                 {certiObj &&
                   certiObj.map(cert => {

@@ -17,6 +17,7 @@ import makeSelectLeaderBoard from './selectors';
 import reducer from './reducer';
 import Header from '../../components/Header/Loadable';
 import { leaderAction } from './actions';
+import { languageString } from '../../services/CommonSetterGetter';
 
 // NOTE: Style
 import avtar from '../../images/avtar.png';
@@ -58,7 +59,9 @@ export class LeaderBoard extends React.PureComponent {
         <Header title="Sessions" />
         <div className="topSection">
           <div className="container">
-            <div className="topHeading">LEADERBOARD</div>
+            <div className="topHeading">
+              {languageString('txt_leaderboard').toUpperCase()}
+            </div>
             <div className="boardTeamBox">
               <div className="secound">
                 <span className="imgBox">
@@ -291,7 +294,7 @@ export class LeaderBoard extends React.PureComponent {
           <div className="leaderWrapper">
             <div className="listBox">
               <div className="left">
-                <span>Shishya Name</span>
+                <span>{languageString('txt_guru_name')}</span>
               </div>
               <div className="right">
                 <span>#Level</span>
@@ -311,7 +314,10 @@ export class LeaderBoard extends React.PureComponent {
                         <span>
                           {fName} {lName}
                         </span>
-                        <span>{totalCourses} Course Completed</span>
+                        <span>
+                          {totalCourses}{' '}
+                          {languageString('txt_course_completed')}
+                        </span>
                       </div>
                     </div>
                     <div className="right">
@@ -320,18 +326,6 @@ export class LeaderBoard extends React.PureComponent {
                   </div>
                 );
               })}
-            <div className="listBox">
-              <div className="left">
-                <i className="icon" />
-                <div className="content">
-                  <span>Sanjana Ghosh</span>
-                  <span>3 Course Completed</span>
-                </div>
-              </div>
-              <div className="right">
-                <div className="cercile">5</div>
-              </div>
-            </div>
           </div>
         </div>
       </LeaderBoardContainer>

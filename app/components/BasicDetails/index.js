@@ -42,20 +42,6 @@ class BasicDetails extends React.Component {
     return null;
   }
 
-  // componentDidMount() {
-  //   const { formData } = this.props;
-  //   const { phone, number, rollNumber, fName, lName, pincode } = formData || {};
-  //   this.setState({
-  //     rollNumber,
-  //     data: {
-  //       phone: number || phone,
-  //       fName,
-  //       lName,
-  //       pincode,
-  //     },
-  //   });
-  // }
-
   uploadFile = event => {
     const { uploadAction } = this.props;
     uploadAction(event.target.name, event.target.files[0]);
@@ -146,7 +132,10 @@ class BasicDetails extends React.Component {
                     />
                   </svg>
                 </i>
-                <span>ROLL NO: {rollNumber}</span>
+                <span>
+                  {languageString('txt_roll_no').toUpperCase()} {''}{' '}
+                  {rollNumber}
+                </span>
               </div>
             </div>
           ) : null}

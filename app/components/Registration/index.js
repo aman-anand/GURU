@@ -128,7 +128,7 @@ class Registration extends React.Component {
               <form onSubmit={handleSubmit}>
                 <div className="genderWrapper">
                   <div className="_genderBox">
-                    <span>Gender</span>
+                    <span>{languageString('txt_gender')}</span>
                     <label htmlFor="male">
                       <Field
                         id="male"
@@ -137,7 +137,7 @@ class Registration extends React.Component {
                         type="radio"
                         value="male"
                       />
-                      <span>Male</span>
+                      <span>{languageString('txt_male')}</span>
                     </label>
                     <label htmlFor="female">
                       <Field
@@ -147,7 +147,7 @@ class Registration extends React.Component {
                         type="radio"
                         value="female"
                       />
-                      <span>Female</span>
+                      <span>{languageString('txt_female')}</span>
                     </label>
                   </div>
                   <Error name="gender" />
@@ -159,7 +159,7 @@ class Registration extends React.Component {
                         <input
                           {...input}
                           type="text"
-                          placeholder="Email Address"
+                          placeholder={languageString('txt_email_address_comp')}
                           className={
                             meta.error && meta.touched ? 'error' : null
                           }
@@ -233,7 +233,7 @@ class Registration extends React.Component {
                 </div>
                 <div className="_rowWrapper">
                   <Field name="monthertounge" component="select">
-                    <option>Mother Tongue</option>
+                    <option>{languageString('txt_mother_tongue_comp')}</option>
                     {languageConfig('mothertonge').map(time => (
                       <option key={time} value={time}>
                         {time}
@@ -245,7 +245,9 @@ class Registration extends React.Component {
                 <div className="_twoComumnWrapper">
                   <div className="fieldWrapper">
                     <Field name="martialstatus" component="select">
-                      <option>Marital Status</option>
+                      <option>
+                        {languageString('txt_marital_status_comp')}
+                      </option>
                       {languageConfig('maritalstatus').map(time => (
                         <option key={time} value={time}>
                           {time}
@@ -264,7 +266,7 @@ class Registration extends React.Component {
                     </Field>
                   </div>
                 </div>
-                <p className="_secText">Address</p>
+                <p className="_secText">{languageString('txt_address')}</p>
 
                 <div className="_rowWrapper">
                   <Field name="locality">
@@ -273,7 +275,7 @@ class Registration extends React.Component {
                         <input
                           {...input}
                           type="text"
-                          placeholder="Locality/Post Office"
+                          placeholder={languageString('txt_locality')}
                           className={
                             meta.error && meta.touched ? 'error' : null
                           }

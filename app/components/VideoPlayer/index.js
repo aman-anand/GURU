@@ -7,6 +7,7 @@
 import React, { memo } from 'react';
 import ModalVideo from 'react-modal-video';
 import PropTypes from 'prop-types';
+import { languageString } from '../../services/CommonSetterGetter';
 import { VideoPlayerContainer } from './style';
 
 export class VideoPlayer extends React.PureComponent {
@@ -59,7 +60,9 @@ export class VideoPlayer extends React.PureComponent {
           <div className="box_2">
             <p>
               <span className="tex_big">{courseName}</span>
-              <span className="tex_small">Duration: {duration}</span>
+              <span className="tex_small">
+                {languageString('txt_duration')} {duration}
+              </span>
             </p>
           </div>
         </div>
