@@ -52,7 +52,6 @@ export class Quiz extends React.PureComponent {
       ).toUpperCase()} ${minutes} : ${seconds} ${languageString(
         'txt_mins',
       ).toUpperCase()}`;
-
       timer -= 1;
       if (timer <= 0) {
         clearInterval(this.downloadTimer);
@@ -63,12 +62,11 @@ export class Quiz extends React.PureComponent {
         window.console.log('THIS', this);
       }
     }, 1000);
-    // console.log('True', this.downloadTimer);
   }
 
   nextQuestion = qusParms => {
     const { quesAttem, answarList, selectAnswar } = this.state;
-    const { answer: SELECT_ANSWAR } = selectAnswar || {};
+    const { answer: SELECT_ANSWAR, selectId } = selectAnswar || {};
     const { answer } = qusParms[quesAttem] || {};
     const radios = document.querySelectorAll('input[type="radio"]:checked');
     const value = radios.length > 0 ? radios[0].value : null;
@@ -77,6 +75,8 @@ export class Quiz extends React.PureComponent {
     if (value) {
       // NOTE: Not Correct Answer
       if (wrongAnswar) {
+        const selectOptionId = document.getElementById(selectId);
+        selectOptionId.classList.add('wrongAns');
         this.setState({
           correctAns: answer,
         });
@@ -85,7 +85,6 @@ export class Quiz extends React.PureComponent {
           this.setState({
             progress: this.progress,
           });
-          // console.log('dsddd', this.progress);
           if (this.progress === 100) {
             this.setState({
               progress: 0,
@@ -102,6 +101,7 @@ export class Quiz extends React.PureComponent {
               answarList.push(selectAnswar);
               this.submitAnswar();
             }
+            selectOptionId.classList.remove('wrongAns');
             clearInterval(this.progressTimer);
           }
         }, 500);
@@ -201,9 +201,8 @@ export class Quiz extends React.PureComponent {
             <div className="answarOpt">
               {questions[quesAttem].options.map((ele, idx) => (
                 <div
-                  className={`ansBox ${
-                    ele === correctAns ? 'rightAns' : 'resd'
-                  }`}
+                  className={`ansBox ${ele === correctAns ? 'rightAns' : null}`}
+                  id={`option_${idx}`}
                 >
                   <input
                     type="radio"
@@ -211,7 +210,11 @@ export class Quiz extends React.PureComponent {
                     name={`answar_${quesAttem}`}
                     value={ele}
                     onChange={() =>
-                      this.selectAnswar({ answer: ele, _id: qusId })
+                      this.selectAnswar({
+                        answer: ele,
+                        _id: qusId,
+                        selectId: `option_${idx}`,
+                      })
                     }
                   />
                   <label htmlFor={`and_${idx}`}>

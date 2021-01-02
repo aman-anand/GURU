@@ -147,6 +147,13 @@ export const QuizContainer = styled.div`
           }
         }
       }
+      &.wrongAns {
+        label {
+          span {
+            color: red;
+          }
+        }
+      }
     }
   }
 
