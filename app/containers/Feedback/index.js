@@ -21,6 +21,7 @@ import Header from '../../components/Header/Loadable';
 import OptionalHeader from '../../components/OptionalHeader';
 import { submitReviewAction } from './actions';
 import { FeedbackContainer } from './style';
+import { languageString } from '../../services/CommonSetterGetter';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -97,11 +98,8 @@ export class Feedback extends React.PureComponent {
                   />
                 </svg>
               </i>
-              <h4>FEEDBACK</h4>
-              <p>
-                We would love to know what you think about us. Please write to
-                us and share your feedback.
-              </p>
+              <h4>{languageString('txt_feedback').toUpperCase()}</h4>
+              <p>{languageString('txt_feedback_desc').toUpperCase()}</p>
             </div>
           </div>
         </div>
@@ -109,7 +107,7 @@ export class Feedback extends React.PureComponent {
           <div className="feedbackform">
             <textarea
               type="text"
-              placeholder="Write your feedback here"
+              placeholder={languageString('txt_write_your_feedback_here')}
               onChange={e => this.onChnageText(e.target.value)}
             />
             {this.state.success && this.state.message ? (
@@ -122,7 +120,7 @@ export class Feedback extends React.PureComponent {
               onClick={this.submitForm}
               disabled={feedback.length < 10}
             >
-              SUBMIT FEEDBACK
+              {languageString('txt_submit_feedback').toUpperCase()}
             </Button>
           </div>
         </div>

@@ -73,7 +73,10 @@ export const SigninContainer = styled.section`
       width: 380px;
     }
     .radioWrapper {
-      width: 380px;
+      width: 100%;
+      @media (min-width: ${globalStyle.small}) {
+        width: 380px;
+      }
     }
     .buttons {
       width: 380px;

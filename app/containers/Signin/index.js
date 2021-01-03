@@ -202,8 +202,8 @@ export class Signin extends React.PureComponent {
   render() {
     const { isMobile } = this.props;
     const { stage, error, errorMsg, store } = this.state;
-    const lang = window.sessionStorage.getItem('lang');
-    // console.log('LANG', lang);
+    const lang = window.localStorage.getItem('lang');
+    window.console.log('Language', lang);
     return (
       <SigninContainer>
         <Helmet>

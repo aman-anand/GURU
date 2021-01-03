@@ -64,7 +64,9 @@ export class Certificates extends React.PureComponent {
               <Fragment>
                 <UpcommingSession
                   title={languageString('txt_certificates').toUpperCase()}
-                  subtitle={`${certCount} {languageString('txt_certificates')} earned`}
+                  subtitle={`${certCount} ${languageString(
+                    'txt_certificates',
+                  )} earned`}
                 />
                 {certiObj &&
                   certiObj.map(cert => {
@@ -123,18 +125,7 @@ export class Certificates extends React.PureComponent {
                       coverImage,
                       _id,
                     };
-                    const sticyTwoData = {
-                      name: `${sectionsOBJ ? sectionsOBJ.length : 0} SECTIONS`,
-                      classname: 'expert',
-                    };
-                    return (
-                      <SessionCard
-                        key={_id}
-                        courseData={courseDataOBJ}
-                        sticyTwo
-                        sticyTwoData={sticyTwoData}
-                      />
-                    );
+                    return <SessionCard key={_id} courseData={courseDataOBJ} />;
                   })}
               </div>
             </div>

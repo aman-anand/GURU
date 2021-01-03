@@ -118,9 +118,9 @@ class Authentication extends React.Component {
 
       minutes = minutes < 10 ? `0${minutes}` : minutes;
       seconds = seconds < 10 ? `0${seconds}` : seconds;
-      document.getElementById(
-        'donthavetext',
-      ).innerHTML = `Resend Code ${minutes} : ${seconds}`;
+      document.getElementById('donthavetext').innerHTML = `${languageString(
+        'txt_resend',
+      )} ${minutes} : ${seconds}`;
 
       timer -= 1;
       if (timer <= 0) {

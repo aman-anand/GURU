@@ -6,6 +6,7 @@
 
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { languageString } from '../../services/CommonSetterGetter';
 import { FooterContainer } from './style';
 
 function Footer() {
@@ -29,7 +30,7 @@ function Footer() {
                 <path d="M8 0L16 6V18H11V11H5V18H0V6L8 0Z" fill="white" />
               </svg>
             </i>
-            <span>Home</span>
+            <span>{languageString('txt_home')}</span>
           </Link>
         </li>
         <li>
@@ -53,7 +54,7 @@ function Footer() {
                 />
               </svg>
             </i>
-            <span>Certificate</span>
+            <span>{languageString('txt_certificates')}</span>
           </Link>
         </li>
         <li>
@@ -77,7 +78,7 @@ function Footer() {
                 />
               </svg>
             </i>
-            <span>Sessions</span>
+            <span>{languageString('txt_sessions')}</span>
           </Link>
         </li>
         <li>
@@ -99,7 +100,7 @@ function Footer() {
                 />
               </svg>
             </i>
-            <span>Profile</span>
+            <span>{languageString('txt_my_profile')}</span>
           </Link>
         </li>
       </ul>

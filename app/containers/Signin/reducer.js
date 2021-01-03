@@ -74,7 +74,6 @@ const signinReducer = (state = initialState, action) =>
               { locality },
               { pincode },
               { state: adressState },
-              { lang: 'EN' },
             ]);
           }
           draft.data = data;
