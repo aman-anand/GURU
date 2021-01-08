@@ -5,7 +5,6 @@ export const LeaderBoardContainer = styled.section`
   ${globalStyle.column};
   @media (max-width: ${globalStyle.small}) {
     background-color: #f9fafc;
-    height: 100vh;
   }
   .topSection {
     ${globalStyle.flex};
@@ -137,7 +136,6 @@ export const LeaderBoardContainer = styled.section`
     ${globalStyle.column};
     align-items: center;
     .leaderWrapper {
-      ${globalStyle.flex};
       ${globalStyle.column};
       padding: 10px;
       width: 100%;

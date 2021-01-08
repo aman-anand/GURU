@@ -19,7 +19,12 @@ export const GuruCoursesDetailsContainer = styled.section`
       margin-top: 24px;
     }
   }
-  .leftBox,
+  .leftBox {
+    @media (min-width: ${globalStyle.small}) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
   .rightBox {
     box-sizing: border-box;
     ${globalStyle.flex};

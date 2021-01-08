@@ -3,7 +3,6 @@ import globalStyle from '../../common/styles/var';
 import right from '../../images/right.png';
 
 export const LanguageComponentContainer = styled.div`
-    ${globalStyle.flex};
     ${globalStyle.column};
     width: 100%;
     label {

@@ -21,15 +21,16 @@ export const HomeContainer = styled.section`
       flex: 1;
     }
   }
-  .leftBox,
-  .rightBox {
-    box-sizing: border-box;
-    ${globalStyle.flex};
-    ${globalStyle.column};
+  .leftBox {
     @media (min-width: ${globalStyle.small}) {
       padding-left: 15px;
       padding-right: 15px;
     }
+  }
+  .rightBox {
+    box-sizing: border-box;
+    ${globalStyle.flex};
+    ${globalStyle.column};
   }
   .leftBox {
     flex: 1;

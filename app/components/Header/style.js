@@ -171,6 +171,7 @@ export const HeaderContainer = styled.header`
     ${globalStyle.column};
     width: 18px;
     height: 13px;
+    cursor: pointer;
   }
 
   .sideNavWrapper {
